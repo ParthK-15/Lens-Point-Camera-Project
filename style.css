@@ -233,6 +233,7 @@
     left: 10%;
     color: white;
     font-size: clamp(1rem, 5vw, 4rem);
+    opacity: 0;
 }
 
 .tag_line1{
