@@ -18,9 +18,21 @@
 }
 
 .navigation input {
-    height: 1.2rem;
-    border-radius: 5px;
+    height: 2rem;
+    border-radius: 20px;
+    border: none;
+    padding: 0 12px;
+    outline: none;
+    background: #222;
+    color: white;
 }
+
+.options input::placeholder {
+    color: #aaa;
+}
+.options input::placeholder {
+    color: #aaa;
+} 
 
 .navigation a:hover {
     color: white;
@@ -40,6 +52,26 @@
     display: flex;
     align-items: center;
     margin-right: -1rem;
+} 
+
+
+   
+
+
+.login {
+    margin-left: 1rem;
+    padding: 6px 16px;
+    border-radius: 20px;
+    border: none;
+    background: #111;
+    color: white;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.login:hover {
+    background: orange;
+    color: black;
 }
 
 @media(max-width:700px) {
@@ -276,7 +308,7 @@ main {
     background-color: rgb(187, 184, 184);
 }
 
-.row-one,.row-two,.row-three{
+.first-row-content{
     cursor: pointer;
 }
 
