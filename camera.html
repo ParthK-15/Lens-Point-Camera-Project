@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cameras</title>
+    <link rel="stylesheet" href="camera.css">
+</head>
+
+<body>
+    <div class="main-camera-screen">
+        <div class="sidebar">
+            <div class="price-container">
+                <h3>Price</h3>
+                <div class="price-item">
+                    <input type="checkbox" id="price-check1" class="price-checkbox" checked>
+                    <label for="price-check1">All</label>
+                </div>
+                <div class="price-item">
+                    <input type="checkbox" id="price-check2" class="price-checkbox">
+                    <label for="price-check2">Under ₹1,000</label>
+                </div>
+                <div class="price-item">
+                    <input type="checkbox" id="price-check3" class="price-checkbox">
+                    <label for="price-check3">₹1,000 - ₹5,000</label>
+                </div>
+                <div class="price-item">
+                    <input type="checkbox" id="price-check4" class="price-checkbox">
+                    <label for="price-check4">₹5,000 - ₹10,000</label>
+                </div>
+                <div class="price-item">
+                    <input type="checkbox" id="price-check5" class="price-checkbox">
+                    <label for="price-check5">₹10,000 - ₹20,000</label>
+                </div>
+                <div class="price-item">
+                    <input type="checkbox" id="price-check6" class="price-checkbox">
+                    <label for="price-check6">Over ₹20,000</label>
+                </div>
+            </div>
+            <div class="company-container">
+                <h3>Brands</h3>
+                <div class="brands-name">
+                    <input type="checkbox" id="brands-check1" class="brands-checkbox" checked>
+                    <label for="brands-check1">All</label>
+                </div>
+                <div class="brands-name">
+                    <input type="checkbox" id="brands-check2" class="brands-checkbox">
+                    <label for="brands-check2">Sony</label>
+                </div>
+                <div class="brands-name">
+                    <input type="checkbox" id="brands-check3" class="brands-checkbox">
+                    <label for="brands-check3">Nikon</label>
+                </div>
+                <div class="brands-name">
+                    <input type="checkbox" id="brands-check4" class="brands-checkbox">
+                    <label for="brands-check4">Canon</label>
+                </div>
+                <div class="brands-name">
+                    <input type="checkbox" id="brands-check5" class="brands-checkbox">
+                    <label for="brands-check5">Fujifilm</label>
+                </div>
+                <div class="brands-name">
+                    <input type="checkbox" id="brands-check6" class="brands-checkbox">
+                    <label for="brands-check6">GoPro</label>
+                </div>
+            </div>
+            <div class="category-container">
+                <h3>Categories</h3>
+                <div class="brands-name">
+                    <input type="checkbox" id="brands-check1" class="brands-checkbox" checked>
+                    <label for="brands-check1">All</label>
+                </div>
+                <div class="brands-name">
+                    <input type="checkbox" id="brands-check2" class="brands-checkbox">
+                    <label for="brands-check2">DSLR</label>
+                </div>
+                <div class="brands-name">
+                    <input type="checkbox" id="brands-check3" class="brands-checkbox">
+                    <label for="brands-check3">Mirrorless</label>
+                </div>
+                <div class="brands-name">
+                    <input type="checkbox" id="brands-check4" class="brands-checkbox">
+                    <label for="brands-check4">Compact Cameras</label>
+                </div>
+                <div class="brands-name">
+                    <input type="checkbox" id="brands-check5" class="brands-checkbox">
+                    <label for="brands-check5">Action Cameras</label>
+                </div>
+                <div class="brands-name">
+                    <input type="checkbox" id="brands-check6" class="brands-checkbox">
+                    <label for="brands-check6">360-Degree Cameras</label>
+                </div>
+            </div>
+            <a href="#" class="sidebar-links">Lenses</a>
+            <a href="#" class="sidebar-links">Accessories</a>
+            <a href="#" class="sidebar-links">Tripods</a>
+            <a href="#" class="sidebar-links">Lights</a>
+        </div>
+        <div class="main-camera-cards">
+            <a href="/Camera/alpha7III.html">
+                <div class="camera-cards mirrorless" id="camera1">
+                    <div class="img-container">
+                        <img src="/Assets/Sony-a7-miii-with-28-70-lens.jpg" alt="sony camera">
+                    </div>
+                    <div class="content">
+                        <h2>Sony Alpha 7 III Mirrorless Camera</h2>
+                        <ul>
+                            <li>24.2 MP full-frame sensor.</li>
+                            <li>Fast autofocus and shooting.</li>
+                            <li>4K video recording.</li>
+                        </ul>
+                    </div>
+                    <div class="card-footer">
+                        <h2 class="price">₹1,36,490/-</h2>
+                        <button>Explore</button>
+                    </div>
+                </div>
+            </a>
+            <a href="/Camera/canonEOS1500D.html">
+                <div class="camera-cards mirrorless" id="camera1">
+                    <div class="img-container">
+                    <img src="/Assets/SSLRCAN1500DBOC_l.jpg.webp" alt="canon camera">
+                    </div>
+                    <div class="content">
+                        <h2>Canon EOS 1500D</h2>
+                        <ul>
+                            <li>24.1 MP APS-C sensor.</li>
+                            <li>9-point autofocus system.</li>
+                            <li>Built-in Wi-Fi connectivity.</li>
+                        </ul>
+                    </div>
+                    <div class="card-footer">
+                        <h2 class="price">₹43,990/-</h2>
+                        <button>Explore</button>
+                    </div>
+                </div>
+            </a>
+            <div class="camera-cards" id="camera3">
+                <h1>Sony</h1>
+            </div>
+            <div class="camera-cards" id="camera4">
+                <h1>Sony</h1>
+            </div>
+            <div class="camera-cards" id="camera5">
+                <h1>Sony</h1>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

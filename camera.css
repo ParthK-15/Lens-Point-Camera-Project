@@ -1,0 +1,163 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.main-camera-screen {
+    display: flex;
+}
+
+.sidebar {
+    background-color: white;
+    height: 100vh auto;
+    width: 20vw;
+    border-right: 1px solid black;
+}
+
+.price-item,
+.brands-name {
+    display: flex;
+    padding-bottom: 1rem;
+}
+
+.price-container,
+.company-container,
+.category-container {
+    padding-left: 1rem;
+    padding-top: 1rem;
+}
+
+.price-item label,
+.brands-name label {
+    padding-left: 0.5rem;
+}
+
+.price-container h3,
+.company-container h3,
+.category-container h3{
+    padding-bottom: 1rem;
+}
+
+.sidebar-links {
+    display: block;
+    text-decoration: none;
+    font-size: 1.2rem;
+    font-weight: bold;
+    padding-left: 1rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    color: black;
+}
+
+.sidebar-links:hover {
+    color: orange;
+    text-decoration: underline;
+    text-decoration-color: orange;
+}
+
+.main-camera-cards {
+    background-color: white;
+    width: 80vw;
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+
+.main-camera-cards a{
+    text-decoration: none;
+}
+
+.camera-cards {
+    background-color: white;
+    height: 60vh;
+    width: 20rem;
+    margin-top: 2rem;
+    border-radius: 0.5rem;
+    border: 1px solid rgb(187, 184, 184);
+    box-shadow: 0 0 8px gray;
+    color: black;
+    display: flex;
+    flex-direction: column;
+}
+
+.camera-cards:hover {
+    box-shadow: 0 0 30px gray;
+}
+
+.camera-cards img {
+    height: 11.25rem;
+    display: block;
+    margin: 1.5rem auto 0 auto;
+}
+
+.camera-cards img:hover{
+    cursor: pointer;
+}
+
+.img-container {
+    height: 40%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.img-container img {
+    max-height: 100%;
+    object-fit: contain;
+}
+
+.camera-cards .content {
+    background-color: rgba(187, 184, 184, 0.5);
+    margin-top: 1rem;
+    flex-grow: 1;
+}
+
+.camera-cards .content h2{
+    padding-top: 1rem;
+    padding-left: 1rem;
+    height: 3.43rem;
+}
+
+.camera-cards .content h2:hover{
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.camera-cards .content ul{
+    padding-left: 2rem;
+    padding-bottom: 1rem;
+    margin-top: 1rem;
+}
+
+.camera-cards .content li{
+    padding: 0.3rem;
+}
+
+.camera-cards button{
+    height: 2.5rem;
+    width: 6rem;
+    border: 1px solid orange;
+    color: orange;
+    background-color: white;
+    border-radius: 5px;
+    font-size: 1.1rem;
+    font-weight: 700;
+}
+
+.camera-cards button:hover{
+    background-color: orange;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.camera-cards .price{
+    display: inline-block;
+}
+
+.card-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.6rem 1.5rem;
+}
