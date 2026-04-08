@@ -3,8 +3,78 @@
     padding: 0;
 }
 
+.navigation {
+    background-color: rgba(0, 0, 0, 0.960);
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 4rem;
+}
+
+.navigation a {
+    color: rgba(255, 255, 255, 0.6);
+    text-decoration: none;
+    font-size: 1.5rem;
+}
+
+.navigation input {
+    height: 2rem;
+    border-radius: 20px;
+    border: none;
+    padding: 0 12px;
+    outline: none;
+    background: #222;
+    color: white;
+}
+
+.options input::placeholder {
+    color: #aaa;
+}
+.options input::placeholder {
+    color: #aaa;
+} 
+
+.navigation a:hover {
+    color: white;
+    text-decoration: underline;
+    text-underline-offset: 10px;
+    text-decoration-color: orange;
+}
+
 .main-camera-screen {
     display: flex;
+}
+
+.filter-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    border-bottom: 1px solid #ccc;
+}
+
+.filter-header h2 {
+    font-size: 1.4rem;
+}
+
+#reset-btn {
+    padding: 0.4rem 0.9rem;
+    border: 1px solid orange;
+    background-color: white;
+    color: orange;
+    border-radius: 20px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+#reset-btn:hover {
+    background-color: orange;
+    color: white;
+}
+
+#reset-btn:active {
+    transform: scale(0.95);
 }
 
 .sidebar {
@@ -12,6 +82,10 @@
     height: 100vh auto;
     width: 20vw;
     border-right: 1px solid black;
+}
+
+.sidebar input:hover , .sidebar label:hover {
+    cursor: pointer;
 }
 
 .price-item,
@@ -69,7 +143,7 @@
 
 .camera-cards {
     background-color: white;
-    height: 60vh;
+    height: 32.5rem;
     width: 20rem;
     margin-top: 2rem;
     border-radius: 0.5rem;
@@ -92,6 +166,32 @@
 
 .camera-cards img:hover{
     cursor: pointer;
+}
+
+.login {
+    margin-left: 1rem;
+    height: 2rem;
+    width: 6rem;
+    border: none;
+    background-color: rgba(0, 0, 0, 0.960);
+    color: white;
+    font-size: 1rem;
+    border-radius: 30px;
+    font-weight: 600;
+}
+
+.login:hover {
+    background-color: white;
+    color: black;
+    cursor: pointer;
+}
+
+.navigation a.active {
+    color: white;
+    text-decoration: underline;
+    text-underline-offset: 10px;
+    text-decoration-color: orange;
+    opacity: 1;
 }
 
 .img-container {
