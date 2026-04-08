@@ -9,87 +9,109 @@
 </head>
 
 <body>
+    <header>
+        <nav>
+            <div class="navigation">
+                <a href="index.html">Home</a>
+                <a href="camera.html" class="active">Camera</a>
+                <a href="#">Lens</a>
+                <a href="#">Accessories</a>
+                <a href="#">Contact</a>
+                <div class="options">
+                    <input type="text" placeholder="Search">
+                    <label for="input">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </label>
+                    <button class="login">Log In</button>
+                </div>
+            </div>
+        </nav>
+    </header>
     <div class="main-camera-screen">
         <div class="sidebar">
+            <div class="filter-header">
+                <h2>Filters</h2>
+                <button id="reset-btn" title="Reset all filters">Reset</button>
+            </div>
             <div class="price-container">
                 <h3>Price</h3>
                 <div class="price-item">
-                    <input type="checkbox" id="price-check1" class="price-checkbox" checked>
+                    <input type="checkbox" id="price-check1" class="price-checkbox" value="all" checked>
                     <label for="price-check1">All</label>
                 </div>
                 <div class="price-item">
-                    <input type="checkbox" id="price-check2" class="price-checkbox">
-                    <label for="price-check2">Under ₹1,000</label>
+                    <input type="checkbox" id="price-check2" class="price-checkbox" value="Under 20000">
+                    <label for="price-check2">Under ₹20,000</label>
                 </div>
                 <div class="price-item">
-                    <input type="checkbox" id="price-check3" class="price-checkbox">
-                    <label for="price-check3">₹1,000 - ₹5,000</label>
+                    <input type="checkbox" id="price-check3" class="price-checkbox" value="20000-50000">
+                    <label for="price-check3">₹20,000 - ₹50,000</label>
                 </div>
                 <div class="price-item">
-                    <input type="checkbox" id="price-check4" class="price-checkbox">
-                    <label for="price-check4">₹5,000 - ₹10,000</label>
+                    <input type="checkbox" id="price-check4" class="price-checkbox" value="50000-70000">
+                    <label for="price-check4">₹50,000 - ₹70,000</label>
                 </div>
                 <div class="price-item">
-                    <input type="checkbox" id="price-check5" class="price-checkbox">
-                    <label for="price-check5">₹10,000 - ₹20,000</label>
+                    <input type="checkbox" id="price-check5" class="price-checkbox" value="70000-100000">
+                    <label for="price-check5">₹70,000 - ₹1,00,000</label>
                 </div>
                 <div class="price-item">
-                    <input type="checkbox" id="price-check6" class="price-checkbox">
-                    <label for="price-check6">Over ₹20,000</label>
+                    <input type="checkbox" id="price-check6" class="price-checkbox" value="Over 100000">
+                    <label for="price-check6">Over ₹1,00,000</label>
                 </div>
             </div>
             <div class="company-container">
                 <h3>Brands</h3>
                 <div class="brands-name">
-                    <input type="checkbox" id="brands-check1" class="brands-checkbox" checked>
+                    <input type="checkbox" id="brands-check1" class="brands-checkbox" checked value="all">
                     <label for="brands-check1">All</label>
                 </div>
                 <div class="brands-name">
-                    <input type="checkbox" id="brands-check2" class="brands-checkbox">
+                    <input type="checkbox" id="brands-check2" class="brands-checkbox" value="sony">
                     <label for="brands-check2">Sony</label>
                 </div>
                 <div class="brands-name">
-                    <input type="checkbox" id="brands-check3" class="brands-checkbox">
+                    <input type="checkbox" id="brands-check3" class="brands-checkbox" value="nikon">
                     <label for="brands-check3">Nikon</label>
                 </div>
                 <div class="brands-name">
-                    <input type="checkbox" id="brands-check4" class="brands-checkbox">
+                    <input type="checkbox" id="brands-check4" class="brands-checkbox" value="canon">
                     <label for="brands-check4">Canon</label>
                 </div>
                 <div class="brands-name">
-                    <input type="checkbox" id="brands-check5" class="brands-checkbox">
+                    <input type="checkbox" id="brands-check5" class="brands-checkbox" value="fujifilm">
                     <label for="brands-check5">Fujifilm</label>
                 </div>
                 <div class="brands-name">
-                    <input type="checkbox" id="brands-check6" class="brands-checkbox">
+                    <input type="checkbox" id="brands-check6" class="brands-checkbox" value="gopro">
                     <label for="brands-check6">GoPro</label>
                 </div>
             </div>
             <div class="category-container">
                 <h3>Categories</h3>
                 <div class="brands-name">
-                    <input type="checkbox" id="brands-check1" class="brands-checkbox" checked>
-                    <label for="brands-check1">All</label>
+                    <input type="checkbox" id="category-check1" class="category-checkbox" checked value="all">
+                    <label for="category-check1">All</label>
                 </div>
                 <div class="brands-name">
-                    <input type="checkbox" id="brands-check2" class="brands-checkbox">
-                    <label for="brands-check2">DSLR</label>
+                    <input type="checkbox" id="category-check2" class="category-checkbox" value="dslr">
+                    <label for="category-check2">DSLR</label>
                 </div>
                 <div class="brands-name">
-                    <input type="checkbox" id="brands-check3" class="brands-checkbox">
-                    <label for="brands-check3">Mirrorless</label>
+                    <input type="checkbox" id="category-check3" class="category-checkbox" value="mirrorless">
+                    <label for="category-check3">Mirrorless</label>
                 </div>
                 <div class="brands-name">
-                    <input type="checkbox" id="brands-check4" class="brands-checkbox">
-                    <label for="brands-check4">Compact Cameras</label>
+                    <input type="checkbox" id="category-check4" class="category-checkbox" value="compact">
+                    <label for="category-check4">Compact Cameras</label>
                 </div>
                 <div class="brands-name">
-                    <input type="checkbox" id="brands-check5" class="brands-checkbox">
-                    <label for="brands-check5">Action Cameras</label>
+                    <input type="checkbox" id="category-check5" class="category-checkbox" value="action">
+                    <label for="category-check5">Action Cameras</label>
                 </div>
                 <div class="brands-name">
-                    <input type="checkbox" id="brands-check6" class="brands-checkbox">
-                    <label for="brands-check6">360-Degree Cameras</label>
+                    <input type="checkbox" id="category-check6" class="category-checkbox" value="360">
+                    <label for="category-check6">360-Degree Cameras</label>
                 </div>
             </div>
             <a href="#" class="sidebar-links">Lenses</a>
@@ -99,7 +121,8 @@
         </div>
         <div class="main-camera-cards">
             <a href="/Camera/alpha7III.html">
-                <div class="camera-cards mirrorless" id="camera1">
+                <div class="camera-cards mirrorless" id="camera1" data-price="136490" data-brand="sony"
+                    data-category="mirrorless">
                     <div class="img-container">
                         <img src="/Assets/Sony-a7-miii-with-28-70-lens.jpg" alt="sony camera">
                     </div>
@@ -118,9 +141,9 @@
                 </div>
             </a>
             <a href="/Camera/canonEOS1500D.html">
-                <div class="camera-cards dslr" id="camera1">
+                <div class="camera-cards dslr" id="camera2" data-price="43990" data-brand="canon" data-category="dslr">
                     <div class="img-container">
-                    <img src="/Assets/SSLRCAN1500DBOC_l.jpg.webp" alt="canon camera">
+                        <img src="/Assets/SSLRCAN1500DBOC_l.jpg.webp" alt="canon camera">
                     </div>
                     <div class="content">
                         <h2>Canon EOS 1500D</h2>
@@ -136,17 +159,66 @@
                     </div>
                 </div>
             </a>
-            <div class="camera-cards" id="camera3">
-                <h1>Sony</h1>
-            </div>
-            <div class="camera-cards" id="camera4">
-                <h1>Sony</h1>
-            </div>
-            <div class="camera-cards" id="camera5">
-                <h1>Sony</h1>
-            </div>
+            <a href="/Camera/canonEOS1DXMarkIIIBody.html">
+                <div class="camera-cards dslr" id="camera3" data-price="423792" data-brand="canon" data-category="dslr">
+                    <div class="img-container">
+                        <img src="/Assets/Canon_EOS-1DX_Mark_III.jpg" alt="canon camera">
+                    </div>
+                    <div class="content">
+                        <h2>Canon EOS 1D X Mark III Body</h2>
+                        <ul>
+                            <li>20.1 MP full-frame sensor.</li>
+                            <li>191-point deep learning autofocus.</li>
+                            <li>16–20 fps high-speed continuous shooting.</li>
+                        </ul>
+                    </div>
+                    <div class="card-footer">
+                        <h2 class="price">₹4,23,792/-</h2>
+                        <button>Explore</button>
+                    </div>
+                </div>
+            </a>
+            <a href="/Camera/canonEOS1DXMark-IIBody.html">
+                <div class="camera-cards dslr" id="camera4" data-price="423792" data-brand="canon" data-category="dslr">
+                    <div class="img-container">
+                        <img src="/Assets/New-Project-16-1-1.webp" alt="canon camera">
+                    </div>
+                    <div class="content">
+                        <h2>Canon EOS 1D X Mark-II Body</h2>
+                        <ul>
+                            <li>20.2 MP full-frame sensor.</li>
+                            <li>61-point autofocus system.</li>
+                            <li>14 fps high-speed shooting.</li>
+                        </ul>
+                    </div>
+                    <div class="card-footer">
+                        <h2 class="price">₹4,23,792/-</h2>
+                        <button>Explore</button>
+                    </div>
+                </div>
+            </a>
+            <a href="/Camera/canonEOS200D.html">
+                <div class="camera-cards dslr" id="camera4" data-price="55695" data-brand="canon" data-category="dslr">
+                    <div class="img-container">
+                        <img src="/Assets/photo.png" alt="canon camera">
+                    </div>
+                    <div class="content">
+                        <h2>Canon EOS 200D</h2>
+                        <ul>
+                            <li>24.2 MP APS-C sensor.</li>
+                            <li>Dual Pixel AF.</li>
+                            <li>Vari-angle touchscreen.</li>
+                        </ul>
+                    </div>
+                    <div class="card-footer">
+                        <h2 class="price">₹55,695/-</h2>
+                        <button>Explore</button>
+                    </div>
+                </div>
+            </a>
         </div>
     </div>
+    <script src="camera.js"></script>
 </body>
 
 </html>
