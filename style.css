@@ -52,26 +52,6 @@
     display: flex;
     align-items: center;
     margin-right: -1rem;
-} 
-
-
-   
-
-
-.login {
-    margin-left: 1rem;
-    padding: 6px 16px;
-    border-radius: 20px;
-    border: none;
-    background: #111;
-    color: white;
-    font-weight: 500;
-    cursor: pointer;
-}
-
-.login:hover {
-    background: orange;
-    color: black;
 }
 
 @media(max-width:700px) {
@@ -115,6 +95,7 @@
 .login:hover {
     background-color: white;
     color: black;
+    cursor: pointer;
 }
 
 .mainbox {
@@ -517,6 +498,8 @@ p {
     padding-top: 2rem;
     opacity: 0.7;
     cursor: pointer;
+    color: white;
+    text-decoration: none;
 }
 
 .foot-contact a:hover,
