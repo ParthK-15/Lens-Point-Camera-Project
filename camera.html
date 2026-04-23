@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cameras</title>
     <link rel="stylesheet" href="camera.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 
 <body>
@@ -14,15 +15,15 @@
             <div class="navigation">
                 <a href="index.html">Home</a>
                 <a href="camera.html" class="active">Camera</a>
-                <a href="#">Lens</a>
-                <a href="#">Accessories</a>
+                <a href="Lens.html">Lens</a>
+                <a href="accessories.html">Accessories</a>
                 <a href="#">Contact</a>
                 <div class="options">
                     <input type="text" placeholder="Search">
                     <label for="input">
                         <i class="fa-solid fa-magnifying-glass"></i>
                     </label>
-                    <button class="login">Log In</button>
+                    <button type="button" class="login">Log In</button>
                 </div>
             </div>
         </nav>
@@ -63,7 +64,7 @@
             <div class="company-container">
                 <h3>Brands</h3>
                 <div class="brands-name">
-                    <input type="checkbox" id="brands-check1" class="brands-checkbox" checked value="all">
+                    <input type="checkbox" id="brands-check1" class="brands-checkbox" value="all" checked>
                     <label for="brands-check1">All</label>
                 </div>
                 <div class="brands-name">
@@ -90,7 +91,7 @@
             <div class="category-container">
                 <h3>Categories</h3>
                 <div class="brands-name">
-                    <input type="checkbox" id="category-check1" class="category-checkbox" checked value="all">
+                    <input type="checkbox" id="category-check1" class="category-checkbox" value="all" checked>
                     <label for="category-check1">All</label>
                 </div>
                 <div class="brands-name">
@@ -115,14 +116,13 @@
                 </div>
             </div>
             <a href="#" class="sidebar-links">Lenses</a>
-            <a href="#" class="sidebar-links">Accessories</a>
+            <a href="accessories.html" class="sidebar-links">Accessories</a>
             <a href="#" class="sidebar-links">Tripods</a>
             <a href="#" class="sidebar-links">Lights</a>
         </div>
         <div class="main-camera-cards">
             <a href="/Camera/alpha7III.html">
-                <div class="camera-cards mirrorless" id="camera1" data-price="136490" data-brand="sony"
-                    data-category="mirrorless">
+                <div class="camera-cards mirrorless" id="camera1" data-price="136490" data-brand="sony" data-category="mirrorless">
                     <div class="img-container">
                         <img src="/Assets/Sony-a7-miii-with-28-70-lens.jpg" alt="sony camera">
                     </div>
@@ -141,9 +141,9 @@
                 </div>
             </a>
             <a href="/Camera/canonEOS1500D.html">
-                <div class="camera-cards dslr" id="camera2" data-price="43990" data-brand="canon" data-category="dslr">
+                <div class="camera-cards dslr" id="camera1" data-price="43990" data-brand="canon" data-category="dslr">
                     <div class="img-container">
-                        <img src="/Assets/SSLRCAN1500DBOC_l.jpg.webp" alt="canon camera">
+                    <img src="/Assets/SSLRCAN1500DBOC_l.jpg.webp" alt="canon camera">
                     </div>
                     <div class="content">
                         <h2>Canon EOS 1500D</h2>
@@ -159,6 +159,7 @@
                     </div>
                 </div>
             </a>
+
             <a href="/Camera/canonEOS1DXMarkIIIBody.html">
                 <div class="camera-cards dslr" id="camera3" data-price="423792" data-brand="canon" data-category="dslr">
                     <div class="img-container">
@@ -216,8 +217,212 @@
                     </div>
                 </div>
             </a>
+            <a href="/Camera/canonEOS200DII.html">
+                <div class="camera-cards dslr" id="camera4" data-price="68995" data-brand="canon" data-category="dslr">
+                    <div class="img-container">
+                        <img src="/Assets/photo.png" alt="canon camera">
+                    </div>
+                    <div class="content">
+                        <h2>Canon EOS 200D II</h2>
+                        <ul>
+                            <li>24.1 MP High-Resolution Sensor.</li>
+                            <li>Dual Pixel Autofocus for Smooth Focus.</li>
+                            <li>4K Video + Vari-angle Touchscreen.</li>
+                        </ul>
+                    </div>
+                    <div class="card-footer">
+                        <h2 class="price">₹68,995/-</h2>
+                        <button>Explore</button>
+                    </div>
+                </div>
+            </a>
+            <a href="/Camera/canonEOS3000DEF-S.html">
+                <div class="camera-cards dslr" id="camera4" data-price="35955" data-brand="canon" data-category="dslr">
+                    <div class="img-container">
+                        <img src="/Assets/product_image_01-2.webp" alt="canon camera">
+                    </div>
+                    <div class="content">
+                        <h2>Canon EOS 3000D EF-S</h2>
+                        <ul>
+                            <li>18 MP APS-C Sensor.</li>
+                            <li>Full HD Video Recording.</li>
+                            <li>Built-in Wi-Fi Sharing.</li>
+                        </ul>
+                    </div>
+                    <div class="card-footer">
+                        <h2 class="price">₹35,955/-</h2>
+                        <button>Explore</button>
+                    </div>
+                </div>
+            </a>
+            <a href="/Camera/canonEOS5DMarkIV.html">
+                <div class="camera-cards dslr" id="camera4" data-price="308758" data-brand="canon" data-category="dslr">
+                    <div class="img-container">
+                        <img src="/Assets/0000125_canon-eos-80d-dslr-camera-body-only_360.png" alt="canon camera">
+                    </div>
+                    <div class="content">
+                        <h2>Canon EOS 5D Mark IV</h2>
+                        <ul>
+                            <li>30.4 MP Full-Frame Sensor.</li>
+                            <li>61-Point Advanced Autofocus.</li>
+                            <li>4K Professional Video Recording.</li>
+                        </ul>
+                    </div>
+                    <div class="card-footer">
+                        <h2 class="price">₹3,08,758/-</h2>
+                        <button>Explore</button>
+                    </div>
+                </div>
+            </a>
+            <a href="/Camera/canonEOS6DMarkII.html">
+                <div class="camera-cards dslr" id="camera9" data-price="194995" data-brand="canon" data-category="dslr">
+                    <div class="img-container">
+                        <img src="/Assets/0008370_canon-eos-6d-mark-ii-dslr-camera-body-only_500.jpeg"
+                            alt="canon camera">
+                    </div>
+                    <div class="content">
+                        <h2>Canon EOS 6D Mark II</h2>
+                        <ul>
+                            <li>26.2 MP Full-Frame Sensor.</li>
+                            <li>45-Point Advanced Autofocus.</li>
+                            <li>4K UHD Video + Built-in GPS.</li>
+                        </ul>
+                    </div>
+                    <div class="card-footer">
+                        <h2 class="price">₹1,94,995/-</h2>
+                        <button>Explore</button>
+                    </div>
+                </div>
+            </a>
+            <a href="/Camera/canonEOS7DMarkII.html">
+                <div class="camera-cards dslr" id="camera10" data-price="128990" data-brand="canon"
+                    data-category="dslr">
+                    <div class="img-container">
+                        <img src="/Assets/eos-7d-mark-ii-canon-original-imaf6n7gkmgdf4tx.jpeg.webp" alt="canon camera">
+                    </div>
+                    <div class="content">
+                        <h2>Canon EOS 7D Mark II</h2>
+                        <ul>
+                            <li>20.2 MP APS-C Sensor.</li>
+                            <li>65-Point Advanced Autofocus.</li>
+                            <li>10 fps Continuous Shooting.</li>
+                        </ul>
+                    </div>
+                    <div class="card-footer">
+                        <h2 class="price">₹1,28,990/-</h2>
+                        <button>Explore</button>
+                    </div>
+                </div>
+            </a>
+            <a href="/Camera/canonEOS80D.html">
+                <div class="camera-cards dslr" id="camera11" data-price="79999" data-brand="canon" data-category="dslr">
+                    <div class="img-container">
+                        <img src="/Assets/0033807_canon-eos-80d-dslr-camera-body-only_500.jpeg" alt="canon camera">
+                    </div>
+                    <div class="content">
+                        <h2>Canon EOS 80D</h2>
+                        <ul>
+                            <li>24.2 MP APS-C Sensor.</li>
+                            <li>45-Point All-Cross Autofocus.</li>
+                            <li>4K DCI Video + Articulating Screen.</li>
+                        </ul>
+                    </div>
+                    <div class="card-footer">
+                        <h2 class="price">₹79,999/-</h2>
+                        <button>Explore</button>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+        <div id="noResultsMessage" class="no-results-container">
+            <div class="no-results-content">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <h2>No Results Found</h2>
+                <p>Sorry, we couldn't find any cameras matching your search.</p>
+                <p>Try searching with different keywords or browse all cameras.</p>
+                <button id="clearSearchBtn" class="clear-search-btn">Clear Search</button>
+            </div>
         </div>
     </div>
+
+    <div id="loginModal" class="login-modal">
+        <div class="login-modal-content">
+            <div class="login-modal-header">
+                <h2>Coming Soon!</h2>
+                <button type="button" id="closeLoginModal" class="close-login-btn">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+            <div class="login-modal-body">
+                <i class="fa-solid fa-lock"></i>
+                <p>The login feature will be implemented soon.</p>
+                <p>Stay tuned for updates!</p>
+                <button type="button" id="closeLoginBtn" class="close-login-popup-btn">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-main">
+            <div class="main-footer">
+                <div class="brands">
+                    <h2>Brands</h2>
+                    <input type="checkbox" class="footer-checkbox" id="brands-check">
+                    <label for="brands-check">
+                        <i class="fa-solid fa-angle-down"></i>
+                    </label>
+                    <ul>
+                        <li>Sony</li>
+                        <li>Canon</li>
+                        <li>Nikon</li>
+                        <li>Fujifilm</li>
+                        <li>GoPro</li>
+                    </ul>
+                </div>
+                <div class="categories">
+                    <h2>Categories</h2>
+                    <input type="checkbox" class="footer-checkbox" id="categories-check">
+                    <label for="categories-check">
+                        <i class="fa-solid fa-angle-down"></i>
+                    </label>
+                    <ul>
+                        <li>DSLR Cameras</li>
+                        <li>Mirrorless Cameras</li>
+                        <li>Lenses</li>
+                        <li>Tripods</li>
+                        <li>Lighting Equipment</li>
+                    </ul>
+                </div>
+                <div class="foot-contact">
+                    <h2>Contact Us</h2>
+                    <input type="checkbox" class="footer-checkbox" id="contact-check">
+                    <label for="contact-check">
+                        <i class="fa-solid fa-angle-down"></i>
+                    </label>
+                    <p><i class="fa-solid fa-phone"></i> +91 7038418286</p>
+                    <a href="https://www.instagram.com/sumati.color.lab?igsh=ZHIzam5hc3N6bmdj"><i class="fa-brands fa-instagram"></i> Instagram</a>
+                    <a href="mailto:khushallll409@gmail.com"><i class="fa-regular fa-envelope"></i> Gmail</a>
+                </div>
+                <div class="foot-location">
+                    <h2>Our Location</h2>
+                    <input type="checkbox" class="footer-checkbox" id="location-check">
+                    <label for="location-check">
+                        <i class="fa-solid fa-angle-down"></i>
+                    </label>
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3766.527047318591!2d76.77415409999999!3d19.259433299999994!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bd019cc2af79f0d%3A0x4d9b3ade4eff331!2sSumati%20Colour%20Lab!5e0!3m2!1sen!2sin!4v1772262216473!5m2!1sen!2sin"
+                        style="border:0;" allowfullscreen="" loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <hr>
+                <p>Copyright © 2026 Sumati Color Lab. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
     <script src="camera.js"></script>
 </body>
 
