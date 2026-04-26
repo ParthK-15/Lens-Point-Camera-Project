@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lightings</title>
+    <link rel="stylesheet" href="lightings.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+
+<body>
+    <header>
+        <nav>
+            <div class="navigation">
+                <a href="index.html">Home</a>
+                <a href="camera.html">Camera</a>
+                <a href="#">Lens</a>
+                <a href="accessories.html">Accessories</a>
+                <a href="#">Contact</a>
+                <div class="options">
+                    <input type="text" placeholder="Search">
+                    <label for="input">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </label>
+                    <button type="button" class="login">Log In</button>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="main-tripod-screen">
+        <div class="sidebar">
+            <div class="filter-header">
+                <h2>Filters</h2>
+                <button id="reset-btn" title="Reset all filters">Reset</button>
+            </div>
+            <div class="price-container">
+                <h3>Price</h3>
+                <div class="price-item">
+                    <input type="checkbox" id="price-check1" class="price-checkbox" value="all" checked>
+                    <label for="price-check1">All</label>
+                </div>
+                <div class="price-item">
+                    <input type="checkbox" id="price-check2" class="price-checkbox" value="Under 5000">
+                    <label for="price-check2">Under ₹5,000</label>
+                </div>
+                <div class="price-item">
+                    <input type="checkbox" id="price-check3" class="price-checkbox" value="5000-10000">
+                    <label for="price-check3">₹5,000 - ₹10,000</label>
+                </div>
+                <div class="price-item">
+                    <input type="checkbox" id="price-check4" class="price-checkbox" value="10000-20000">
+                    <label for="price-check4">₹10,000 - ₹20,000</label>
+                </div>
+                <div class="price-item">
+                    <input type="checkbox" id="price-check5" class="price-checkbox" value="20000-50000">
+                    <label for="price-check5">₹20,000 - ₹50,000</label>
+                </div>
+                <div class="price-item">
+                    <input type="checkbox" id="price-check6" class="price-checkbox" value="Over 50000">
+                    <label for="price-check6">Over ₹50,000</label>
+                </div>
+            </div>
+            <div class="company-container">
+                <h3>Brands</h3>
+                <div class="brands-name">
+                    <input type="checkbox" id="brands-check1" class="brands-checkbox" checked value="all">
+                    <label for="brands-check1">All</label>
+                </div>
+                <div class="brands-name">
+                    <input type="checkbox" id="brands-check2" class="brands-checkbox" value="canon">
+                    <label for="brands-check2">Canon</label>
+                </div>
+                <div class="brands-name">
+                    <input type="checkbox" id="brands-check3" class="brands-checkbox" value="digitek">
+                    <label for="brands-check3">Digitek</label>
+                </div>
+            </div>
+            <div class="category-container">
+                <h3>Categories</h3>
+                <div class="brands-name">
+                    <input type="checkbox" id="category-check1" class="category-checkbox" checked value="all">
+                    <label for="category-check1">All</label>
+                </div>
+                <div class="brands-name">
+                    <input type="checkbox" id="category-check2" class="category-checkbox" value="speedlite">
+                    <label for="category-check2">Speedlite</label>
+                </div>
+                <div class="brands-name">
+                    <input type="checkbox" id="category-check3" class="category-checkbox" value="ringlight">
+                    <label for="category-check3">Ring Light</label>
+                </div>
+                <div class="brands-name">
+                    <input type="checkbox" id="category-check4" class="category-checkbox" value="modifier">
+                    <label for="category-check4">Modifiers</label>
+                </div>
+            </div>
+            <a href="camera.html" class="sidebar-links">Cameras</a>
+            <a href="#" class="sidebar-links">Lenses</a>
+            <a href="accessories.html" class="sidebar-links">Accessories</a>
+            <a href="tripod.html" class="sidebar-links">Tripods</a>
+            <a href="#" class="sidebar-links">Gimbals</a>
+        </div>
+        <div class="main-tripod-cards">
+            <a href="lightings/canon-speedlite-600ex-rt.html">
+                <div class="tripod-cards professional" data-price="45000" data-brand="canon" data-category="speedlite">
+                    <div class="img-container">
+                        <img src="Assets/1330619741000_847537.webp" alt="Canon Speedlite 600EX-RT">
+                    </div>
+                    <div class="content">
+                        <h2>Canon Speedlite 600EX-RT</h2>
+                        <ul>
+                            <li>Radio transmission wireless.</li>
+                            <li>High guide number of 60m.</li>
+                            <li>Weather-resistant construction.</li>
+                        </ul>
+                    </div>
+                    <div class="card-footer">
+                        <h2 class="price">₹45,000/-</h2>
+                        <button>Explore</button>
+                    </div>
+                </div>
+            </a>
+            <a href="lightings/canon-speedlite-el-100.html">
+                <div class="tripod-cards portable" data-price="15000" data-brand="canon" data-category="speedlite">
+                    <div class="img-container">
+                        <img src="Assets/canon 2-1.1.jpg" alt="Canon Speedlite EL-100">
+                    </div>
+                    <div class="content">
+                        <h2>Canon Speedlite EL-100</h2>
+                        <ul>
+                            <li>Compact and lightweight design.</li>
+                            <li>Guide number of 26m.</li>
+                            <li>Bounce flash capability.</li>
+                        </ul>
+                    </div>
+                    <div class="card-footer">
+                        <h2 class="price">₹15,000/-</h2>
+                        <button>Explore</button>
+                    </div>
+                </div>
+            </a>
+            <a href="lightings/digitek-flash.html">
+                <div class="tripod-cards portable" data-price="3500" data-brand="digitek" data-category="speedlite">
+                    <div class="img-container">
+                        <img src="/Assets/cannon 3-1.jpg" alt="Digitek Flash">
+                    </div>
+                    <div class="content">
+                        <h2>Digitek Flash</h2>
+                        <ul>
+                            <li>Universal hot shoe compatibility.</li>
+                            <li>Built-in optical slave receiver.</li>
+                            <li>Fast recycle time.</li>
+                        </ul>
+                    </div>
+                    <div class="card-footer">
+                        <h2 class="price">₹3,500/-</h2>
+                        <button>Explore</button>
+                    </div>
+                </div>
+            </a>
+            <a href="lightings/digitek-ring-light.html">
+                <div class="tripod-cards video" data-price="2500" data-brand="digitek" data-category="ringlight">
+                    <div class="img-container">
+                        <img src="/Assets/canon4-1.png" alt="Digitek Ring Light">
+                    </div>
+                    <div class="content">
+                        <h2>Digitek Ring Light</h2>
+                        <ul>
+                            <li>Dimmable bi-color LED.</li>
+                            <li>Adjustable color temp (3200K-5600K).</li>
+                            <li>Includes smartphone holder.</li>
+                        </ul>
+                    </div>
+                    <div class="card-footer">
+                        <h2 class="price">₹2,500/-</h2>
+                        <button>Explore</button>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+    <div id="noResultsMessage" class="no-results" style="display: none;">
+        <h2>No products found matching your filter criteria.</h2>
+    </div>
+    
+    <footer>
+        <div class="footer-main">
+            <div class="main-footer">
+                <div class="brands">
+                    <h2>Brands</h2>
+                    <input type="checkbox" class="footer-checkbox" id="brands-check">
+                    <label for="brands-check">
+                        <i class="fa-solid fa-angle-down"></i>
+                    </label>
+                    <ul>
+                        <li>Canon</li>
+                        <li>Digitek</li>
+                        <li>Godox</li>
+                        <li>Profoto</li>
+                        <li>Sony</li>
+                    </ul>
+                </div>
+                <div class="categories">
+                    <h2>Categories</h2>
+                    <input type="checkbox" class="footer-checkbox" id="categories-check">
+                    <label for="categories-check">
+                        <i class="fa-solid fa-angle-down"></i>
+                    </label>
+                    <ul>
+                        <li>Speedlites</li>
+                        <li>Ring Lights</li>
+                        <li>Modifiers</li>
+                        <li>Accessories</li>
+                    </ul>
+                </div>
+                <div class="foot-contact">
+                    <h2>Contact Us</h2>
+                    <input type="checkbox" class="footer-checkbox" id="contact-check">
+                    <label for="contact-check">
+                        <i class="fa-solid fa-angle-down"></i>
+                    </label>
+                    <p><i class="fa-solid fa-phone"></i> +91 7038418286</p>
+                    <a href="https://www.instagram.com/sumati.color.lab?igsh=ZHIzam5hc3N6bmdj"><i class="fa-brands fa-instagram"></i> Instagram</a>
+                    <a href="mailto:khushallll409@gmail.com"><i class="fa-regular fa-envelope"></i> Gmail</a>
+                </div>
+                <div class="foot-location">
+                    <h2>Our Location</h2>
+                    <input type="checkbox" class="footer-checkbox" id="location-check">
+                    <label for="location-check">
+                        <i class="fa-solid fa-angle-down"></i>
+                    </label>
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3766.527047318591!2d76.77415409999999!3d19.259433299999994!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bd019cc2af79f0d%3A0x4d9b3ade4eff331!2sSumati%20Colour%20Lab!5e0!3m2!1sen!2sin!4v1772262216473!5m2!1sen!2sin"
+                        style="border:0;" allowfullscreen="" loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <hr>
+                <p>Copyright © 2026 Sumati Color Lab. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="lightings.js"></script>
+</body>
+</html>
