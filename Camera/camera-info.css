@@ -54,6 +54,28 @@ section {
     text-decoration-color: orange;
 }
 
+.back-btn {
+    position: absolute;
+    top: 4.5rem;
+    left: 0.5rem;
+    font-size: 1.4rem;
+    color: black;
+    text-decoration: none;
+    padding: 10px 14px;
+    border: 2px solid transparent;
+    transition: all 0.25s ease;
+    z-index: 1500;
+}
+
+.back-btn:hover {
+    border: 2px solid orange;
+    background: transparent;
+}
+
+.back-btn:active {
+    transform: scale(0.95);
+}
+
 .interested {
     margin-left: 1rem;
     height: 2rem;
@@ -530,6 +552,8 @@ p {
     padding-top: 2rem;
     opacity: 0.7;
     cursor: pointer;
+    color: white;
+    text-decoration: none;
 }
 
 .foot-contact a:hover,
