@@ -1,7 +1,7 @@
 const images = [
-    "/Assets/0018825_peak-design-carbon-fiber-travel-tripod_500.jpeg",
-    "/Assets/3d98d0321e01477885f6d9b01a03b0a0-product-assets.jpg",
-    "/Assets/8b0a48ccbaaf469089c8d6a69e66d37a-product-featured-lg.jpg",
+    "/Assets/0018825_peak-design-carbon-fiber-travel-tripod_500_nobg.png",
+    "/Assets/3d98d0321e01477885f6d9b01a03b0a0-product-assets_nobg.png",
+    "/Assets/8b0a48ccbaaf469089c8d6a69e66d37a-product-featured-lg_nobg.png",
 ];
 
 let currentIndex = 0;

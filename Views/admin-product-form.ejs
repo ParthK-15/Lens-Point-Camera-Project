@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= isEdit ? 'Edit' : 'Add' %> Product | Admin — Sumati Colour Lab</title>
+    <link rel="stylesheet" href="/admin.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+
+<body class="admin-page">
+
+    <!-- ── Sidebar ──────────────────────────────────────────── -->
+    <aside class="admin-sidebar" id="adminSidebar">
+        <div class="sidebar-brand">
+            <div class="sidebar-brand-icon">
+                <i class="fa-solid fa-camera"></i>
+            </div>
+            <div class="sidebar-brand-text">
+                <h2>Sumati Lab</h2>
+                <span>Admin Panel</span>
+            </div>
+        </div>
+        <nav class="sidebar-nav">
+            <div class="sidebar-section-label">Main</div>
+            <a href="/admin/dashboard" class="sidebar-link">
+                <i class="fa-solid fa-chart-pie"></i> Dashboard
+            </a>
+            <a href="/admin/products" class="sidebar-link active">
+                <i class="fa-solid fa-box"></i> Products
+            </a>
+            <a href="/admin/orders" class="sidebar-link">
+                <i class="fa-solid fa-receipt"></i> Orders
+            </a>
+            <div class="sidebar-section-label">Store</div>
+            <a href="/" class="sidebar-link" target="_blank">
+                <i class="fa-solid fa-store"></i> View Store
+            </a>
+        </nav>
+        <div class="sidebar-footer">
+            <a href="/admin/logout" class="sidebar-link">
+                <i class="fa-solid fa-right-from-bracket"></i> Log Out
+            </a>
+        </div>
+    </aside>
+
+    <!-- ── Main Content ─────────────────────────────────────── -->
+    <main class="admin-main">
+        <div class="admin-topbar">
+            <div style="display:flex;align-items:center;gap:0.75rem;">
+                <button class="sidebar-toggle" onclick="document.getElementById('adminSidebar').classList.toggle('open')">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+                <div class="topbar-title">
+                    <h1><%= isEdit ? 'Edit Product' : 'Add New Product' %></h1>
+                    <p><%= isEdit ? 'Update product details' : 'Fill in the details to create a new product' %></p>
+                </div>
+            </div>
+            <div class="topbar-actions">
+                <a href="/admin/products" class="btn btn-secondary">
+                    <i class="fa-solid fa-arrow-left"></i> Back
+                </a>
+            </div>
+        </div>
+
+        <div class="admin-content">
+
+            <% if (error) { %>
+                <div class="login-error" style="max-width:900px;margin-bottom:1.5rem;">
+                    <i class="fa-solid fa-circle-exclamation"></i>
+                    <%= error %>
+                </div>
+            <% } %>
+
+            <form class="admin-form-card"
+                action="<%= isEdit ? '/admin/products/' + product._id + '/edit' : '/admin/products' %>"
+                method="POST" enctype="multipart/form-data">
+
+                <!-- ── Basic Info ───────────────────────────── -->
+                <div class="form-section">
+                    <div class="form-section-title">
+                        <i class="fa-solid fa-info-circle"></i> Basic Information
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="prod-title">Product Title *</label>
+                            <input type="text" id="prod-title" name="title"
+                                value="<%= product ? product.title || '' : '' %>" required
+                                placeholder="e.g. Sony Alpha 7 III">
+                        </div>
+                        <div class="form-group">
+                            <label for="prod-slug">Slug</label>
+                            <input type="text" id="prod-slug" name="slug"
+                                value="<%= product ? product.slug || '' : '' %>"
+                                placeholder="auto-generated from title">
+                            <span class="form-hint">Leave blank to auto-generate from title</span>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="prod-company">Company *</label>
+                            <input type="text" id="prod-company" name="company"
+                                value="<%= product ? product.company || '' : '' %>" required
+                                placeholder="e.g. Sony">
+                        </div>
+                        <div class="form-group">
+                            <label for="prod-price">Price (₹) *</label>
+                            <input type="number" id="prod-price" name="price"
+                                value="<%= product ? product.price || '' : '' %>" required
+                                placeholder="e.g. 159990" min="0" step="1">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="prod-category">Category *</label>
+                            <select id="prod-category" name="category" required>
+                                <option value="">Select category</option>
+                                <option value="camera" <%= product && product.category === 'camera' ? 'selected' : '' %>>Camera</option>
+                                <option value="lens" <%= product && product.category === 'lens' ? 'selected' : '' %>>Lens</option>
+                                <option value="tripod" <%= product && product.category === 'tripod' ? 'selected' : '' %>>Tripod</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="prod-subcategory">Sub-Category</label>
+                            <input type="text" id="prod-subcategory" name="subCategory"
+                                value="<%= product ? product.subCategory || '' : '' %>"
+                                placeholder="e.g. mirrorless, macro">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="prod-desc">Description</label>
+                        <textarea id="prod-desc" name="description" rows="3"
+                            placeholder="A brief description of the product"><%= product ? product.description || '' : '' %></textarea>
+                    </div>
+                </div>
+
+                <!-- ── Images ───────────────────────────────── -->
+                <div class="form-section">
+                    <div class="form-section-title">
+                        <i class="fa-solid fa-image"></i> Images
+                    </div>
+                    <div class="form-group">
+                        <label for="prod-image">Main Image Path</label>
+                        <input type="text" id="prod-image" name="image"
+                            value="<%= product ? product.image || '' : '' %>"
+                            placeholder="/Assets/product-image.png">
+                        <span class="form-hint">Enter a path (e.g. /Assets/image.png) or upload a file below</span>
+                    </div>
+                    <div class="form-group">
+                        <label>Or Upload Image</label>
+                        <div class="image-upload-area" onclick="document.getElementById('imageFileInput').click()">
+                            <i class="fa-solid fa-cloud-arrow-up"></i>
+                            <p>Click to upload an image (JPEG, PNG, WebP — max 10 MB)</p>
+                            <input type="file" name="imageFile" id="imageFileInput" accept="image/*">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Slider Images</label>
+                        <div id="sliderImagesContainer">
+                            <% if (product && product.sliderImages && product.sliderImages.length) { %>
+                                <% product.sliderImages.forEach(function(img, i) { %>
+                                    <div class="dynamic-group">
+                                        <button type="button" class="remove-btn" onclick="this.parentElement.remove()">
+                                            <i class="fa-solid fa-xmark"></i>
+                                        </button>
+                                        <input type="text" name="sliderImages" value="<%= img %>"
+                                            placeholder="/Assets/slider-image.png"
+                                            style="width:100%;padding:0.6rem 0.8rem;background:var(--admin-surface-3);border:1px solid var(--admin-border);border-radius:6px;color:var(--admin-text);font-family:inherit;font-size:0.85rem;outline:none;">
+                                    </div>
+                                <% }) %>
+                            <% } %>
+                        </div>
+                        <button type="button" class="add-field-btn" onclick="addSliderImage()">
+                            <i class="fa-solid fa-plus"></i> Add Slider Image
+                        </button>
+                    </div>
+                </div>
+
+                <!-- ── Features ─────────────────────────────── -->
+                <div class="form-section">
+                    <div class="form-section-title">
+                        <i class="fa-solid fa-star"></i> Features
+                    </div>
+                    <div id="featuresContainer">
+                        <% if (product && product.features && product.features.length) { %>
+                            <% product.features.forEach(function(f) { %>
+                                <div class="dynamic-group">
+                                    <button type="button" class="remove-btn" onclick="this.parentElement.remove()">
+                                        <i class="fa-solid fa-xmark"></i>
+                                    </button>
+                                    <input type="text" name="features" value="<%= f %>"
+                                        placeholder="Feature description"
+                                        style="width:100%;padding:0.6rem 0.8rem;background:var(--admin-surface-3);border:1px solid var(--admin-border);border-radius:6px;color:var(--admin-text);font-family:inherit;font-size:0.85rem;outline:none;">
+                                </div>
+                            <% }) %>
+                        <% } %>
+                    </div>
+                    <button type="button" class="add-field-btn" onclick="addFeature()">
+                        <i class="fa-solid fa-plus"></i> Add Feature
+                    </button>
+                </div>
+
+                <!-- ── Specifications ───────────────────────── -->
+                <div class="form-section">
+                    <div class="form-section-title">
+                        <i class="fa-solid fa-list-check"></i> Specifications
+                    </div>
+                    <div id="specsContainer">
+                        <% if (product && product.specifications && product.specifications.length) { %>
+                            <% product.specifications.forEach(function(spec) { %>
+                                <div class="dynamic-group" style="display:flex;gap:0.75rem;align-items:start;padding-right:2.5rem;">
+                                    <button type="button" class="remove-btn" onclick="this.parentElement.remove()">
+                                        <i class="fa-solid fa-xmark"></i>
+                                    </button>
+                                    <input type="text" name="specKey" value="<%= spec.key %>" placeholder="Key (e.g. Sensor)"
+                                        style="flex:1;padding:0.6rem 0.8rem;background:var(--admin-surface-3);border:1px solid var(--admin-border);border-radius:6px;color:var(--admin-text);font-family:inherit;font-size:0.85rem;outline:none;">
+                                    <input type="text" name="specValue" value="<%= spec.value %>" placeholder="Value (e.g. 24.2 MP)"
+                                        style="flex:1;padding:0.6rem 0.8rem;background:var(--admin-surface-3);border:1px solid var(--admin-border);border-radius:6px;color:var(--admin-text);font-family:inherit;font-size:0.85rem;outline:none;">
+                                </div>
+                            <% }) %>
+                        <% } %>
+                    </div>
+                    <button type="button" class="add-field-btn" onclick="addSpec()">
+                        <i class="fa-solid fa-plus"></i> Add Specification
+                    </button>
+                </div>
+
+                <!-- ── Detail Sections ──────────────────────── -->
+                <div class="form-section">
+                    <div class="form-section-title">
+                        <i class="fa-solid fa-file-lines"></i> Detail Sections
+                    </div>
+                    <div id="detailsContainer">
+                        <% if (product && product.detailSections && product.detailSections.length) { %>
+                            <% product.detailSections.forEach(function(sec) { %>
+                                <div class="dynamic-group" style="padding-right:2.5rem;">
+                                    <button type="button" class="remove-btn" onclick="this.parentElement.remove()">
+                                        <i class="fa-solid fa-xmark"></i>
+                                    </button>
+                                    <div style="display:flex;gap:0.75rem;margin-bottom:0.5rem;">
+                                        <input type="text" name="detailTitle" value="<%= sec.title %>" placeholder="Section title"
+                                            style="flex:1;padding:0.6rem 0.8rem;background:var(--admin-surface-3);border:1px solid var(--admin-border);border-radius:6px;color:var(--admin-text);font-family:inherit;font-size:0.85rem;outline:none;">
+                                        <input type="text" name="detailImage" value="<%= sec.image || '' %>" placeholder="Image path"
+                                            style="flex:1;padding:0.6rem 0.8rem;background:var(--admin-surface-3);border:1px solid var(--admin-border);border-radius:6px;color:var(--admin-text);font-family:inherit;font-size:0.85rem;outline:none;">
+                                    </div>
+                                    <textarea name="detailDesc" rows="2" placeholder="Description"
+                                        style="width:100%;padding:0.6rem 0.8rem;background:var(--admin-surface-3);border:1px solid var(--admin-border);border-radius:6px;color:var(--admin-text);font-family:inherit;font-size:0.85rem;outline:none;resize:vertical;"><%= sec.description %></textarea>
+                                </div>
+                            <% }) %>
+                        <% } %>
+                    </div>
+                    <button type="button" class="add-field-btn" onclick="addDetailSection()">
+                        <i class="fa-solid fa-plus"></i> Add Detail Section
+                    </button>
+                </div>
+
+                <!-- ── Design Sections ──────────────────────── -->
+                <div class="form-section">
+                    <div class="form-section-title">
+                        <i class="fa-solid fa-palette"></i> Design Sections
+                    </div>
+                    <div id="designContainer">
+                        <% if (product && product.designSections && product.designSections.length) { %>
+                            <% product.designSections.forEach(function(sec) { %>
+                                <div class="dynamic-group" style="padding-right:2.5rem;">
+                                    <button type="button" class="remove-btn" onclick="this.parentElement.remove()">
+                                        <i class="fa-solid fa-xmark"></i>
+                                    </button>
+                                    <div style="display:flex;gap:0.75rem;margin-bottom:0.5rem;">
+                                        <input type="text" name="designTitle" value="<%= sec.title %>" placeholder="Section title"
+                                            style="flex:1;padding:0.6rem 0.8rem;background:var(--admin-surface-3);border:1px solid var(--admin-border);border-radius:6px;color:var(--admin-text);font-family:inherit;font-size:0.85rem;outline:none;">
+                                        <input type="text" name="designImage" value="<%= sec.image || '' %>" placeholder="Image path"
+                                            style="flex:1;padding:0.6rem 0.8rem;background:var(--admin-surface-3);border:1px solid var(--admin-border);border-radius:6px;color:var(--admin-text);font-family:inherit;font-size:0.85rem;outline:none;">
+                                    </div>
+                                    <textarea name="designDesc" rows="2" placeholder="Description"
+                                        style="width:100%;padding:0.6rem 0.8rem;background:var(--admin-surface-3);border:1px solid var(--admin-border);border-radius:6px;color:var(--admin-text);font-family:inherit;font-size:0.85rem;outline:none;resize:vertical;"><%= sec.description %></textarea>
+                                </div>
+                            <% }) %>
+                        <% } %>
+                    </div>
+                    <button type="button" class="add-field-btn" onclick="addDesignSection()">
+                        <i class="fa-solid fa-plus"></i> Add Design Section
+                    </button>
+                </div>
+
+                <!-- ── Connectivity ─────────────────────────── -->
+                <div class="form-section">
+                    <div class="form-section-title">
+                        <i class="fa-solid fa-wifi"></i> Connectivity
+                    </div>
+                    <div id="connContainer">
+                        <% if (product && product.connectivity && product.connectivity.length) { %>
+                            <% product.connectivity.forEach(function(conn) { %>
+                                <div class="dynamic-group" style="display:flex;gap:0.75rem;align-items:start;padding-right:2.5rem;">
+                                    <button type="button" class="remove-btn" onclick="this.parentElement.remove()">
+                                        <i class="fa-solid fa-xmark"></i>
+                                    </button>
+                                    <input type="text" name="connTitle" value="<%= conn.title %>" placeholder="Title (e.g. Wi-Fi)"
+                                        style="flex:1;padding:0.6rem 0.8rem;background:var(--admin-surface-3);border:1px solid var(--admin-border);border-radius:6px;color:var(--admin-text);font-family:inherit;font-size:0.85rem;outline:none;">
+                                    <input type="text" name="connDesc" value="<%= conn.description %>" placeholder="Description"
+                                        style="flex:2;padding:0.6rem 0.8rem;background:var(--admin-surface-3);border:1px solid var(--admin-border);border-radius:6px;color:var(--admin-text);font-family:inherit;font-size:0.85rem;outline:none;">
+                                </div>
+                            <% }) %>
+                        <% } %>
+                    </div>
+                    <button type="button" class="add-field-btn" onclick="addConnectivity()">
+                        <i class="fa-solid fa-plus"></i> Add Connectivity
+                    </button>
+                </div>
+
+                <!-- ── YouTube ──────────────────────────────── -->
+                <div class="form-section">
+                    <div class="form-section-title">
+                        <i class="fa-brands fa-youtube"></i> YouTube Video
+                    </div>
+                    <div class="form-group">
+                        <label for="prod-youtube">YouTube Embed URL</label>
+                        <input type="text" id="prod-youtube" name="youtubeVideo"
+                            value="<%= product ? product.youtubeVideo || '' : '' %>"
+                            placeholder="https://www.youtube.com/embed/...">
+                    </div>
+                </div>
+
+                <!-- ── Submit ───────────────────────────────── -->
+                <div class="form-actions">
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fa-solid fa-<%= isEdit ? 'save' : 'plus' %>"></i>
+                        <%= isEdit ? 'Update Product' : 'Create Product' %>
+                    </button>
+                    <a href="/admin/products" class="btn btn-secondary">Cancel</a>
+                </div>
+            </form>
+
+        </div>
+    </main>
+
+    <script>
+        const inputStyle = 'width:100%;padding:0.6rem 0.8rem;background:var(--admin-surface-3);border:1px solid var(--admin-border);border-radius:6px;color:var(--admin-text);font-family:inherit;font-size:0.85rem;outline:none;';
+
+        function createDynamicGroup(innerHTML) {
+            const div = document.createElement('div');
+            div.className = 'dynamic-group';
+            div.innerHTML = `
+                <button type="button" class="remove-btn" onclick="this.parentElement.remove()">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+                ${innerHTML}
+            `;
+            return div;
+        }
+
+        function addSliderImage() {
+            const html = `<input type="text" name="sliderImages" placeholder="/Assets/slider-image.png" style="${inputStyle}">`;
+            document.getElementById('sliderImagesContainer').appendChild(createDynamicGroup(html));
+        }
+
+        function addFeature() {
+            const html = `<input type="text" name="features" placeholder="Feature description" style="${inputStyle}">`;
+            document.getElementById('featuresContainer').appendChild(createDynamicGroup(html));
+        }
+
+        function addSpec() {
+            const div = createDynamicGroup(`
+                <div style="display:flex;gap:0.75rem;">
+                    <input type="text" name="specKey" placeholder="Key (e.g. Sensor)" style="flex:1;${inputStyle}">
+                    <input type="text" name="specValue" placeholder="Value (e.g. 24.2 MP)" style="flex:1;${inputStyle}">
+                </div>
+            `);
+            div.style.paddingRight = '2.5rem';
+            document.getElementById('specsContainer').appendChild(div);
+        }
+
+        function addDetailSection() {
+            const div = createDynamicGroup(`
+                <div style="display:flex;gap:0.75rem;margin-bottom:0.5rem;">
+                    <input type="text" name="detailTitle" placeholder="Section title" style="flex:1;${inputStyle}">
+                    <input type="text" name="detailImage" placeholder="Image path" style="flex:1;${inputStyle}">
+                </div>
+                <textarea name="detailDesc" rows="2" placeholder="Description"
+                    style="${inputStyle}resize:vertical;min-height:60px;"></textarea>
+            `);
+            div.style.paddingRight = '2.5rem';
+            document.getElementById('detailsContainer').appendChild(div);
+        }
+
+        function addDesignSection() {
+            const div = createDynamicGroup(`
+                <div style="display:flex;gap:0.75rem;margin-bottom:0.5rem;">
+                    <input type="text" name="designTitle" placeholder="Section title" style="flex:1;${inputStyle}">
+                    <input type="text" name="designImage" placeholder="Image path" style="flex:1;${inputStyle}">
+                </div>
+                <textarea name="designDesc" rows="2" placeholder="Description"
+                    style="${inputStyle}resize:vertical;min-height:60px;"></textarea>
+            `);
+            div.style.paddingRight = '2.5rem';
+            document.getElementById('designContainer').appendChild(div);
+        }
+
+        function addConnectivity() {
+            const div = createDynamicGroup(`
+                <div style="display:flex;gap:0.75rem;">
+                    <input type="text" name="connTitle" placeholder="Title (e.g. Wi-Fi)" style="flex:1;${inputStyle}">
+                    <input type="text" name="connDesc" placeholder="Description" style="flex:2;${inputStyle}">
+                </div>
+            `);
+            div.style.paddingRight = '2.5rem';
+            document.getElementById('connContainer').appendChild(div);
+        }
+    </script>
+
+</body>
+
+</html>

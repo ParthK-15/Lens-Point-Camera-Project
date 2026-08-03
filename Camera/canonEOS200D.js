@@ -2,8 +2,8 @@ const images = [
     "/Assets/Adobe Express - file copy 4.png",
     "/Assets/photo copy.png",
     "/Assets/71wo5OW3OBL._AC_UF1000,1000_QL80_.png",
-    "/Assets/canon-eos-200d-dslr-camera-with-18-55-mm-and-55-250-mm-dual-lens-kit-digital-o491295955-p590046131-4-202601221549.jpeg.webp",
-    "/Assets/EOS-200D-II-deeres.jpg",
+    "/Assets/canon-eos-200d-dslr-camera-with-18-55-mm-and-55-250-mm-dual-lens-kit-digital-o491295955-p590046131-4-202601221549.jpeg_nobg.png",
+    "/Assets/EOS-200D-II-deeres_nobg.png",
 ];
 
 let currentIndex = 0;

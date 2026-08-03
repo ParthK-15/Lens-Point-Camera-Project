@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Angelbird 512GB CFExpress Type B</title>
     <link rel="stylesheet" href="storage-info.css">
+    <link rel="stylesheet" href="/user-nav.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 
 <body>
@@ -18,7 +20,7 @@
                 <a href="#features">Features</a>
                 <a href="#specs">Specifications</a>
                 <a href="#connectivity">Connectivity</a>
-                <button class="interested">Contact Us</button>
+                <a href="#" class="cart-anchor" title="Cart"><i class="fa-solid fa-cart-shopping"></i><span class="cart-count">0</span></a><button class="interested">Log In</button>
             </div>
         </nav>
     </header>
@@ -27,10 +29,10 @@
 
     <main>
         <section class="product-section" id="camera">
-            <div class="camera-info">
+            <div class="storage-info">
                 <div class="main-content">
                     <button class="prev">&#10094;</button>
-                    <img src="/Assets/Angelbird-512GB-AV-PRO-SE-CFexpress-v4-Type-B-Memory-Card-1.webp" alt="Angelbird 512GB CFExpress Type B" id="slider-img">
+                    <img src="/Assets/Angelbird-512GB-AV-PRO-SE-CFexpress-v4-Type-B-Memory-Card-1_nobg.png" alt="Angelbird 512GB CFExpress Type B" id="slider-img">
                     <button class="next">&#10095;</button>
                     <div class="dots-container"></div>
                 </div>
@@ -38,7 +40,7 @@
                     <h1>Angelbird 512GB CFExpress Type B</h1>
                     <p class="price">₹32,999/-</p>
                     <p class="desc">High-performance CFexpress Type B card made for cinema cameras and high-resolution mirrorless workflows that require reliable sustained write speed.</p>
-                    <button class="buy-btn">Contact Now</button>
+                    <button class="buy-btn">Buy Now</button><button class="cart-btn">Add to Cart</button>
                 </div>
             </div>
         </section>
@@ -76,7 +78,7 @@
 
         <section class="spec-details" id="spec-details">
             <div class="spec-block fade-in">
-                <div class="spec-img"><img src="/Assets/Angelbird-512GB-AV-PRO-SE-CFexpress-v4-Type-B-Memory-Card-1.png" alt="Angelbird card detail"></div>
+                <div class="spec-img"><img src="/Assets/Angelbird-512GB-AV-PRO-SE-CFexpress-v4-Type-B-Memory-Card-1_nobg.png" alt="Angelbird card detail"></div>
                 <div class="spec-text">
                     <h2>High-Speed Professional Storage</h2>
                     <p>Designed for professionals who need stable performance while capturing high-resolution photos and high-bitrate video formats.</p>
@@ -131,10 +133,13 @@
 
     <script>
         window.productImages = [
-            "/Assets/Angelbird-512GB-AV-PRO-SE-CFexpress-v4-Type-B-Memory-Card-1.webp"
+            "/Assets/Angelbird-512GB-AV-PRO-SE-CFexpress-v4-Type-B-Memory-Card-1_nobg.png"
         ];
     </script>
     <script src="storage-detail.js"></script>
+    <script src="../popup.js"></script>
+    <script src="/user-nav.js"></script>
+    <script src="../cart.js" defer></script>
 </body>
 
 </html>

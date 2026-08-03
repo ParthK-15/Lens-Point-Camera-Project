@@ -1,7 +1,7 @@
 const images = [
-    "/Assets/MVK504TWINMC.jpg.webp",
-    "/Assets/Manfrotto_Manfrotto_504HD_Video_Fluid_1285005659_735037.jpg",
-    "/Assets/manfrotto-504hd-head-w546gb-2-stage-aluminum-tripod-system-qatar4cam-2.jpg",
+    "/Assets/MVK504TWINMC.jpg_nobg.png",
+    "/Assets/Manfrotto_Manfrotto_504HD_Video_Fluid_1285005659_735037_nobg.png",
+    "/Assets/manfrotto-504hd-head-w546gb-2-stage-aluminum-tripod-system-qatar4cam-2_nobg.png",
 ];
 
 let currentIndex = 0;

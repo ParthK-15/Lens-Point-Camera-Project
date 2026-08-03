@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Digitek Wireless Microphone</title>
     <link rel="stylesheet" href="microphone-info.css">
+    <link rel="stylesheet" href="/user-nav.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 
 <body>
@@ -19,7 +21,7 @@
                 <a href="#specs">Specifications</a>
                 <a href="#design">Design</a>
                 <a href="#connectivity">Connectivity</a>
-                <button class="interested">Contact Us</button>
+                <a href="#" class="cart-anchor" title="Cart"><i class="fa-solid fa-cart-shopping"></i><span class="cart-count">0</span></a><button class="interested">Log In</button>
             </div>
         </nav>
     </header>
@@ -29,10 +31,10 @@
 
     <main>
         <section class="product-section" id="camera">
-            <div class="camera-info">
+            <div class="microphone-info">
                 <div class="main-content">
                     <button class="prev">&#10094;</button>
-                    <img src="/Assets/digitek-dwm-105-2-in-1-wireless-microphone-system-with-type-c-lightning-interface-product-images-orvqxtsd4nm-p604552990-0-202309122121.png.webp" alt="Digitek Wireless Microphone" id="slider-img">
+                    <img src="/Assets/digitek-dwm-105-2-in-1-wireless-microphone-system-with-type-c-lightning-interface-product-images-orvqxtsd4nm-p604552990-0-202309122121.png_nobg.png" alt="Digitek Wireless Microphone" id="slider-img">
                     <button class="next">&#10095;</button>
                     <div class="dots-container">
                         <span class="dot active"></span>
@@ -48,7 +50,7 @@
                         interviewers, and streamers. With charging case support and compact receivers, it simplifies
                         professional audio capture for both Android and iOS workflows.
                     </p>
-                    <button class="buy-btn">Contact Now</button>
+                    <button class="buy-btn">Buy Now</button><button class="cart-btn">Add to Cart</button>
                 </div>
             </div>
         </section>
@@ -250,6 +252,9 @@
     </footer>
 
     <script src="digitek-wireless.js"></script>
+    <script src="../popup.js"></script>
+    <script src="/user-nav.js"></script>
+    <script src="../cart.js" defer></script>
 </body>
 
 </html>

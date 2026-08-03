@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gitzo Systematic Video Tripod</title>
     <link rel="stylesheet" href="tripod-info.css">
+    <link rel="stylesheet" href="/user-nav.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 
 <body>
@@ -19,7 +21,7 @@
                 <a href="#specs">Specifications</a>
                 <a href="#design">Design</a>
                 <a href="#connectivity">Connectivity</a>
-                <button class="interested">Contact Us</button>
+                <a href="#" class="cart-anchor" title="Cart"><i class="fa-solid fa-cart-shopping"></i><span class="cart-count">0</span></a><button class="interested">Log In</button>
             </div>
         </nav>
     </header>
@@ -28,10 +30,10 @@
     </a>
     <main>
         <section class="product-section" id="camera">
-            <div class="camera-info">
+            <div class="tripod-info">
                 <div class="main-content">
                     <button class="prev">&#10094;</button>
-                    <img src="/Assets/0017198_gitzo-gt5543ls-systematic-series-5-carbon-fiber-tripod_500.jpeg" alt="Gitzo Systematic Video Tripod" id="slider-img">
+                    <img src="/Assets/0017198_gitzo-gt5543ls-systematic-series-5-carbon-fiber-tripod_500_nobg.png" alt="Gitzo Systematic Video Tripod" id="slider-img">
                     <button class="next">&#10095;</button>
                     <div class="dots-container">
                         <span class="dot active"></span>
@@ -46,7 +48,7 @@
                         The Gitzo Systematic Video Tripod is built for videographers seeking rock-solid stability,
                         excellent payload handling and smooth motion for cinematic results.
                     </p>
-                    <button class="buy-btn">Contact Now</button>
+                    <button class="buy-btn">Buy Now</button><button class="cart-btn">Add to Cart</button>
                 </div>
             </div>
         </section>
@@ -102,7 +104,7 @@
         <section class="spec-details" id="specs">
             <div class="spec-block fade-in">
                 <div class="spec-img">
-                    <img src="/Assets/0017198_gitzo-gt5543ls-systematic-series-5-carbon-fiber-tripod_500.jpeg">
+                    <img src="/Assets/0017198_gitzo-gt5543ls-systematic-series-5-carbon-fiber-tripod_500_nobg.png">
                 </div>
                 <div class="spec-text">
                     <h2>Video-Ready Stability</h2>
@@ -113,7 +115,7 @@
             </div>
             <div class="spec-block reverse fade-in">
                 <div class="spec-img">
-                    <img src="/Assets/Gitzo-GT3533LS-Systematic-Series-3-Carbon-Fiber-Tripod-2.jpg">
+                    <img src="/Assets/Gitzo-GT3533LS-Systematic-Series-3-Carbon-Fiber-Tripod-2_nobg.png">
                 </div>
                 <div class="spec-text">
                     <h2>Solid Support System</h2>
@@ -124,7 +126,7 @@
             </div>
             <div class="spec-block fade-in">
                 <div class="spec-img">
-                    <img src="/Assets/GTZ-GT3543LS-GHFG1.jpg">
+                    <img src="/Assets/GTZ-GT3543LS-GHFG1_nobg.png">
                 </div>
                 <div class="spec-text">
                     <h2>Flexible Mounting</h2>
@@ -139,7 +141,7 @@
             <h2 class="section-title">Design</h2>
             <div class="design-block fade-in">
                 <div class="design-img">
-                    <img src="/Assets/0017198_gitzo-gt5543ls-systematic-series-5-carbon-fiber-tripod_500.jpeg">
+                    <img src="/Assets/0017198_gitzo-gt5543ls-systematic-series-5-carbon-fiber-tripod_500_nobg.png">
                 </div>
                 <div class="design-text">
                     <h2>Professional Rig Construction</h2>
@@ -150,7 +152,7 @@
             </div>
             <div class="design-block reverse fade-in">
                 <div class="design-img">
-                    <img src="/Assets/Gitzo-GT3533LS-Systematic-Series-3-Carbon-Fiber-Tripod-2.jpg">
+                    <img src="/Assets/Gitzo-GT3533LS-Systematic-Series-3-Carbon-Fiber-Tripod-2_nobg.png">
                 </div>
                 <div class="design-text">
                     <h2>Sturdy Footprint</h2>
@@ -240,6 +242,9 @@
         </div>
     </footer>
     <script src="gitzo-video.js"></script>
+    <script src="../popup.js"></script>
+    <script src="/user-nav.js"></script>
+    <script src="../cart.js" defer></script>
 </body>
 
 </html>

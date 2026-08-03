@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Canon EOS 6D Mark II</title>
     <link rel="stylesheet" href="camera-info.css">
+    <link rel="stylesheet" href="/user-nav.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 
@@ -20,7 +21,7 @@
                 <a href="#specs">Specifications</a>
                 <a href="#design">Design</a>
                 <a href="#connectivity">Connectivity</a>
-                <button class="interested">Contact Us</button>
+                <a href="#" class="cart-anchor" title="Cart"><i class="fa-solid fa-cart-shopping"></i><span class="cart-count">0</span></a><button class="interested">Log In</button>
             </div>
         </nav>
     </header>
@@ -32,7 +33,7 @@
             <div class="camera-info">
                 <div class="main-content">
                     <button class="prev">&#10094;</button>
-                    <img src="/Assets/0008370_canon-eos-6d-mark-ii-dslr-camera-body-only_500.jpeg"
+                    <img src="/Assets/0008370_canon-eos-6d-mark-ii-dslr-camera-body-only_500_nobg.png"
                         alt="Canon EOS 6D Mark II" id="slider-img">
                     <button class="next">&#10095;</button>
                     <div class="dots-container">
@@ -51,7 +52,7 @@
                         enthusiasts. It features a 26.2 MP full-frame sensor, 45-point autofocus system, 4K video
                         recording, and built-in Wi-Fi and Bluetooth connectivity for seamless workflow.
                     </p>
-                    <button class="buy-btn">Contact Now</button>
+                    <button class="buy-btn">Buy Now</button><button class="cart-btn">Add to Cart</button>
                 </div>
             </div>
         </section>
@@ -284,6 +285,9 @@
     </footer>
 
     <script src="canonEOS6DMarkII.js"></script>
+    <script src="../popup.js"></script>
+    <script src="/user-nav.js"></script>
+    <script src="../cart.js" defer></script>
 </body>
 
 </html>

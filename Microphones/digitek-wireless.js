@@ -1,7 +1,7 @@
 const images = [
-    "/Assets/digitek-dwm-105-2-in-1-wireless-microphone-system-with-type-c-lightning-interface-product-images-orvqxtsd4nm-p604552990-0-202309122121.png.webp",
-    "/Assets/Digitek®-DWM-105-2-in-1-Wireless-Microphone-System-With-ANC-Mode50m-Wireless-Range-8-485x485.webp",
-    "/Assets/71ymgY4cOJL.jpg",
+    "/Assets/digitek-dwm-105-2-in-1-wireless-microphone-system-with-type-c-lightning-interface-product-images-orvqxtsd4nm-p604552990-0-202309122121.png_nobg.png",
+    "/Assets/Digitek®-DWM-105-2-in-1-Wireless-Microphone-System-With-ANC-Mode50m-Wireless-Range-8-485x485_nobg.png",
+    "/Assets/71ymgY4cOJL_nobg.png",
 ];
 
 let currentIndex = 0;

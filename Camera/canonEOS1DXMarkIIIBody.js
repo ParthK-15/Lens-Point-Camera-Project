@@ -1,9 +1,9 @@
 const images = [
-    "/Assets/Canon_EOS-1DX_Mark_III.jpg",
-    "/Assets/eos-1d-x-mark-iii-back-500x500.jpg.webp",
-    "/Assets/ICA1DXM3_6.jpg",
-    "/Assets/1DX-Mark-III_top.jpg.webp",
-    "/Assets/canon-eos-1d-x-mark-iii-body-product-right-view.webp",
+    "/Assets/Canon_EOS-1DX_Mark_III_nobg.png",
+    "/Assets/eos-1d-x-mark-iii-back-500x500.jpg_nobg.png",
+    "/Assets/ICA1DXM3_6_nobg.png",
+    "/Assets/1DX-Mark-III_top.jpg_nobg.png",
+    "/Assets/canon-eos-1d-x-mark-iii-body-product-right-view_nobg.png",
 ];
 
 let currentIndex = 0;

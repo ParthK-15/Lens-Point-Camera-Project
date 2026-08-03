@@ -1,9 +1,9 @@
 const images = [
-    "/Assets/eos-7d-mark-ii-canon-original-imaf6n7gkmgdf4tx.jpeg.webp",
-    "/Assets/175900_3.jpg.webp",
-    "/Assets/71oeeNmVW9L.jpg",
-    "/Assets/Canon-7D-Mark-II-with-18-135_02-600x600.jpg",
-    "/Assets/Canon-7D-Mark-II-with-18-135_03.jpg",
+    "/Assets/eos-7d-mark-ii-canon-original-imaf6n7gkmgdf4tx.jpeg_nobg.png",
+    "/Assets/175900_3.jpg_nobg.png",
+    "/Assets/71oeeNmVW9L_nobg.png",
+    "/Assets/Canon-7D-Mark-II-with-18-135_02-600x600_nobg.png",
+    "/Assets/Canon-7D-Mark-II-with-18-135_03_nobg.png",
 ];
 
 let currentIndex = 0;

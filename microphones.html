@@ -6,26 +6,31 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Microphones</title>
 	<link rel="stylesheet" href="microphones.css">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+	<link rel="stylesheet" href="/user-nav.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+	<script src="/cart-sync-head.js"></script>
 </head>
 
 <body>
 	<header>
 		<nav>
 			<div class="navigation">
-				<a href="index.html">Home</a>
-				<a href="camera.html">Camera</a>
-				<a href="#">Lens</a>
-				<a href="accessories.html">Accessories</a>
-				<a href="#">Contact</a>
-				<div class="options">
-					<input type="text" placeholder="Search">
-					<label for="input">
-						<i class="fa-solid fa-magnifying-glass"></i>
-					</label>
-					<button type="button" class="login">Log In</button>
-				</div>
-			</div>
+                <a href="/index.html">Home</a>
+                <a href="/products">Camera</a>
+                <a href="/lenses">Lens</a>
+                <a href="/accessories.html" class="active">Accessories</a>
+                <a href="#" class="cart-anchor" title="Cart">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                    <span class="cart-count">0</span>
+                </a>
+                <div class="options">
+                    <input type="text" placeholder="Search">
+                    <label for="input">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </label>
+                    <button type="button" class="login">Log In</button>
+                </div>
+            </div>
 		</nav>
 	</header>
 	<div class="main-tripod-screen">
@@ -114,7 +119,7 @@
 				<div class="tripod-cards shotgun" id="microphone1" data-price="7200" data-brand="boya"
 					data-category="shotgun">
 					<div class="img-container">
-						<img src="/Assets/BOYA-BY-BM2021-5.jpg.webp" alt="Boya BM-2021 Microphone">
+						<img src="/Assets/BOYA-BY-BM2021-5.jpg_nobg.png" alt="Boya BM-2021 Microphone">
 					</div>
 					<div class="content">
 						<h2>Boya BM-2021 Microphone</h2>
@@ -154,7 +159,7 @@
 				<div class="tripod-cards wireless" id="microphone3" data-price="6500" data-brand="digitek"
 					data-category="wireless">
 					<div class="img-container">
-						<img src="/Assets/digitek-dwm-105-2-in-1-wireless-microphone-system-with-type-c-lightning-interface-product-images-orvqxtsd4nm-p604552990-0-202309122121.png.webp" alt="Digitek Wireless Microphone">
+						<img src="/Assets/digitek-dwm-105-2-in-1-wireless-microphone-system-with-type-c-lightning-interface-product-images-orvqxtsd4nm-p604552990-0-202309122121.png_nobg.png" alt="Digitek Wireless Microphone">
 					</div>
 					<div class="content">
 						<h2>Digitek Wireless Microphone</h2>
@@ -174,7 +179,7 @@
 				<div class="tripod-cards wireless" id="microphone4" data-price="12000" data-brand="simpex"
 					data-category="wireless">
 					<div class="img-container">
-						<img src="/Assets/IMG-20250322-WA0018.jpg" alt="Simpex Wireless Microphone">
+						<img src="/Assets/IMG-20250322-WA0018_nobg.png" alt="Simpex Wireless Microphone">
 					</div>
 					<div class="content">
 						<h2>Simpex Wireless Microphone</h2>
@@ -281,6 +286,9 @@
 	</footer>
 
 	<script src="microphones.js"></script>
+	<script src="popup.js"></script>
+    <script src="/user-nav.js"></script>
+    <script src="/cart.js" defer></script>
 </body>
 
 </html>

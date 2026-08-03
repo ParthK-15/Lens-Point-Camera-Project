@@ -6,26 +6,31 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Bag Packs</title>
 	<link rel="stylesheet" href="bagpack.css">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+	<link rel="stylesheet" href="/user-nav.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+	<script src="/cart-sync-head.js"></script>
 </head>
 
 <body>
 	<header>
 		<nav>
 			<div class="navigation">
-				<a href="index.html">Home</a>
-				<a href="camera.html">Camera</a>
-				<a href="Lens.html">Lens</a>
-				<a href="accessories.html" class="active">Accessories</a>
-				<a href="#">Contact</a>
-				<div class="options">
-					<input type="text" placeholder="Search">
-					<label for="input">
-						<i class="fa-solid fa-magnifying-glass"></i>
-					</label>
-					<button type="button" class="login">Log In</button>
-				</div>
-			</div>
+                <a href="/index.html">Home</a>
+                <a href="/products">Camera</a>
+                <a href="/lenses">Lens</a>
+                <a href="/accessories.html" class="active">Accessories</a>
+                <a href="#" class="cart-anchor" title="Cart">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                    <span class="cart-count">0</span>
+                </a>
+                <div class="options">
+                    <input type="text" placeholder="Search">
+                    <label for="input">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </label>
+                    <button type="button" class="login">Log In</button>
+                </div>
+            </div>
 		</nav>
 	</header>
 
@@ -115,7 +120,7 @@
 			<a href="Bagpack/camsafe-winner-bag.html">
 				<div class="tripod-cards backpack" id="bagpack1" data-price="3499" data-brand="camsafe" data-category="backpack">
 					<div class="img-container">
-						<img src="/Assets/professional-dslr-camera-accessories-carry-polyester-bag-132.jpg" alt="Camsafe Winner Bag">
+						<img src="/Assets/professional-dslr-camera-accessories-carry-polyester-bag-132_nobg.png" alt="Camsafe Winner Bag">
 					</div>
 					<div class="content">
 						<h2>Camsafe Winner Bag</h2>
@@ -135,7 +140,7 @@
 			<a href="Bagpack/nikon-camera-carry-case.html">
 				<div class="tripod-cards carry-case" id="bagpack2" data-price="2299" data-brand="nikon" data-category="carry-case">
 					<div class="img-container">
-						<img src="/Assets/Nikon Camera bag 4-550x550.jpg" alt="Nikon Camera Carry Case">
+						<img src="/Assets/Nikon Camera bag 4-550x550_nobg.png" alt="Nikon Camera Carry Case">
 					</div>
 					<div class="content">
 						<h2>Nikon Camera Carry Case</h2>
@@ -155,7 +160,7 @@
 			<a href="Bagpack/sony-dslr-bag.html">
 				<div class="tripod-cards backpack" id="bagpack3" data-price="5999" data-brand="sony" data-category="backpack">
 					<div class="img-container">
-						<img src="/Assets/Sony-DSLR-Camera-Backpack-15″-LCSBP3A.jpg" alt="Sony DSLR Bag">
+						<img src="/Assets/Sony-DSLR-Camera-Backpack-15″-LCSBP3A_nobg.png" alt="Sony DSLR Bag">
 					</div>
 					<div class="content">
 						<h2>Sony DSLR Bag</h2>
@@ -175,7 +180,7 @@
 			<a href="Bagpack/mobius-trend-setter-pro-backpack.html">
 				<div class="tripod-cards pro-backpack" id="bagpack4" data-price="7899" data-brand="mobius" data-category="pro-backpack">
 					<div class="img-container">
-						<img src="/Assets/mobius-trend-setter-pro-dslr-backpack-product-images-orvuy62gzuj-p592544864-4-202207131048.jpg.webp" alt="Mobius Trend Setter Pro Backpack">
+						<img src="/Assets/mobius-trend-setter-pro-dslr-backpack-product-images-orvuy62gzuj-p592544864-4-202207131048.jpg_nobg.png" alt="Mobius Trend Setter Pro Backpack">
 					</div>
 					<div class="content">
 						<h2>Mobius Trend Setter Pro Backpack</h2>
@@ -280,6 +285,9 @@
 	</footer>
 
 	<script src="bagpack.js"></script>
+	<script src="popup.js"></script>
+    <script src="/user-nav.js"></script>
+    <script src="/cart.js" defer></script>
 </body>
 
 </html>

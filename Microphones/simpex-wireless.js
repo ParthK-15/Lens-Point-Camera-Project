@@ -1,7 +1,7 @@
 const images = [
-    "/Assets/IMG-20250322-WA0018.jpg",
-    "/Assets/IMG-20250318-WA0007.jpg",
-    "/Assets/51xHxIeXPUL.jpg",
+    "/Assets/IMG-20250322-WA0018_nobg.png",
+    "/Assets/IMG-20250318-WA0007_nobg.png",
+    "/Assets/51xHxIeXPUL_nobg.png",
 ];
 
 let currentIndex = 0;

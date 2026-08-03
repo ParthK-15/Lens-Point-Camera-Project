@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Canon EOS 80D</title>
     <link rel="stylesheet" href="camera-info.css">
+    <link rel="stylesheet" href="/user-nav.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 
@@ -20,7 +21,7 @@
                 <a href="#specs">Specifications</a>
                 <a href="#design">Design</a>
                 <a href="#connectivity">Connectivity</a>
-                <button class="interested">Contact Us</button>
+                <a href="#" class="cart-anchor" title="Cart"><i class="fa-solid fa-cart-shopping"></i><span class="cart-count">0</span></a><button class="interested">Log In</button>
             </div>
         </nav>
     </header>
@@ -32,7 +33,7 @@
             <div class="camera-info">
                 <div class="main-content">
                     <button class="prev">&#10094;</button>
-                    <img src="/Assets/0033807_canon-eos-80d-dslr-camera-body-only_500.jpeg" alt="Canon EOS 80D"
+                    <img src="/Assets/0033807_canon-eos-80d-dslr-camera-body-only_500_nobg.png" alt="Canon EOS 80D"
                         id="slider-img">
                     <button class="next">&#10095;</button>
                     <div class="dots-container">
@@ -51,7 +52,7 @@
                         semi-professionals. It features a 24.2 MP APS-C sensor, 45-point all-cross autofocus, 7 fps
                         continuous shooting, articulating touchscreen, and 4K DCI video recording capability.
                     </p>
-                    <button class="buy-btn">Contact Now</button>
+                    <button class="buy-btn">Buy Now</button><button class="cart-btn">Add to Cart</button>
                 </div>
             </div>
         </section>
@@ -284,6 +285,9 @@
     </footer>
 
     <script src="canonEOS80D.js"></script>
+    <script src="../popup.js"></script>
+    <script src="/user-nav.js"></script>
+    <script src="../cart.js" defer></script>
 </body>
 
 </html>

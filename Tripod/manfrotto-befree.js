@@ -1,7 +1,7 @@
 const images = [
-    "/Assets/Manfrotto-Befree-Advanced-Designed-for-α-Cameras-from-Sony-MKBFRLA-BH-1-485x485.webp",
-    "/Assets/professional_photo_tripod_befree-2.0_mvkbfrtc-live_sidehead-800x800.jpg.webp",
-    "/Assets/manfrotto-504hd-head-w546gb-2-stage-aluminum-tripod-system-qatar4cam-2.jpg",
+    "/Assets/Manfrotto-Befree-Advanced-Designed-for-α-Cameras-from-Sony-MKBFRLA-BH-1-485x485_nobg.png",
+    "/Assets/professional_photo_tripod_befree-2.0_mvkbfrtc-live_sidehead-800x800.jpg_nobg.png",
+    "/Assets/manfrotto-504hd-head-w546gb-2-stage-aluminum-tripod-system-qatar4cam-2_nobg.png",
 ];
 
 let currentIndex = 0;

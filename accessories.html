@@ -6,18 +6,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Accessories</title>
     <link rel="stylesheet" href="accessories.css">
+    <link rel="stylesheet" href="/user-nav.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <script src="/cart-sync-head.js"></script>
 </head>
 
 <body>
     <header>
         <nav>
             <div class="navigation">
-                <a href="index.html">Home</a>
-                <a href="camera.html">Camera</a>
-                <a href="Lens.html">Lens</a>
-                <a href="accessories.html" class="active">Accessories</a>
-                <a href="#">Contact</a>
+                <a href="/index.html" class="nav-logo-link" title="Home"><img src="/Assets/logo.jpeg" alt="Sumati Colour Lab Logo" class="nav-logo-img"></a>
+                <a href="/products">Camera</a>
+                <a href="/lenses">Lens</a>
+                <a href="/accessories.html" class="active">Accessories</a>
+                <a href="#" class="cart-anchor" title="Cart">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                    <span class="cart-count">0</span>
+                </a>
                 <div class="options">
                     <input type="text" placeholder="Search">
                     <label for="input">
@@ -32,10 +37,10 @@
     <main>
         <div class="main-accessories-screen">
             <div class="main-accessories-cards">
-                <a href="tripod.html">
+                <a href="/category/tripod">
                     <div class="accessories-cards">
                         <div class="accessories-img-container">
-                            <img src="/Assets/images1.jpeg" alt="Tripod">
+                            <img src="/Assets/images1_nobg.png" alt="Tripod">
                         </div>
                         <h2>Tripod</h2>
                         <div class="accessories-card-footer">
@@ -43,10 +48,10 @@
                         </div>
                     </div>
                 </a>
-                <a href="gimbal.html">
+                <a href="/category/gimbal">
                     <div class="accessories-cards">
                         <div class="accessories-img-container">
-                            <img src="/Assets/gimbal-manfrotto-mvg460-with-camera.jpg.webp" alt="Gimbal">
+                            <img src="/Assets/gimbal-manfrotto-mvg460-with-camera.jpg_nobg.png" alt="Gimbal">
                         </div>
                         <h2>Gimbal</h2>
                         <div class="accessories-card-footer">
@@ -54,10 +59,10 @@
                         </div>
                     </div>
                 </a>
-                <a href="lightings.html">
+                <a href="/category/lighting">
                     <div class="accessories-cards">
                         <div class="accessories-img-container">
-                            <img src="/Assets/professional-photography-studio-lighting-equipment-tripod_191095-77846-Photoroom.png" alt="Lightings">
+                            <img src="/Assets/professional-photography-studio-lighting-equipment-tripod_191095-77846-Photoroom_nobg.png" alt="Lightings">
                         </div>
                         <h2>Lightings</h2>
                         <div class="accessories-card-footer">
@@ -65,10 +70,10 @@
                         </div>
                     </div>
                 </a>
-                <a href="microphones.html">
+                <a href="/category/microphone">
                     <div class="accessories-cards">
                         <div class="accessories-img-container">
-                            <img src="/Assets/images2.jpeg" alt="Microphones">
+                            <img src="/Assets/images2_nobg.png" alt="Microphones">
                         </div>
                         <h2>Microphones</h2>
                         <div class="accessories-card-footer">
@@ -76,7 +81,7 @@
                         </div>
                     </div>
                 </a>
-                <a href="storage.html">
+                <a href="/category/storage">
                     <div class="accessories-cards">
                         <div class="accessories-img-container">
                             <img src="/Assets/extreme-pro-uhs-ii-sd-128gb-front.png.thumb.1280.1280.png" alt="Storage">
@@ -87,10 +92,10 @@
                         </div>
                     </div>
                 </a>
-                <a href="/Accessories/tripod.html">
+                <a href="/category/bag">
                     <div class="accessories-cards">
                         <div class="accessories-img-container">
-                            <img src="/Assets/2-1546892890000_img_491566.jpg" alt="Bag-packs">
+                            <img src="/Assets/2-1546892890000_img_491566_nobg.png" alt="Bag-packs">
                         </div>
                         <h2>Bag Packs</h2>
                         <div class="accessories-card-footer">
@@ -98,7 +103,7 @@
                         </div>
                     </div>
                 </a>
-                <a href="/Accessories/tripod.html">
+                <a href="/category/battery">
                     <div class="accessories-cards">
                         <div class="accessories-img-container">
                             <img src="/Assets/battery pic .png" alt="Batteries">
@@ -112,7 +117,7 @@
                 <a href="/Accessories/tripod.html">
                     <div class="accessories-cards">
                         <div class="accessories-img-container">
-                            <img src="/Assets/0053767_fujifilm-instax-square-monochrome-instant-film-10-exposures_360.webp" alt="films-albums">
+                            <img src="/Assets/0053767_fujifilm-instax-square-monochrome-instant-film-10-exposures_360_nobg.png" alt="films-albums">
                         </div>
                         <h2>Films /Albums </h2>
                         <div class="accessories-card-footer">
@@ -200,6 +205,9 @@
     </div>
 
     <script src="accessories.js"></script>
+    <script src="popup.js"></script>
+    <script src="/user-nav.js"></script>
+    <script src="/cart.js" defer></script>
 </body>
 
 </html>

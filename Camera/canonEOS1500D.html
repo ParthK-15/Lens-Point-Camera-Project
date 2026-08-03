@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Canon EOS 1500D</title>
     <link rel="stylesheet" href="camera-info.css">
+    <link rel="stylesheet" href="/user-nav.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 
 <body>
@@ -19,7 +21,7 @@
                 <a href="#specs">Specifications</a>
                 <a href="#design">Design</a>
                 <a href="#connectivity">Connectivity</a>
-                <button class="interested">Contact Us</button>
+                <a href="#" class="cart-anchor" title="Cart"><i class="fa-solid fa-cart-shopping"></i><span class="cart-count">0</span></a><button class="interested">Log In</button>
             </div>
         </nav>
     </header>
@@ -31,7 +33,7 @@
             <div class="camera-info">
                 <div class="main-content">
                     <button class="prev">&#10094;</button>
-                    <img src="/Assets/SSLRCAN1500DBOC_l.jpg.webp" alt="canon eos 1500d" id="slider-img">
+                    <img src="/Assets/SSLRCAN1500DBOC_l.jpg_nobg.png" alt="canon eos 1500d" id="slider-img">
                     <button class="next">&#10095;</button>
                     <div class="dots-container">
                         <span class="dot active"></span>
@@ -49,7 +51,7 @@
                         It offers a 24.1 MP APS-C sensor, built-in Wi-Fi, and excellent image quality,
                         making it perfect for photography enthusiasts stepping into DSLR photography.
                     </p>
-                    <button class="buy-btn">Contact Now</button>
+                    <button class="buy-btn">Buy Now</button><button class="cart-btn">Add to Cart</button>
                 </div>
             </div>
         </section>
@@ -116,7 +118,7 @@
 
             <div class="spec-block fade-in">
                 <div class="spec-img">
-                    <img src="/Assets/SSLRCAN1500DBOC_l.jpg.webp">
+                    <img src="/Assets/eos-1500d_04.jpg.png">
                 </div>
                 <div class="spec-text">
                     <h2>High-Resolution Sensor</h2>
@@ -129,7 +131,7 @@
 
             <div class="spec-block reverse fade-in">
                 <div class="spec-img">
-                    <img src="/Assets/eos-1500d_04.jpg.webp">
+                    <img src="/Assets/eos-1500d-top-no-lens.png">
                 </div>
                 <div class="spec-text">
                     <h2>Beginner-Friendly Autofocus</h2>
@@ -160,7 +162,7 @@
             <div class="design-block fade-in">
 
                 <div class="design-img">
-                    <img src="/Assets/eos-1500d_04.jpg.webp">
+                    <img src="/Assets/eos-1500d_04.jpg.png">
                 </div>
 
                 <div class="design-text">
@@ -177,7 +179,7 @@
             <div class="design-block reverse fade-in">
 
                 <div class="design-img">
-                    <img src="/Assets/eos-1500d-top-no-lens.jpg">
+                    <img src="/Assets/eos-1500d-top-no-lens.png">
                 </div>
 
                 <div class="design-text">
@@ -281,6 +283,9 @@
         </div>
     </footer>
     <script src="canonEOS1500D.js"></script>
+    <script src="../popup.js"></script>
+    <script src="/user-nav.js"></script>
+    <script src="../cart.js" defer></script>
 </body>
 
 </html>

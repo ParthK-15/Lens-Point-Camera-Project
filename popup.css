@@ -1,0 +1,301 @@
+.contact-modal,
+.login-modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.55);
+    z-index: 4000;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+}
+
+.contact-modal.active,
+.login-modal.active {
+    display: flex;
+}
+
+.contact-modal-content {
+    width: 100%;
+    max-width: 360px;
+    overflow: hidden;
+    border-radius: 16px;
+    border: 1px solid #e0e0e0;
+    background: #fff;
+    font-family: inherit;
+    box-shadow: 0 24px 70px rgba(0, 0, 0, 0.35);
+}
+
+.contact-modal-header {
+    position: relative;
+    background: #111;
+    padding: 1.5rem 1.5rem 1.2rem;
+}
+
+.contact-modal-title-wrap {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.contact-modal-icon,
+.contact-option-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    color: #fff;
+}
+
+.contact-modal-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: #ff6b00;
+}
+
+.contact-modal-title,
+.contact-modal-subtitle,
+.contact-modal-kicker,
+.contact-modal-footer p,
+.contact-option-copy span,
+.contact-option-copy strong,
+.login-modal-header h2,
+.login-modal-body p {
+    margin: 0;
+}
+
+.contact-modal-title {
+    color: #fff;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.contact-modal-subtitle {
+    color: #9a9a9a;
+    font-size: 12px;
+}
+
+.contact-modal-close {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    width: 28px;
+    height: 28px;
+    border: 0;
+    border-radius: 50%;
+    background: #2a2a2a;
+    color: #888;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.contact-modal-accent {
+    height: 3px;
+    background: linear-gradient(90deg, #ff6b00 0%, #ff6b00 60%, #ccc 60%);
+}
+
+.contact-modal-body {
+    padding: 1.4rem 1.5rem 1.6rem;
+    background: #fafafa;
+}
+
+.contact-modal-kicker {
+    color: #888;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-weight: 500;
+    margin-bottom: 1rem;
+}
+
+.contact-option {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 14px 16px;
+    background: #fff;
+    border: 1px solid #e5e5e5;
+    border-radius: 12px;
+    margin-bottom: 10px;
+    text-decoration: none;
+    color: inherit;
+}
+
+.contact-option-icon {
+    width: 42px;
+    height: 42px;
+    border-radius: 10px;
+    background: #111;
+    color: #ff6b00;
+}
+
+.contact-option-copy {
+    flex: 1;
+    min-width: 0;
+}
+
+.contact-option-copy span {
+    display: block;
+    color: #888;
+    font-size: 13px;
+    margin-bottom: 2px;
+}
+
+.contact-option-copy strong {
+    display: block;
+    color: #111;
+    font-size: 14px;
+    font-weight: 500;
+    word-break: break-word;
+}
+
+.contact-option-arrow {
+    color: #bbb;
+    flex-shrink: 0;
+}
+
+.contact-modal-footer {
+    background: #f3f3f3;
+    padding: 10px 1.5rem;
+    border-top: 1px solid #e5e5e5;
+}
+
+.contact-modal-footer p {
+    color: #aaa;
+    font-size: 11px;
+    text-align: center;
+}
+
+.login-modal-content {
+    background: #fff;
+    border-radius: 15px;
+    padding: 30px;
+    max-width: 450px;
+    width: 100%;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+    animation: popupSlideIn 0.3s ease-out;
+}
+
+@keyframes popupSlideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.login-modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #f0f0f0;
+    padding-bottom: 15px;
+}
+
+.login-modal-header h2 {
+    font-size: 1.8rem;
+    color: #333;
+}
+
+.close-login-btn {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: #666;
+    padding: 0;
+}
+
+.close-login-btn:hover {
+    color: #ff6600;
+}
+
+.login-modal-body {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+.login-modal-body i {
+    font-size: 3.5rem;
+    color: #ffd700;
+    margin-bottom: 10px;
+}
+
+.login-modal-body p {
+    font-size: 1.1rem;
+    color: #666;
+    line-height: 1.5;
+}
+
+.close-login-popup-btn {
+    margin-top: 20px;
+    padding: 12px 35px;
+    background-color: #ff6600;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close-login-popup-btn:hover {
+    background-color: #ff5500;
+}
+
+@media (max-width: 550px) {
+    .contact-modal,
+    .login-modal {
+        padding: 1rem;
+    }
+
+    .contact-modal-content,
+    .login-modal-content {
+        max-width: 100%;
+    }
+
+    .contact-modal-body {
+        padding: 1.15rem 1rem 1.2rem;
+    }
+
+    .contact-option {
+        padding: 12px 14px;
+    }
+
+    .contact-modal-header {
+        padding: 1.25rem 1rem 1rem;
+    }
+
+    .login-modal-content {
+        padding: 24px;
+    }
+
+    .login-modal-header h2 {
+        font-size: 1.5rem;
+    }
+
+    .login-modal-body i {
+        font-size: 3rem;
+    }
+
+    .login-modal-body p {
+        font-size: 1rem;
+    }
+
+    .close-login-popup-btn {
+        padding: 10px 25px;
+        font-size: 0.95rem;
+        margin-top: 15px;
+    }
+}

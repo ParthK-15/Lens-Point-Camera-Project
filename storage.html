@@ -6,26 +6,31 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Storage Devices</title>
 	<link rel="stylesheet" href="storage.css">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+	<link rel="stylesheet" href="/user-nav.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+	<script src="/cart-sync-head.js"></script>
 </head>
 
 <body>
 	<header>
 		<nav>
-			<div class="navigation">
-				<a href="index.html">Home</a>
-				<a href="camera.html">Camera</a>
-				<a href="Lens.html">Lens</a>
-				<a href="accessories.html">Accessories</a>
-				<a href="#">Contact</a>
-				<div class="options">
-					<input type="text" placeholder="Search">
-					<label for="input">
-						<i class="fa-solid fa-magnifying-glass"></i>
-					</label>
-					<button type="button" class="login">Log In</button>
-				</div>
-			</div>
+			            <div class="navigation">
+                <a href="/index.html">Home</a>
+                <a href="/products">Camera</a>
+                <a href="/lenses">Lens</a>
+                <a href="/accessories.html" class="active">Accessories</a>
+                <a href="#" class="cart-anchor" title="Cart">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                    <span class="cart-count">0</span>
+                </a>
+                <div class="options">
+                    <input type="text" placeholder="Search">
+                    <label for="input">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </label>
+                    <button type="button" class="login">Log In</button>
+                </div>
+            </div>
 		</nav>
 	</header>
 
@@ -123,7 +128,7 @@
 			<a href="Storage/angelbird-512gb-cfexpress-type-b.html">
 				<div class="tripod-cards cfexpress" id="storage1" data-price="32999" data-brand="angelbird" data-category="cfexpress">
 					<div class="img-container">
-						<img src="/Assets/Angelbird-512GB-AV-PRO-SE-CFexpress-v4-Type-B-Memory-Card-1.webp" alt="Angelbird 512GB CFExpress Type B">
+						<img src="/Assets/Angelbird-512GB-AV-PRO-SE-CFexpress-v4-Type-B-Memory-Card-1_nobg.png" alt="Angelbird 512GB CFExpress Type B">
 					</div>
 					<div class="content">
 						<h2>Angelbird 512GB CFExpress Type B</h2>
@@ -143,7 +148,7 @@
 			<a href="Storage/lexar-128gb-sdxc-uhs-i.html">
 				<div class="tripod-cards uhs-i" id="storage2" data-price="7999" data-brand="lexar" data-category="uhs-i">
 					<div class="img-container">
-						<img src="/Assets/images3.jpeg" alt="Lexar 128GB SDXC UHS-I">
+						<img src="/Assets/images3_nobg.png" alt="Lexar 128GB SDXC UHS-I">
 					</div>
 					<div class="content">
 						<h2>Lexar 128GB SDXC UHS-I</h2>
@@ -163,7 +168,7 @@
 			<a href="Storage/lexar-64gb-sd-card.html">
 				<div class="tripod-cards uhs-ii" id="storage3" data-price="5999" data-brand="lexar" data-category="uhs-ii">
 					<div class="img-container">
-						<img src="/Assets/Lexar-64GB-SDXC-UHS-II-v90-2000x-with-Reader-Online-Buy-Mumbai-India_5.jpg" alt="Lexar 64GB SD Card">
+						<img src="/Assets/Lexar-64GB-SDXC-UHS-II-v90-2000x-with-Reader-Online-Buy-Mumbai-India_5_nobg.png" alt="Lexar 64GB SD Card">
 					</div>
 					<div class="content">
 						<h2>Lexar 64GB SD Card</h2>
@@ -183,7 +188,7 @@
 			<a href="Storage/sandisk-64gb-extreme-pro.html">
 				<div class="tripod-cards uhs-ii" id="storage4" data-price="4599" data-brand="sandisk" data-category="uhs-ii">
 					<div class="img-container">
-						<img src="/Assets/0072985_sandisk-64gb-extreme-pro-uhs-ii-sdxc-memory-card_360.png" alt="Sandisk 64GB Extreme Pro">
+						<img src="/Assets/0072985_sandisk-64gb-extreme-pro-uhs-ii-sdxc-memory-card_360_nobg.png" alt="Sandisk 64GB Extreme Pro">
 					</div>
 					<div class="content">
 						<h2>Sandisk 64GB Extreme Pro</h2>
@@ -203,7 +208,7 @@
 			<a href="Storage/sandisk-128gb-extreme-pro.html">
 				<div class="tripod-cards uhs-ii" id="storage5" data-price="7999" data-brand="sandisk" data-category="uhs-ii">
 					<div class="img-container">
-						<img src="/Assets/SDSDXDK128_1.jpg.webp" alt="Sandisk 128GB Extreme Pro">
+						<img src="/Assets/SDSDXDK128_1.jpg_nobg.png" alt="Sandisk 128GB Extreme Pro">
 					</div>
 					<div class="content">
 						<h2>Sandisk 128GB Extreme Pro</h2>
@@ -223,7 +228,7 @@
 			<a href="Storage/sony-128gb-sd-card.html">
 				<div class="tripod-cards uhs-ii" id="storage6" data-price="10999" data-brand="sony" data-category="uhs-ii">
 					<div class="img-container">
-						<img src="/Assets/54502-250x250.jpg.webp" alt="Sony 128GB SD Card">
+						<img src="/Assets/54502-250x250.jpg_nobg.png" alt="Sony 128GB SD Card">
 					</div>
 					<div class="content">
 						<h2>Sony 128GB SD Card</h2>
@@ -243,7 +248,7 @@
 			<a href="Storage/prograde-64gb-sdxc-uhs-ii.html">
 				<div class="tripod-cards uhs-ii" id="storage7" data-price="6999" data-brand="prograde" data-category="uhs-ii">
 					<div class="img-container">
-						<img src="/Assets/ProGrade-Digital-SDXC-UHS-II-V90-Memory-Card-64GB-364x364.webp" alt="Prograde 64GB SDXC UHS-II">
+						<img src="/Assets/ProGrade-Digital-SDXC-UHS-II-V90-Memory-Card-64GB-364x364_nobg.png" alt="Prograde 64GB SDXC UHS-II">
 					</div>
 					<div class="content">
 						<h2>Prograde 64GB SDXC UHS-II</h2>
@@ -350,6 +355,9 @@
 	</footer>
 
 	<script src="storage.js"></script>
+	<script src="popup.js"></script>
+    <script src="/user-nav.js"></script>
+    <script src="/cart.js" defer></script>
 </body>
 
 </html>

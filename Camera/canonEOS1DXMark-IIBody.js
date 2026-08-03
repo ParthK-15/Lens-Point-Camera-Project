@@ -1,9 +1,9 @@
 const images = [
-    "/Assets/New-Project-16-1-1.webp",
-    "/Assets/canon-eos-1d-x-mark-ii-body-500x500.jpg.webp",
-    "/Assets/images.jpeg",
-    "/Assets/1454367703_IMG_581000_800x.jpg.webp",
-    "/Assets/1454367703_IMG_581004_800x.jpg.webp",
+    "/Assets/New-Project-16-1-1_nobg.png",
+    "/Assets/canon-eos-1d-x-mark-ii-body-500x500.jpg_nobg.png",
+    "/Assets/images_nobg.png",
+    "/Assets/1454367703_IMG_581000_800x.jpg_nobg.png",
+    "/Assets/1454367703_IMG_581004_800x.jpg_nobg.png",
 ];
 
 let currentIndex = 0;

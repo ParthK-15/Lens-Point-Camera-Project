@@ -126,18 +126,18 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
-    function getTargetPageFromQuery(rawText, fallbackPage = "tripod.html") {
+    function getTargetPageFromQuery(rawText, fallbackPage = "/tripods") {
         const text = rawText.trim().toLowerCase();
         if (!text) return fallbackPage;
 
         const categoryRules = [
             { page: "storage.html", keywords: ["storage", "memory", "sd card", "sdxc", "sdhc", "cfexpress", "sandisk", "lexar", "prograde", "angelbird"] },
-            { page: "camera.html", keywords: ["camera", "dslr", "mirrorless", "eos", "alpha", "camera body"] },
-            { page: "tripod.html", keywords: ["tripod", "manfrotto", "sirui", "gitzo", "mefoto", "peak design", "befree"] },
+            { page: "/products", keywords: ["camera", "dslr", "mirrorless", "eos", "alpha", "camera body"] },
+            { page: "/tripods", keywords: ["tripod", "manfrotto", "sirui", "gitzo", "mefoto", "peak design", "befree"] },
             { page: "microphones.html", keywords: ["mic", "microphone", "audio", "boya", "simpex", "wireless mic", "dm-e100"] },
             { page: "lightings.html", keywords: ["light", "lighting", "flash", "speedlite", "ring light", "digitek", "el-100", "600ex"] },
             { page: "gimbal.html", keywords: ["gimbal", "stabilizer", "dji", "osmo", "ronin", "om 5", "mobile 7"] },
-            { page: "Lens.html", keywords: ["lens", "lenses", "macro", "50mm", "24-105", "55-250", "70-200", "70-300", "100-400"] },
+            { page: "/lenses", keywords: ["lens", "lenses", "macro", "50mm", "24-105", "55-250", "70-200", "70-300", "100-400"] },
             { page: "accessories.html", keywords: ["accessory", "accessories", "bag", "battery", "cleaning"] }
         ];
 
@@ -158,7 +158,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const query = searchInput.value.trim();
         if (!query) return;
 
-        const targetPage = getTargetPageFromQuery(query, "tripod.html");
+        const targetPage = getTargetPageFromQuery(query, "/tripods");
         window.location.href = `${targetPage}?search=${encodeURIComponent(query)}`;
     }
 

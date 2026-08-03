@@ -1,9 +1,9 @@
 const images = [
-    "/Assets/SSLRCAN1500DBOC_l.jpg.webp",
-    "/Assets/eos-1500d_04.jpg.webp",
+    "/Assets/SSLRCAN1500DBOC_l.jpg_nobg.png",
+    "/Assets/eos-1500d_04.jpg_nobg.png",
     "/Assets/f180c378197745fab4a5adbc0f6bd0ed_eos-1500d_b6.png",
     "/Assets/267969_5_funouy.png.webp",
-    "/Assets/eos-1500d-top-no-lens.jpg",
+    "/Assets/eos-1500d-top-no-lens_nobg.png",
 ];
 
 let currentIndex = 0;

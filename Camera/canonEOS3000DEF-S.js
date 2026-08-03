@@ -1,9 +1,9 @@
 const images = [
-    "/Assets/product_image_01-2.webp",
-    "/Assets/product_image03-300x300.webp",
-    "/Assets/product_image_02-3.webp",
-    "/Assets/cn-eos-3000d-1855isiii-04.jpg",
-    "/Assets/s-l1200.jpg",
+    "/Assets/product_image_01-2_nobg.png",
+    "/Assets/product_image03-300x300_nobg.png",
+    "/Assets/product_image_02-3_nobg.png",
+    "/Assets/cn-eos-3000d-1855isiii-04_nobg.png",
+    "/Assets/s-l1200_nobg.png",
 ];
 
 let currentIndex = 0;

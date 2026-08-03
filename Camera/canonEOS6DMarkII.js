@@ -1,9 +1,9 @@
 const images = [
-    "/Assets/0008370_canon-eos-6d-mark-ii-dslr-camera-body-only_500.jpeg",
-    "/Assets/eos6d-mkii-ef-24-105mm-1.webp",
-    "/Assets/canon-eos-6d-mark-ii-body-digital-slr-front-display.jpg",
-    "/Assets/eos6d-mkii-ef-24-105mm-004.webp",
-    "/Assets/2_1200x1200.jpg.webp",
+    "/Assets/0008370_canon-eos-6d-mark-ii-dslr-camera-body-only_500_nobg.png",
+    "/Assets/eos6d-mkii-ef-24-105mm-1_nobg.png",
+    "/Assets/canon-eos-6d-mark-ii-body-digital-slr-front-display_nobg.png",
+    "/Assets/eos6d-mkii-ef-24-105mm-004_nobg.png",
+    "/Assets/2_1200x1200.jpg_nobg.png",
 ];
 
 let currentIndex = 0;

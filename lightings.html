@@ -6,18 +6,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lightings</title>
     <link rel="stylesheet" href="lightings.css">
+    <link rel="stylesheet" href="/user-nav.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <script src="/cart-sync-head.js"></script>
 </head>
 
 <body>
     <header>
         <nav>
             <div class="navigation">
-                <a href="index.html">Home</a>
-                <a href="camera.html">Camera</a>
-                <a href="#">Lens</a>
-                <a href="accessories.html">Accessories</a>
-                <a href="#">Contact</a>
+                <a href="/index.html">Home</a>
+                <a href="/products">Camera</a>
+                <a href="/lenses">Lens</a>
+                <a href="/accessories.html" class="active">Accessories</a>
+                <a href="#" class="cart-anchor" title="Cart">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                    <span class="cart-count">0</span>
+                </a>
                 <div class="options">
                     <input type="text" placeholder="Search">
                     <label for="input">
@@ -105,7 +110,7 @@
             <a href="lightings/canon-speedlite-600ex-rt.html">
                 <div class="tripod-cards professional" data-price="45000" data-brand="canon" data-category="speedlite">
                     <div class="img-container">
-                        <img src="Assets/1330619741000_847537.webp" alt="Canon Speedlite 600EX-RT">
+                        <img src="Assets/1330619741000_847537_nobg.png" alt="Canon Speedlite 600EX-RT">
                     </div>
                     <div class="content">
                         <h2>Canon Speedlite 600EX-RT</h2>
@@ -124,7 +129,7 @@
             <a href="lightings/canon-speedlite-el-100.html">
                 <div class="tripod-cards portable" data-price="15000" data-brand="canon" data-category="speedlite">
                     <div class="img-container">
-                        <img src="Assets/canon 2-1.1.jpg" alt="Canon Speedlite EL-100">
+                        <img src="Assets/canon 2-1.1_nobg.png" alt="Canon Speedlite EL-100">
                     </div>
                     <div class="content">
                         <h2>Canon Speedlite EL-100</h2>
@@ -143,7 +148,7 @@
             <a href="lightings/digitek-flash.html">
                 <div class="tripod-cards portable" data-price="3500" data-brand="digitek" data-category="speedlite">
                     <div class="img-container">
-                        <img src="/Assets/cannon 3-1.jpg" alt="Digitek Flash">
+                        <img src="/Assets/cannon 3-1_nobg.png" alt="Digitek Flash">
                     </div>
                     <div class="content">
                         <h2>Digitek Flash</h2>
@@ -162,7 +167,7 @@
             <a href="lightings/digitek-ring-light.html">
                 <div class="tripod-cards video" data-price="2500" data-brand="digitek" data-category="ringlight">
                     <div class="img-container">
-                        <img src="/Assets/canon4-1.png" alt="Digitek Ring Light">
+                        <img src="/Assets/canon4-1_nobg.png" alt="Digitek Ring Light">
                     </div>
                     <div class="content">
                         <h2>Digitek Ring Light</h2>
@@ -244,5 +249,8 @@
     </footer>
 
     <script src="lightings.js"></script>
+    <script src="popup.js"></script>
+    <script src="/user-nav.js"></script>
+    <script src="/cart.js" defer></script>
 </body>
 </html>

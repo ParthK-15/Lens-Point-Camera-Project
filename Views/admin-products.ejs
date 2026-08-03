@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products | Admin — Sumati Colour Lab</title>
+    <link rel="stylesheet" href="/admin.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+
+<body class="admin-page">
+
+    <!-- ── Sidebar ──────────────────────────────────────────── -->
+    <aside class="admin-sidebar" id="adminSidebar">
+        <div class="sidebar-brand">
+            <div class="sidebar-brand-icon">
+                <i class="fa-solid fa-camera"></i>
+            </div>
+            <div class="sidebar-brand-text">
+                <h2>Sumati Lab</h2>
+                <span>Admin Panel</span>
+            </div>
+        </div>
+        <nav class="sidebar-nav">
+            <div class="sidebar-section-label">Main</div>
+            <a href="/admin/dashboard" class="sidebar-link">
+                <i class="fa-solid fa-chart-pie"></i> Dashboard
+            </a>
+            <a href="/admin/products" class="sidebar-link active">
+                <i class="fa-solid fa-box"></i> Products
+            </a>
+            <a href="/admin/orders" class="sidebar-link">
+                <i class="fa-solid fa-receipt"></i> Orders
+            </a>
+            <div class="sidebar-section-label">Store</div>
+            <a href="/" class="sidebar-link" target="_blank">
+                <i class="fa-solid fa-store"></i> View Store
+            </a>
+        </nav>
+        <div class="sidebar-footer">
+            <a href="/admin/logout" class="sidebar-link">
+                <i class="fa-solid fa-right-from-bracket"></i> Log Out
+            </a>
+        </div>
+    </aside>
+
+    <!-- ── Main Content ─────────────────────────────────────── -->
+    <main class="admin-main">
+        <div class="admin-topbar">
+            <div style="display:flex;align-items:center;gap:0.75rem;">
+                <button class="sidebar-toggle" onclick="document.getElementById('adminSidebar').classList.toggle('open')">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+                <div class="topbar-title">
+                    <h1>Products</h1>
+                    <p>Manage your product catalog</p>
+                </div>
+            </div>
+            <div class="topbar-actions">
+                <a href="/admin/products/new" class="btn btn-primary">
+                    <i class="fa-solid fa-plus"></i> Add Product
+                </a>
+            </div>
+        </div>
+
+        <div class="admin-content">
+            <div class="admin-table-wrap">
+                <div class="admin-table-header">
+                    <h2>All Products (<%= products.length %>)</h2>
+                    <div class="admin-table-actions">
+                        <form method="GET" action="/admin/products" style="display:flex;gap:0.75rem;align-items:center;" id="filterForm" autocomplete="off">
+                            <div class="search-container">
+                                <input type="text" name="search" id="productSearchInput" class="admin-search" placeholder="Search by name..."
+                                    value="<%= search %>" autocomplete="off">
+                                <div id="searchSuggestions" class="search-suggestions-box"></div>
+                            </div>
+                            <select name="category" class="admin-select" onchange="document.getElementById('filterForm').submit()">
+                                <option value="all" <%= category === 'all' ? 'selected' : '' %>>All Categories</option>
+                                <option value="camera" <%= category === 'camera' ? 'selected' : '' %>>Camera</option>
+                                <option value="lens" <%= category === 'lens' ? 'selected' : '' %>>Lens</option>
+                                <option value="tripod" <%= category === 'tripod' ? 'selected' : '' %>>Tripod</option>
+                                <option value="battery" <%= category === 'battery' ? 'selected' : '' %>>Battery</option>
+                                <option value="storage" <%= category === 'storage' ? 'selected' : '' %>>Storage</option>
+                                <option value="microphone" <%= category === 'microphone' ? 'selected' : '' %>>Microphone</option>
+                                <option value="lighting" <%= category === 'lighting' ? 'selected' : '' %>>Lighting</option>
+                                <option value="gimbal" <%= category === 'gimbal' ? 'selected' : '' %>>Gimbal</option>
+                                <option value="bag" <%= category === 'bag' ? 'selected' : '' %>>Bag</option>
+                            </select>
+                            <button type="submit" class="btn btn-secondary btn-sm">
+                                <i class="fa-solid fa-search"></i>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+
+                <% if (products.length === 0) { %>
+                    <div class="empty-state">
+                        <i class="fa-solid fa-box-open"></i>
+                        <h3>No products found</h3>
+                        <p>Try adjusting your search or filters, or add a new product.</p>
+                        <a href="/admin/products/new" class="btn btn-primary">
+                            <i class="fa-solid fa-plus"></i> Add Product
+                        </a>
+                    </div>
+                <% } else { %>
+                    <table class="admin-table">
+                        <thead>
+                            <tr>
+                                <th>Product</th>
+                                <th>Category</th>
+                                <th>Company</th>
+                                <th>Price</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% products.forEach(function(p) { %>
+                                <tr>
+                                    <td>
+                                        <div class="table-product-cell">
+                                            <img src="<%= p.image %>" alt="<%= p.title %>" class="table-product-img">
+                                            <div>
+                                                <div class="table-product-name"><%= p.title %></div>
+                                                <div class="table-product-slug"><%= p.slug %></div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td><span class="category-badge"><%= p.category %></span></td>
+                                    <td><%= p.company %></td>
+                                    <td style="font-weight:600;">₹<%= p.price.toLocaleString('en-IN') %></td>
+                                    <td>
+                                        <div class="table-actions">
+                                            <a href="/admin/products/<%= p._id %>/edit"
+                                                class="btn btn-secondary btn-icon" title="Edit">
+                                                <i class="fa-solid fa-pen-to-square"></i>
+                                            </a>
+                                            <button class="btn btn-danger btn-icon" title="Delete"
+                                                onclick="openDeleteModal('<%= p._id %>', '<%= p.title.replace(/'/g, "\\'") %>')">
+                                                <i class="fa-solid fa-trash"></i>
+                                            </button>
+                                        </div>
+                                    </td>
+                                </tr>
+                            <% }) %>
+                        </tbody>
+                    </table>
+                <% } %>
+            </div>
+        </div>
+    </main>
+
+    <!-- ── Delete Confirmation Modal ────────────────────────── -->
+    <div class="delete-modal-overlay" id="deleteModal">
+        <div class="delete-modal">
+            <div class="delete-modal-icon">
+                <i class="fa-solid fa-triangle-exclamation"></i>
+            </div>
+            <h3>Delete Product</h3>
+            <p>Are you sure you want to delete "<span id="deleteProductName"></span>"? This action cannot be undone.</p>
+            <div class="delete-modal-actions">
+                <button class="btn btn-secondary" onclick="closeDeleteModal()">Cancel</button>
+                <form id="deleteForm" method="POST" style="margin:0;">
+                    <button type="submit" class="btn btn-danger">
+                        <i class="fa-solid fa-trash"></i> Delete
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function openDeleteModal(id, name) {
+            document.getElementById('deleteProductName').textContent = name;
+            document.getElementById('deleteForm').action = '/admin/products/' + id + '/delete';
+            document.getElementById('deleteModal').classList.add('active');
+        }
+
+        function closeDeleteModal() {
+            document.getElementById('deleteModal').classList.remove('active');
+        }
+
+        // Close on overlay click
+        document.getElementById('deleteModal').addEventListener('click', function (e) {
+            if (e.target === this) closeDeleteModal();
+        });
+
+        // ── Search Suggestions Autocomplete ──
+        const searchInput = document.getElementById('productSearchInput');
+        const suggestionsBox = document.getElementById('searchSuggestions');
+        let debounceTimer;
+
+        searchInput.addEventListener('input', function() {
+            clearTimeout(debounceTimer);
+            const query = this.value.trim();
+
+            if (query.length < 2) {
+                suggestionsBox.innerHTML = '';
+                suggestionsBox.classList.remove('active');
+                return;
+            }
+
+            debounceTimer = setTimeout(() => {
+                fetch(`/admin/products/suggestions?query=${encodeURIComponent(query)}`)
+                    .then(res => res.json())
+                    .then(products => {
+                        if (products.length === 0) {
+                            suggestionsBox.innerHTML = '';
+                            suggestionsBox.classList.remove('active');
+                            return;
+                        }
+
+                        suggestionsBox.innerHTML = '';
+                        products.forEach(p => {
+                            const div = document.createElement('div');
+                            div.className = 'suggestion-item';
+                            div.innerHTML = `
+                                <img src="${p.image}" alt="${p.title}" class="suggestion-img">
+                                <div class="suggestion-info">
+                                    <span class="suggestion-title">${p.title}</span>
+                                    <span class="suggestion-meta">${p.category} | ₹${p.price.toLocaleString('en-IN')}</span>
+                                </div>
+                            `;
+                            div.addEventListener('click', () => {
+                                searchInput.value = p.title;
+                                suggestionsBox.classList.remove('active');
+                                document.getElementById('filterForm').submit();
+                            });
+                            suggestionsBox.appendChild(div);
+                        });
+                        suggestionsBox.classList.add('active');
+                    })
+                    .catch(err => console.error('Error fetching suggestions:', err));
+            }, 300);
+        });
+
+        // Close suggestions when clicking outside
+        document.addEventListener('click', function(e) {
+            if (e.target !== searchInput && e.target !== suggestionsBox && !suggestionsBox.contains(e.target)) {
+                suggestionsBox.classList.remove('active');
+            }
+        });
+    </script>
+
+</body>
+
+</html>

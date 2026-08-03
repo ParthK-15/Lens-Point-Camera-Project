@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Canon EOS 5D Mark IV</title>
     <link rel="stylesheet" href="camera-info.css">
+    <link rel="stylesheet" href="/user-nav.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 
 <body>
@@ -19,7 +21,7 @@
                 <a href="#specs">Specifications</a>
                 <a href="#design">Design</a>
                 <a href="#connectivity">Connectivity</a>
-                <button class="interested">Contact Us</button>
+                <a href="#" class="cart-anchor" title="Cart"><i class="fa-solid fa-cart-shopping"></i><span class="cart-count">0</span></a><button class="interested">Log In</button>
             </div>
         </nav>
     </header>
@@ -31,7 +33,7 @@
             <div class="camera-info">
                 <div class="main-content">
                     <button class="prev">&#10094;</button>
-                    <img src="/Assets/0000125_canon-eos-80d-dslr-camera-body-only_360.jpeg" alt="Canon EOS 5D Mark IV"
+                    <img src="/Assets/0000125_canon-eos-80d-dslr-camera-body-only_360_nobg.png" alt="Canon EOS 5D Mark IV"
                         id="slider-img">
                     <button class="next">&#10095;</button>
                     <div class="dots-container">
@@ -50,7 +52,7 @@
                         and videographers. It features a 30.4 MP full-frame sensor, advanced autofocus system, and 4K
                         video recording, making it ideal for weddings, wildlife, and commercial photography.
                     </p>
-                    <button class="buy-btn">Contact Now</button>
+                    <button class="buy-btn">Buy Now</button><button class="cart-btn">Add to Cart</button>
                 </div>
             </div>
         </section>
@@ -283,6 +285,9 @@
         </div>
     </footer>
     <script src="canonEOS5DMarkIV.js"></script>
+    <script src="../popup.js"></script>
+    <script src="/user-nav.js"></script>
+    <script src="../cart.js" defer></script>
 </body>
 
 </html>

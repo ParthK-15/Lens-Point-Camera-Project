@@ -1,7 +1,7 @@
 const images = [
-    "/Assets/1330619741000_847537 (1).png",
-    "/Assets/Canon 600EX II RT Speedlite 1-1000x1000.png",
-    "/Assets/Canon 600EX II RT Speedlite 2-550x550.png"
+    "/Assets/1330619741000_847537_nobg.png",
+    "/Assets/Canon 600EX II RT Speedlite 1-1000x1000_nobg.png",
+    "/Assets/Canon 600EX II RT Speedlite 2-550x550_nobg.png"
 ];
 
 let currentIndex = 0;

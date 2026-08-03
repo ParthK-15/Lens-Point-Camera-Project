@@ -1,9 +1,9 @@
 const images = [
-    "/Assets/0033807_canon-eos-80d-dslr-camera-body-only_500.jpeg",
-    "/Assets/80D-3-1-800x800.jpg",
-    "/Assets/71JUV7vbg4L.jpg",
-    "/Assets/Canon-80D-18-55mm_03.jpg",
-    "/Assets/EOS-80D-Digital-SLR-5_2.jpg",
+    "/Assets/0033807_canon-eos-80d-dslr-camera-body-only_500_nobg.png",
+    "/Assets/80D-3-1-800x800_nobg.png",
+    "/Assets/71JUV7vbg4L_nobg.png",
+    "/Assets/Canon-80D-18-55mm_03_nobg.png",
+    "/Assets/EOS-80D-Digital-SLR-5_2_nobg.png",
 ];
 
 let currentIndex = 0;

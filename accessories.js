@@ -15,7 +15,8 @@ document.addEventListener("DOMContentLoaded", () => {
             { page: "lightings.html", keywords: ["light", "lighting", "flash", "speedlite", "ring light", "digitek", "el-100", "600ex"] },
             { page: "gimbal.html", keywords: ["gimbal", "stabilizer", "dji", "osmo", "ronin", "om 5", "mobile 7"] },
             { page: "Lens.html", keywords: ["lens", "lenses", "macro", "50mm", "24-105", "55-250", "70-200", "70-300", "100-400"] },
-            { page: "accessories.html", keywords: ["accessory", "accessories", "bag", "battery", "cleaning"] }
+            { page: "bagpack.html", keywords: ["bag", "bags", "backpack", "camera bag", "carry case", "camsafe", "mobius", "nikon bag", "sony bag"] },
+            { page: "accessories.html", keywords: ["accessory", "accessories", "battery", "cleaning"] }
         ];
 
         if (/\bsd\b/.test(text) || /\bcard\b/.test(text)) return "storage.html";

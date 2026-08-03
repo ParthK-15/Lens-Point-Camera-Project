@@ -6,21 +6,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sumati Color lab</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="/user-nav.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link
         href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500&family=Playfair+Display:wght@600&display=swap"
         rel="stylesheet">
+    <script src="/cart-sync-head.js"></script>
 </head>
 
 <body>
     <header>
         <nav>
             <div class="navigation">
-                <a href="index.html">Home</a>
-                <a href="camera.html">Camera</a>
-                <a href="lens.html">Lens</a>
-                <a href="accessories.html">Accessories</a>
-                <a href="#">Contact</a>
+                <a href="/index.html" class="nav-logo-link" title="Home"><img src="/Assets/logo.jpeg" alt="Sumati Colour Lab Logo" class="nav-logo-img"></a>
+                <a href="/products">Camera</a>
+                <a href="/lenses">Lens</a>
+                <a href="/accessories.html">Accessories</a>
+                <a href="#" class="cart-anchor" title="Cart">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                    <span class="cart-count">0</span>
+                </a>
                 <div class="options">
                     <input type="text" placeholder="Search">
                     <label for="input">
@@ -48,12 +53,14 @@
                 </div>
                 <hr>
                 <div class="sidebar_menu">
-                    <a href="#">Home</a>
-                    <a href="#">Camera</a>
-                    <a href="#">Lens</a>
-                    <a href="#">Accessories</a>
-                    <a href="#">About Us</a>
-                    <a href="#">Contact</a>
+                    <a href="/index.html">Home</a>
+                    <a href="/products">Camera</a>
+                    <a href="/lenses">Lens</a>
+                    <a href="/accessories.html">Accessories</a>
+                    <a href="#" class="cart-anchor-mobile">
+                        <i class="fa-solid fa-cart-shopping"></i> Cart
+                        <span class="cart-count-mobile">0</span>
+                    </a>
                 </div>
             </div>
         </div>
@@ -82,23 +89,23 @@
         <div class="main-content">
             <div class="row-one">
                 <div class="camera-card first-row-content">
-                    <img src="/Assets/istockphoto-185278433-612x612.jpg" alt="camera">
+                    <img src="/Assets/istockphoto-185278433-612x612_nobg.png" alt="camera">
                     <h2>Camera</h2>
                 </div>
                 <div class="lens-card first-row-content">
-                    <img src="/Assets/360_F_599803360_Ag7ieGaWGkg8sQNx3xBsQUPxSdYs1mlu.jpg" alt="lens">
+                    <img src="/Assets/360_F_599803360_Ag7ieGaWGkg8sQNx3xBsQUPxSdYs1mlu_nobg.png" alt="lens">
                     <h2>Lens</h2>
                 </div>
                 <div class="tripod-content first-row-content">
-                    <img src="/Assets/880_first_image_Artboard_1.jpg.webp" alt="tripod">
+                    <img src="/Assets/880_first_image_Artboard_1.jpg_nobg.png" alt="tripod">
                     <h2>Tripods</h2>
                 </div>
                 <div class="lights-content first-row-content">
-                    <img src="/Assets/61GE58lCHEL.jpg" alt="lights">
+                    <img src="/Assets/61GE58lCHEL_nobg.png" alt="lights">
                     <h2>Lightings</h2>
                 </div>
                 <div class="microphone-content first-row-content">
-                    <img src="/Assets/BOYA-BY-MM1-with-Mini-Tripod-and-Mount-3-Universal-Cardiod-Shotgun-Microphone-9.jpg.webp"
+                    <img src="/Assets/BOYA-BY-MM1-with-Mini-Tripod-and-Mount-3-Universal-Cardiod-Shotgun-Microphone-9.jpg_nobg.png"
                         alt="microphone">
                     <h2>Mics</h2>
                 </div>
@@ -115,12 +122,12 @@
                 <img src="/Assets/ba64c159f9ea8aebec751caf983114f7.jpg" alt="nikon">
             </div>
             <div class="gopro first-row-content">
-                <img src="/Assets/67824c3dbd7b787fec1cfbcf632f6b8c.jpg" alt="">
+                <img src="/Assets/67824c3dbd7b787fec1cfbcf632f6b8c_nobg.png" alt="">
             </div>
         </div>
         <div class="row-three">
             <div class="batteries-content first-row-content">
-                <img src="/Assets/71bEequnhRL.jpg" alt="batteries">
+                <img src="/Assets/71bEequnhRL_nobg.png" alt="batteries">
                 <h2>Batteries</h2>
             </div>
             <div class="storage first-row-content">
@@ -128,15 +135,15 @@
                 <h2>Storage</h2>
             </div>
             <div class="gimbal-content first-row-content">
-                <img src="/Assets/FeiyuTechSCORP2Kit3-AxisHandheldGimbalforCamera_3_352x.jpg.webp" alt="gimbal">
+                <img src="/Assets/FeiyuTechSCORP2Kit3-AxisHandheldGimbalforCamera_3_352x.jpg_nobg.png" alt="gimbal">
                 <h2>Gimbals</h2>
             </div>
             <div class="bags-content first-row-content">
-                <img src="/Assets/41lo5GlrIDL._AC_SY1000_.jpg" alt="bag">
+                <img src="/Assets/41lo5GlrIDL._AC_SY1000__nobg.png" alt="bag">
                 <h2>Bags</h2>
             </div>
             <div class="cleanup-content first-row-content">
-                <img src="/Assets/669218c881454949df7ff0e6-hvxrjkn-professional-lens-filter.jpg" alt="clean-up kit">
+                <img src="/Assets/669218c881454949df7ff0e6-hvxrjkn-professional-lens-filter_nobg.png" alt="clean-up kit">
                 <h2>Cleaning</h2>
             </div>
         </div>
@@ -202,6 +209,9 @@
         </div>
     </footer>
     <script src="app.js"></script>
+    <script src="popup.js"></script>
+    <script src="/user-nav.js"></script>
+    <script src="/cart.js" defer></script>
 </body>
 
 </html>

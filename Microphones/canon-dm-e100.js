@@ -1,7 +1,7 @@
 const images = [
     "/Assets/230931_0_bamcpa.png.webp",
-    "/Assets/1571874376_IMG_1265305_800x.jpg.webp",
-    "/Assets/DM-E100Slant.jpg.webp",
+    "/Assets/1571874376_IMG_1265305_800x.jpg_nobg.png",
+    "/Assets/DM-E100Slant.jpg_nobg.png",
 ];
 
 let currentIndex = 0;

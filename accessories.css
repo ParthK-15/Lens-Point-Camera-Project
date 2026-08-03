@@ -331,3 +331,109 @@ p {
 .foot-location .footer-checkbox {
     display: none;
 }
+
+/* Navigation Options Styles to prevent navbar shifting */
+.options .fa-magnifying-glass {
+    display: none;
+    color: white;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+.options {
+    display: flex;
+    align-items: center;
+    margin-right: -1rem;
+}
+
+@media(max-width:700px) {
+    .options input {
+        display: none;
+    }
+    .options .fa-magnifying-glass {
+        display: inline-block;
+        padding-left: 1rem;
+        opacity: 0.6;
+    }
+    .options .fa-magnifying-glass:hover {
+        opacity: 1;
+    }
+}
+
+@media (min-width: 700px) {
+    .options input {
+        display: inline-block;
+    }
+    .options .fa-magnifying-glass {
+        display: none;
+    }
+}
+
+/* Layout stability and standardized typography */
+html {
+    scrollbar-gutter: stable;
+}
+
+
+
+/* Cart Icon and Badge Styling */
+.cart-anchor {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.navigation a.cart-anchor:hover {
+    text-decoration: none !important;
+}
+
+.cart-anchor i {
+    font-size: 1.5rem;
+    color: rgba(255, 255, 255, 0.6);
+    transition: color 0.3s ease;
+}
+
+.cart-anchor:hover i {
+    color: white;
+}
+
+.cart-count {
+    position: absolute;
+    top: -8px;
+    right: -10px;
+    background-color: orange;
+    color: white;
+    font-size: 0.75rem;
+    font-weight: bold;
+    border-radius: 50%;
+    width: 18px;
+    height: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 5px rgba(0,0,0,0.5);
+}
+
+/* Mobile Sidebar Cart styles */
+.sidebar_menu a.cart-anchor-mobile {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    gap: 0.5rem;
+    padding-top: 2rem;
+}
+
+.cart-count-mobile {
+    background-color: orange;
+    color: white;
+    font-size: 0.75rem;
+    font-weight: bold;
+    border-radius: 50%;
+    width: 18px;
+    height: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+

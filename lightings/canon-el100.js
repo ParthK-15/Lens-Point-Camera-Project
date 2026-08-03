@@ -1,7 +1,7 @@
 const images = [
-    "/Assets/canon 2-1.1.png",
-    "/Assets/canon 2-2.1.png",
-    "/Assets/canon 2-3.1.png"
+    "/Assets/canon 2-1.1_nobg.png",
+    "/Assets/canon 2-2.1_nobg.png",
+    "/Assets/canon 2-3.1_nobg.png"
 ];
 
 let currentIndex = 0;

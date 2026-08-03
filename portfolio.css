@@ -9,8 +9,8 @@ font-family:Arial, Helvetica, sans-serif;
 background:#0d0d0d;
 color:white;
 line-height:1.6;
+transition:0.3s;
 }
-
 
 .container{
 max-width:1100px;
@@ -18,254 +18,297 @@ margin:auto;
 padding:0 20px;
 }
 
-
+/* ================= HERO ================= */
 .hero{
-background:
-linear-gradient(rgba(0,0,0,0.75),rgba(0,0,0,0.75)),
-url("ownerphoto.jpeg");
-
-background-size:cover;
-background-position:center;
-
+background:#111;
 padding:30px 20px;
 text-align:center;
-
+position:relative;
 border-bottom:1px solid rgba(255,255,255,0.08);
 }
 
 .hero h1{
 font-family:'Playfair Display',serif;
-font-size:42px;
-letter-spacing:3px;
-margin-bottom:8px;
+font-size:40px;
+letter-spacing:2px;
+color:#ff9d00;
+margin-bottom:5px;
 }
 
 .hero p{
-font-size:18px;
-opacity:0.85;
+font-size:16px;
+color:#ccc;
 }
 
-
-.owner{
-padding:30px 0;
+/* TOGGLE */
+#modeToggle{
+position:absolute;
+top:15px;
+right:20px;
+padding:6px 10px;
+border:none;
+border-radius:6px;
+background:#ff9d00;
+color:#000;
+cursor:pointer;
 }
 
+/* ================= SECTION ================= */
+section{
+padding:50px 0;
+}
+
+/* DEFAULT HEADINGS (CENTERED) */
+section h2{
+font-family:'Playfair Display',serif;
+font-size:30px;
+text-align:center;
+margin-bottom:25px;
+position:relative;
+}
+
+section h2::after{
+content:"";
+width:50px;
+height:3px;
+background:#ff9d00;
+display:block;
+margin:8px auto;
+}
+
+/* ================= OWNER ================= */
 .owner-container{
 display:flex;
 align-items:center;
-gap:6px;
+gap:40px;
 flex-wrap:wrap;
 }
 
-.owner-photo{
-flex:0 0 260px;
-}
-
 .owner-photo img{
-width:260px;
+width:250px;
 border-radius:12px;
-box-shadow:0 15px 35px rgba(0,0,0,0.7);
-transition:0.3s;
-}
-
-.owner-photo img:hover{
-transform:scale(1.05);
+box-shadow:0 10px 25px rgba(0,0,0,0.6);
 }
 
 .owner-text{
 flex:1;
+text-align:left;
 }
 
+/* LEFT ALIGN NAME */
 .owner-text h2{
-font-family:'Playfair Display',serif;
-font-size:32px;
-margin-bottom:4px;
+font-size:30px;
+text-align:left;
+position:relative;
+display:inline-block;
+margin-bottom:6px;
+}
+
+/* LEFT UNDERLINE */
+.owner-text h2::after{
+content:"";
+display:block;
+width:50px;
+height:3px;
+background:#ff9d00;
+margin-top:6px;
 }
 
 .owner-text h3{
-font-family:'Cormorant Garamond',serif;
-font-size:20px;
-text-align: center;
+font-size:18px;
 color:#ff9d00;
-margin-bottom:8px;
+margin-bottom:10px;
 }
 
 .subtitle{
-font-style:italic;
-opacity:0.75;
-margin-bottom:18px;
+opacity:0.7;
+margin-bottom:15px;
 }
 
 .owner-text p{
-margin-bottom:14px;
-opacity:0.85;
+margin-bottom:12px;
 }
 
-.contact{
-margin-top:5px;
+/* CONTACT */
+.contact p{
+display:flex;
+gap:8px;
+margin-bottom:10px;
 }
 
 .contact i{
 color:#ff9d00;
-margin-right:8px;
 }
 
-
-section h2{
-font-family:'Playfair Display',serif;
-font-size:28px;
-text-align:center;
-margin-bottom:4px;
-letter-spacing:1px;
-}
-
+/* ================= CARDS ================= */
 .cards{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
-gap:28px;
+grid-template-columns:repeat(3,1fr);
+gap:20px;
 }
 
 .card{
-background:rgba(255,255,255,0.04);
-backdrop-filter:blur(6px);
-
-padding:25px;
-border-radius:12px;
-
-border:1px solid rgba(255,255,255,0.08);
-
-transition:0.35s;
+background:#1a1a1a;
+padding:20px;
+border-radius:10px;
+text-align:center;
+transition:0.3s;
+cursor:pointer;
 }
 
 .card:hover{
-transform:translateY(-8px);
-background:rgba(255,255,255,0.07);
-box-shadow:0 12px 25px rgba(0,0,0,0.5);
+transform:translateY(-5px);
+box-shadow:0 0 15px rgba(255,157,0,0.6);
 }
 
-
-/* PRODUCTS */
-
-.products{
-padding:30px 0;
+/* ================= REVIEW ================= */
+.reviews{
+background:#111;
+padding:60px 0;
 }
 
-
-.services{
-padding:30px 0;
+.review-box{
+max-width:500px;
+margin:0 auto 20px;
 }
 
+.review-box input,
+.review-box textarea{
+width:100%;
+padding:14px;
+margin-bottom:14px;
+border-radius:12px;
+border:none;
+background:#1a1a1a;
+color:white;
+}
 
+.review-box textarea{
+height:130px;
+resize:none;
+}
 
+/* STARS */
+.stars-input{
+margin:10px 0;
+}
+
+.stars-input i{
+font-size:24px;
+color:#444;
+cursor:pointer;
+margin-right:8px;
+transition:0.2s;
+}
+
+.stars-input i.active{
+color:#ff9d00;
+}
+
+/* BUTTON */
+.review-box button{
+background:#ff9d00;
+padding:12px 22px;
+border:none;
+border-radius:10px;
+font-weight:bold;
+cursor:pointer;
+}
+
+/* GRID */
+#reviewList{
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:25px;
+margin-top:30px;
+max-width:1000px;
+margin-left:auto;
+margin-right:auto;
+}
+
+/* REVIEW CARD */
+.review-item{
+background:linear-gradient(145deg,#1a1a1a,#222);
+padding:25px;
+border-radius:16px;
+min-height:150px;
+transition:0.3s;
+}
+
+.review-item:hover{
+transform:translateY(-5px);
+box-shadow:0 0 15px rgba(255,157,0,0.3);
+}
+
+.review-item p{
+margin-bottom:10px;
+font-size:16px;
+}
+
+.review-stars{
+color:#ff9d00;
+font-size:18px;
+margin:8px 0;
+}
+
+.review-name{
+font-weight:bold;
+margin-top:10px;
+}
+
+/* ================= FOOTER ================= */
 footer{
 background:#000;
-padding:0px 0;
-margin-top:60px;
+padding:20px;
 text-align:center;
-
+margin-top:40px;
 border-top:1px solid rgba(255,255,255,0.08);
 }
 
 footer p{
 opacity:0.8;
-margin:6px 0;
+margin:5px 0;
 }
 
+/* ================= LIGHT MODE ================= */
+body.light{
+background:#f5f5f5;
+color:#111;
+}
 
-@media(max-width:550px){
+body.light .hero{
+background:#eee;
+}
+
+body.light .card,
+body.light .review-item,
+body.light textarea,
+body.light input{
+background:#fff;
+color:#111;
+}
+
+body.light footer{
+background:#ddd;
+}
+
+/* ================= RESPONSIVE ================= */
+@media(max-width:768px){
 
 .owner-container{
 flex-direction:column;
 text-align:center;
-}
-
-.owner-photo img{
-width:210px;
-}
-
-}
-
-@media (max-width:550px){
-
-
-.hero{
-padding:35px 15px;
-}
-
-.hero h1{
-font-size:28px;
-letter-spacing:2px;
-}
-
-.hero p{
-font-size:14px;
-}
-
-
-.owner{
-padding:40px 15px;
-}
-
-.owner-container{
-flex-direction:column;
-gap:25px;
-text-align:center;
-}
-
-.owner-photo{
-flex:none;
-}
-
-.owner-photo img{
-width:180px;
-}
-
-.owner-text h2{
-font-size:24px;
-}
-
-.owner-text h3{
-font-size:16px;
-}
-
-.subtitle{
-font-size:14px;
-}
-
-.owner-text p{
-font-size:14px;
-line-height:1.5;
 }
 
 .cards{
 grid-template-columns:1fr;
-gap:18px;
 }
 
-.card{
-padding:18px;
-font-size:14px;
+#reviewList{
+grid-template-columns:1fr;
 }
 
-.products,
-.services{
-padding:40px 15px;
+.hero h1{
+font-size:28px;
 }
-
-
-
-section h2{
-font-size:22px;
-margin-bottom:25px;
-}
-
-
-footer{
-padding:25px 10px;
-}
-
-footer p{
-font-size:13px;
-}
-
 }

@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Detail | Admin — Sumati Colour Lab</title>
+    <link rel="stylesheet" href="/admin.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+
+<body class="admin-page">
+
+    <!-- ── Sidebar ──────────────────────────────────────────── -->
+    <aside class="admin-sidebar" id="adminSidebar">
+        <div class="sidebar-brand">
+            <div class="sidebar-brand-icon">
+                <i class="fa-solid fa-camera"></i>
+            </div>
+            <div class="sidebar-brand-text">
+                <h2>Sumati Lab</h2>
+                <span>Admin Panel</span>
+            </div>
+        </div>
+        <nav class="sidebar-nav">
+            <div class="sidebar-section-label">Main</div>
+            <a href="/admin/dashboard" class="sidebar-link">
+                <i class="fa-solid fa-chart-pie"></i> Dashboard
+            </a>
+            <a href="/admin/products" class="sidebar-link">
+                <i class="fa-solid fa-box"></i> Products
+            </a>
+            <a href="/admin/orders" class="sidebar-link active">
+                <i class="fa-solid fa-receipt"></i> Orders
+            </a>
+            <div class="sidebar-section-label">Store</div>
+            <a href="/" class="sidebar-link" target="_blank">
+                <i class="fa-solid fa-store"></i> View Store
+            </a>
+        </nav>
+        <div class="sidebar-footer">
+            <a href="/admin/logout" class="sidebar-link">
+                <i class="fa-solid fa-right-from-bracket"></i> Log Out
+            </a>
+        </div>
+    </aside>
+
+    <!-- ── Main Content ─────────────────────────────────────── -->
+    <main class="admin-main">
+        <div class="admin-topbar">
+            <div style="display:flex;align-items:center;gap:0.75rem;">
+                <button class="sidebar-toggle" onclick="document.getElementById('adminSidebar').classList.toggle('open')">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+                <div class="topbar-title">
+                    <h1>Order #<%= order._id.toString().slice(-6).toUpperCase() %></h1>
+                    <p>Placed on <%= new Date(order.createdAt).toLocaleDateString('en-IN', { weekday:'long', day:'numeric', month:'long', year:'numeric' }) %></p>
+                </div>
+            </div>
+            <div class="topbar-actions">
+                <a href="/admin/orders" class="btn btn-secondary">
+                    <i class="fa-solid fa-arrow-left"></i> Back
+                </a>
+            </div>
+        </div>
+
+        <div class="admin-content">
+
+            <!-- ── Info Cards ───────────────────────────────── -->
+            <div class="order-detail-grid">
+
+                <div class="order-info-card">
+                    <h3><i class="fa-solid fa-user"></i> Customer Information</h3>
+                    <div class="order-info-row">
+                        <span class="order-info-label">Name</span>
+                        <span class="order-info-value"><%= order.customerName %></span>
+                    </div>
+                    <div class="order-info-row">
+                        <span class="order-info-label">Email</span>
+                        <span class="order-info-value"><%= order.customerEmail || '—' %></span>
+                    </div>
+                    <div class="order-info-row">
+                        <span class="order-info-label">Phone</span>
+                        <span class="order-info-value"><%= order.customerPhone || '—' %></span>
+                    </div>
+                </div>
+
+                <div class="order-info-card">
+                    <h3><i class="fa-solid fa-location-dot"></i> Shipping & Status</h3>
+                    <div class="order-info-row">
+                        <span class="order-info-label">Address</span>
+                        <span class="order-info-value"><%= order.shippingAddress || '—' %></span>
+                    </div>
+                    <div class="order-info-row">
+                        <span class="order-info-label">Status</span>
+                        <span class="order-info-value">
+                            <span class="status-badge <%= order.status %>"><%= order.status %></span>
+                        </span>
+                    </div>
+                    <div class="order-info-row">
+                        <span class="order-info-label">Order Date</span>
+                        <span class="order-info-value">
+                            <%= new Date(order.createdAt).toLocaleDateString('en-IN', { day:'numeric', month:'short', year:'numeric' }) %>
+                        </span>
+                    </div>
+
+                    <form action="/admin/orders/<%= order._id %>/status" method="POST" class="order-status-form">
+                        <select name="status" class="admin-select" style="flex:1;">
+                            <option value="pending" <%= order.status === 'pending' ? 'selected' : '' %>>Pending</option>
+                            <option value="confirmed" <%= order.status === 'confirmed' ? 'selected' : '' %>>Confirmed</option>
+                            <option value="shipped" <%= order.status === 'shipped' ? 'selected' : '' %>>Shipped</option>
+                            <option value="delivered" <%= order.status === 'delivered' ? 'selected' : '' %>>Delivered</option>
+                            <option value="cancelled" <%= order.status === 'cancelled' ? 'selected' : '' %>>Cancelled</option>
+                        </select>
+                        <button type="submit" class="btn btn-primary btn-sm">Update Status</button>
+                    </form>
+                </div>
+
+                <div class="order-info-card address-verification-card">
+                    <h3><i class="fa-solid fa-map-location-dot"></i> Address Verification</h3>
+                    <% if (order.shippingAddress) { %>
+                        <div class="map-container" style="margin-top:0.75rem; border-radius: 8px; overflow: hidden; border: 1px solid var(--admin-border);">
+                            <iframe 
+                                width="100%" 
+                                height="180" 
+                                frameborder="0" 
+                                style="border:0; display:block;" 
+                                src="https://maps.google.com/maps?q=<%= encodeURIComponent(order.shippingAddress) %>&t=&z=14&ie=UTF8&iwloc=&output=embed" 
+                                allowfullscreen>
+                            </iframe>
+                        </div>
+                        <div style="margin-top: 0.75rem; font-size: 0.78rem; color: var(--admin-text-dim); display: flex; align-items: center; gap: 0.4rem;">
+                            <i class="fa-solid fa-circle-info" style="color: var(--admin-info);"></i>
+                            <span>Verify location to confirm it is not a prank/scam.</span>
+                        </div>
+                    <% } else { %>
+                        <p style="font-size:0.85rem; color:var(--admin-text-dim);">No shipping address provided.</p>
+                    <% } %>
+                </div>
+
+            </div>
+
+            <!-- ── Order Items ──────────────────────────────── -->
+            <div class="admin-table-wrap">
+                <div class="admin-table-header">
+                    <h2>Order Items (<%= order.items.length %>)</h2>
+                </div>
+
+                <table class="admin-table">
+                    <thead>
+                        <tr>
+                            <th>Product</th>
+                            <th>Price</th>
+                            <th>Quantity</th>
+                            <th style="text-align:right;">Subtotal</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% order.items.forEach(function(item) { %>
+                            <tr>
+                                <td>
+                                    <div class="table-product-cell">
+                                        <img src="<%= item.image || '/Assets/placeholder.png' %>" alt="<%= item.title %>"
+                                            class="table-product-img">
+                                        <div>
+                                            <div class="table-product-name"><%= item.title %></div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>₹<%= item.price.toLocaleString('en-IN') %></td>
+                                <td><%= item.quantity %></td>
+                                <td style="text-align:right;font-weight:600;">
+                                    ₹<%= (item.price * item.quantity).toLocaleString('en-IN') %>
+                                </td>
+                            </tr>
+                        <% }) %>
+                    </tbody>
+                </table>
+
+                <div style="padding:1.25rem 1.5rem;border-top:1px solid var(--admin-border);display:flex;justify-content:flex-end;">
+                    <div style="text-align:right;">
+                        <div style="font-size:0.85rem;color:var(--admin-text-muted);margin-bottom:0.35rem;">Total Amount</div>
+                        <div style="font-size:1.5rem;font-weight:700;color:var(--admin-accent);">
+                            ₹<%= order.totalAmount.toLocaleString('en-IN') %>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <% if (order.notes) { %>
+                <div class="order-info-card" style="margin-top:1.5rem;max-width:600px;">
+                    <h3><i class="fa-solid fa-note-sticky"></i> Notes</h3>
+                    <p style="font-size:0.88rem;color:var(--admin-text-muted);line-height:1.7;"><%= order.notes %></p>
+                </div>
+            <% } %>
+
+        </div>
+    </main>
+
+</body>
+
+</html>

@@ -1,7 +1,7 @@
 const images = [
-    "/Assets/MeFOTO-DayTrip-Compact-Tripod-Hot-Purple-Product-Photo-1_1024x.jpg.webp",
-    "/Assets/27004489.png.jpeg",
-    "/Assets/w8gi40jmjwqq3tk1wkti_500x.jpg.webp",
+    "/Assets/MeFOTO-DayTrip-Compact-Tripod-Hot-Purple-Product-Photo-1_1024x.jpg_nobg.png",
+    "/Assets/27004489.png_nobg.png",
+    "/Assets/w8gi40jmjwqq3tk1wkti_500x.jpg_nobg.png",
 ];
 
 let currentIndex = 0;

@@ -1,7 +1,7 @@
 const images = [
-    "/Assets/Sirui-7C-Carbon-Fiber-Tripod-Online-Buy-India_1.jpg.webp",
-    "/Assets/sirui-compact-traveler-5a-tripod-54-3-inches-lightweight-aluminum-travel-tripod-500x500.jpg.webp",
-    "/Assets/61GE58lCHEL.jpg",
+    "/Assets/Sirui-7C-Carbon-Fiber-Tripod-Online-Buy-India_1.jpg_nobg.png",
+    "/Assets/sirui-compact-traveler-5a-tripod-54-3-inches-lightweight-aluminum-travel-tripod-500x500.jpg_nobg.png",
+    "/Assets/61GE58lCHEL_nobg.png",
 ];
 
 let currentIndex = 0;

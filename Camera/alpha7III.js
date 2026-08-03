@@ -1,9 +1,9 @@
 const images = [
-    "/Assets/6213101_sd-485x338.jpg.webp",
-    "/Assets/Sony-a7-miii-with-28-70-lens.jpg",
-    "/Assets/519CXmlsweL.jpg",
+    "/Assets/6213101_sd-485x338.jpg_nobg.png",
+    "/Assets/Sony-a7-miii-with-28-70-lens_nobg.png",
+    "/Assets/519CXmlsweL_nobg.png",
     "/Assets/06_mobile-2.webp",
-    "/Assets/ILCE-7M3K-03.jpg.webp",
+    "/Assets/ILCE-7M3K-03.jpg_nobg.png",
 ];
 
 let currentIndex = 0;

@@ -1,7 +1,7 @@
 const images = [
-    "/Assets/BOYA-BY-BM2021-5.jpg.webp",
-    "/Assets/41bjMkzdCmL.jpg",
-    "/Assets/0016389_boya-by-bm3030-on-camera-supercardioid-shotgun-microphone_500.jpeg",
+    "/Assets/BOYA-BY-BM2021-5.jpg_nobg.png",
+    "/Assets/41bjMkzdCmL_nobg.png",
+    "/Assets/0016389_boya-by-bm3030-on-camera-supercardioid-shotgun-microphone_500_nobg.png",
 ];
 
 let currentIndex = 0;

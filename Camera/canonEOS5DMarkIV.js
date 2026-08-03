@@ -1,9 +1,9 @@
 const images = [
-    "/Assets/0000125_canon-eos-80d-dslr-camera-body-only_360.jpeg",
-    "/Assets/eos-5d-mk-iv-ef24-105mm-001.webp",
-    "/Assets/Canon-EOS-5D-Mark-IV-DSLR-Camera-with-24-105mm-f-4L-II-Lens-Basic-Kit-6.jpg",
-    "/Assets/4e25e07f260f4fae82ba7d036ccb0c64.webp",
-    "/Assets/canon-eos-5d-mark-iv-body-p211-1989_image.jpg",
+    "/Assets/0000125_canon-eos-80d-dslr-camera-body-only_360_nobg.png",
+    "/Assets/eos-5d-mk-iv-ef24-105mm-001_nobg.png",
+    "/Assets/Canon-EOS-5D-Mark-IV-DSLR-Camera-with-24-105mm-f-4L-II-Lens-Basic-Kit-6_nobg.png",
+    "/Assets/4e25e07f260f4fae82ba7d036ccb0c64_nobg.png",
+    "/Assets/canon-eos-5d-mark-iv-body-p211-1989_image_nobg.png",
 ];
 
 let currentIndex = 0;

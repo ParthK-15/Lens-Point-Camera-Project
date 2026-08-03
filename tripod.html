@@ -6,18 +6,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tripods</title>
     <link rel="stylesheet" href="tripod.css">
+    <link rel="stylesheet" href="/user-nav.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <script src="/cart-sync-head.js"></script>
 </head>
 
 <body>
     <header>
         <nav>
             <div class="navigation">
-                <a href="index.html">Home</a>
-                <a href="camera.html">Camera</a>
-                <a href="#">Lens</a>
-                <a href="accessories.html">Accessories</a>
-                <a href="#">Contact</a>
+                <a href="/index.html" class="nav-logo-link" title="Home"><img src="/Assets/logo.jpeg" alt="Sumati Colour Lab Logo" class="nav-logo-img"></a>
+                <a href="/products">Camera</a>
+                <a href="/lenses">Lens</a>
+                <a href="/accessories.html" class="active">Accessories</a>
+                <a href="#" class="cart-anchor" title="Cart">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                    <span class="cart-count">0</span>
+                </a>
                 <div class="options">
                     <input type="text" placeholder="Search">
                     <label for="input">
@@ -122,11 +127,11 @@
             <a href="#" class="sidebar-links">Lights</a>
         </div>
         <div class="main-tripod-cards">
-            <a href="Tripod/manfrotto-befree.html">
+            <a href="/tripods/manfrotto-befree">
                 <div class="tripod-cards professional" id="tripod1" data-price="15000" data-brand="manfrotto"
                     data-category="professional">
                     <div class="img-container">
-                        <img src="/Assets/Manfrotto-Befree-Advanced-Designed-for-α-Cameras-from-Sony-MKBFRLA-BH-1-485x485.webp" alt="Manfrotto Tripod">
+                        <img src="/Assets/Manfrotto-Befree-Advanced-Designed-for-α-Cameras-from-Sony-MKBFRLA-BH-1-485x485_nobg.png" alt="Manfrotto Tripod">
                     </div>
                     <div class="content">
                         <h2>Manfrotto Befree Advanced Tripod</h2>
@@ -142,11 +147,11 @@
                     </div>
                 </div>
             </a>
-            <a href="Tripod/sirui-traveler.html">
+            <a href="/tripods/sirui-traveler">
                 <div class="tripod-cards portable" id="tripod2" data-price="8500" data-brand="sirui"
                     data-category="portable">
                     <div class="img-container">
-                        <img src="/Assets/Sirui-7C-Carbon-Fiber-Tripod-Online-Buy-India_1.jpg.webp" alt="Sirui Tripod">
+                        <img src="/Assets/Sirui-7C-Carbon-Fiber-Tripod-Online-Buy-India_1.jpg_nobg.png" alt="Sirui Tripod">
                     </div>
                     <div class="content">
                         <h2>Sirui Traveler Portable Tripod</h2>
@@ -162,11 +167,11 @@
                     </div>
                 </div>
             </a>
-            <a href="Tripod/gitzo-video.html">
+            <a href="/tripods/gitzo-video">
                 <div class="tripod-cards video" id="tripod3" data-price="22000" data-brand="gitzo"
                     data-category="video">
                     <div class="img-container">
-                        <img src="/Assets/0017198_gitzo-gt5543ls-systematic-series-5-carbon-fiber-tripod_500.jpeg" alt="Gitzo Video Tripod">
+                        <img src="/Assets/0017198_gitzo-gt5543ls-systematic-series-5-carbon-fiber-tripod_500_nobg.png" alt="Gitzo Video Tripod">
                     </div>
                     <div class="content">
                         <h2>Gitzo Systematic Video Tripod</h2>
@@ -182,11 +187,11 @@
                     </div>
                 </div>
             </a>
-            <a href="Tripod/peakdesign-travel.html">
+            <a href="/tripods/peakdesign-travel">
                 <div class="tripod-cards travel" id="tripod4" data-price="6500" data-brand="peak-design"
                     data-category="travel">
                     <div class="img-container">
-                        <img src="/Assets/0018825_peak-design-carbon-fiber-travel-tripod_500.jpeg" alt="Peak Design Travel Tripod">
+                        <img src="/Assets/0018825_peak-design-carbon-fiber-travel-tripod_500_nobg.png" alt="Peak Design Travel Tripod">
                     </div>
                     <div class="content">
                         <h2>Peak Design Travel Tripod</h2>
@@ -202,11 +207,11 @@
                     </div>
                 </div>
             </a>
-            <a href="Tripod/mefoto-mini.html">
+            <a href="/tripods/mefoto-mini">
                 <div class="tripod-cards mini" id="tripod5" data-price="3500" data-brand="mefoto"
                     data-category="mini">
                     <div class="img-container">
-                        <img src="/Assets/MeFOTO-DayTrip-Compact-Tripod-Hot-Purple-Product-Photo-1_1024x.jpg.webp" alt="MeFOTO Mini Tripod">
+                        <img src="/Assets/MeFOTO-DayTrip-Compact-Tripod-Hot-Purple-Product-Photo-1_1024x.jpg_nobg.png" alt="MeFOTO Mini Tripod">
                     </div>
                     <div class="content">
                         <h2>MeFOTO Global Mini Tripod</h2>
@@ -222,11 +227,11 @@
                     </div>
                 </div>
             </a>
-            <a href="Tripod/manfrotto-504hd.html">
+            <a href="/tripods/manfrotto-504hd">
                 <div class="tripod-cards professional" id="tripod6" data-price="35000" data-brand="manfrotto"
                     data-category="professional">
                     <div class="img-container">
-                        <img src="/Assets/MVK504TWINMC.jpg.webp" alt="Manfrotto 504HD Video Head">
+                        <img src="/Assets/MVK504TWINMC.jpg_nobg.png" alt="Manfrotto 504HD Video Head">
                     </div>
                     <div class="content">
                         <h2>Manfrotto 504HD Video Head with Tripod</h2>
@@ -333,6 +338,9 @@
     </footer>
 
     <script src="tripod.js"></script>
+    <script src="popup.js"></script>
+    <script src="/user-nav.js"></script>
+    <script src="/cart.js" defer></script>
 </body>
 
 </html>

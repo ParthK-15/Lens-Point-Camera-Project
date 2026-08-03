@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= config.title %> | Sumati Colour Lab</title>
+    <link rel="stylesheet" href="/<%= config.css %>">
+    <link rel="stylesheet" href="/user-nav.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <script src="/cart-sync-head.js"></script>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <div class="navigation">
+                <a href="/index.html" class="nav-logo-link" title="Home"><img src="/Assets/logo.jpeg" alt="Sumati Colour Lab Logo" class="nav-logo-img"></a>
+                <a href="/products" class="<%= category === 'camera' ? 'active' : '' %>">Camera</a>
+                <a href="/lenses" class="<%= category === 'lens' ? 'active' : '' %>">Lens</a>
+                <a href="/accessories.html" class="<%= !['camera', 'lens'].includes(category) ? 'active' : '' %>">Accessories</a>
+                <a href="#" class="cart-anchor" title="Cart">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                    <span class="cart-count">0</span>
+                </a>
+                <div class="options">
+                    <input type="text" placeholder="Search">
+                    <label for="input">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </label>
+                    <button type="button" class="login">Log In</button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Sidebar & Cards layout (uses exact class name expected by stylesheets) -->
+    <div class="<%= config.css === 'gimbal.css' ? 'main-camera-screen' : 'main-tripod-screen' %>">
+        <div class="sidebar">
+            <div class="filter-header">
+                <h2>Filters</h2>
+                <button id="reset-btn" title="Reset all filters">Reset</button>
+            </div>
+
+            <!-- Price Filters -->
+            <div class="price-container">
+                <h3>Price</h3>
+                <div class="price-item">
+                    <input type="checkbox" id="price-check-all" class="price-checkbox" value="all" checked>
+                    <label for="price-check-all">All Prices</label>
+                </div>
+                <% config.priceRanges.forEach(function(range, idx) { %>
+                    <div class="price-item">
+                        <input type="checkbox" id="price-check-<%= idx %>" class="price-checkbox" 
+                            value="<%= range.value %>">
+                        <label for="price-check-<%= idx %>"><%= range.label %></label>
+                    </div>
+                <% }) %>
+            </div>
+
+            <!-- Brand Filters -->
+            <div class="company-container">
+                <h3>Brands</h3>
+                <div class="brands-name">
+                    <input type="checkbox" id="brands-check-all" class="brands-checkbox" value="all" checked>
+                    <label for="brands-check-all">All</label>
+                </div>
+                <% brands.forEach(function(b, idx) { %>
+                    <div class="brands-name">
+                        <input type="checkbox" id="brands-check-<%= idx %>" class="brands-checkbox" value="<%= b.toLowerCase() %>">
+                        <label for="brands-check-<%= idx %>"><%= b %></label>
+                    </div>
+                <% }) %>
+            </div>
+
+            <!-- Subcategory Filters (only if there are subcategories) -->
+            <% if (subCategories.length > 0) { %>
+                <div class="category-container">
+                    <h3>Categories</h3>
+                    <div class="brands-name">
+                        <input type="checkbox" id="category-check-all" class="category-checkbox" value="all" checked>
+                        <label for="category-check-all">All</label>
+                    </div>
+                    <% subCategories.forEach(function(sc, idx) { %>
+                        <div class="brands-name">
+                            <input type="checkbox" id="category-check-<%= idx %>" class="category-checkbox" value="<%= sc.toLowerCase() %>">
+                            <label for="category-check-<%= idx %>"><%= sc %></label>
+                        </div>
+                    <% }) %>
+                </div>
+            <% } %>
+
+            <!-- Quick category links -->
+            <a href="/category/camera" class="sidebar-links">Cameras</a>
+            <a href="/category/lens" class="sidebar-links">Lenses</a>
+            <a href="/category/tripod" class="sidebar-links">Tripods</a>
+            <a href="/category/microphone" class="sidebar-links">Microphones</a>
+            <a href="/category/storage" class="sidebar-links">Storage</a>
+            <a href="/category/bag" class="sidebar-links">Camera Bags</a>
+            <a href="/category/gimbal" class="sidebar-links">Gimbals</a>
+            <a href="/category/lighting" class="sidebar-links">Lightings</a>
+            <a href="/category/battery" class="sidebar-links">Batteries</a>
+        </div>
+
+        <!-- Product Cards section (rendered with card class matching filter script expectations) -->
+        <div class="<%= config.css === 'gimbal.css' ? 'main-camera-cards' : 'main-tripod-cards' %>">
+            <% products.forEach(function(p) { %>
+                <a href="/product/<%= p.slug %>">
+                    <div class="<%= config.cardClass %> <%= p.subCategory ? p.subCategory.toLowerCase() : '' %>" 
+                        data-price="<%= p.price %>" 
+                        data-brand="<%= p.company.toLowerCase() %>" 
+                        data-category="<%= p.subCategory ? p.subCategory.toLowerCase() : '' %>">
+                        <div class="img-container">
+                            <img src="<%= p.image %>" alt="<%= p.title %>">
+                        </div>
+                        <div class="content">
+                            <h2><%= p.title %></h2>
+                            <ul>
+                                <% (p.features || []).slice(0, 3).forEach(function(f) { %>
+                                    <li><%= f %></li>
+                                <% }) %>
+                            </ul>
+                        </div>
+                        <div class="card-footer">
+                            <h2 class="price">₹<%= p.price.toLocaleString('en-IN') %>/-</h2>
+                            <button>Explore</button>
+                        </div>
+                    </div>
+                </a>
+            <% }) %>
+
+            <!-- No results box -->
+            <div id="noResultsMessage" class="no-results-container" style="display: none; grid-column: 1 / -1; text-align: center; padding: 3rem 1rem;">
+                <div class="no-results-content">
+                    <i class="fa-solid fa-magnifying-glass" style="font-size: 3rem; color: #ccc; margin-bottom: 1rem; display: block;"></i>
+                    <h2>No Results Found</h2>
+                    <p style="color: #888; margin-top: 0.5rem;">Sorry, we could not find any products matching your search or filters.</p>
+                    <button type="button" id="clearSearchBtn" class="btn btn-secondary btn-sm" style="margin-top: 1rem; padding: 0.5rem 1.5rem; border-radius: 20px; border: 1px solid #ccc; background: #fff; cursor: pointer;">Clear Search</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-main">
+            <div class="main-footer">
+                <div class="brands">
+                    <h2>Brands</h2>
+                    <input type="checkbox" class="footer-checkbox" id="brands-check">
+                    <label for="brands-check"><i class="fa-solid fa-angle-down"></i></label>
+                    <ul>
+                        <li>Sony</li>
+                        <li>Canon</li>
+                        <li>Nikon</li>
+                        <li>Fujifilm</li>
+                        <li>GoPro</li>
+                    </ul>
+                </div>
+                <div class="categories">
+                    <h2>Categories</h2>
+                    <input type="checkbox" class="footer-checkbox" id="categories-check">
+                    <label for="categories-check"><i class="fa-solid fa-angle-down"></i></label>
+                    <ul>
+                        <li>DSLR Cameras</li>
+                        <li>Mirrorless Cameras</li>
+                        <li>Lenses</li>
+                        <li>Tripods</li>
+                        <li>Lighting Equipment</li>
+                    </ul>
+                </div>
+                <div class="foot-contact">
+                    <h2>Contact Us</h2>
+                    <input type="checkbox" class="footer-checkbox" id="contact-check">
+                    <label for="contact-check"><i class="fa-solid fa-angle-down"></i></label>
+                    <p><i class="fa-solid fa-phone"></i> +91 7038418286</p>
+                    <a href="https://www.instagram.com/sumati.color.lab?igsh=ZHIzam5hc3N6bmdj"><i class="fa-brands fa-instagram"></i> Instagram</a>
+                    <a href="mailto:khushallll409@gmail.com"><i class="fa-regular fa-envelope"></i> Gmail</a>
+                </div>
+                <div class="foot-location">
+                    <h2>Our Location</h2>
+                    <input type="checkbox" class="footer-checkbox" id="location-check">
+                    <label for="location-check"><i class="fa-solid fa-angle-down"></i></label>
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3766.527047318591!2d76.77415409999999!3d19.259433299999994!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bd019cc2af79f0d%3A0x4d9b3ade4eff331!2sSumati%20Colour%20Lab!5e0!3m2!1sen!2sin!4v1772262216473!5m2!1sen!2sin" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <hr>
+                <p>Copyright © 2026 Sumati Color Lab. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Specific filter javascript loaded dynamically -->
+    <script src="/<%= config.js %>"></script>
+    <script src="/popup.js"></script>
+    <script src="/user-nav.js"></script>
+    <script src="/cart.js" defer></script>
+</body>
+
+</html>

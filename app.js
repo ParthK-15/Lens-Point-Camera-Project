@@ -25,69 +25,33 @@ window.addEventListener("load", () => {
     }, 200);
 });
 
-const cameraCard = document.querySelector(".camera-card");
-if (cameraCard) {
-    cameraCard.addEventListener("click", function () {
-        window.location.href = "camera.html";
-    });
-}
-
-const storageCard = document.querySelector(".storage");
-if (storageCard) {
-    storageCard.addEventListener("click", function () {
-        window.location.href = "storage.html";
-    });
-}
-
-function getTargetPageFromQuery(rawText) {
-    const text = rawText.trim().toLowerCase();
-    if (!text) return null;
-
-    const categoryRules = [
-        {
-            page: "storage.html",
-            keywords: ["storage", "memory", "sd card", "sdxc", "sdhc", "cfexpress", "sandisk", "lexar", "prograde", "angelbird"]
-        },
-        {
-            page: "camera.html",
-            keywords: ["camera", "dslr", "mirrorless", "eos", "alpha", "camera body"]
-        },
-        {
-            page: "tripod.html",
-            keywords: ["tripod", "manfrotto", "sirui", "gitzo", "mefoto", "peak design", "befree"]
-        },
-        {
-            page: "microphones.html",
-            keywords: ["mic", "microphone", "audio", "boya", "simpex", "wireless mic", "dm-e100"]
-        },
-        {
-            page: "lightings.html",
-            keywords: ["light", "lighting", "flash", "speedlite", "ring light", "digitek", "el-100", "600ex"]
-        },
-        {
-            page: "gimbal.html",
-            keywords: ["gimbal", "stabilizer", "dji", "osmo", "ronin", "om 5", "mobile 7"]
-        },
-        {
-            page: "Lens.html",
-            keywords: ["lens", "lenses", "macro", "50mm", "24-105", "55-250", "70-200", "70-300", "100-400"]
-        },
-        {
-            page: "accessories.html",
-            keywords: ["accessory", "accessories", "bag", "battery", "cleaning"]
-        }
-    ];
-
-    if (/\bsd\b/.test(text) || /\bcard\b/.test(text)) return "storage.html";
-
-    for (const rule of categoryRules) {
-        if (rule.keywords.some(keyword => text.includes(keyword))) {
-            return rule.page;
-        }
+// Helper function to bind click redirection
+function bindClickRedirect(selector, targetUrl) {
+    const element = document.querySelector(selector);
+    if (element) {
+        element.addEventListener("click", () => {
+            window.location.href = targetUrl;
+        });
     }
-
-    return "camera.html";
 }
+
+// ── Category Card Redirects ──────────────────────────────────
+bindClickRedirect(".camera-card", "/products");
+bindClickRedirect(".lens-card", "/lenses");
+bindClickRedirect(".tripod-content", "/tripods");
+bindClickRedirect(".lights-content", "/category/lighting");
+bindClickRedirect(".microphone-content", "/category/microphone");
+bindClickRedirect(".batteries-content", "/category/battery");
+bindClickRedirect(".storage", "/category/storage");
+bindClickRedirect(".gimbal-content", "/category/gimbal");
+bindClickRedirect(".bags-content", "/category/bag");
+bindClickRedirect(".cleanup-content", "/search?q=cleaning");
+
+// ── Brand Card Redirects ─────────────────────────────────────
+bindClickRedirect(".sony", "/search?q=Sony");
+bindClickRedirect(".canon", "/search?q=Canon");
+bindClickRedirect(".nikon", "/search?q=Nikon");
+bindClickRedirect(".gopro", "/search?q=GoPro");
 
 function routeHomeSearch(inputElement) {
     if (!inputElement) return;
@@ -95,10 +59,7 @@ function routeHomeSearch(inputElement) {
     const searchText = inputElement.value.trim();
     if (!searchText) return;
 
-    const targetPage = getTargetPageFromQuery(searchText);
-    if (!targetPage) return;
-
-    window.location.href = `${targetPage}?search=${encodeURIComponent(searchText)}`;
+    window.location.href = `/search?q=${encodeURIComponent(searchText)}`;
 }
 
 const desktopSearchInput = document.querySelector('.options input[type="text"]');

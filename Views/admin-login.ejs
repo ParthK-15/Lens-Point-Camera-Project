@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Login | Sumati Colour Lab</title>
+    <link rel="stylesheet" href="/admin.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+
+<body class="admin-login-page">
+    <div class="login-container">
+        <div class="login-card">
+            <div class="login-brand">
+                <div class="login-brand-icon">
+                    <i class="fa-solid fa-camera"></i>
+                </div>
+                <h1>Sumati Colour Lab</h1>
+                <p>Admin Dashboard</p>
+            </div>
+
+            <% if (error) { %>
+                <div class="login-error">
+                    <i class="fa-solid fa-circle-exclamation"></i>
+                    <%= error %>
+                </div>
+            <% } %>
+
+            <form class="login-form" action="/admin/login" method="POST">
+                <div class="form-group">
+                    <label for="admin-email">Email Address</label>
+                    <input type="email" id="admin-email" name="email" placeholder="admin@sumaticolourlab.com" required
+                        autocomplete="email">
+                </div>
+                <div class="form-group">
+                    <label for="admin-password">Password</label>
+                    <input type="password" id="admin-password" name="password" placeholder="Enter your password"
+                        required autocomplete="current-password">
+                </div>
+                <button type="submit" class="login-btn">
+                    <i class="fa-solid fa-right-to-bracket"></i> Sign In
+                </button>
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>

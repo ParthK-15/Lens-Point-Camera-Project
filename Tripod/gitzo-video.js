@@ -1,7 +1,7 @@
 const images = [
-    "/Assets/0017198_gitzo-gt5543ls-systematic-series-5-carbon-fiber-tripod_500.jpeg",
-    "/Assets/Gitzo-GT3533LS-Systematic-Series-3-Carbon-Fiber-Tripod-2.jpg",
-    "/Assets/GTZ-GT3543LS-GHFG1.jpg",
+    "/Assets/0017198_gitzo-gt5543ls-systematic-series-5-carbon-fiber-tripod_500_nobg.png",
+    "/Assets/Gitzo-GT3533LS-Systematic-Series-3-Carbon-Fiber-Tripod-2_nobg.png",
+    "/Assets/GTZ-GT3543LS-GHFG1_nobg.png",
 ];
 
 let currentIndex = 0;
