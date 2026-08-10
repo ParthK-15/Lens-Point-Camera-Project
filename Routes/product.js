@@ -2,11 +2,21 @@ const express = require("express");
 const router = express.Router();
 const Product = require("../models/product");
 
+// ─── GET / — Home page ─────────────────────────────────────────
+router.get("/", (req, res) => {
+  res.render("home");
+});
+
+// ─── GET /accessories — Accessories listing ────────────────────
+router.get("/accessories", (req, res) => {
+  res.render("accessories");
+});
+
 // ─── GET /products — List all cameras ─────────────────────────
 router.get("/products", async (req, res) => {
   try {
     const products = await Product.find({ category: "camera" });
-    res.render("products", { products });
+    res.render("products/products", { products });
   } catch (err) {
     console.error(err);
     res.status(500).send("Server Error: Could not fetch products.");
@@ -22,7 +32,7 @@ router.get("/products/:slug", async (req, res) => {
       return res.status(404).send("Product not found.");
     }
 
-    res.render("product", { product });
+    res.render("products/product", { product });
   } catch (err) {
     console.error(err);
     res.status(500).send("Server Error: Could not fetch product.");
@@ -33,7 +43,7 @@ router.get("/products/:slug", async (req, res) => {
 router.get("/lenses", async (req, res) => {
   try {
     const products = await Product.find({ category: "lens" });
-    res.render("lenses", { products });
+    res.render("products/lenses", { products });
   } catch (err) {
     console.error(err);
     res.status(500).send("Server Error: Could not fetch lenses.");
@@ -49,7 +59,7 @@ router.get("/lenses/:slug", async (req, res) => {
       return res.status(404).send("Lens not found.");
     }
 
-    res.render("product", { product });
+    res.render("products/product", { product });
   } catch (err) {
     console.error(err);
     res.status(500).send("Server Error: Could not fetch lens details.");
@@ -60,7 +70,7 @@ router.get("/lenses/:slug", async (req, res) => {
 router.get("/tripods", async (req, res) => {
   try {
     const products = await Product.find({ category: "tripod" });
-    res.render("tripods", { products });
+    res.render("products/tripods", { products });
   } catch (err) {
     console.error(err);
     res.status(500).send("Server Error: Could not fetch tripods.");
@@ -76,7 +86,7 @@ router.get("/tripods/:slug", async (req, res) => {
       return res.status(404).send("Tripod not found.");
     }
 
-    res.render("product", { product });
+    res.render("products/product", { product });
   } catch (err) {
     console.error(err);
     res.status(500).send("Server Error: Could not fetch tripod details.");
@@ -90,8 +100,8 @@ router.get("/tripods/:slug", async (req, res) => {
 const categoryConfigs = {
   camera: {
     title: "Cameras",
-    css: "camera.css",
-    js: "camera.js",
+    css: "/css/camera.css",
+    js: "/js/camera.js",
     cardClass: "camera-cards",
     priceRanges: [
       { value: "Under 20000", label: "Under ₹20,000" },
@@ -103,8 +113,8 @@ const categoryConfigs = {
   },
   lens: {
     title: "Lenses",
-    css: "Lens.css",
-    js: "Lens.js",
+    css: "/css/lens.css",
+    js: "/js/lens.js",
     cardClass: "camera-cards",
     priceRanges: [
       { value: "Under 10000", label: "Under ₹10,000" },
@@ -114,23 +124,10 @@ const categoryConfigs = {
       { value: "Over 90000", label: "Over ₹90,000" }
     ]
   },
-  tripid: { // Alias mapping just in case
-    title: "Tripods",
-    css: "tripod.css",
-    js: "tripod.js",
-    cardClass: "tripod-cards",
-    priceRanges: [
-      { value: "Under 5000", label: "Under ₹5,000" },
-      { value: "5000-10000", label: "₹5,000 - ₹10,000" },
-      { value: "10000-20000", label: "₹10,000 - ₹20,000" },
-      { value: "20000-50000", label: "₹20,000 - ₹50,000" },
-      { value: "Over 50000", label: "Over ₹50,000" }
-    ]
-  },
   tripod: {
     title: "Tripods",
-    css: "tripod.css",
-    js: "tripod.js",
+    css: "/css/tripod.css",
+    js: "/js/tripod.js",
     cardClass: "tripod-cards",
     priceRanges: [
       { value: "Under 5000", label: "Under ₹5,000" },
@@ -142,8 +139,8 @@ const categoryConfigs = {
   },
   battery: {
     title: "Batteries",
-    css: "battery.css",
-    js: "battery.js",
+    css: "/css/battery.css",
+    js: "/js/battery.js",
     cardClass: "tripod-cards",
     priceRanges: [
       { value: "Under 3000", label: "Under ₹3,000" },
@@ -154,8 +151,8 @@ const categoryConfigs = {
   },
   storage: {
     title: "Storage Options",
-    css: "storage.css",
-    js: "storage.js",
+    css: "/css/storage.css",
+    js: "/js/storage.js",
     cardClass: "tripod-cards",
     priceRanges: [
       { value: "Under 5000", label: "Under ₹5,000" },
@@ -167,8 +164,8 @@ const categoryConfigs = {
   },
   microphone: {
     title: "Microphones",
-    css: "microphones.css",
-    js: "microphones.js",
+    css: "/css/microphones.css",
+    js: "/js/microphones.js",
     cardClass: "tripod-cards",
     priceRanges: [
       { value: "Under 5000", label: "Under ₹5,000" },
@@ -180,8 +177,8 @@ const categoryConfigs = {
   },
   lighting: {
     title: "Lighting Equipment",
-    css: "lightings.css",
-    js: "lightings.js",
+    css: "/css/lightings.css",
+    js: "/js/lightings.js",
     cardClass: "tripod-cards",
     priceRanges: [
       { value: "Under 5000", label: "Under ₹5,000" },
@@ -193,8 +190,8 @@ const categoryConfigs = {
   },
   gimbal: {
     title: "Gimbals",
-    css: "gimbal.css",
-    js: "gimbal.js",
+    css: "/css/gimbal.css",
+    js: "/js/gimbal.js",
     cardClass: "camera-cards",
     priceRanges: [
       { value: "under-15000", label: "Under ₹15,000" },
@@ -205,8 +202,8 @@ const categoryConfigs = {
   },
   bag: {
     title: "Bags & Backpacks",
-    css: "bagpack.css",
-    js: "bagpack.js",
+    css: "/css/bagpack.css",
+    js: "/js/bagpack.js",
     cardClass: "tripod-cards",
     priceRanges: [
       { value: "Under 5000", label: "Under ₹5,000" },
@@ -214,6 +211,18 @@ const categoryConfigs = {
       { value: "10000-20000", label: "₹10,000 - ₹20,000" },
       { value: "20000-50000", label: "₹20,000 - ₹50,000" },
       { value: "Over 50000", label: "Over ₹50,000" }
+    ]
+  },
+  film: {
+    title: "Films & Albums",
+    css: "/css/accessories.css",
+    js: "/js/accessories.js",
+    cardClass: "tripod-cards",
+    priceRanges: [
+      { value: "Under 500", label: "Under ₹500" },
+      { value: "500-1000", label: "₹500 - ₹1,000" },
+      { value: "1000-3000", label: "₹1,000 - ₹3,000" },
+      { value: "Over 3000", label: "Over ₹3,000" }
     ]
   }
 };
@@ -230,6 +239,7 @@ router.get("/category/:category", async (req, res) => {
     if (categoryInput === "lightings") categoryInput = "lighting";
     if (categoryInput === "bagpack" || categoryInput === "bags" || categoryInput === "bagpacks") categoryInput = "bag";
     if (categoryInput === "batteries") categoryInput = "battery";
+    if (categoryInput === "films" || categoryInput === "album" || categoryInput === "albums") categoryInput = "film";
 
     const config = categoryConfigs[categoryInput];
     if (!config) {
@@ -242,7 +252,7 @@ router.get("/category/:category", async (req, res) => {
     const brands = await Product.distinct("company", { category: categoryInput });
     const subCategories = await Product.distinct("subCategory", { category: categoryInput });
 
-    res.render("category-products", { 
+    res.render("products/category-products", { 
       products, 
       category: categoryInput,
       config,
@@ -270,12 +280,53 @@ router.get("/product/:slug", async (req, res) => {
     if (!product) {
       return res.status(404).send("Product not found.");
     }
-    res.render("product", { product });
+    res.render("products/product", { product });
   } catch (err) {
     console.error(err);
     res.status(500).send("Server Error: Could not fetch product details.");
   }
 });
+
+// GET /api/products/search (and /api/search) — Live search JSON API for autocomplete dropdown
+const searchApiHandler = async (req, res) => {
+  try {
+    const query = (req.query.q || "").trim();
+    if (!query || query.length < 2) {
+      return res.json({ results: [], products: [] });
+    }
+
+    const products = await Product.find({
+      $or: [
+        { title: { $regex: query, $options: "i" } },
+        { company: { $regex: query, $options: "i" } },
+        { category: { $regex: query, $options: "i" } },
+        { subCategory: { $regex: query, $options: "i" } },
+        { highlights: { $elemMatch: { $regex: query, $options: "i" } } }
+      ]
+    })
+      .select("title price image slug _id company category subCategory")
+      .limit(6)
+      .lean();
+
+    const formattedResults = products.map((item) => ({
+      _id: item._id,
+      name: item.title,
+      brand: item.company,
+      category: item.subCategory || item.category,
+      price: item.price,
+      imageUrl: item.image,
+      slug: item.slug
+    }));
+
+    res.json({ results: formattedResults, products: formattedResults });
+  } catch (err) {
+    console.error("API Search error:", err);
+    res.status(500).json({ results: [], products: [], error: err.message });
+  }
+};
+
+router.get("/api/products/search", searchApiHandler);
+router.get("/api/search", searchApiHandler);
 
 // GET /search — Unified product search route
 router.get("/search", async (req, res) => {

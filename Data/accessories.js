@@ -14,7 +14,7 @@ module.exports = [
     category: "battery",
     subCategory: "rechargeable",
     price: 2499,
-    image: "/Assets/DCENEL254200mAh_Nikon_Battery-New_2_1024x1024@2x.jpg.png",
+    image: "/assets/images/DCENEL254200mAh_Nikon_Battery-New_2_1024x1024@2x.jpg.png",
     description: "High-capacity rechargeable lithium battery compatible with multiple camera models for extended shooting sessions.",
     features: [
       "High-capacity lithium-ion technology.",
@@ -29,7 +29,7 @@ module.exports = [
     category: "battery",
     subCategory: "lithium",
     price: 3999,
-    image: "/Assets/Canon-LP-E10-Battery-EOS-1200D-EOS-1100D-EOS-M-28052014-01-p.png",
+    image: "/assets/images/Canon-LP-E10-Battery-EOS-1200D-EOS-1100D-EOS-M-28052014-01-p.png",
     description: "Original Canon lithium-ion battery pack designed for Canon EOS DSLR cameras.",
     features: [
       "Original Canon lithium-ion battery pack.",
@@ -44,7 +44,7 @@ module.exports = [
     category: "battery",
     subCategory: "lithium",
     price: 5999,
-    image: "/Assets/41J56bDfUKL.png",
+    image: "/assets/images/41J56bDfUKL.png",
     description: "High-capacity Sony battery for mirrorless cameras with extended runtime and fast charging.",
     features: [
       "High-capacity Sony battery for mirrorless cameras.",
@@ -59,7 +59,7 @@ module.exports = [
     category: "battery",
     subCategory: "lithium",
     price: 4499,
-    image: "/Assets/nikon-en-el14-baterry-500x500.jpg.png",
+    image: "/assets/images/nikon-en-el14-baterry-500x500.jpg.png",
     description: "Genuine Nikon lithium-ion battery pack optimized for Nikon DSLR performance.",
     features: [
       "Genuine Nikon lithium-ion battery pack.",
@@ -74,7 +74,7 @@ module.exports = [
     category: "battery",
     subCategory: "rechargeable",
     price: 6999,
-    image: "/Assets/BATTERY-NP-W235-CD_Front-page1.jpg.png",
+    image: "/assets/images/BATTERY-NP-W235-CD_Front-page1.jpg.png",
     description: "Premium Fujifilm rechargeable battery with extended capacity, compatible with X-Series and GFX cameras.",
     features: [
       "Premium Fujifilm rechargeable battery.",
@@ -89,7 +89,7 @@ module.exports = [
     category: "battery",
     subCategory: "lithium",
     price: 2999,
-    image: "/Assets/digitek-lp-e6-platinum-2100mah-rechargeable-lithium-ion-battery-for-canon-dslr-camera-or-compatibility-eos-sd-mark-iii-mark-ii-eos-7d-eos-6d-60d-70d-digitek-1.jpg_nobg.png",
+    image: "/assets/images/digitek-lp-e6-platinum-2100mah-rechargeable-lithium-ion-battery-for-canon-dslr-camera-or-compatibility-eos-sd-mark-iii-mark-ii-eos-7d-eos-6d-60d-70d-digitek-1.jpg_nobg.png",
     description: "Affordable alternative battery with good performance for casual and semi-pro use, compatible with Canon systems.",
     features: [
       "Affordable alternative to original batteries.",
@@ -109,7 +109,7 @@ module.exports = [
     category: "storage",
     subCategory: "cfexpress",
     price: 32999,
-    image: "/Assets/Angelbird-512GB-AV-PRO-SE-CFexpress-v4-Type-B-Memory-Card-1_nobg.png",
+    image: "/assets/images/Angelbird-512GB-AV-PRO-SE-CFexpress-v4-Type-B-Memory-Card-1_nobg.png",
     description: "High-speed 3700MB/s workflow card built for cinema and pro mirrorless use.",
     features: [
       "High-speed 3700MB/s workflow card.",
@@ -124,7 +124,7 @@ module.exports = [
     category: "storage",
     subCategory: "uhs-i",
     price: 7999,
-    image: "/Assets/images3_nobg.png",
+    image: "/assets/images/images3_nobg.png",
     description: "Fast read speeds for quick transfers, great for Full HD and 4K capture.",
     features: [
       "Fast read speeds for quick transfers.",
@@ -139,7 +139,7 @@ module.exports = [
     category: "storage",
     subCategory: "uhs-ii",
     price: 5999,
-    image: "/Assets/Lexar-64GB-SDXC-UHS-II-v90-2000x-with-Reader-Online-Buy-Mumbai-India_5_nobg.png",
+    image: "/assets/images/Lexar-64GB-SDXC-UHS-II-v90-2000x-with-Reader-Online-Buy-Mumbai-India_5_nobg.png",
     description: "Optimized for high-bitrate recording with reliable performance for bursts and video.",
     features: [
       "Optimized for high-bitrate recording.",
@@ -154,7 +154,7 @@ module.exports = [
     category: "storage",
     subCategory: "uhs-ii",
     price: 4599,
-    image: "/Assets/0072985_sandisk-64gb-extreme-pro-uhs-ii-sdxc-memory-card_360_nobg.png",
+    image: "/assets/images/0072985_sandisk-64gb-extreme-pro-uhs-ii-sdxc-memory-card_360_nobg.png",
     description: "High read/write speed for 4K workflows with professional-grade SDXC build quality.",
     features: [
       "High read/write speed for 4K workflows.",
@@ -169,7 +169,7 @@ module.exports = [
     category: "storage",
     subCategory: "uhs-ii",
     price: 7999,
-    image: "/Assets/SDSDXDK128_1.jpg_nobg.png",
+    image: "/assets/images/SDSDXDK128_1.jpg_nobg.png",
     description: "Extended capacity for long recording sessions with fast offload speeds for editing.",
     features: [
       "Extended capacity for long recording sessions.",
@@ -184,7 +184,7 @@ module.exports = [
     category: "storage",
     subCategory: "uhs-ii",
     price: 10999,
-    image: "/Assets/54502-250x250.jpg_nobg.png",
+    image: "/assets/images/54502-250x250.jpg_nobg.png",
     description: "Built for high-speed professional capture with excellent reliability in demanding shoots.",
     features: [
       "Built for high-speed professional capture.",
@@ -199,7 +199,7 @@ module.exports = [
     category: "storage",
     subCategory: "uhs-ii",
     price: 6999,
-    image: "/Assets/ProGrade-Digital-SDXC-UHS-II-V90-Memory-Card-64GB-364x364_nobg.png",
+    image: "/assets/images/ProGrade-Digital-SDXC-UHS-II-V90-Memory-Card-64GB-364x364_nobg.png",
     description: "V90 class speed for smooth recording, designed for pro camera systems.",
     features: [
       "V90 class speed for smooth recording.",
@@ -219,7 +219,7 @@ module.exports = [
     category: "microphone",
     subCategory: "shotgun",
     price: 7200,
-    image: "/Assets/BOYA-BY-BM2021-5.jpg_nobg.png",
+    image: "/assets/images/BOYA-BY-BM2021-5.jpg_nobg.png",
     description: "Supercardioid shotgun microphone ideal for vlog and DSLR video recording.",
     features: [
       "Supercardioid shotgun pickup pattern.",
@@ -234,7 +234,7 @@ module.exports = [
     category: "microphone",
     subCategory: "on-camera",
     price: 9500,
-    image: "/Assets/230931_0_bamcpa.png.webp",
+    image: "/assets/images/230931_0_bamcpa.png.webp",
     description: "Compact on-camera stereo microphone optimized for Canon EOS vlogging workflow.",
     features: [
       "Compact on-camera stereo microphone.",
@@ -249,7 +249,7 @@ module.exports = [
     category: "microphone",
     subCategory: "wireless",
     price: 6500,
-    image: "/Assets/digitek-dwm-105-2-in-1-wireless-microphone-system-with-type-c-lightning-interface-product-images-orvqxtsd4nm-p604552990-0-202309122121.png_nobg.png",
+    image: "/assets/images/digitek-dwm-105-2-in-1-wireless-microphone-system-with-type-c-lightning-interface-product-images-orvqxtsd4nm-p604552990-0-202309122121.png_nobg.png",
     description: "Dual-transmitter wireless microphone kit with Type-C and Lightning receiver support.",
     features: [
       "Dual-transmitter kit with charging case.",
@@ -264,7 +264,7 @@ module.exports = [
     category: "microphone",
     subCategory: "wireless",
     price: 12000,
-    image: "/Assets/IMG-20250322-WA0018_nobg.png",
+    image: "/assets/images/IMG-20250322-WA0018_nobg.png",
     description: "Professional wireless audio transmitter set designed for live shoots and content creators.",
     features: [
       "Professional wireless audio transmitter set.",
@@ -284,7 +284,7 @@ module.exports = [
     category: "lighting",
     subCategory: "speedlite",
     price: 45000,
-    image: "/Assets/1330619741000_847537_nobg.png",
+    image: "/assets/images/1330619741000_847537_nobg.png",
     description: "Professional radio transmission wireless flash with high guide number and weather-resistant construction.",
     features: [
       "Radio transmission wireless.",
@@ -299,7 +299,7 @@ module.exports = [
     category: "lighting",
     subCategory: "speedlite",
     price: 15000,
-    image: "/Assets/canon 2-1.1_nobg.png",
+    image: "/assets/images/canon 2-1.1_nobg.png",
     description: "Compact and lightweight speedlite with bounce flash capability.",
     features: [
       "Compact and lightweight design.",
@@ -314,7 +314,7 @@ module.exports = [
     category: "lighting",
     subCategory: "speedlite",
     price: 3500,
-    image: "/Assets/cannon 3-1_nobg.png",
+    image: "/assets/images/cannon 3-1_nobg.png",
     description: "Universal hot shoe compatible flash with built-in optical slave receiver.",
     features: [
       "Universal hot shoe compatibility.",
@@ -329,7 +329,7 @@ module.exports = [
     category: "lighting",
     subCategory: "ringlight",
     price: 2500,
-    image: "/Assets/canon4-1_nobg.png",
+    image: "/assets/images/canon4-1_nobg.png",
     description: "Dimmable bi-color LED ring light with adjustable color temperature and smartphone holder.",
     features: [
       "Dimmable bi-color LED.",
@@ -349,7 +349,7 @@ module.exports = [
     category: "gimbal",
     subCategory: "smartphone",
     price: 17999,
-    image: "/Assets/71.png",
+    image: "/assets/images/71.png",
     description: "Smartphone gimbal with touchscreen controls, ActiveTrack 6.0, and 38-hour battery runtime.",
     features: [
       "Touchscreen controls and ActiveTrack 6.0.",
@@ -364,7 +364,7 @@ module.exports = [
     category: "gimbal",
     subCategory: "smartphone",
     price: 19499,
-    image: "/Assets/7P1.png",
+    image: "/assets/images/7P1.png",
     description: "Premium smartphone gimbal with magnetic clamp for quick mounting and DJI Mimo creative modes.",
     features: [
       "Magnetic clamp for quick mounting.",
@@ -379,7 +379,7 @@ module.exports = [
     category: "gimbal",
     subCategory: "smartphone",
     price: 14999,
-    image: "/Assets/61.png",
+    image: "/assets/images/61.png",
     description: "Compact travel-ready gimbal with built-in extension rod and intelligent shot modes.",
     features: [
       "Built-in extension rod.",
@@ -394,7 +394,7 @@ module.exports = [
     category: "gimbal",
     subCategory: "smartphone",
     price: 11999,
-    image: "/Assets/51.png",
+    image: "/assets/images/51.png",
     description: "Lightweight and portable gimbal with selfie extension rod, ActiveTrack 4.0 and gesture control.",
     features: [
       "Selfie extension rod included.",
@@ -409,7 +409,7 @@ module.exports = [
     category: "gimbal",
     subCategory: "camera",
     price: 34999,
-    image: "/Assets/DJI Ronin-S1.png",
+    image: "/assets/images/DJI Ronin-S1.png",
     description: "Professional camera gimbal supporting DSLR and mirrorless cameras up to 3.6 kg payload.",
     features: [
       "DSLR and mirrorless stabilization.",
@@ -429,7 +429,7 @@ module.exports = [
     category: "bag",
     subCategory: "backpack",
     price: 3499,
-    image: "/Assets/professional-dslr-camera-accessories-carry-polyester-bag-132_nobg.png",
+    image: "/assets/images/professional-dslr-camera-accessories-carry-polyester-bag-132_nobg.png",
     description: "Padded backpack with modular dividers, fits camera body with multiple lenses and accessories.",
     features: [
       "Padded orange interior with modular dividers.",
@@ -444,7 +444,7 @@ module.exports = [
     category: "bag",
     subCategory: "carry-case",
     price: 2299,
-    image: "/Assets/Nikon Camera bag 4-550x550_nobg.png",
+    image: "/assets/images/Nikon Camera bag 4-550x550_nobg.png",
     description: "Compact shoulder carry case with quick-access top lid and soft interior protection.",
     features: [
       "Compact shoulder carry with quick-access top lid.",
@@ -459,7 +459,7 @@ module.exports = [
     category: "bag",
     subCategory: "backpack",
     price: 5999,
-    image: "/Assets/Sony-DSLR-Camera-Backpack-15\u2033-LCSBP3A_nobg.png",
+    image: "/assets/images/Sony-DSLR-Camera-Backpack-15\u2033-LCSBP3A_nobg.png",
     description: "Dedicated DSLR backpack with smart storage layout and strong outer shell.",
     features: [
       "Dedicated DSLR backpack with smart storage layout.",
@@ -474,7 +474,7 @@ module.exports = [
     category: "bag",
     subCategory: "pro-backpack",
     price: 7899,
-    image: "/Assets/mobius-trend-setter-pro-dslr-backpack-product-images-orvuy62gzuj-p592544864-4-202207131048.jpg_nobg.png",
+    image: "/assets/images/mobius-trend-setter-pro-dslr-backpack-product-images-orvuy62gzuj-p592544864-4-202207131048.jpg_nobg.png",
     description: "Professional divider system backpack for full kit organization with secure zip and buckle support.",
     features: [
       "Professional divider system for full kit organization.",

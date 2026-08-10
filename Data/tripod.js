@@ -4,11 +4,11 @@ module.exports = [
     "slug": "gitzo-video",
     "company": "Gitzo",
     "price": 22000,
-    "image": "/Assets/0017198_gitzo-gt5543ls-systematic-series-5-carbon-fiber-tripod_500_nobg.png",
+    "image": "/assets/images/0017198_gitzo-gt5543ls-systematic-series-5-carbon-fiber-tripod_500_nobg.png",
     "sliderImages": [
-      "/Assets/0017198_gitzo-gt5543ls-systematic-series-5-carbon-fiber-tripod_500_nobg.png",
-      "/Assets/Gitzo-GT3533LS-Systematic-Series-3-Carbon-Fiber-Tripod-2_nobg.png",
-      "/Assets/GTZ-GT3543LS-GHFG1_nobg.png"
+      "/assets/images/0017198_gitzo-gt5543ls-systematic-series-5-carbon-fiber-tripod_500_nobg.png",
+      "/assets/images/Gitzo-GT3533LS-Systematic-Series-3-Carbon-Fiber-Tripod-2_nobg.png",
+      "/assets/images/GTZ-GT3543LS-GHFG1_nobg.png"
     ],
     "description": "The Gitzo Systematic Video Tripod is built for videographers seeking rock-solid stability, excellent payload handling and smooth motion for cinematic results.",
     "features": [
@@ -49,29 +49,29 @@ module.exports = [
       {
         "title": "Video-Ready Stability",
         "description": "Designed to hold heavier video setups, this tripod delivers consistent stability for smooth tracking and timelapse work.",
-        "image": "/Assets/0017198_gitzo-gt5543ls-systematic-series-5-carbon-fiber-tripod_500_nobg.png"
+        "image": "/assets/images/0017198_gitzo-gt5543ls-systematic-series-5-carbon-fiber-tripod_500_nobg.png"
       },
       {
         "title": "Solid Support System",
         "description": "The tripod's reinforced legs and secure locking system keep the camera steady during motion-intensive shoots.",
-        "image": "/Assets/Gitzo-GT3533LS-Systematic-Series-3-Carbon-Fiber-Tripod-2_nobg.png"
+        "image": "/assets/images/Gitzo-GT3533LS-Systematic-Series-3-Carbon-Fiber-Tripod-2_nobg.png"
       },
       {
         "title": "Flexible Mounting",
         "description": "Compatible with fluid heads and modular camera rigs, it adapts to a wide range of professional video setups.",
-        "image": "/Assets/GTZ-GT3543LS-GHFG1_nobg.png"
+        "image": "/assets/images/GTZ-GT3543LS-GHFG1_nobg.png"
       }
     ],
     "designSections": [
       {
         "title": "Professional Rig Construction",
         "description": "Crafted for video professionals, the tripod balances weight and strength while maintaining a sturdy footprint.",
-        "image": "/Assets/0017198_gitzo-gt5543ls-systematic-series-5-carbon-fiber-tripod_500_nobg.png"
+        "image": "/assets/images/0017198_gitzo-gt5543ls-systematic-series-5-carbon-fiber-tripod_500_nobg.png"
       },
       {
         "title": "Sturdy Footprint",
         "description": "Its wide stance and strong leg locks provide a dependable base for heavier video cameras and gimbals.",
-        "image": "/Assets/Gitzo-GT3533LS-Systematic-Series-3-Carbon-Fiber-Tripod-2_nobg.png"
+        "image": "/assets/images/Gitzo-GT3533LS-Systematic-Series-3-Carbon-Fiber-Tripod-2_nobg.png"
       }
     ],
     "connectivity": [
@@ -101,11 +101,11 @@ module.exports = [
     "slug": "manfrotto-504hd",
     "company": "Manfrotto",
     "price": 35000,
-    "image": "/Assets/MVK504TWINMC.jpg_nobg.png",
+    "image": "/assets/images/MVK504TWINMC.jpg_nobg.png",
     "sliderImages": [
-      "/Assets/MVK504TWINMC.jpg_nobg.png",
-      "/Assets/Manfrotto_Manfrotto_504HD_Video_Fluid_1285005659_735037_nobg.png",
-      "/Assets/manfrotto-504hd-head-w546gb-2-stage-aluminum-tripod-system-qatar4cam-2_nobg.png"
+      "/assets/images/MVK504TWINMC.jpg_nobg.png",
+      "/assets/images/Manfrotto_Manfrotto_504HD_Video_Fluid_1285005659_735037_nobg.png",
+      "/assets/images/manfrotto-504hd-head-w546gb-2-stage-aluminum-tripod-system-qatar4cam-2_nobg.png"
     ],
     "description": "The Manfrotto 504HD Video Head with Tripod provides professional video stabilization with smooth pan and tilt motion for filmmakers and video creators.",
     "features": [
@@ -146,29 +146,29 @@ module.exports = [
       {
         "title": "Professional Video Performance",
         "description": "Designed for filmmakers, the tripod offers a fluid head that delivers smooth movement and stable support.",
-        "image": "/Assets/MVK504TWINMC.jpg_nobg.png"
+        "image": "/assets/images/MVK504TWINMC.jpg_nobg.png"
       },
       {
         "title": "Heavy-Duty Support",
         "description": "The system is engineered to handle larger camera rigs while maintaining precise balance and control.",
-        "image": "/Assets/Manfrotto_Manfrotto_504HD_Video_Fluid_1285005659_735037_nobg.png"
+        "image": "/assets/images/Manfrotto_Manfrotto_504HD_Video_Fluid_1285005659_735037_nobg.png"
       },
       {
         "title": "Balanced Motion",
         "description": "Fluid drag control ensures smooth tilts and pans, making your footage appear professional and steady.",
-        "image": "/Assets/manfrotto-504hd-head-w546gb-2-stage-aluminum-tripod-system-qatar4cam-2_nobg.png"
+        "image": "/assets/images/manfrotto-504hd-head-w546gb-2-stage-aluminum-tripod-system-qatar4cam-2_nobg.png"
       }
     ],
     "designSections": [
       {
         "title": "Robust, Professional Build",
         "description": "A rugged frame and premium materials give this tripod durability for long shooting days and heavy gear.",
-        "image": "/Assets/MVK504TWINMC.jpg_nobg.png"
+        "image": "/assets/images/MVK504TWINMC.jpg_nobg.png"
       },
       {
         "title": "Precision Adjustment",
         "description": "Experience controlled movement and fast adjustments with dedicated pan and tilt drag settings.",
-        "image": "/Assets/Manfrotto_Manfrotto_504HD_Video_Fluid_1285005659_735037_nobg.png"
+        "image": "/assets/images/Manfrotto_Manfrotto_504HD_Video_Fluid_1285005659_735037_nobg.png"
       }
     ],
     "connectivity": [
@@ -198,11 +198,11 @@ module.exports = [
     "slug": "manfrotto-befree",
     "company": "Manfrotto",
     "price": 15000,
-    "image": "/Assets/Manfrotto-Befree-Advanced-Designed-for-α-Cameras-from-Sony-MKBFRLA-BH-1-485x485_nobg.png",
+    "image": "/assets/images/Manfrotto-Befree-Advanced-Designed-for-α-Cameras-from-Sony-MKBFRLA-BH-1-485x485_nobg.png",
     "sliderImages": [
-      "/Assets/Manfrotto-Befree-Advanced-Designed-for-α-Cameras-from-Sony-MKBFRLA-BH-1-485x485_nobg.png",
-      "/Assets/professional_photo_tripod_befree-2.0_mvkbfrtc-live_sidehead-800x800.jpg_nobg.png",
-      "/Assets/manfrotto-504hd-head-w546gb-2-stage-aluminum-tripod-system-qatar4cam-2_nobg.png"
+      "/assets/images/Manfrotto-Befree-Advanced-Designed-for-α-Cameras-from-Sony-MKBFRLA-BH-1-485x485_nobg.png",
+      "/assets/images/professional_photo_tripod_befree-2.0_mvkbfrtc-live_sidehead-800x800.jpg_nobg.png",
+      "/assets/images/manfrotto-504hd-head-w546gb-2-stage-aluminum-tripod-system-qatar4cam-2_nobg.png"
     ],
     "description": "The Manfrotto Befree Advanced Tripod is designed for travel photographers who demand portability without compromise. It delivers sturdy support, smooth setup, and a compact form factor that fits into most camera bags.",
     "features": [
@@ -243,29 +243,29 @@ module.exports = [
       {
         "title": "Travel-Friendly Design",
         "description": "The compact folding design makes it easy to carry, even on long journeys. The tripod fits comfortably into backpacks and travel cases.",
-        "image": "/Assets/Manfrotto-Befree-Advanced-Designed-for-α-Cameras-from-Sony-MKBFRLA-BH-1-485x485_nobg.png"
+        "image": "/assets/images/Manfrotto-Befree-Advanced-Designed-for-α-Cameras-from-Sony-MKBFRLA-BH-1-485x485_nobg.png"
       },
       {
         "title": "Solid Stability",
         "description": "Secured by strong leg locks and rubber feet, the tripod offers stable support on a wide range of surfaces. It resists vibration during long exposures and video recording.",
-        "image": "/Assets/professional_photo_tripod_befree-2.0_mvkbfrtc-live_sidehead-800x800.jpg_nobg.png"
+        "image": "/assets/images/professional_photo_tripod_befree-2.0_mvkbfrtc-live_sidehead-800x800.jpg_nobg.png"
       },
       {
         "title": "Versatile Adjustment",
         "description": "The removable center column and adjustable leg angles provide flexible shooting options from low-angle ground shots to elevated perspectives.",
-        "image": "/Assets/manfrotto-504hd-head-w546gb-2-stage-aluminum-tripod-system-qatar4cam-2_nobg.png"
+        "image": "/assets/images/manfrotto-504hd-head-w546gb-2-stage-aluminum-tripod-system-qatar4cam-2_nobg.png"
       }
     ],
     "designSections": [
       {
         "title": "Durable, Lightweight Build",
         "description": "Built from high-quality aluminum, the tripod balances durability with portability, making it ideal for daily use.",
-        "image": "/Assets/Manfrotto-Befree-Advanced-Designed-for-α-Cameras-from-Sony-MKBFRLA-BH-1-485x485_nobg.png"
+        "image": "/assets/images/Manfrotto-Befree-Advanced-Designed-for-α-Cameras-from-Sony-MKBFRLA-BH-1-485x485_nobg.png"
       },
       {
         "title": "Smart Folding Mechanism",
         "description": "The legs fold neatly around the head to create a compact package that slips into luggage, city bags, and shoulder cases.",
-        "image": "/Assets/professional_photo_tripod_befree-2.0_mvkbfrtc-live_sidehead-800x800.jpg_nobg.png"
+        "image": "/assets/images/professional_photo_tripod_befree-2.0_mvkbfrtc-live_sidehead-800x800.jpg_nobg.png"
       }
     ],
     "connectivity": [
@@ -295,11 +295,11 @@ module.exports = [
     "slug": "mefoto-mini",
     "company": "MeFOTO",
     "price": 3500,
-    "image": "/Assets/MeFOTO-DayTrip-Compact-Tripod-Hot-Purple-Product-Photo-1_1024x.jpg_nobg.png",
+    "image": "/assets/images/MeFOTO-DayTrip-Compact-Tripod-Hot-Purple-Product-Photo-1_1024x.jpg_nobg.png",
     "sliderImages": [
-      "/Assets/MeFOTO-DayTrip-Compact-Tripod-Hot-Purple-Product-Photo-1_1024x.jpg_nobg.png",
-      "/Assets/27004489.png_nobg.png",
-      "/Assets/w8gi40jmjwqq3tk1wkti_500x.jpg_nobg.png"
+      "/assets/images/MeFOTO-DayTrip-Compact-Tripod-Hot-Purple-Product-Photo-1_1024x.jpg_nobg.png",
+      "/assets/images/27004489.png_nobg.png",
+      "/assets/images/w8gi40jmjwqq3tk1wkti_500x.jpg_nobg.png"
     ],
     "description": "The MeFOTO Global Mini Tripod is a compact tabletop solution perfect for vlogging, product photography, and lightweight cameras. It offers solid support in a pocket-sized package.",
     "features": [
@@ -340,29 +340,29 @@ module.exports = [
       {
         "title": "Tabletop Convenience",
         "description": "The compact design is ideal for desktop and product shoots, giving you stability in small spaces.",
-        "image": "/Assets/MeFOTO-DayTrip-Compact-Tripod-Hot-Purple-Product-Photo-1_1024x.jpg_nobg.png"
+        "image": "/assets/images/MeFOTO-DayTrip-Compact-Tripod-Hot-Purple-Product-Photo-1_1024x.jpg_nobg.png"
       },
       {
         "title": "Flexible Mounting",
         "description": "Attach cameras, phones, or action cams with ease using the universal mounting system.",
-        "image": "/Assets/27004489.png_nobg.png"
+        "image": "/assets/images/27004489.png_nobg.png"
       },
       {
         "title": "Travel-Ready",
         "description": "Small enough to carry in a backpack or camera bag, this tripod is perfect for quick setup anywhere.",
-        "image": "/Assets/w8gi40jmjwqq3tk1wkti_500x.jpg_nobg.png"
+        "image": "/assets/images/w8gi40jmjwqq3tk1wkti_500x.jpg_nobg.png"
       }
     ],
     "designSections": [
       {
         "title": "Compact and Functional",
         "description": "With a tiny footprint, the tripod remains practical for desk work, vlogging, and small product shots.",
-        "image": "/Assets/MeFOTO-DayTrip-Compact-Tripod-Hot-Purple-Product-Photo-1_1024x.jpg_nobg.png"
+        "image": "/assets/images/MeFOTO-DayTrip-Compact-Tripod-Hot-Purple-Product-Photo-1_1024x.jpg_nobg.png"
       },
       {
         "title": "Simple Setup",
         "description": "The design is intuitive with no complicated adjustments required, making it beginner-friendly.",
-        "image": "/Assets/27004489.png_nobg.png"
+        "image": "/assets/images/27004489.png_nobg.png"
       }
     ],
     "connectivity": [
@@ -392,11 +392,11 @@ module.exports = [
     "slug": "peakdesign-travel",
     "company": "Peak",
     "price": 6500,
-    "image": "/Assets/0018825_peak-design-carbon-fiber-travel-tripod_500_nobg.png",
+    "image": "/assets/images/0018825_peak-design-carbon-fiber-travel-tripod_500_nobg.png",
     "sliderImages": [
-      "/Assets/0018825_peak-design-carbon-fiber-travel-tripod_500_nobg.png",
-      "/Assets/3d98d0321e01477885f6d9b01a03b0a0-product-assets_nobg.png",
-      "/Assets/8b0a48ccbaaf469089c8d6a69e66d37a-product-featured-lg_nobg.png"
+      "/assets/images/0018825_peak-design-carbon-fiber-travel-tripod_500_nobg.png",
+      "/assets/images/3d98d0321e01477885f6d9b01a03b0a0-product-assets_nobg.png",
+      "/assets/images/8b0a48ccbaaf469089c8d6a69e66d37a-product-featured-lg_nobg.png"
     ],
     "description": "The Peak Design Travel Tripod is engineered for photographers on the move, offering a near-perfect balance of compactness, strength, and intuitive setup.",
     "features": [
@@ -437,29 +437,29 @@ module.exports = [
       {
         "title": "Ultra-Compact Storage",
         "description": "When folded, the tripod stays compact enough to fit into small backpacks and carry-ons, ideal for travel photography.",
-        "image": "/Assets/0018825_peak-design-carbon-fiber-travel-tripod_500_nobg.png"
+        "image": "/assets/images/0018825_peak-design-carbon-fiber-travel-tripod_500_nobg.png"
       },
       {
         "title": "Strong Performance",
         "description": "It supports heavier setups while keeping vibration and wobble under control for sharp results.",
-        "image": "/Assets/3d98d0321e01477885f6d9b01a03b0a0-product-assets_nobg.png"
+        "image": "/assets/images/3d98d0321e01477885f6d9b01a03b0a0-product-assets_nobg.png"
       },
       {
         "title": "Workhorse Mechanics",
         "description": "Precise leg locks and smooth adjustment points make it easy to dial in the exact height and stance you need.",
-        "image": "/Assets/8b0a48ccbaaf469089c8d6a69e66d37a-product-featured-lg_nobg.png"
+        "image": "/assets/images/8b0a48ccbaaf469089c8d6a69e66d37a-product-featured-lg_nobg.png"
       }
     ],
     "designSections": [
       {
         "title": "Compact and Rugged",
         "description": "Built for photographers who travel, the tripod blends compact dimensions with rugged build quality.",
-        "image": "/Assets/0018825_peak-design-carbon-fiber-travel-tripod_500_nobg.png"
+        "image": "/assets/images/0018825_peak-design-carbon-fiber-travel-tripod_500_nobg.png"
       },
       {
         "title": "Refined Usability",
         "description": "The user-friendly design puts quick deployment and secure locking front and center.",
-        "image": "/Assets/3d98d0321e01477885f6d9b01a03b0a0-product-assets_nobg.png"
+        "image": "/assets/images/3d98d0321e01477885f6d9b01a03b0a0-product-assets_nobg.png"
       }
     ],
     "connectivity": [
@@ -489,11 +489,11 @@ module.exports = [
     "slug": "sirui-traveler",
     "company": "Sirui",
     "price": 8500,
-    "image": "/Assets/Sirui-7C-Carbon-Fiber-Tripod-Online-Buy-India_1.jpg_nobg.png",
+    "image": "/assets/images/Sirui-7C-Carbon-Fiber-Tripod-Online-Buy-India_1.jpg_nobg.png",
     "sliderImages": [
-      "/Assets/Sirui-7C-Carbon-Fiber-Tripod-Online-Buy-India_1.jpg_nobg.png",
-      "/Assets/sirui-compact-traveler-5a-tripod-54-3-inches-lightweight-aluminum-travel-tripod-500x500.jpg_nobg.png",
-      "/Assets/61GE58lCHEL_nobg.png"
+      "/assets/images/Sirui-7C-Carbon-Fiber-Tripod-Online-Buy-India_1.jpg_nobg.png",
+      "/assets/images/sirui-compact-traveler-5a-tripod-54-3-inches-lightweight-aluminum-travel-tripod-500x500.jpg_nobg.png",
+      "/assets/images/61GE58lCHEL_nobg.png"
     ],
     "description": "The Sirui Traveler Portable Tripod is engineered for photographers who need a compact, lightweight support system without sacrificing performance. It's ideal for adventure shoots and everyday use.",
     "features": [
@@ -534,29 +534,29 @@ module.exports = [
       {
         "title": "Featherweight Travel Setup",
         "description": "Weighing in under 1.4 kg, this tripod is perfect for photographers who need fast mobility and reliable support in the field.",
-        "image": "/Assets/Sirui-7C-Carbon-Fiber-Tripod-Online-Buy-India_1.jpg_nobg.png"
+        "image": "/assets/images/Sirui-7C-Carbon-Fiber-Tripod-Online-Buy-India_1.jpg_nobg.png"
       },
       {
         "title": "Rapid Leg Adjustment",
         "description": "Quick-release twist locks allow you to set up and break down the tripod in seconds, saving time while on location.",
-        "image": "/Assets/sirui-compact-traveler-5a-tripod-54-3-inches-lightweight-aluminum-travel-tripod-500x500.jpg_nobg.png"
+        "image": "/assets/images/sirui-compact-traveler-5a-tripod-54-3-inches-lightweight-aluminum-travel-tripod-500x500.jpg_nobg.png"
       },
       {
         "title": "High-Strength Stability",
         "description": "Despite the lightweight design, the tripod offers dependable stability for crisp, shake-free shots.",
-        "image": "/Assets/61GE58lCHEL_nobg.png"
+        "image": "/assets/images/61GE58lCHEL_nobg.png"
       }
     ],
     "designSections": [
       {
         "title": "Minimalist, Tactical Look",
         "description": "The sleek carbon fiber finish is built for durability, while the compact form keeps the tripod elegant and easy to carry.",
-        "image": "/Assets/Sirui-7C-Carbon-Fiber-Tripod-Online-Buy-India_1.jpg_nobg.png"
+        "image": "/assets/images/Sirui-7C-Carbon-Fiber-Tripod-Online-Buy-India_1.jpg_nobg.png"
       },
       {
         "title": "Compact Folding System",
         "description": "The traveler legs fold into a tight profile and lock securely in place, making the tripod easy to stow in your gear bag.",
-        "image": "/Assets/sirui-compact-traveler-5a-tripod-54-3-inches-lightweight-aluminum-travel-tripod-500x500.jpg_nobg.png"
+        "image": "/assets/images/sirui-compact-traveler-5a-tripod-54-3-inches-lightweight-aluminum-travel-tripod-500x500.jpg_nobg.png"
       }
     ],
     "connectivity": [

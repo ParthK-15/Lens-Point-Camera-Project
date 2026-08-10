@@ -4,13 +4,13 @@ module.exports = [
     "slug": "canon-ef-s-18-135mm-lens",
     "company": "Canon",
     "price": 32995,
-    "image": "/Assets/canon ef-s 1.png",
+    "image": "/assets/images/canon ef-s 1.png",
     "sliderImages": [
-      "/Assets/canon ef-s 1.png",
-      "/Assets/canon ef-s 2.png",
-      "/Assets/canon ef-s 3.png",
-      "/Assets/canon ef-s 4.png",
-      "/Assets/canon ef-s 5.png"
+      "/assets/images/canon ef-s 1.png",
+      "/assets/images/canon ef-s 2.png",
+      "/assets/images/canon ef-s 3.png",
+      "/assets/images/canon ef-s 4.png",
+      "/assets/images/canon ef-s 5.png"
     ],
     "description": "A versatile all-in-one zoom lens ideal for travel, portraits, and everyday photography with smooth autofocus and image stabilization.",
     "features": [
@@ -51,29 +51,29 @@ module.exports = [
       {
         "title": "Versatile Zoom",
         "description": "The 18–135mm zoom range allows you to capture wide-angle to telephoto shots with ease.",
-        "image": "/Assets/canon ef-s 1.png"
+        "image": "/assets/images/canon ef-s 1.png"
       },
       {
         "title": "Image Stabilization",
         "description": "Built-in stabilization reduces blur and helps produce sharper images in low-light conditions.",
-        "image": "/Assets/canon ef-s 2.png"
+        "image": "/assets/images/canon ef-s 2.png"
       },
       {
         "title": "STM Autofocus",
         "description": "STM motor provides smooth and quiet autofocus for both photography and video.",
-        "image": "/Assets/canon ef-s 3.png"
+        "image": "/assets/images/canon ef-s 3.png"
       }
     ],
     "designSections": [
       {
         "title": "Versatile Build",
         "description": "Designed for multiple shooting scenarios, this lens adapts easily from wide-angle to telephoto use, enhancing overall shooting convenience.",
-        "image": "/Assets/canon ef-s 4.png"
+        "image": "/assets/images/canon ef-s 4.png"
       },
       {
         "title": "Ergonomic Handling",
         "description": "Designed for comfortable use, the lens provides a secure grip and smooth zoom control, allowing easy operation during extended shooting sessions.",
-        "image": "/Assets/canon ef-s 5.png"
+        "image": "/assets/images/canon ef-s 5.png"
       }
     ],
     "connectivity": [
@@ -99,13 +99,13 @@ module.exports = [
     "slug": "canon-100-2-8",
     "company": "Canon",
     "price": 49999,
-    "image": "/Assets/cannon 100mm2-81 (1).png",
+    "image": "/assets/images/cannon 100mm2-81 (1).png",
     "sliderImages": [
-      "/Assets/cannon 100mm2-81 (1).png",
-      "/Assets/cannon 100mm2-81 (2).png",
-      "/Assets/cannon 100mm2-81 (3).png",
-      "/Assets/cannon 100mm2-81 (4).png",
-      "/Assets/cannon 100mm2-81 (5).png"
+      "/assets/images/cannon 100mm2-81 (1).png",
+      "/assets/images/cannon 100mm2-81 (2).png",
+      "/assets/images/cannon 100mm2-81 (3).png",
+      "/assets/images/cannon 100mm2-81 (4).png",
+      "/assets/images/cannon 100mm2-81 (5).png"
     ],
     "description": "A high-performance macro lens designed for close-up photography with exceptional detail and sharpness.",
     "features": [
@@ -141,29 +141,29 @@ module.exports = [
       {
         "title": "Macro Capability",
         "description": "Capture tiny subjects with life-size magnification and incredible detail.",
-        "image": "/Assets/cannon 100mm2-81 (2).png"
+        "image": "/assets/images/cannon 100mm2-81 (2).png"
       },
       {
         "title": "Sharp Optics",
         "description": "Delivers excellent clarity and sharpness across the frame.",
-        "image": "/Assets/cannon 100mm2-81 (3).png"
+        "image": "/assets/images/cannon 100mm2-81 (3).png"
       },
       {
         "title": "USM Autofocus",
         "description": "Fast and quiet autofocus for precise subject capture.",
-        "image": "/Assets/cannon 100mm2-81 (4).png"
+        "image": "/assets/images/cannon 100mm2-81 (4).png"
       }
     ],
     "designSections": [
       {
         "title": "Compact Build",
         "description": "Lightweight and easy to carry for everyday use.",
-        "image": "/Assets/cannon 100mm2-81 (5).png"
+        "image": "/assets/images/cannon 100mm2-81 (5).png"
       },
       {
         "title": "Durable Construction",
         "description": "Built with high-quality materials for long-term reliability.",
-        "image": "/Assets/cannon 100mm2-81 (2).png"
+        "image": "/assets/images/cannon 100mm2-81 (2).png"
       }
     ],
     "connectivity": [
@@ -189,13 +189,13 @@ module.exports = [
     "slug": "canon-100-400",
     "company": "Canon",
     "price": 189999,
-    "image": "/Assets/canon 100-4001.png",
+    "image": "/assets/images/canon 100-4001.png",
     "sliderImages": [
-      "/Assets/canon 100-4001.png",
-      "/Assets/canon 100-4002.png",
-      "/Assets/canon 100-4003.png",
-      "/Assets/canon 100-4004.png",
-      "/Assets/canon 100-4005.png"
+      "/assets/images/canon 100-4001.png",
+      "/assets/images/canon 100-4002.png",
+      "/assets/images/canon 100-4003.png",
+      "/assets/images/canon 100-4004.png",
+      "/assets/images/canon 100-4005.png"
     ],
     "description": "A premium L-series super-telephoto lens designed for wildlife, sports, and long-distance photography with exceptional clarity.",
     "features": [
@@ -236,29 +236,29 @@ module.exports = [
       {
         "title": "Super Telephoto Zoom",
         "description": "The 100–400mm range allows capturing distant subjects with incredible detail.",
-        "image": "/Assets/canon 100-4001.png"
+        "image": "/assets/images/canon 100-4001.png"
       },
       {
         "title": "Image Stabilization",
         "description": "Advanced stabilization reduces camera shake for sharper handheld shots.",
-        "image": "/Assets/canon 100-4002.png"
+        "image": "/assets/images/canon 100-4002.png"
       },
       {
         "title": "USM Autofocus",
         "description": "Fast and precise autofocus ensures accurate subject tracking.",
-        "image": "/Assets/canon 100-4003.png"
+        "image": "/assets/images/canon 100-4003.png"
       }
     ],
     "designSections": [
       {
         "title": "Professional Build",
         "description": "L-series construction ensures durability and reliability in demanding environments.",
-        "image": "/Assets/canon 100-4004.png"
+        "image": "/assets/images/canon 100-4004.png"
       },
       {
         "title": "Weather Sealing",
         "description": "Dust and moisture resistance make it ideal for outdoor photography.",
-        "image": "/Assets/canon 100-4005.png"
+        "image": "/assets/images/canon 100-4005.png"
       }
     ],
     "connectivity": [
@@ -284,13 +284,13 @@ module.exports = [
     "slug": "canon-24-105",
     "company": "Canon",
     "price": 89995,
-    "image": "/Assets/Canon EF 24-105mm f4L IS II51.png",
+    "image": "/assets/images/Canon EF 24-105mm f4L IS II51.png",
     "sliderImages": [
-      "/Assets/Canon EF 24-105mm f4L IS II51.png",
-      "/Assets/Canon EF 24-105mm f4L IS II52.png",
-      "/Assets/Canon EF 24-105mm f4L IS II53.png",
-      "/Assets/Canon EF 24-105mm f4L IS II54.png",
-      "/Assets/Canon EF 24-105mm f4L IS II55.png"
+      "/assets/images/Canon EF 24-105mm f4L IS II51.png",
+      "/assets/images/Canon EF 24-105mm f4L IS II52.png",
+      "/assets/images/Canon EF 24-105mm f4L IS II53.png",
+      "/assets/images/Canon EF 24-105mm f4L IS II54.png",
+      "/assets/images/Canon EF 24-105mm f4L IS II55.png"
     ],
     "description": "A professional L-series zoom lens with constant f/4 aperture, delivering excellent image quality and versatile performance.",
     "features": [
@@ -331,29 +331,29 @@ module.exports = [
       {
         "title": "Versatile Zoom",
         "description": "The 24–105mm zoom range allows you to capture wide-angle to telephoto shots with ease.",
-        "image": "/Assets/Canon EF 24-105mm f4L IS II52.png"
+        "image": "/assets/images/Canon EF 24-105mm f4L IS II52.png"
       },
       {
         "title": "Image Stabilization",
         "description": "Advanced stabilization reduces blur and ensures sharper images in low light.",
-        "image": "/Assets/Canon EF 24-105mm f4L IS II53.png"
+        "image": "/assets/images/Canon EF 24-105mm f4L IS II53.png"
       },
       {
         "title": "USM Autofocus",
         "description": "USM motor provides fast, accurate, and silent autofocus performance.",
-        "image": "/Assets/Canon EF 24-105mm f4L IS II54.png"
+        "image": "/assets/images/Canon EF 24-105mm f4L IS II54.png"
       }
     ],
     "designSections": [
       {
         "title": "Professional Build",
         "description": "L-series construction ensures durability and reliability in demanding conditions.",
-        "image": "/Assets/Canon EF 24-105mm f4L IS II55.png"
+        "image": "/assets/images/Canon EF 24-105mm f4L IS II55.png"
       },
       {
         "title": "Ergonomic Handling",
         "description": "Smooth zoom and focus rings provide precise control and comfortable handling.",
-        "image": "/Assets/Canon EF 24-105mm f4L IS II51.png"
+        "image": "/assets/images/Canon EF 24-105mm f4L IS II51.png"
       }
     ],
     "connectivity": [
@@ -379,13 +379,13 @@ module.exports = [
     "slug": "canon-50-18",
     "company": "Canon",
     "price": 9999,
-    "image": "/Assets/canon50-18-1.png",
+    "image": "/assets/images/canon50-18-1.png",
     "sliderImages": [
-      "/Assets/canon50-18-1.png",
-      "/Assets/canon50-18-2.png",
-      "/Assets/canon50-18-3.png",
-      "/Assets/canon50-18-4.png",
-      "/Assets/canon50-18-5.png"
+      "/assets/images/canon50-18-1.png",
+      "/assets/images/canon50-18-2.png",
+      "/assets/images/canon50-18-3.png",
+      "/assets/images/canon50-18-4.png",
+      "/assets/images/canon50-18-5.png"
     ],
     "description": "A compact prime lens known for its sharp image quality and beautiful background blur, perfect for portraits.",
     "features": [
@@ -421,29 +421,29 @@ module.exports = [
       {
         "title": "Wide Aperture",
         "description": "The f/1.8 aperture allows excellent low-light performance and shallow depth of field.",
-        "image": "/Assets/canon50-18-2.png"
+        "image": "/assets/images/canon50-18-2.png"
       },
       {
         "title": "Sharp Optics",
         "description": "Produces crisp and detailed images with natural colors.",
-        "image": "/Assets/canon50-18-3.png"
+        "image": "/assets/images/canon50-18-3.png"
       },
       {
         "title": "STM Autofocus",
         "description": "Smooth and quiet focusing ideal for both photos and video.",
-        "image": "/Assets/canon50-18-4.png"
+        "image": "/assets/images/canon50-18-4.png"
       }
     ],
     "designSections": [
       {
         "title": "Compact Build",
         "description": "Lightweight and portable, perfect for everyday use.",
-        "image": "/Assets/canon50-18-5.png"
+        "image": "/assets/images/canon50-18-5.png"
       },
       {
         "title": "Durable Design",
         "description": "Built with quality materials for reliable performance.",
-        "image": "/Assets/canon50-18-1.png"
+        "image": "/assets/images/canon50-18-1.png"
       }
     ],
     "connectivity": [
@@ -481,13 +481,13 @@ module.exports = [
     "slug": "canon-55-250",
     "company": "Canon",
     "price": 18999,
-    "image": "/Assets/cannon 55 2502.png",
+    "image": "/assets/images/cannon 55 2502.png",
     "sliderImages": [
-      "/Assets/cannon 55 2502.png",
-      "/Assets/cannon 55 2504.png",
-      "/Assets/cannon 55 2503.png",
-      "/Assets/cannon 55 2505.png",
-      "/Assets/cannon 55 2502.png"
+      "/assets/images/cannon 55 2502.png",
+      "/assets/images/cannon 55 2504.png",
+      "/assets/images/cannon 55 2503.png",
+      "/assets/images/cannon 55 2505.png",
+      "/assets/images/cannon 55 2502.png"
     ],
     "description": "A lightweight telephoto zoom lens designed for capturing distant subjects with sharpness and smooth stabilization.",
     "features": [
@@ -528,29 +528,29 @@ module.exports = [
       {
         "title": "Telephoto Zoom",
         "description": "The 55–250mm range allows you to capture distant subjects with clarity.",
-        "image": "/Assets/cannon 55 2501.png"
+        "image": "/assets/images/cannon 55 2501.png"
       },
       {
         "title": "Image Stabilization",
         "description": "Reduces blur and improves sharpness during handheld shooting.",
-        "image": "/Assets/cannon 55 2503.png"
+        "image": "/assets/images/cannon 55 2503.png"
       },
       {
         "title": "STM Autofocus",
         "description": "Provides smooth and quiet focusing for photos and videos.",
-        "image": "/Assets/cannon 55 2504.png"
+        "image": "/assets/images/cannon 55 2504.png"
       }
     ],
     "designSections": [
       {
         "title": "Compact Build",
         "description": "Lightweight design makes it easy to carry for travel and outdoor photography.",
-        "image": "/Assets/cannon 55 2505.png"
+        "image": "/assets/images/cannon 55 2505.png"
       },
       {
         "title": "Durable Construction",
         "description": "Built with quality materials to ensure long-lasting performance.",
-        "image": "/Assets/cannon 55 2501.png"
+        "image": "/assets/images/cannon 55 2501.png"
       }
     ],
     "connectivity": [
@@ -576,13 +576,13 @@ module.exports = [
     "slug": "canon-70-200",
     "company": "Canon",
     "price": 209999,
-    "image": "/Assets/canon70-200-1.png",
+    "image": "/assets/images/canon70-200-1.png",
     "sliderImages": [
-      "/Assets/canon70-200-1.png",
-      "/Assets/canon70-200-2.png",
-      "/Assets/canon70-200-3.png",
-      "/Assets/canon70-200-4.png",
-      "/Assets/canon70-200-5.png"
+      "/assets/images/canon70-200-1.png",
+      "/assets/images/canon70-200-2.png",
+      "/assets/images/canon70-200-3.png",
+      "/assets/images/canon70-200-4.png",
+      "/assets/images/canon70-200-5.png"
     ],
     "description": "A professional telephoto zoom lens with constant f/2.8 aperture, ideal for sports, wildlife, and portrait photography.",
     "features": [
@@ -618,29 +618,29 @@ module.exports = [
       {
         "title": "Telephoto Zoom",
         "description": "Capture distant subjects with stunning clarity and detail.",
-        "image": "/Assets/canon70-200-2.png"
+        "image": "/assets/images/canon70-200-2.png"
       },
       {
         "title": "Image Stabilization",
         "description": "Reduces blur and ensures sharp handheld shots.",
-        "image": "/Assets/canon70-200-3.png"
+        "image": "/assets/images/canon70-200-3.png"
       },
       {
         "title": "Fast Autofocus",
         "description": "USM motor delivers quick and silent focusing.",
-        "image": "/Assets/canon70-200-3.png"
+        "image": "/assets/images/canon70-200-3.png"
       }
     ],
     "designSections": [
       {
         "title": "Professional Build",
         "description": "Durable L-series construction for demanding environments.",
-        "image": "/Assets/canon70-200-4.png"
+        "image": "/assets/images/canon70-200-4.png"
       },
       {
         "title": "Weather Sealing",
         "description": "Resistant to dust and moisture for outdoor use.",
-        "image": "/Assets/canon70-200-2.png"
+        "image": "/assets/images/canon70-200-2.png"
       }
     ],
     "connectivity": [
@@ -670,13 +670,13 @@ module.exports = [
     "slug": "canon-70-300",
     "company": "Canon",
     "price": 125999,
-    "image": "/Assets/canon70-300-2.png",
+    "image": "/assets/images/canon70-300-2.png",
     "sliderImages": [
-      "/Assets/canon70-300-1.png",
-      "/Assets/canon70-300-4.png",
-      "/Assets/canon70-300-3.png",
-      "/Assets/canon70-300-4.png",
-      "/Assets/canon70-300-2.png"
+      "/assets/images/canon70-300-1.png",
+      "/assets/images/canon70-300-4.png",
+      "/assets/images/canon70-300-3.png",
+      "/assets/images/canon70-300-4.png",
+      "/assets/images/canon70-300-2.png"
     ],
     "description": "A compact L-series telephoto zoom lens delivering excellent performance, portability, and image quality.",
     "features": [
@@ -712,29 +712,29 @@ module.exports = [
       {
         "title": "Telephoto Zoom",
         "description": "Capture distant subjects with clarity and flexibility.",
-        "image": "/Assets/canon70-300-4.png"
+        "image": "/assets/images/canon70-300-4.png"
       },
       {
         "title": "Image Stabilization",
         "description": "Reduces shake for sharper handheld shots.",
-        "image": "/Assets/canon70-300-3.png"
+        "image": "/assets/images/canon70-300-3.png"
       },
       {
         "title": "Fast Autofocus",
         "description": "USM ensures quick and accurate subject tracking.",
-        "image": "/Assets/canon70-300-4.png"
+        "image": "/assets/images/canon70-300-4.png"
       }
     ],
     "designSections": [
       {
         "title": "Compact Build",
         "description": "Portable and lightweight for everyday use.",
-        "image": "/Assets/canon70-300-3.png"
+        "image": "/assets/images/canon70-300-3.png"
       },
       {
         "title": "Weather Sealing",
         "description": "Designed to withstand dust and moisture.",
-        "image": "/Assets/canon70-300-2.png"
+        "image": "/assets/images/canon70-300-2.png"
       }
     ],
     "connectivity": [

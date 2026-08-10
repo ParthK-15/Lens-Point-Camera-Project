@@ -10,37 +10,39 @@ const User = require("../models/user");
 // GET /auth/login
 router.get("/login", (req, res) => {
   if (req.isAuthenticated()) {
-    return res.redirect("/");
+    return res.redirect(req.query.returnTo || "/");
   }
-  res.render("auth-login", {
-    error: null,
-    success: req.query.registered === "true" ? "Account created! Please sign in." : null,
-  });
+  const error = req.query.error || null;
+  const success = req.query.registered === "true" ? "Account created! Please sign in." : null;
+  const returnTo = req.query.returnTo || "";
+  res.render("auth/login", { error, success, returnTo });
 });
 
 // POST /auth/login
 router.post("/login", (req, res, next) => {
   const { email, password } = req.body;
+  const returnTo = req.query.returnTo || req.body.returnTo || "/";
 
   if (!email || !password) {
-    return res.render("auth-login", {
+    return res.render("auth/login", {
       error: "Please fill in all fields.",
       success: null,
+      returnTo,
     });
   }
 
   passport.authenticate("local", (err, user, info) => {
     if (err) return next(err);
     if (!user) {
-      return res.render("auth-login", {
+      return res.render("auth/login", {
         error: info ? info.message : "Invalid email or password.",
         success: null,
+        returnTo,
       });
     }
 
     req.logIn(user, (err) => {
       if (err) return next(err);
-      const returnTo = req.query.returnTo || "/";
       res.redirect(returnTo);
     });
   })(req, res, next);
@@ -55,7 +57,7 @@ router.get("/signup", (req, res) => {
   if (req.isAuthenticated()) {
     return res.redirect("/");
   }
-  res.render("auth-signup", { error: null });
+  res.render("auth/signup", { error: null });
 });
 
 // POST /auth/signup
@@ -64,19 +66,19 @@ router.post("/signup", async (req, res) => {
     const { name, email, password, confirmPassword } = req.body;
 
     if (!name || !email || !password || !confirmPassword) {
-      return res.render("auth-signup", {
+      return res.render("auth/signup", {
         error: "Please fill in all fields.",
       });
     }
 
     if (password.length < 6) {
-      return res.render("auth-signup", {
+      return res.render("auth/signup", {
         error: "Password must be at least 6 characters.",
       });
     }
 
     if (password !== confirmPassword) {
-      return res.render("auth-signup", {
+      return res.render("auth/signup", {
         error: "Passwords do not match.",
       });
     }
@@ -86,7 +88,7 @@ router.post("/signup", async (req, res) => {
       email: email.toLowerCase().trim(),
     });
     if (existingUser) {
-      return res.render("auth-signup", {
+      return res.render("auth/signup", {
         error: "An account with this email already exists.",
       });
     }
@@ -110,10 +112,10 @@ router.post("/signup", async (req, res) => {
 
     if (err.name === "ValidationError") {
       const firstError = Object.values(err.errors)[0].message;
-      return res.render("auth-signup", { error: firstError });
+      return res.render("auth/signup", { error: firstError });
     }
 
-    res.render("auth-signup", {
+    res.render("auth/signup", {
       error: "Something went wrong. Please try again.",
     });
   }
@@ -218,7 +220,7 @@ router.get(
 // GET /auth/apple — Render mock Apple chooser
 router.get("/apple", (req, res) => {
   const returnTo = req.query.returnTo || "/";
-  res.render("auth-apple-mock", { returnTo });
+  res.render("auth/apple-mock", { returnTo });
 });
 
 // POST /auth/apple/callback — Handle mock Apple return profile

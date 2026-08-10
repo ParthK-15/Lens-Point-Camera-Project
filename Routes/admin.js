@@ -10,7 +10,7 @@ const Order = require("../models/order");
 // ─── Multer config for image uploads ───────────────────────────
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
-    const uploadDir = path.join(__dirname, "..", "Assets", "uploads");
+    const uploadDir = path.join(__dirname, "..", "public", "assets", "images");
     if (!fs.existsSync(uploadDir)) {
       fs.mkdirSync(uploadDir, { recursive: true });
     }
@@ -149,22 +149,62 @@ function parseProductForm(body) {
     }
   }
 
-  // Connectivity
-  if (body.connTitle) {
-    const titles = Array.isArray(body.connTitle)
-      ? body.connTitle
-      : [body.connTitle];
-    const descs = Array.isArray(body.connDesc)
-      ? body.connDesc
-      : [body.connDesc || ""];
-    for (let i = 0; i < titles.length; i++) {
-      if (titles[i] && titles[i].trim()) {
-        data.connectivity.push({
-          title: titles[i].trim(),
-          description: (descs[i] || "").trim(),
-        });
-      }
-    }
+  // Images textarea or array
+  if (body.images) {
+    const rawImgs = typeof body.images === "string" ? body.images.split("\n") : body.images;
+    data.images = rawImgs.map((s) => s.trim()).filter((s) => s.length > 0);
+    data.sliderImages = data.images;
+  }
+
+  // YouTube video URL
+  data.youtubeUrl = body.youtubeUrl || body.youtubeVideo || "";
+  data.youtubeVideo = data.youtubeUrl;
+
+  // Highlights / Features
+  if (body.highlights) {
+    const hl = typeof body.highlights === "string" ? body.highlights.split("\n") : body.highlights;
+    data.highlights = hl.map((s) => s.trim()).filter((s) => s.length > 0);
+    data.features = data.highlights;
+  }
+
+  // JSON inputs for specDetails, designBlocks, connectivity
+  if (body.specDetails) {
+    try {
+      const parsed = typeof body.specDetails === "string" ? JSON.parse(body.specDetails) : body.specDetails;
+      data.specDetails = parsed.map(item => ({
+        image: item.image || "",
+        heading: item.heading || item.title || "",
+        text: item.text || item.description || "",
+        title: item.heading || item.title || "",
+        description: item.text || item.description || ""
+      }));
+      data.detailSections = data.specDetails;
+    } catch(e) {}
+  }
+
+  if (body.designBlocks) {
+    try {
+      const parsed = typeof body.designBlocks === "string" ? JSON.parse(body.designBlocks) : body.designBlocks;
+      data.designBlocks = parsed.map(item => ({
+        image: item.image || "",
+        heading: item.heading || item.title || "",
+        text: item.text || item.description || "",
+        title: item.heading || item.title || "",
+        description: item.text || item.description || ""
+      }));
+      data.designSections = data.designBlocks;
+    } catch(e) {}
+  }
+
+  if (body.connectivity) {
+    try {
+      const parsed = typeof body.connectivity === "string" ? JSON.parse(body.connectivity) : body.connectivity;
+      data.connectivity = parsed.map(item => ({
+        name: item.name || item.title || "",
+        title: item.name || item.title || "",
+        description: item.description || ""
+      }));
+    } catch(e) {}
   }
 
   return data;
@@ -179,7 +219,7 @@ router.get("/login", (req, res) => {
   if (req.session && req.session.adminId) {
     return res.redirect("/admin/dashboard");
   }
-  res.render("admin-login", { error: null });
+  res.render("admin/login", { error: null });
 });
 
 // POST /admin/login
@@ -189,12 +229,12 @@ router.post("/login", async (req, res) => {
     const admin = await Admin.findOne({ email: email.toLowerCase().trim() });
 
     if (!admin) {
-      return res.render("admin-login", { error: "Invalid email or password." });
+      return res.render("admin/login", { error: "Invalid email or password." });
     }
 
     const isMatch = await admin.comparePassword(password);
     if (!isMatch) {
-      return res.render("admin-login", { error: "Invalid email or password." });
+      return res.render("admin/login", { error: "Invalid email or password." });
     }
 
     req.session.adminId = admin._id;
@@ -202,7 +242,7 @@ router.post("/login", async (req, res) => {
     res.redirect("/admin/dashboard");
   } catch (err) {
     console.error("Login error:", err);
-    res.render("admin-login", { error: "Something went wrong. Try again." });
+    res.render("admin/login", { error: "Something went wrong. Try again." });
   }
 });
 
@@ -241,7 +281,7 @@ router.get("/dashboard", isAdmin, async (req, res) => {
       .limit(5)
       .lean();
 
-    res.render("admin-dashboard", {
+    res.render("admin/dashboard", {
       adminName: req.session.adminName,
       totalProducts,
       totalOrders,
@@ -274,7 +314,7 @@ router.get("/products", isAdmin, async (req, res) => {
     }
 
     const products = await Product.find(filter).sort({ createdAt: -1 }).lean();
-    res.render("admin-products", {
+    res.render("admin/products", {
       adminName: req.session.adminName,
       products,
       search: search || "",
@@ -308,7 +348,7 @@ router.get("/products/suggestions", isAdmin, async (req, res) => {
 
 // GET /admin/products/new — New product form
 router.get("/products/new", isAdmin, (req, res) => {
-  res.render("admin-product-form", {
+  res.render("admin/product-form", {
     adminName: req.session.adminName,
     product: null,
     isEdit: false,
@@ -327,13 +367,13 @@ router.post(
 
       // If image was uploaded via file
       if (req.file) {
-        data.image = "/Assets/uploads/" + req.file.filename;
+        data.image = "/assets/images/" + req.file.filename;
       }
 
       // Check slug uniqueness
       const existing = await Product.findOne({ slug: data.slug });
       if (existing) {
-        return res.render("admin-product-form", {
+        return res.render("admin/product-form", {
           adminName: req.session.adminName,
           product: data,
           isEdit: false,
@@ -346,7 +386,7 @@ router.post(
       res.redirect("/admin/products");
     } catch (err) {
       console.error("Create product error:", err);
-      res.render("admin-product-form", {
+      res.render("admin/product-form", {
         adminName: req.session.adminName,
         product: req.body,
         isEdit: false,
@@ -362,7 +402,7 @@ router.get("/products/:id/edit", isAdmin, async (req, res) => {
     const product = await Product.findById(req.params.id).lean();
     if (!product) return res.status(404).send("Product not found");
 
-    res.render("admin-product-form", {
+    res.render("admin/product-form", {
       adminName: req.session.adminName,
       product,
       isEdit: true,
@@ -384,7 +424,7 @@ router.post(
       const data = parseProductForm(req.body);
 
       if (req.file) {
-        data.image = "/Assets/uploads/" + req.file.filename;
+        data.image = "/assets/images/" + req.file.filename;
       }
 
       await Product.findByIdAndUpdate(req.params.id, data, {
@@ -394,7 +434,7 @@ router.post(
     } catch (err) {
       console.error("Update product error:", err);
       const product = await Product.findById(req.params.id).lean();
-      res.render("admin-product-form", {
+      res.render("admin/product-form", {
         adminName: req.session.adminName,
         product: product || req.body,
         isEdit: true,

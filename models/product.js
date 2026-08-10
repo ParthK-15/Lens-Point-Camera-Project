@@ -8,17 +8,20 @@ const specificationSchema = new mongoose.Schema(
   { _id: false }
 );
 
-const sectionSchema = new mongoose.Schema(
+const specDetailSchema = new mongoose.Schema(
   {
-    title: String,
-    description: String,
     image: String,
+    heading: String,
+    text: String,
+    title: String,       // Alias compatibility
+    description: String, // Alias compatibility
   },
   { _id: false }
 );
 
 const connectivitySchema = new mongoose.Schema(
   {
+    name: String,
     title: String,
     description: String,
   },
@@ -63,20 +66,36 @@ const productSchema = new mongoose.Schema(
       required: true,
     },
 
+    images: {
+      type: [String],
+      default: []
+    },
+
     sliderImages: [String],
 
     description: String,
+
+    highlights: {
+      type: [String],
+      default: []
+    },
 
     features: [String],
 
     specifications: [specificationSchema],
 
-    detailSections: [sectionSchema],
+    specDetails: [specDetailSchema],
+    detailSections: [specDetailSchema],
 
-    designSections: [sectionSchema],
+    designBlocks: [specDetailSchema],
+    designSections: [specDetailSchema],
 
     connectivity: [connectivitySchema],
 
+    youtubeUrl: {
+      type: String,
+      default: ""
+    },
     youtubeVideo: String,
   },
   { timestamps: true }

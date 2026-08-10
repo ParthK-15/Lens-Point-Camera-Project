@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard — Sumati Color Lab</title>
+    <link rel="stylesheet" href="/css/admin.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+
+<body style="font-family: sans-serif; background: #f4f6f9; margin: 0;">
+    <div style="display: flex; min-height: 100vh;">
+        <div style="width: 250px; background: #1e293b; color: white; padding: 1.5rem;">
+            <h2>Admin Panel</h2>
+            <hr style="border-color: #334155; margin: 1rem 0;">
+            <ul style="list-style: none; padding: 0;">
+                <li style="margin-bottom: 1rem;"><a href="/admin/dashboard" style="color: white; text-decoration: none;"><i class="fa-solid fa-chart-line"></i> Dashboard</a></li>
+                <li style="margin-bottom: 1rem;"><a href="/admin/products" style="color: #94a3b8; text-decoration: none;"><i class="fa-solid fa-box"></i> Products</a></li>
+                <li style="margin-bottom: 1rem;"><a href="/admin/orders" style="color: #94a3b8; text-decoration: none;"><i class="fa-solid fa-shopping-bag"></i> Orders</a></li>
+                <li style="margin-top: 2rem;"><a href="/admin/logout" style="color: #f87171; text-decoration: none;"><i class="fa-solid fa-sign-out-alt"></i> Logout</a></li>
+            </ul>
+        </div>
+        <div style="flex: 1; padding: 2rem;">
+            <h2>Welcome back, <%= adminName %>!</h2>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; margin-top: 1.5rem;">
+                <div style="background: white; padding: 1.5rem; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
+                    <h4 style="color: #64748b; margin: 0;">Total Products</h4>
+                    <h2 style="margin: 0.5rem 0 0 0; color: #0f172a;"><%= totalProducts %></h2>
+                </div>
+                <div style="background: white; padding: 1.5rem; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
+                    <h4 style="color: #64748b; margin: 0;">Total Orders</h4>
+                    <h2 style="margin: 0.5rem 0 0 0; color: #0f172a;"><%= totalOrders %></h2>
+                </div>
+                <div style="background: white; padding: 1.5rem; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
+                    <h4 style="color: #64748b; margin: 0;">Total Revenue</h4>
+                    <h2 style="margin: 0.5rem 0 0 0; color: #16a34a;">₹<%= totalRevenue ? totalRevenue.toLocaleString('en-IN') : 0 %></h2>
+                </div>
+                <div style="background: white; padding: 1.5rem; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
+                    <h4 style="color: #64748b; margin: 0;">Pending Orders</h4>
+                    <h2 style="margin: 0.5rem 0 0 0; color: #ea580c;"><%= pendingOrders %></h2>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

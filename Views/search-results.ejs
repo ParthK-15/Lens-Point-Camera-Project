@@ -4,23 +4,133 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Search Results | Sumati Colour Lab</title>
-    <link rel="stylesheet" href="/style.css">
-    <link rel="stylesheet" href="/camera.css">
-    <link rel="stylesheet" href="/user-nav.css">
+    <title>Search Results — Sumati Color Lab</title>
+    <link rel="stylesheet" href="/css/camera.css">
+    <link rel="stylesheet" href="/css/user-nav.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <script src="/cart-sync-head.js"></script>
+    <script src="/js/cart-sync-head.js"></script>
     <style>
-        .search-summary-title {
-            padding: 2rem 2rem 0;
-            background: #fff;
-            margin: 0;
-            font-size: 1.5rem;
-            font-weight: 700;
+        body {
+            background-color: #0f0f0f;
+            color: #fff;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
         }
-        .search-summary-title span {
-            color: #ff6b00;
+
+        .search-results-page {
+            padding-top: 5rem;
+            flex: 1;
+            max-width: 1400px;
+            margin: 0 auto;
+            width: 100%;
+            padding-left: 2rem;
+            padding-right: 2rem;
+            box-sizing: border-box;
+        }
+
+        .search-header-box {
+            padding: 1.5rem 0 2rem 0;
+            border-bottom: 1px solid #222;
+            margin-bottom: 2rem;
+        }
+
+        .search-header-box h1 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 0.5rem;
+        }
+
+        .search-header-box span.highlight {
+            color: orange;
+        }
+
+        .search-header-box p {
+            color: #888;
+            font-size: 1rem;
+        }
+
+        /* Empty State */
+        .empty-search-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 5rem 2rem;
+            background: #141414;
+            border: 1px dashed #333;
+            border-radius: 20px;
+            margin: 2rem 0 4rem 0;
+        }
+
+        .empty-search-icon {
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+            background: rgba(255, 165, 0, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            color: orange;
+            margin-bottom: 1.5rem;
+        }
+
+        .empty-search-container h2 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+            color: #fff;
+        }
+
+        .empty-search-container p {
+            color: #999;
+            max-width: 500px;
+            line-height: 1.6;
+            margin-bottom: 2rem;
+            font-size: 1rem;
+        }
+
+        .empty-search-actions {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .empty-btn-primary {
+            background: orange;
+            color: #000;
+            padding: 0.85rem 2rem;
+            border-radius: 30px;
+            font-weight: 700;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .empty-btn-primary:hover {
+            background: #ff8c00;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 165, 0, 0.3);
+        }
+
+        .empty-btn-secondary {
+            background: #222;
+            color: #fff;
+            padding: 0.85rem 2rem;
+            border-radius: 30px;
+            font-weight: 600;
+            text-decoration: none;
+            border: 1px solid #444;
+            transition: all 0.3s ease;
+        }
+
+        .empty-btn-secondary:hover {
+            background: #333;
+            color: orange;
+            border-color: orange;
         }
     </style>
 </head>
@@ -29,190 +139,84 @@
     <header>
         <nav>
             <div class="navigation">
-                <a href="/index.html" class="nav-logo-link" title="Home"><img src="/Assets/logo.jpeg" alt="Sumati Colour Lab Logo" class="nav-logo-img"></a>
+                <a href="/" class="nav-logo-link" title="Home">
+                    <img src="/assets/images/logo.jpeg" alt="Sumati Colour Lab Logo" class="nav-logo-img">
+                </a>
                 <a href="/products">Camera</a>
                 <a href="/lenses">Lens</a>
-                <a href="/accessories.html">Accessories</a>
+                <a href="/accessories">Accessories</a>
                 <a href="#" class="cart-anchor" title="Cart">
                     <i class="fa-solid fa-cart-shopping"></i>
                     <span class="cart-count">0</span>
                 </a>
                 <div class="options">
                     <input type="text" placeholder="Search" value="<%= query %>">
-                    <label for="input">
+                    <label>
                         <i class="fa-solid fa-magnifying-glass"></i>
                     </label>
-                    <button type="button" class="login">Log In</button>
+                    <% if (user) { %>
+                        <button type="button" class="login" onclick="window.location='/auth/logout'"><%= user.name %></button>
+                    <% } else { %>
+                        <button type="button" class="login" onclick="window.location='/auth/login'">Log In</button>
+                    <% } %>
                 </div>
             </div>
         </nav>
     </header>
 
-    <h2 class="search-summary-title">
-        Found <%= products.length %> results for "<span><%= query %></span>"
-    </h2>
-
-    <!-- Sidebar & Cards layout -->
-    <div class="main-camera-screen">
-        <div class="sidebar">
-            <div class="filter-header">
-                <h2>Filters</h2>
-                <button id="reset-btn" title="Reset all filters">Reset</button>
-            </div>
-
-            <!-- Price Filters -->
-            <div class="price-container">
-                <h3>Price</h3>
-                <div class="price-item">
-                    <input type="checkbox" id="price-check-all" class="price-checkbox" value="all" checked>
-                    <label for="price-check-all">All Prices</label>
-                </div>
-                <div class="price-item">
-                    <input type="checkbox" id="price-check-1" class="price-checkbox" value="Under 5000">
-                    <label for="price-check-1">Under ₹5,000</label>
-                </div>
-                <div class="price-item">
-                    <input type="checkbox" id="price-check-2" class="price-checkbox" value="5000-20000">
-                    <label for="price-check-2">₹5,000 - ₹20,000</label>
-                </div>
-                <div class="price-item">
-                    <input type="checkbox" id="price-check-3" class="price-checkbox" value="20000-50000">
-                    <label for="price-check-3">₹20,000 - ₹50,000</label>
-                </div>
-                <div class="price-item">
-                    <input type="checkbox" id="price-check-4" class="price-checkbox" value="Over 50000">
-                    <label for="price-check-4">Over ₹50,000</label>
-                </div>
-            </div>
-
-            <!-- Brand Filters -->
-            <div class="company-container">
-                <h3>Brands</h3>
-                <div class="brands-name">
-                    <input type="checkbox" id="brands-check-all" class="brands-checkbox" value="all" checked>
-                    <label for="brands-check-all">All Brands</label>
-                </div>
-                <% brands.forEach(function(b, idx) { %>
-                    <div class="brands-name">
-                        <input type="checkbox" id="brands-check-<%= idx %>" class="brands-checkbox" value="<%= b.toLowerCase() %>">
-                        <label for="brands-check-<%= idx %>"><%= b %></label>
-                    </div>
-                <% }) %>
-            </div>
-
-            <!-- Category Filters -->
-            <div class="category-container">
-                <h3>Categories</h3>
-                <div class="brands-name">
-                    <input type="checkbox" id="category-check-all" class="category-checkbox" value="all" checked>
-                    <label for="category-check-all">All Categories</label>
-                </div>
-                <% categories.forEach(function(c, idx) { %>
-                    <div class="brands-name">
-                        <input type="checkbox" id="category-check-<%= idx %>" class="category-checkbox" value="<%= c.toLowerCase() %>">
-                        <label for="category-check-<%= idx %>" style="text-transform: capitalize;"><%= c %></label>
-                    </div>
-                <% }) %>
-            </div>
-
-            <!-- Quick category links -->
-            <a href="/category/camera" class="sidebar-links">Cameras</a>
-            <a href="/category/lens" class="sidebar-links">Lenses</a>
-            <a href="/category/tripod" class="sidebar-links">Tripods</a>
-            <a href="/category/microphone" class="sidebar-links">Microphones</a>
-            <a href="/category/storage" class="sidebar-links">Storage</a>
-            <a href="/category/bag" class="sidebar-links">Camera Bags</a>
-            <a href="/category/gimbal" class="sidebar-links">Gimbals</a>
-            <a href="/category/lighting" class="sidebar-links">Lightings</a>
-            <a href="/category/battery" class="sidebar-links">Batteries</a>
+    <main class="search-results-page">
+        <div class="search-header-box">
+            <h1>Search Results for <span class="highlight">"<%= query %>"</span></h1>
+            <p><%= products ? products.length : 0 %> matching items found</p>
         </div>
 
-        <!-- Product Cards section -->
-        <div class="main-camera-cards">
-            <% if (products && products.length > 0) { %>
-                <% products.forEach(function(p) { %>
-                    <a href="/product/<%= p.slug %>">
-                        <div class="camera-cards" 
-                            data-price="<%= p.price %>" 
-                            data-brand="<%= p.company.toLowerCase() %>" 
-                            data-category="<%= p.category.toLowerCase() %>">
-                            <div class="img-container">
-                                <img src="<%= p.image %>" alt="<%= p.title %>">
-                            </div>
-                            <div class="content">
-                                <h2><%= p.title %></h2>
-                                <ul>
-                                    <% if (p.features && p.features.length > 0) { %>
-                                        <% p.features.forEach(function(f) { %>
-                                            <li><%= f %></li>
-                                        <% }) %>
+        <% if (products && products.length > 0) { %>
+            <div class="main-camera-screen" style="display: block; width: 100%;">
+                <div class="main-camera-cards" style="width: 100%; display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.5rem;">
+                    <% products.forEach(p => { %>
+                        <a href="/product/<%= p.slug || p._id %>" class="product-card-link">
+                            <div class="camera-cards" data-price="<%= p.price %>">
+                                <div class="img-container">
+                                    <img src="<%= p.image %>" alt="<%= p.title %>">
+                                </div>
+                                <div class="content">
+                                    <h2><%= p.title %></h2>
+                                    <% if (p.highlights && p.highlights.length > 0) { %>
+                                        <ul>
+                                            <% p.highlights.slice(0, 3).forEach(h => { %>
+                                                <li><%= h %></li>
+                                            <% }); %>
+                                        </ul>
+                                    <% } else if (p.description) { %>
+                                        <p><%= p.description.substring(0, 100) %>...</p>
                                     <% } %>
-                                </ul>
+                                </div>
+                                <div class="card-footer">
+                                    <h2 class="price">₹<%= p.price ? p.price.toLocaleString('en-IN') : 'N/A' %>/-</h2>
+                                    <button type="button">Explore</button>
+                                </div>
                             </div>
-                            <div class="card-footer">
-                                <h2 class="price">Rs.<%= p.price.toLocaleString('en-IN') %>/-</h2>
-                                <button>Explore</button>
-                            </div>
-                        </div>
-                    </a>
-                <% }) %>
-            <% } %>
-
-            <!-- No results box -->
-            <div id="noResultsMessage" class="no-results-container" style="display: <%= products.length === 0 ? 'block' : 'none' %>; grid-column: 1 / -1; text-align: center; padding: 5rem 2rem;">
-                <div class="no-results-content">
-                    <i class="fa-solid fa-magnifying-glass" style="font-size: 4rem; color: #ccc; margin-bottom: 1.5rem; display: block;"></i>
-                    <h2>No Match Found</h2>
-                    <p style="color: #666; margin-top: 0.5rem; font-size: 1rem;">We couldn't find any products matching "<span><%= query %></span>". Try checking your spelling or using more general keywords.</p>
-                    <a href="/index.html" style="display: inline-block; margin-top: 1.5rem; padding: 0.75rem 2rem; border-radius: 20px; text-decoration: none; color: #fff; background: #ff6b00; font-weight: 600;">Go Back Home</a>
+                        </a>
+                    <% }); %>
                 </div>
             </div>
-        </div>
-    </div>
+        <% } else { %>
+            <div class="empty-search-container">
+                <div class="empty-search-icon">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </div>
+                <h2>No Matching Products Found</h2>
+                <p>We couldn't find anything matching "<strong style="color: #fff;"><%= query %></strong>". Check for spelling errors or try searching for generic terms like <em>Sony</em>, <em>Canon</em>, <em>Lens</em>, or <em>Tripod</em>.</p>
+                <div class="empty-search-actions">
+                    <a href="/products" class="empty-btn-primary">Browse All Products</a>
+                    <a href="/" class="empty-btn-secondary">Return to Home</a>
+                </div>
+            </div>
+        <% } %>
+    </main>
 
-    <!-- Footer -->
     <footer>
         <div class="footer-main">
-            <div class="main-footer">
-                <div class="brands">
-                    <h2>Brands</h2>
-                    <input type="checkbox" class="footer-checkbox" id="brands-check">
-                    <label for="brands-check"><i class="fa-solid fa-angle-down"></i></label>
-                    <ul>
-                        <li>Sony</li>
-                        <li>Canon</li>
-                        <li>Nikon</li>
-                        <li>Fujifilm</li>
-                        <li>GoPro</li>
-                    </ul>
-                </div>
-                <div class="categories">
-                    <h2>Categories</h2>
-                    <input type="checkbox" class="footer-checkbox" id="categories-check">
-                    <label for="categories-check"><i class="fa-solid fa-angle-down"></i></label>
-                    <ul>
-                        <li>DSLR Cameras</li>
-                        <li>Mirrorless Cameras</li>
-                        <li>Lenses</li>
-                        <li>Tripods</li>
-                        <li>Lighting Equipment</li>
-                    </ul>
-                </div>
-                <div class="foot-contact">
-                    <h2>Contact Us</h2>
-                    <input type="checkbox" class="footer-checkbox" id="contact-check">
-                    <label for="contact-check"><i class="fa-solid fa-angle-down"></i></label>
-                    <p><i class="fa-solid fa-phone"></i> +91 7038418286</p>
-                    <a href="https://www.instagram.com/sumati.color.lab?igsh=ZHIzam5hc3N6bmdj"><i class="fa-brands fa-instagram"></i> Instagram</a>
-                    <a href="mailto:khushallll409@gmail.com"><i class="fa-regular fa-envelope"></i> Gmail</a>
-                </div>
-                <div class="foot-location">
-                    <h2>Our Location</h2>
-                    <input type="checkbox" class="footer-checkbox" id="location-check">
-                    <label for="location-check"><i class="fa-solid fa-angle-down"></i></label>
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3766.527047318591!2d76.77415409999999!3d19.259433299999994!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bd019cc2af79f0d%3A0x4d9b3ade4eff331!2sSumati%20Colour%20Lab!5e0!3m2!1sen!2sin!4v1772262216473!5m2!1sen!2sin" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-                </div>
-            </div>
             <div class="footer-bottom">
                 <hr>
                 <p>Copyright © 2026 Sumati Color Lab. All Rights Reserved.</p>
@@ -220,10 +224,10 @@
         </div>
     </footer>
 
-    <script src="/search-results.js"></script>
-    <script src="/popup.js"></script>
-    <script src="/user-nav.js"></script>
-    <script src="/cart.js" defer></script>
+    <script src="/js/search-results.js"></script>
+    <script src="/js/popup.js"></script>
+    <script src="/js/user-nav.js"></script>
+    <script src="/js/cart.js" defer></script>
 </body>
 
 </html>
