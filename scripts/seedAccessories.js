@@ -1,9 +1,11 @@
+require("dotenv").config({ path: require("path").resolve(__dirname, "../.env") });
 const mongoose = require("mongoose");
 const Product = require("../models/product");
 const accessories = require("../data/accessories.js");
 
 async function seedAccessories() {
-  await mongoose.connect("mongodb://127.0.0.1:27017/sumatiColourLab");
+  const MONGO_URI = process.env.MONGO_URI || "mongodb://127.0.0.1:27017/sumatiColourLab";
+  await mongoose.connect(MONGO_URI);
   console.log("✅ Connected to database");
 
   // Check which products already exist by slug

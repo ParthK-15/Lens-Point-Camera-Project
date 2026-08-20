@@ -55,10 +55,10 @@ const MONGO_URI = process.env.MONGO_URI || "mongodb://127.0.0.1:27017/sumatiColo
 mongoose
   .connect(MONGO_URI)
   .then(() => {
-    console.log("✅ Database Connected — sumatiColourLab");
+    console.log(" Database Connected — sumatiColourLab");
   })
   .catch((err) => {
-    console.error("❌ DB Connection Error:", err);
+    console.error(" DB Connection Error:", err);
   });
 
 // ─── Routes ────────────────────────────────────────────────────
@@ -71,7 +71,7 @@ app.use("/", productRoutes);
 const PORT = process.env.PORT || 3000;
 if (process.env.NODE_ENV !== "production") {
   app.listen(PORT, () => {
-    console.log(`🚀 Server running at http://localhost:${PORT}`);
+    console.log(`Server running at http://localhost:${PORT}`);
   });
 }
 

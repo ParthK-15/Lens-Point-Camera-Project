@@ -4,6 +4,10 @@
   "description": "",
   "main": "server.js",
   "scripts": {
+    "start": "node server.js",
+    "seed": "node scripts/seedProduct.js && node scripts/seedAccessories.js",
+    "seed:products": "node scripts/seedProduct.js",
+    "seed:accessories": "node scripts/seedAccessories.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
