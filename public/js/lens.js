@@ -1,5 +1,4 @@
-document.addEventListener("DOMContentLoaded", () => {
-
+function initLensFilters() {
     const cards = document.querySelectorAll(".camera-cards");
 
     const priceCheckboxes = document.querySelectorAll(".price-checkbox");
@@ -8,14 +7,33 @@ document.addEventListener("DOMContentLoaded", () => {
     const allCheckboxes = document.querySelectorAll("input[type='checkbox']");
     const resetBtn = document.getElementById("reset-btn");
     const searchInput = document.querySelector('.options input[type="text"]');
-    const searchIcon = document.querySelector('.options label i.fa-magnifying-glass');
 
-    // 🔍 AUTO-APPLY SEARCH FROM URL PARAMETER
+    // 🔍 AUTO-APPLY SEARCH & BRAND FROM URL PARAMETER
     const urlParams = new URLSearchParams(window.location.search);
     const searchQuery = urlParams.get('search');
+    const brandParam = urlParams.get('brand');
     
     if (searchQuery && searchInput) {
         searchInput.value = searchQuery;
+    }
+
+    if (brandParam) {
+        const brandLower = brandParam.toLowerCase().trim();
+        let foundMatch = false;
+
+        brandCheckboxes.forEach(cb => {
+            if (cb.value.toLowerCase().trim() === brandLower) {
+                cb.checked = true;
+                foundMatch = true;
+            } else if (cb.value !== 'all') {
+                cb.checked = false;
+            }
+        });
+
+        if (foundMatch) {
+            const allBrandCb = document.querySelector(".brands-checkbox[value='all']");
+            if (allBrandCb) allBrandCb.checked = false;
+        }
     }
 
     // Attach checkbox listeners
@@ -28,11 +46,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (resetBtn) {
         resetBtn.addEventListener("click", () => {
-
             allCheckboxes.forEach(cb => cb.checked = false);
 
-            document.querySelector(".price-checkbox[value='all']").checked = true;
-            document.querySelector(".brands-checkbox[value='all']").checked = true;
+            const allPrice = document.querySelector(".price-checkbox[value='all']");
+            const allBrand = document.querySelector(".brands-checkbox[value='all']");
+
+            if (allPrice) allPrice.checked = true;
+            if (allBrand) allBrand.checked = true;
 
             if (searchInput) searchInput.value = "";
             filterCards();
@@ -43,18 +63,38 @@ document.addEventListener("DOMContentLoaded", () => {
     function filterCards() {
         const selectedPrices = getCheckedValues(priceCheckboxes);
         const selectedBrands = getCheckedValues(brandCheckboxes);
+        const searchText = searchInput ? searchInput.value.toLowerCase().trim() : "";
 
         cards.forEach(card => {
             const rawPrice = card.dataset.price || "";
             const price = parseInt(String(rawPrice).replace(/[^\d]/g, ""), 10) || 0;
-            const brand = (card.dataset.brand || "").toLowerCase();
+            const brand = (card.dataset.brand || "").toLowerCase().trim();
+            const titleEl = card.querySelector(".card-title, .content h2, h2");
+            const cardTitle = titleEl ? titleEl.textContent.toLowerCase().trim() : "";
 
             const priceMatch = checkPrice(price, selectedPrices);
-            const brandMatch = selectedBrands.includes("all") || selectedBrands.map(b => b.toLowerCase()).includes(brand);
+            
+            let brandMatch = false;
+            if (selectedBrands.length === 0 || selectedBrands.includes("all")) {
+                brandMatch = true;
+            } else {
+                brandMatch = selectedBrands.some(b => {
+                    const bLower = b.toLowerCase().trim();
+                    if (!bLower || bLower === "all") return true;
+                    return brand === bLower || brand.includes(bLower) || cardTitle.includes(bLower);
+                });
+            }
 
-            const isVisible = (priceMatch && brandMatch);
-            if (card.parentElement) {
-                card.parentElement.style.display = isVisible ? "flex" : "none";
+            const searchMatch = searchText === "" || cardTitle.includes(searchText) || brand.includes(searchText);
+
+            const isVisible = (priceMatch && brandMatch && searchMatch);
+            const targetContainer = card.closest('.product-card-link') || card.parentElement || card;
+            if (targetContainer) {
+                if (isVisible) {
+                    targetContainer.style.setProperty("display", "block", "important");
+                } else {
+                    targetContainer.style.setProperty("display", "none", "important");
+                }
             }
         });
     }
@@ -66,10 +106,11 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     function checkPrice(price, selectedPrices) {
-        if (selectedPrices.includes("all")) return true;
+        if (selectedPrices.length === 0 || selectedPrices.includes("all")) return true;
 
         return selectedPrices.some(range => {
             const rLower = range.toLowerCase().trim();
+            if (rLower === "all") return true;
             if (rLower.startsWith("under ") || rLower.startsWith("under-")) {
                 const val = parseInt(rLower.replace(/[^\d]/g, ""), 10) || Infinity;
                 return price <= val;
@@ -87,7 +128,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     function handleAllCheckbox(changedCheckbox) {
-
         let group;
 
         if (changedCheckbox.classList.contains("price-checkbox")) {
@@ -109,57 +149,26 @@ document.addEventListener("DOMContentLoaded", () => {
                 if (cb.value === "all") cb.checked = false;
             });
         }
-    }
 
-    function getTargetPageFromQuery(rawText, fallbackPage = "/lenses") {
-        const text = rawText.trim().toLowerCase();
-        if (!text) return fallbackPage;
-
-        const categoryRules = [
-            { page: "storage.html", keywords: ["storage", "memory", "sd card", "sdxc", "sdhc", "cfexpress", "sandisk", "lexar", "prograde", "angelbird"] },
-            { page: "/products", keywords: ["camera", "dslr", "mirrorless", "eos", "alpha", "camera body"] },
-            { page: "/tripods", keywords: ["tripod", "manfrotto", "sirui", "gitzo", "mefoto", "peak design", "befree"] },
-            { page: "microphones.html", keywords: ["mic", "microphone", "audio", "boya", "simpex", "wireless mic", "dm-e100"] },
-            { page: "lightings.html", keywords: ["light", "lighting", "flash", "speedlite", "ring light", "digitek", "el-100", "600ex"] },
-            { page: "gimbal.html", keywords: ["gimbal", "stabilizer", "dji", "osmo", "ronin", "om 5", "mobile 7"] },
-            { page: "/lenses", keywords: ["lens", "lenses", "macro", "50mm", "24-105", "55-250", "70-200", "70-300", "100-400"] },
-            { page: "accessories.html", keywords: ["accessory", "accessories", "bag", "battery", "cleaning"] }
-        ];
-
-        if (/\bsd\b/.test(text) || /\bcard\b/.test(text)) return "storage.html";
-
-        for (const rule of categoryRules) {
-            if (rule.keywords.some(keyword => text.includes(keyword))) {
-                return rule.page;
-            }
+        const anyChecked = Array.from(group).some(cb => cb.checked);
+        if (!anyChecked) {
+            const allCb = Array.from(group).find(cb => cb.value === "all");
+            if (allCb) allCb.checked = true;
         }
-
-        return fallbackPage;
     }
 
-    function routeSearchByCategory() {
-        if (!searchInput) return;
+    // 🔥 CALL FILTERCARDS IMMEDIATELY ON INITIALIZATION!
+    filterCards();
 
-        const query = searchInput.value.trim();
-        if (!query) return;
-
-        const targetPage = getTargetPageFromQuery(query, "/lenses");
-        window.location.href = `${targetPage}?search=${encodeURIComponent(query)}`;
-    }
-
-    // 🔍 SEARCH FUNCTIONALITY
     if (searchInput) {
         searchInput.addEventListener("input", () => {
             filterCards();
         });
+    }
+}
 
-        searchInput.addEventListener("keydown", (e) => {
-            if (e.key === "Enter") {
-                e.preventDefault();
-            }
-        });
-
-    // Trigger initial filter
-    filterCards();
-
-});
+if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initLensFilters);
+} else {
+    initLensFilters();
+}

@@ -45,11 +45,7 @@ bindClickRedirect(".batteries-content", "/category/battery");
 bindClickRedirect(".storage", "/category/storage");
 bindClickRedirect(".gimbal-content", "/category/gimbal");
 bindClickRedirect(".bags-content", "/category/bag");
-// ── Brand Card Redirects ─────────────────────────────────────
-bindClickRedirect(".sony", "/products");
-bindClickRedirect(".canon", "/products");
-bindClickRedirect(".nikon", "/products");
-bindClickRedirect(".gopro", "/products");
+// Brand cards are standard <a> links with ?brand=... URL parameters
 
 const desktopSearchInput = document.querySelector('.options input[type="text"]');
 const mobileSearchInput = document.querySelector(".inputMobile");

@@ -133,28 +133,29 @@
             </div>
             <div class="company-container">
                 <h3>Brands</h3>
+                <% var activeBrand = (typeof selectedBrand !== 'undefined' && selectedBrand) ? selectedBrand.toLowerCase().trim() : ''; %>
                 <div class="brands-name">
-                    <input type="checkbox" id="brands-check1" class="brands-checkbox" value="all" checked>
+                    <input type="checkbox" id="brands-check1" class="brands-checkbox" value="all" <% if (!activeBrand) { %>checked<% } %>>
                     <label for="brands-check1">All</label>
                 </div>
                 <div class="brands-name">
-                    <input type="checkbox" id="brands-check2" class="brands-checkbox" value="sony">
+                    <input type="checkbox" id="brands-check2" class="brands-checkbox" value="sony" <% if (activeBrand === 'sony') { %>checked<% } %>>
                     <label for="brands-check2">Sony</label>
                 </div>
                 <div class="brands-name">
-                    <input type="checkbox" id="brands-check3" class="brands-checkbox" value="nikon">
+                    <input type="checkbox" id="brands-check3" class="brands-checkbox" value="nikon" <% if (activeBrand === 'nikon') { %>checked<% } %>>
                     <label for="brands-check3">Nikon</label>
                 </div>
                 <div class="brands-name">
-                    <input type="checkbox" id="brands-check4" class="brands-checkbox" value="canon">
+                    <input type="checkbox" id="brands-check4" class="brands-checkbox" value="canon" <% if (activeBrand === 'canon') { %>checked<% } %>>
                     <label for="brands-check4">Canon</label>
                 </div>
                 <div class="brands-name">
-                    <input type="checkbox" id="brands-check5" class="brands-checkbox" value="sigma">
+                    <input type="checkbox" id="brands-check5" class="brands-checkbox" value="sigma" <% if (activeBrand === 'sigma') { %>checked<% } %>>
                     <label for="brands-check5">Sigma</label>
                 </div>
                 <div class="brands-name">
-                    <input type="checkbox" id="brands-check6" class="brands-checkbox" value="tamron">
+                    <input type="checkbox" id="brands-check6" class="brands-checkbox" value="tamron" <% if (activeBrand === 'tamron') { %>checked<% } %>>
                     <label for="brands-check6">Tamron</label>
                 </div>
             </div>

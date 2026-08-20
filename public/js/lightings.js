@@ -1,5 +1,5 @@
-document.addEventListener("DOMContentLoaded", () => {
-    const cards = document.querySelectorAll(".tripod-cards");
+function initLightingFilters() {
+    const cards = document.querySelectorAll(".camera-cards, .tripod-cards, .bag-cards, .battery-cards, .storage-cards, .gimbal-cards, .microphones-cards, .lights-cards");
 
     const priceCheckboxes = document.querySelectorAll(".price-checkbox");
     const brandCheckboxes = document.querySelectorAll(".brands-checkbox");
@@ -8,17 +8,34 @@ document.addEventListener("DOMContentLoaded", () => {
     const allCheckboxes = document.querySelectorAll("input[type='checkbox']");
     const resetBtn = document.getElementById("reset-btn");
     const searchInput = document.querySelector('.options input[type="text"]');
-    const searchIcon = document.querySelector('.options label i.fa-magnifying-glass');
 
-    // 🔍 AUTO-APPLY SEARCH FROM URL PARAMETER
     const urlParams = new URLSearchParams(window.location.search);
     const searchQuery = urlParams.get('search');
+    const brandParam = urlParams.get('brand');
     
     if (searchQuery && searchInput) {
         searchInput.value = searchQuery;
     }
 
-    // Attach checkbox listeners
+    if (brandParam) {
+        const brandLower = brandParam.toLowerCase().trim();
+        let foundMatch = false;
+
+        brandCheckboxes.forEach(cb => {
+            if (cb.value.toLowerCase().trim() === brandLower) {
+                cb.checked = true;
+                foundMatch = true;
+            } else if (cb.value !== 'all') {
+                cb.checked = false;
+            }
+        });
+
+        if (foundMatch) {
+            const allBrandCb = document.querySelector(".brands-checkbox[value='all']");
+            if (allBrandCb) allBrandCb.checked = false;
+        }
+    }
+
     allCheckboxes.forEach(cb => {
         cb.addEventListener("change", () => {
             handleAllCheckbox(cb);
@@ -26,57 +43,73 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 
-    if(searchInput) {
-        searchInput.addEventListener("input", filterCards)
+    if (resetBtn) {
+        resetBtn.addEventListener("click", () => {
+            allCheckboxes.forEach(cb => cb.checked = false);
+
+            const allPrice = document.querySelector(".price-checkbox[value='all']");
+            const allBrand = document.querySelector(".brands-checkbox[value='all']");
+            const allCat = document.querySelector(".category-checkbox[value='all']");
+
+            if (allPrice) allPrice.checked = true;
+            if (allBrand) allBrand.checked = true;
+            if (allCat) allCat.checked = true;
+
+            if (searchInput) searchInput.value = "";
+            filterCards();
+        });
     }
 
-    // ✅ RESET BUTTON
-    resetBtn.addEventListener("click", () => {
-        allCheckboxes.forEach(cb => cb.checked = false);
-        document.querySelector(".price-checkbox[value='all']").checked = true;
-        document.querySelector(".brands-checkbox[value='all']").checked = true;
-        document.querySelector(".category-checkbox[value='all']").checked = true;
-        filterCards();
-    });
-
-    // FILTER FUNCTION
     function filterCards() {
         const selectedPrices = getCheckedValues(priceCheckboxes);
         const selectedBrands = getCheckedValues(brandCheckboxes);
         const selectedCategories = getCheckedValues(categoryCheckboxes);
-        const searchText = searchInput.value.toLowerCase();
-
-        let visibleCount = 0;
+        const searchText = searchInput ? searchInput.value.toLowerCase().trim() : "";
 
         cards.forEach(card => {
-            const price = parseInt(card.dataset.price);
-            const brand = card.dataset.brand;
-            const category = card.dataset.category;
+            const rawPrice = card.dataset.price || "";
+            const price = parseInt(String(rawPrice).replace(/[^\d]/g, ""), 10) || 0;
+            const brand = (card.dataset.brand || "").toLowerCase().trim();
+            const category = (card.dataset.category || "").toLowerCase().trim();
+            const titleEl = card.querySelector(".card-title, .content h2, h2");
+            const cardTitle = titleEl ? titleEl.textContent.toLowerCase().trim() : "";
 
             const priceMatch = checkPrice(price, selectedPrices);
-            const brandMatch = selectedBrands.includes("all") || selectedBrands.includes(brand);
-            const categoryMatch = selectedCategories.includes("all") || selectedCategories.includes(category);
-
-            const isVisible = (priceMatch && brandMatch && categoryMatch);
-            if (card.parentElement) {
-                card.parentElement.style.display = isVisible ? "block" : "none";
+            
+            let brandMatch = false;
+            if (selectedBrands.length === 0 || selectedBrands.includes("all")) {
+                brandMatch = true;
+            } else {
+                brandMatch = selectedBrands.some(b => {
+                    const bLower = b.toLowerCase().trim();
+                    if (!bLower || bLower === "all") return true;
+                    return brand === bLower || brand.includes(bLower) || cardTitle.includes(bLower);
+                });
             }
-            
-            if (isVisible) visibleCount++;
-        });
 
-        // 🔍 Show "No results" only if there's an active search or filter
-        const noResultsMessage = document.getElementById('noResultsMessage');
-        if (noResultsMessage) {
-            const hasActiveSearch = searchText.trim() !== "";
-            const hasActiveFilter = !selectedPrices.includes("all") || 
-                                    !selectedBrands.includes("all") || 
-                                    !selectedCategories.includes("all");
-            
-            const shouldShowNoResults = visibleCount === 0 && (hasActiveSearch || hasActiveFilter);
-            
-            noResultsMessage.style.display = shouldShowNoResults ? "block" : "none";
-        }
+            let categoryMatch = false;
+            if (selectedCategories.length === 0 || selectedCategories.includes("all")) {
+                categoryMatch = true;
+            } else {
+                categoryMatch = selectedCategories.some(c => {
+                    const cLower = c.toLowerCase().trim();
+                    if (!cLower || cLower === "all") return true;
+                    return category === cLower || category.includes(cLower) || cardTitle.includes(cLower);
+                });
+            }
+
+            const searchMatch = searchText === "" || cardTitle.includes(searchText) || brand.includes(searchText);
+
+            const isVisible = (priceMatch && brandMatch && categoryMatch && searchMatch);
+            const targetContainer = card.closest('.product-card-link') || card.parentElement || card;
+            if (targetContainer) {
+                if (isVisible) {
+                    targetContainer.style.setProperty("display", "block", "important");
+                } else {
+                    targetContainer.style.setProperty("display", "none", "important");
+                }
+            }
+        });
     }
 
     function getCheckedValues(checkboxes) {
@@ -86,87 +119,71 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     function checkPrice(price, selectedPrices) {
-        if (selectedPrices.includes("all")) return true;
+        if (selectedPrices.length === 0 || selectedPrices.includes("all")) return true;
 
         return selectedPrices.some(range => {
-            switch (range) {
-                case "Under 5000": return price <= 5000;
-                case "5000-10000": return price > 5000 && price <= 10000;
-                case "10000-20000": return price > 10000 && price <= 20000;
-                case "20000-50000": return price > 20000 && price <= 50000;
-                case "Over 50000": return price > 50000;
-                default: return false;
+            const rLower = range.toLowerCase().trim();
+            if (rLower === "all") return true;
+            if (rLower.startsWith("under ") || rLower.startsWith("under-")) {
+                const val = parseInt(rLower.replace(/[^\d]/g, ""), 10) || Infinity;
+                return price <= val;
             }
+            if (rLower.startsWith("over ") || rLower.startsWith("over-")) {
+                const val = parseInt(rLower.replace(/[^\d]/g, ""), 10) || 0;
+                return price > val;
+            }
+            const parts = range.split("-").map(p => parseInt(p.replace(/[^\d]/g, ""), 10));
+            if (parts.length === 2 && !isNaN(parts[0]) && !isNaN(parts[1])) {
+                return price >= parts[0] && price <= parts[1];
+            }
+            return false;
         });
     }
 
     function handleAllCheckbox(changedCheckbox) {
-        const group = changedCheckbox.closest('div').parentElement;
-        const groupCheckboxes = Array.from(group.querySelectorAll('input[type="checkbox"]'));
-        const allCheckbox = groupCheckboxes.find(cb => cb.value === 'all');
-        const otherCheckboxes = groupCheckboxes.filter(cb => cb.value !== 'all');
+        let group;
 
-        if (changedCheckbox === allCheckbox) {
-            if (allCheckbox.checked) {
-                otherCheckboxes.forEach(cb => cb.checked = false);
-            } else {
-                allCheckbox.checked = true; // Prevent unchecking "All" directly without selecting another
-            }
-        } else {
-            if (changedCheckbox.checked) {
-                allCheckbox.checked = false;
-            } else {
-                const anyChecked = otherCheckboxes.some(cb => cb.checked);
-                if (!anyChecked) {
-                    allCheckbox.checked = true;
-                }
-            }
+        if (changedCheckbox.classList.contains("price-checkbox")) {
+            group = priceCheckboxes;
+        } 
+        else if (changedCheckbox.classList.contains("brands-checkbox")) {
+            group = brandCheckboxes;
+        } 
+        else if (changedCheckbox.classList.contains("category-checkbox")) {
+            group = categoryCheckboxes;
+        }
+
+        if (!group) return;
+
+        if (changedCheckbox.value === "all" && changedCheckbox.checked) {
+            group.forEach(cb => {
+                if (cb !== changedCheckbox) cb.checked = false;
+            });
+        } 
+        else if (changedCheckbox.value !== "all" && changedCheckbox.checked) {
+            group.forEach(cb => {
+                if (cb.value === "all") cb.checked = false;
+            });
+        }
+
+        const anyChecked = Array.from(group).some(cb => cb.checked);
+        if (!anyChecked) {
+            const allCb = Array.from(group).find(cb => cb.value === "all");
+            if (allCb) allCb.checked = true;
         }
     }
 
-    function getTargetPageFromQuery(rawText, fallbackPage = "lightings.html") {
-        const text = rawText.trim().toLowerCase();
-        if (!text) return fallbackPage;
-
-        const categoryRules = [
-            { page: "storage.html", keywords: ["storage", "memory", "sd card", "sdxc", "sdhc", "cfexpress", "sandisk", "lexar", "prograde", "angelbird"] },
-            { page: "camera.html", keywords: ["camera", "dslr", "mirrorless", "eos", "alpha", "camera body"] },
-            { page: "tripod.html", keywords: ["tripod", "manfrotto", "sirui", "gitzo", "mefoto", "peak design", "befree"] },
-            { page: "microphones.html", keywords: ["mic", "microphone", "audio", "boya", "simpex", "wireless mic", "dm-e100"] },
-            { page: "lightings.html", keywords: ["light", "lighting", "flash", "speedlite", "ring light", "digitek", "el-100", "600ex"] },
-            { page: "gimbal.html", keywords: ["gimbal", "stabilizer", "dji", "osmo", "ronin", "om 5", "mobile 7"] },
-            { page: "Lens.html", keywords: ["lens", "lenses", "macro", "50mm", "24-105", "55-250", "70-200", "70-300", "100-400"] },
-            { page: "accessories.html", keywords: ["accessory", "accessories", "bag", "battery", "cleaning"] }
-        ];
-
-        if (/\bsd\b/.test(text) || /\bcard\b/.test(text)) return "storage.html";
-
-        for (const rule of categoryRules) {
-            if (rule.keywords.some(keyword => text.includes(keyword))) {
-                return rule.page;
-            }
-        }
-
-        return fallbackPage;
-    }
-
-    function routeSearchByCategory() {
-        if (!searchInput) return;
-
-        const query = searchInput.value.trim();
-        if (!query) return;
-
-        const targetPage = getTargetPageFromQuery(query, "lightings.html");
-        window.location.href = `${targetPage}?search=${encodeURIComponent(query)}`;
-    }
+    filterCards();
 
     if (searchInput) {
-        searchInput.addEventListener("keydown", (e) => {
-            if (e.key === "Enter") {
-                e.preventDefault();
-            }
+        searchInput.addEventListener("input", () => {
+            filterCards();
         });
     }
+}
 
-    filterCards(); // Initial filtering
-});
+if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initLightingFilters);
+} else {
+    initLightingFilters();
+}

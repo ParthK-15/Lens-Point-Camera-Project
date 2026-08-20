@@ -120,7 +120,8 @@ router.get("/accessories", (req, res) => {
 router.get("/products", async (req, res) => {
   try {
     const products = await Product.find({ category: "camera" });
-    res.render("products/products", { products });
+    const selectedBrand = (req.query.brand || "").trim();
+    res.render("products/products", { products, selectedBrand });
   } catch (err) {
     console.error(err);
     res.status(500).send("Server Error: Could not fetch products.");
@@ -147,7 +148,8 @@ router.get("/products/:slug", async (req, res) => {
 router.get("/lenses", async (req, res) => {
   try {
     const products = await Product.find({ category: "lens" });
-    res.render("products/lenses", { products });
+    const selectedBrand = (req.query.brand || "").trim();
+    res.render("products/lenses", { products, selectedBrand });
   } catch (err) {
     console.error(err);
     res.status(500).send("Server Error: Could not fetch lenses.");
@@ -174,7 +176,8 @@ router.get("/lenses/:slug", async (req, res) => {
 router.get("/tripods", async (req, res) => {
   try {
     const products = await Product.find({ category: "tripod" });
-    res.render("products/tripods", { products });
+    const selectedBrand = (req.query.brand || "").trim();
+    res.render("products/tripods", { products, selectedBrand });
   } catch (err) {
     console.error(err);
     res.status(500).send("Server Error: Could not fetch tripods.");

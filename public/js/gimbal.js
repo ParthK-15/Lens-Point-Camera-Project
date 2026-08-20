@@ -1,8 +1,116 @@
-document.addEventListener("DOMContentLoaded", () => {
-    const cards = document.querySelectorAll(".camera-cards");
+function initGimbalFilters() {
+    const cards = document.querySelectorAll(".camera-cards, .tripod-cards, .bag-cards, .battery-cards, .storage-cards, .gimbal-cards, .microphones-cards, .lights-cards");
+
     const priceCheckboxes = document.querySelectorAll(".price-checkbox");
     const brandCheckboxes = document.querySelectorAll(".brands-checkbox");
+    const categoryCheckboxes = document.querySelectorAll(".category-checkbox");
+
+    const allCheckboxes = document.querySelectorAll("input[type='checkbox']");
     const resetBtn = document.getElementById("reset-btn");
+    const searchInput = document.querySelector('.options input[type="text"]');
+
+    const urlParams = new URLSearchParams(window.location.search);
+    const searchQuery = urlParams.get('search');
+    const brandParam = urlParams.get('brand');
+    
+    if (searchQuery && searchInput) {
+        searchInput.value = searchQuery;
+    }
+
+    if (brandParam) {
+        const brandLower = brandParam.toLowerCase().trim();
+        let foundMatch = false;
+
+        brandCheckboxes.forEach(cb => {
+            if (cb.value.toLowerCase().trim() === brandLower) {
+                cb.checked = true;
+                foundMatch = true;
+            } else if (cb.value !== 'all') {
+                cb.checked = false;
+            }
+        });
+
+        if (foundMatch) {
+            const allBrandCb = document.querySelector(".brands-checkbox[value='all']");
+            if (allBrandCb) allBrandCb.checked = false;
+        }
+    }
+
+    allCheckboxes.forEach(cb => {
+        cb.addEventListener("change", () => {
+            handleAllCheckbox(cb);
+            filterCards();
+        });
+    });
+
+    if (resetBtn) {
+        resetBtn.addEventListener("click", () => {
+            allCheckboxes.forEach(cb => cb.checked = false);
+
+            const allPrice = document.querySelector(".price-checkbox[value='all']");
+            const allBrand = document.querySelector(".brands-checkbox[value='all']");
+            const allCat = document.querySelector(".category-checkbox[value='all']");
+
+            if (allPrice) allPrice.checked = true;
+            if (allBrand) allBrand.checked = true;
+            if (allCat) allCat.checked = true;
+
+            if (searchInput) searchInput.value = "";
+            filterCards();
+        });
+    }
+
+    function filterCards() {
+        const selectedPrices = getCheckedValues(priceCheckboxes);
+        const selectedBrands = getCheckedValues(brandCheckboxes);
+        const selectedCategories = getCheckedValues(categoryCheckboxes);
+        const searchText = searchInput ? searchInput.value.toLowerCase().trim() : "";
+
+        cards.forEach(card => {
+            const rawPrice = card.dataset.price || "";
+            const price = parseInt(String(rawPrice).replace(/[^\d]/g, ""), 10) || 0;
+            const brand = (card.dataset.brand || "").toLowerCase().trim();
+            const category = (card.dataset.category || "").toLowerCase().trim();
+            const titleEl = card.querySelector(".card-title, .content h2, h2");
+            const cardTitle = titleEl ? titleEl.textContent.toLowerCase().trim() : "";
+
+            const priceMatch = checkPrice(price, selectedPrices);
+            
+            let brandMatch = false;
+            if (selectedBrands.length === 0 || selectedBrands.includes("all")) {
+                brandMatch = true;
+            } else {
+                brandMatch = selectedBrands.some(b => {
+                    const bLower = b.toLowerCase().trim();
+                    if (!bLower || bLower === "all") return true;
+                    return brand === bLower || brand.includes(bLower) || cardTitle.includes(bLower);
+                });
+            }
+
+            let categoryMatch = false;
+            if (selectedCategories.length === 0 || selectedCategories.includes("all")) {
+                categoryMatch = true;
+            } else {
+                categoryMatch = selectedCategories.some(c => {
+                    const cLower = c.toLowerCase().trim();
+                    if (!cLower || cLower === "all") return true;
+                    return category === cLower || category.includes(cLower) || cardTitle.includes(cLower);
+                });
+            }
+
+            const searchMatch = searchText === "" || cardTitle.includes(searchText) || brand.includes(searchText);
+
+            const isVisible = (priceMatch && brandMatch && categoryMatch && searchMatch);
+            const targetContainer = card.closest('.product-card-link') || card.parentElement || card;
+            if (targetContainer) {
+                if (isVisible) {
+                    targetContainer.style.setProperty("display", "block", "important");
+                } else {
+                    targetContainer.style.setProperty("display", "none", "important");
+                }
+            }
+        });
+    }
 
     function getCheckedValues(checkboxes) {
         return Array.from(checkboxes)
@@ -10,85 +118,72 @@ document.addEventListener("DOMContentLoaded", () => {
             .map(cb => cb.value);
     }
 
-    function filterCards() {
-        const selectedPrices = getCheckedValues(priceCheckboxes);
-        const selectedBrands = getCheckedValues(brandCheckboxes);
+    function checkPrice(price, selectedPrices) {
+        if (selectedPrices.length === 0 || selectedPrices.includes("all")) return true;
 
-        cards.forEach(card => {
-            const price = parseInt(card.dataset.price, 10);
-            const brand = card.dataset.brand;
-
-            let priceMatch = false;
-            let brandMatch = false;
-
-            if (selectedPrices.includes("all")) {
-                priceMatch = true;
-            } else {
-                priceMatch = selectedPrices.some(range => {
-                    if (range === "under-15000") return price < 15000;
-                    if (range === "15000-25000") return price >= 15000 && price <= 25000;
-                    if (range === "25000-40000") return price > 25000 && price <= 40000;
-                    if (range === "over-40000") return price > 40000;
-                });
+        return selectedPrices.some(range => {
+            const rLower = range.toLowerCase().trim();
+            if (rLower === "all") return true;
+            if (rLower.startsWith("under ") || rLower.startsWith("under-")) {
+                const val = parseInt(rLower.replace(/[^\d]/g, ""), 10) || Infinity;
+                return price <= val;
             }
-
-            if (selectedBrands.includes("all")) {
-                brandMatch = true;
-            } else {
-                brandMatch = selectedBrands.includes(brand);
+            if (rLower.startsWith("over ") || rLower.startsWith("over-")) {
+                const val = parseInt(rLower.replace(/[^\d]/g, ""), 10) || 0;
+                return price > val;
             }
-
-            if (priceMatch && brandMatch) {
-                card.parentElement.style.display = "block";
-            } else {
-                card.parentElement.style.display = "none";
+            const parts = range.split("-").map(p => parseInt(p.replace(/[^\d]/g, ""), 10));
+            if (parts.length === 2 && !isNaN(parts[0]) && !isNaN(parts[1])) {
+                return price >= parts[0] && price <= parts[1];
             }
+            return false;
         });
-
-        fixLayout();
     }
 
-    function handleAllLogic(checkboxes) {
-        checkboxes.forEach(cb => {
-            cb.addEventListener("change", () => {
-                if (cb.value === "all" && cb.checked) {
-                    checkboxes.forEach(other => {
-                        if (other !== cb) other.checked = false;
-                    });
-                } else {
-                    checkboxes.forEach(other => {
-                        if (other.value === "all") other.checked = false;
-                    });
-                }
-                filterCards();
+    function handleAllCheckbox(changedCheckbox) {
+        let group;
+
+        if (changedCheckbox.classList.contains("price-checkbox")) {
+            group = priceCheckboxes;
+        } 
+        else if (changedCheckbox.classList.contains("brands-checkbox")) {
+            group = brandCheckboxes;
+        } 
+        else if (changedCheckbox.classList.contains("category-checkbox")) {
+            group = categoryCheckboxes;
+        }
+
+        if (!group) return;
+
+        if (changedCheckbox.value === "all" && changedCheckbox.checked) {
+            group.forEach(cb => {
+                if (cb !== changedCheckbox) cb.checked = false;
             });
-        });
-    }
+        } 
+        else if (changedCheckbox.value !== "all" && changedCheckbox.checked) {
+            group.forEach(cb => {
+                if (cb.value === "all") cb.checked = false;
+            });
+        }
 
-    handleAllLogic(priceCheckboxes);
-    handleAllLogic(brandCheckboxes);
-
-    if (resetBtn) {
-        resetBtn.addEventListener("click", () => {
-            priceCheckboxes.forEach(cb => cb.checked = false);
-            brandCheckboxes.forEach(cb => cb.checked = false);
-            document.querySelector(".price-checkbox[value='all']").checked = true;
-            document.querySelector(".brands-checkbox[value='all']").checked = true;
-            filterCards();
-        });
-    }
-
-    function fixLayout() {
-        const visibleCards = Array.from(cards).filter(card => card.parentElement.style.display !== "none");
-        visibleCards.forEach(card => {
-            card.style.marginRight = "1rem";
-        });
-        visibleCards.forEach((card, index) => {
-            if ((index + 1) % 3 === 0) {
-                card.style.marginRight = "0";
-            }
-        });
+        const anyChecked = Array.from(group).some(cb => cb.checked);
+        if (!anyChecked) {
+            const allCb = Array.from(group).find(cb => cb.value === "all");
+            if (allCb) allCb.checked = true;
+        }
     }
 
     filterCards();
-});
+
+    if (searchInput) {
+        searchInput.addEventListener("input", () => {
+            filterCards();
+        });
+    }
+}
+
+if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initGimbalFilters);
+} else {
+    initGimbalFilters();
+}
