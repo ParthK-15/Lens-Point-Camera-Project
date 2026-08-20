@@ -85,6 +85,18 @@ app.use("/auth", authRoutes);
 app.use("/api/payment", paymentRoutes);
 app.use("/", productRoutes);
 
+// ─── Global Error Handler ──────────────────────────────────────
+app.use((err, req, res, next) => {
+  console.error("❌ Global Server Error:", err.stack || err);
+  res.status(500).send(`
+    <div style="font-family: sans-serif; padding: 2rem; text-align: center;">
+      <h2>500 - Internal Server Error</h2>
+      <p>${err.message || "An unexpected error occurred."}</p>
+      <a href="/">Return to Home</a>
+    </div>
+  `);
+});
+
 // ─── Server ────────────────────────────────────────────────────
 const PORT = process.env.PORT || 3000;
 if (require.main === module || (process.env.NODE_ENV !== "production" && !process.env.VERCEL)) {
