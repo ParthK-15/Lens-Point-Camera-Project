@@ -49,17 +49,29 @@ app.set("views", path.join(__dirname, "views"));
 app.use(express.static(path.join(__dirname, "public")));
 app.use(express.static(path.join(__dirname, "public", "pages"), { index: false }));
 
-// ─── Database ──────────────────────────────────────────────────
-const MONGO_URI = process.env.MONGO_URI || "mongodb://127.0.0.1:27017/sumatiColourLab";
+// ─── Database Connection (Serverless Friendly) ──────────────────
+let isConnected = false;
 
-mongoose
-  .connect(MONGO_URI)
-  .then(() => {
-    console.log(" Database Connected — sumatiColourLab");
-  })
-  .catch((err) => {
-    console.error(" DB Connection Error:", err);
-  });
+const connectDB = async () => {
+  if (isConnected || mongoose.connection.readyState >= 1) {
+    isConnected = true;
+    return;
+  }
+  try {
+    const MONGO_URI = process.env.MONGO_URI || "mongodb://127.0.0.1:27017/sumatiColourLab";
+    await mongoose.connect(MONGO_URI);
+    isConnected = true;
+    console.log("✅ Database Connected — sumatiColourLab");
+  } catch (err) {
+    console.error("❌ DB Connection Error:", err);
+  }
+};
+
+// Ensure DB is connected before handling requests
+app.use(async (req, res, next) => {
+  await connectDB();
+  next();
+});
 
 // ─── Routes ────────────────────────────────────────────────────
 app.use("/admin", adminRoutes);
@@ -69,9 +81,9 @@ app.use("/", productRoutes);
 
 // ─── Server ────────────────────────────────────────────────────
 const PORT = process.env.PORT || 3000;
-if (process.env.NODE_ENV !== "production") {
+if (require.main === module || (process.env.NODE_ENV !== "production" && !process.env.VERCEL)) {
   app.listen(PORT, () => {
-    console.log(`Server running at http://localhost:${PORT}`);
+    console.log(`🚀 Server running at http://localhost:${PORT}`);
   });
 }
 
