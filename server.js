@@ -57,19 +57,25 @@ const connectDB = async () => {
     isConnected = true;
     return;
   }
+  const MONGO_URI = process.env.MONGO_URI || "mongodb://127.0.0.1:27017/sumatiColourLab";
   try {
-    const MONGO_URI = process.env.MONGO_URI || "mongodb://127.0.0.1:27017/sumatiColourLab";
-    await mongoose.connect(MONGO_URI);
+    await mongoose.connect(MONGO_URI, {
+      serverSelectionTimeoutMS: 5000,
+    });
     isConnected = true;
     console.log("✅ Database Connected — sumatiColourLab");
   } catch (err) {
-    console.error("❌ DB Connection Error:", err);
+    console.error("❌ DB Connection Error:", err.message);
   }
 };
 
 // Ensure DB is connected before handling requests
 app.use(async (req, res, next) => {
-  await connectDB();
+  try {
+    await connectDB();
+  } catch (e) {
+    console.error("Connection middleware error:", e);
+  }
   next();
 });
 
