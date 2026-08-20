@@ -65,6 +65,7 @@ router.post("/verify", async (req, res) => {
       customerEmail,
       customerPhone,
       shippingAddress,
+      customerPincode,
       cartData,
       totalAmount,
     } = req.body;
@@ -84,6 +85,18 @@ router.post("/verify", async (req, res) => {
       console.error("Signature mismatch:", { generatedSignature, razorpay_signature });
       return res.status(400).json({ success: false, message: "Payment verification failed! Invalid signature." });
     }
+
+    // Clean address string (remove any stacked "- PIN: ...")
+    let cleanAddress = (shippingAddress || "").split("- PIN:")[0].trim();
+    let pincodeVal = (customerPincode || "").trim();
+
+    // If pincode was not passed separately but present in shippingAddress
+    if (!pincodeVal && shippingAddress && shippingAddress.includes("- PIN:")) {
+      const parts = shippingAddress.split("- PIN:");
+      pincodeVal = parts[parts.length - 1].trim();
+    }
+
+    const fullShippingAddress = pincodeVal ? `${cleanAddress} - PIN: ${pincodeVal}` : cleanAddress;
 
     // Process Cart Items
     const cartItems = typeof cartData === "string" ? JSON.parse(cartData) : (cartData || []);
@@ -110,7 +123,7 @@ router.post("/verify", async (req, res) => {
       customerName: customerName.trim(),
       customerEmail: (customerEmail || req.user.email || "").toLowerCase().trim(),
       customerPhone: customerPhone.trim(),
-      shippingAddress: shippingAddress.trim(),
+      shippingAddress: fullShippingAddress,
       items,
       totalAmount: parseFloat(totalAmount) || 0,
       paymentMethod: "razorpay",
@@ -123,15 +136,20 @@ router.post("/verify", async (req, res) => {
 
     await order.save();
 
-    // Update User details & clear user's stored DB cart
+    // Update User details cleanly & clear user's stored DB cart
+    const userUpdateData = {
+      name: customerName.trim(),
+      phone: customerPhone.trim(),
+      address: cleanAddress,
+      location: cleanAddress,
+      cart: [],
+    };
+    if (pincodeVal) {
+      userUpdateData.pincode = pincodeVal;
+    }
+
     await User.findByIdAndUpdate(req.user._id, {
-      $set: {
-        name: customerName.trim(),
-        phone: customerPhone.trim(),
-        address: shippingAddress.trim(),
-        location: shippingAddress.trim(),
-        cart: [],
-      },
+      $set: userUpdateData,
     });
 
     res.json({

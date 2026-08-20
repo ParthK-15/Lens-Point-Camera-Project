@@ -146,29 +146,58 @@ router.get("/me", async (req, res) => {
     return res.json({ loggedIn: false });
   }
 
+  let cleanAddress = (req.user.address || req.user.location || "").trim();
+  let cleanPincode = (req.user.pincode || "").trim();
+
+  // Clean legacy stacked "- PIN: 123456" from address if present
+  if (cleanAddress.includes("- PIN:")) {
+    const parts = cleanAddress.split("- PIN:");
+    cleanAddress = parts[0].trim();
+    if (!cleanPincode && parts.length > 1) {
+      cleanPincode = parts[parts.length - 1].trim();
+      req.user.pincode = cleanPincode;
+    }
+    req.user.address = cleanAddress;
+    req.user.location = cleanAddress;
+    await req.user.save();
+  }
+
   res.json({
     loggedIn: true,
     name: req.user.name,
     email: req.user.email,
     phone: req.user.phone || "",
-    location: req.user.location || req.user.address || "",
-    address: req.user.address || req.user.location || "",
+    location: cleanAddress,
+    address: cleanAddress,
+    pincode: cleanPincode,
     cart: req.user.cart || [],
   });
 });
 
-// POST /auth/update-profile — Update user profile (phone, location, address)
+// POST /auth/update-profile — Update user profile (phone, location, address, pincode)
 router.post("/update-profile", async (req, res) => {
   if (!req.isAuthenticated()) {
     return res.status(401).json({ error: "Not logged in" });
   }
 
   try {
-    const { phone, location, address } = req.body;
-    const userLoc = (location || address || "").trim();
-    req.user.phone = phone ? phone.trim() : req.user.phone;
-    req.user.location = userLoc || req.user.location;
-    req.user.address = userLoc || req.user.address;
+    const { phone, location, address, pincode } = req.body;
+    let userLoc = (location || address || "").trim();
+
+    // Remove any accidental "- PIN: ..." from address
+    if (userLoc.includes("- PIN:")) {
+      userLoc = userLoc.split("- PIN:")[0].trim();
+    }
+
+    if (phone !== undefined) req.user.phone = phone.trim();
+    if (userLoc !== undefined) {
+      req.user.location = userLoc;
+      req.user.address = userLoc;
+    }
+    if (pincode !== undefined) {
+      req.user.pincode = pincode.trim();
+    }
+
     await req.user.save();
     res.json({ success: true });
   } catch (err) {

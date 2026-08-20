@@ -220,6 +220,17 @@
         <!-- Left: Customer Shipping Details -->
         <div class="checkout-card">
             <h2><i class="fa-solid fa-truck-ramp-box" style="color: #ff6600;"></i> Shipping Information</h2>
+            <% 
+                let displayAddress = user && (user.address || user.location) ? (user.address || user.location) : '';
+                let displayPincode = user && user.pincode ? user.pincode : '';
+                if (displayAddress.includes('- PIN:')) {
+                    const parts = displayAddress.split('- PIN:');
+                    displayAddress = parts[0].trim();
+                    if (!displayPincode && parts.length > 1) {
+                        displayPincode = parts[parts.length - 1].trim();
+                    }
+                }
+            %>
             <form id="paymentForm">
                 <div class="form-group">
                     <label for="customerName">Full Name</label>
@@ -235,11 +246,11 @@
                 </div>
                 <div class="form-group">
                     <label for="shippingAddress">Delivery / Shipping Address</label>
-                    <textarea id="shippingAddress" name="shippingAddress" rows="3" placeholder="House/Flat No., Building, Street, Area" required><%= user && (user.address || user.location) ? (user.address || user.location) : '' %></textarea>
+                    <textarea id="shippingAddress" name="shippingAddress" rows="3" placeholder="House/Flat No., Building, Street, Area" required><%= displayAddress %></textarea>
                 </div>
                 <div class="form-group">
                     <label for="customerPincode">Area PIN Code (6 Digits)</label>
-                    <input type="text" id="customerPincode" name="customerPincode" placeholder="e.g. 110001" maxlength="6" pattern="[0-9]{6}" required>
+                    <input type="text" id="customerPincode" name="customerPincode" value="<%= displayPincode %>" placeholder="e.g. 110001" maxlength="6" pattern="[0-9]{6}" required>
                 </div>
                 <button type="submit" id="paySubmitBtn" class="pay-razorpay-btn">
                     <i class="fa-solid fa-lock"></i> Pay Now via Razorpay
@@ -351,7 +362,7 @@
             const customerPhone = document.getElementById("customerPhone").value.trim();
             const rawAddress = document.getElementById("shippingAddress").value.trim();
             const customerPincode = document.getElementById("customerPincode").value.trim();
-            const shippingAddress = customerPincode ? `${rawAddress} - PIN: ${customerPincode}` : rawAddress;
+            const cleanShippingAddress = rawAddress.split("- PIN:")[0].trim();
 
             try {
                 // 1. Create Razorpay Order on Backend
@@ -393,7 +404,8 @@
                                     customerName,
                                     customerEmail,
                                     customerPhone,
-                                    shippingAddress,
+                                    shippingAddress: cleanShippingAddress,
+                                    customerPincode,
                                     cartData: checkoutCart,
                                     totalAmount: grandTotal,
                                 }),

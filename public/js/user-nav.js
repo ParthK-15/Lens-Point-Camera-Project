@@ -33,8 +33,20 @@
     const initials = getInitials(user.name);
     const firstName = user.name.split(" ")[0];
 
-    const hasAddress = user.address && user.address.trim() !== "";
+    // Clean address if it contains stacked legacy "- PIN:"
+    let cleanAddress = (user.address || user.location || "").trim();
+    let cleanPincode = (user.pincode || "").trim();
+    if (cleanAddress.includes("- PIN:")) {
+      const parts = cleanAddress.split("- PIN:");
+      cleanAddress = parts[0].trim();
+      if (!cleanPincode && parts.length > 1) {
+        cleanPincode = parts[parts.length - 1].trim();
+      }
+    }
+
+    const hasAddress = cleanAddress !== "";
     const hasPhone = user.phone && user.phone.trim() !== "";
+    const hasPincode = cleanPincode !== "";
 
     return `
       <div class="user-dropdown-overlay" id="userDropdownOverlay"></div>
@@ -73,13 +85,22 @@
                 <div class="user-info-content">
                   <span class="user-info-label">Address</span>
                   <span class="user-info-value ${hasAddress ? "" : "empty"}" id="userAddressDisplay">
-                    ${hasAddress ? user.address : "Not added yet"}
+                    ${hasAddress ? cleanAddress : "Not added yet"}
+                  </span>
+                </div>
+              </div>
+              <div class="user-info-row">
+                <i class="fa-solid fa-map-pin"></i>
+                <div class="user-info-content">
+                  <span class="user-info-label">PIN Code</span>
+                  <span class="user-info-value ${hasPincode ? "" : "empty"}" id="userPincodeDisplay">
+                    ${hasPincode ? cleanPincode : "Not added yet"}
                   </span>
                 </div>
               </div>
             </div>
             ${
-              !hasAddress || !hasPhone
+              !hasAddress || !hasPhone || !hasPincode
                 ? `<div class="user-address-alert" id="userEditProfileAlert">
                     <i class="fa-solid fa-triangle-exclamation"></i>
                     <span>Please complete your profile for faster checkout</span>
@@ -130,7 +151,12 @@
           </div>
           <div class="user-edit-field">
             <label for="userEditAddress">Shipping Address</label>
-            <textarea id="userEditAddress" placeholder="Street, City, State, Pincode">${user.address || ""}</textarea>
+            <textarea id="userEditAddress" placeholder="Street, Building, Flat No.">${cleanAddress}</textarea>
+          </div>
+          <div class="user-edit-field">
+            <label for="userEditPincode">Area PIN Code (6 Digits)</label>
+            <input type="text" id="userEditPincode" placeholder="e.g. 110001" maxlength="6" pattern="[0-9]{6}"
+              value="${cleanPincode}">
           </div>
           <div class="user-edit-actions">
             <button class="user-edit-cancel" id="userEditCancel">Cancel</button>
@@ -211,12 +237,13 @@
   async function saveProfile() {
     const phone = document.getElementById("userEditPhone").value.trim();
     const address = document.getElementById("userEditAddress").value.trim();
+    const pincode = document.getElementById("userEditPincode").value.trim();
 
     try {
       const res = await fetch("/auth/update-profile", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ phone, address }),
+        body: JSON.stringify({ phone, address, pincode }),
       });
 
       const data = await res.json();
@@ -224,6 +251,7 @@
         // Update displayed values
         const phoneDisplay = document.getElementById("userPhoneDisplay");
         const addressDisplay = document.getElementById("userAddressDisplay");
+        const pincodeDisplay = document.getElementById("userPincodeDisplay");
 
         if (phoneDisplay) {
           phoneDisplay.textContent = phone || "Not added yet";
@@ -234,9 +262,14 @@
           addressDisplay.className =
             "user-info-value" + (address ? "" : " empty");
         }
+        if (pincodeDisplay) {
+          pincodeDisplay.textContent = pincode || "Not added yet";
+          pincodeDisplay.className =
+            "user-info-value" + (pincode ? "" : " empty");
+        }
 
-        // Remove alert if both fields are filled
-        if (phone && address) {
+        // Remove alert if fields are filled
+        if (phone && address && pincode) {
           const alert = document.getElementById("userEditProfileAlert");
           if (alert) alert.remove();
         }

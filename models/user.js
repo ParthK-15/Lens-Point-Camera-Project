@@ -49,6 +49,11 @@ const userSchema = new mongoose.Schema(
       trim: true,
       default: "",
     },
+    pincode: {
+      type: String,
+      trim: true,
+      default: "",
+    },
     cart: [
       {
         title: { type: String, required: true },
