@@ -10,7 +10,10 @@ const Order = require("../models/order");
 // ─── Multer config for image uploads ───────────────────────────
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
-    const uploadDir = path.join(__dirname, "..", "public", "assets", "images");
+    // Vercel's filesystem is read-only except /tmp
+    const uploadDir = process.env.VERCEL
+      ? "/tmp"
+      : path.join(__dirname, "..", "public", "assets", "images");
     if (!fs.existsSync(uploadDir)) {
       fs.mkdirSync(uploadDir, { recursive: true });
     }

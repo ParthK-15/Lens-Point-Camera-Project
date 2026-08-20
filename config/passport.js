@@ -35,7 +35,9 @@ module.exports = function (passport) {
         {
           clientID: process.env.CLIENT_ID,
           clientSecret: process.env.CLIENT_SECRET,
-          callbackURL: "http://localhost:3000/auth/google/callback",
+          callbackURL: process.env.VERCEL_URL
+            ? `https://${process.env.VERCEL_URL}/auth/google/callback`
+            : "http://localhost:3000/auth/google/callback",
         },
         async (accessToken, refreshToken, profile, done) => {
           try {
