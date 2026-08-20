@@ -2,6 +2,110 @@ const express = require("express");
 const router = express.Router();
 const Product = require("../models/product");
 
+const camerasData = require("../data/camera.js");
+const lensesData = require("../data/lens.js");
+const tripodsData = require("../data/tripod.js");
+const accessoriesData = require("../data/accessories.js");
+
+const allStaticProducts = [...camerasData, ...lensesData, ...tripodsData, ...accessoriesData];
+
+// GET /api/products/search (and /api/search) — Live search JSON API for autocomplete dropdown
+const searchApiHandler = async (req, res) => {
+  try {
+    const query = (req.query.q || "").trim();
+    if (!query) {
+      return res.json([]);
+    }
+
+    const safeQuery = query.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+    let products = [];
+
+    try {
+      products = await Product.find({
+        $or: [
+          { title: { $regex: safeQuery, $options: "i" } },
+          { company: { $regex: safeQuery, $options: "i" } },
+          { category: { $regex: safeQuery, $options: "i" } },
+          { subCategory: { $regex: safeQuery, $options: "i" } },
+          { description: { $regex: safeQuery, $options: "i" } }
+        ]
+      })
+        .select("title price image slug _id company category subCategory")
+        .limit(20)
+        .lean();
+    } catch (dbErr) {
+      console.warn("MongoDB search error, using static fallback dataset:", dbErr.message);
+    }
+
+    // Fallback to static product dataset if database returns 0 results or throws error
+    if (!products || products.length === 0) {
+      const qLower = query.toLowerCase();
+      products = allStaticProducts.filter((item) => {
+        const title = (item.title || "").toLowerCase();
+        const company = (item.company || "").toLowerCase();
+        const category = (item.category || "").toLowerCase();
+        const subCategory = (item.subCategory || "").toLowerCase();
+        const description = (item.description || "").toLowerCase();
+        return (
+          title.includes(qLower) ||
+          company.includes(qLower) ||
+          category.includes(qLower) ||
+          subCategory.includes(qLower) ||
+          description.includes(qLower)
+        );
+      }).slice(0, 20);
+    }
+
+    const formattedResults = products.map((item) => ({
+      _id: item._id || item.slug,
+      name: item.title || item.name,
+      brand: item.company || item.brand || "Generic",
+      category: item.subCategory || item.category || "Equipment",
+      price: item.price,
+      imageUrl: item.image || item.imageUrl,
+      slug: item.slug
+    }));
+
+    res.json(formattedResults);
+  } catch (err) {
+    console.error("API Search error:", err);
+    res.json([]);
+  }
+};
+
+router.get("/api/products/search", searchApiHandler);
+router.get("/api/search", searchApiHandler);
+
+// GET /mobile-search — Dedicated Mobile Search Page
+router.get("/mobile-search", async (req, res) => {
+  try {
+    let initialProducts = [];
+    try {
+      initialProducts = await Product.find({})
+        .select("title price image slug _id company category subCategory")
+        .limit(12)
+        .lean();
+    } catch (err) {
+      initialProducts = allStaticProducts.slice(0, 12);
+    }
+    
+    const formattedInitial = initialProducts.map((item) => ({
+      _id: item._id || item.slug,
+      name: item.title || item.name,
+      brand: item.company || item.brand || "Generic",
+      category: item.subCategory || item.category || "Equipment",
+      price: item.price,
+      imageUrl: item.image || item.imageUrl,
+      slug: item.slug
+    }));
+
+    res.render("mobile-search", { initialProducts: formattedInitial });
+  } catch (err) {
+    console.error("Mobile search route error:", err);
+    res.render("mobile-search", { initialProducts: [] });
+  }
+});
+
 // ─── GET / — Home page ─────────────────────────────────────────
 router.get("/", (req, res) => {
   res.render("home");
@@ -215,7 +319,7 @@ const categoryConfigs = {
   },
   film: {
     title: "Films & Albums",
-    css: "/css/accessories.css",
+    css: "/css/camera.css",
     js: "/js/accessories.js",
     cardClass: "tripod-cards",
     priceRanges: [
@@ -287,84 +391,9 @@ router.get("/product/:slug", async (req, res) => {
   }
 });
 
-// GET /api/products/search (and /api/search) — Live search JSON API for autocomplete dropdown
-const searchApiHandler = async (req, res) => {
-  try {
-    const query = (req.query.q || "").trim();
-    if (!query || query.length < 2) {
-      return res.json({ results: [], products: [] });
-    }
-
-    const products = await Product.find({
-      $or: [
-        { title: { $regex: query, $options: "i" } },
-        { company: { $regex: query, $options: "i" } },
-        { category: { $regex: query, $options: "i" } },
-        { subCategory: { $regex: query, $options: "i" } },
-        { highlights: { $elemMatch: { $regex: query, $options: "i" } } }
-      ]
-    })
-      .select("title price image slug _id company category subCategory")
-      .limit(6)
-      .lean();
-
-    const formattedResults = products.map((item) => ({
-      _id: item._id,
-      name: item.title,
-      brand: item.company,
-      category: item.subCategory || item.category,
-      price: item.price,
-      imageUrl: item.image,
-      slug: item.slug
-    }));
-
-    res.json({ results: formattedResults, products: formattedResults });
-  } catch (err) {
-    console.error("API Search error:", err);
-    res.status(500).json({ results: [], products: [], error: err.message });
-  }
-};
-
-router.get("/api/products/search", searchApiHandler);
-router.get("/api/search", searchApiHandler);
-
-// GET /search — Unified product search route
-router.get("/search", async (req, res) => {
-  try {
-    const query = (req.query.q || "").trim();
-    if (!query) {
-      return res.render("search-results", { 
-        products: [], 
-        query: "", 
-        brands: [], 
-        categories: [] 
-      });
-    }
-
-    // Find all products matching query in title, company, category, or subCategory
-    const products = await Product.find({
-      $or: [
-        { title: { $regex: query, $options: "i" } },
-        { company: { $regex: query, $options: "i" } },
-        { category: { $regex: query, $options: "i" } },
-        { subCategory: { $regex: query, $options: "i" } }
-      ]
-    }).lean();
-
-    // Extract unique brands and categories to populate sidebar filters
-    const brands = await Product.distinct("company");
-    const categories = await Product.distinct("category");
-
-    res.render("search-results", { 
-      products, 
-      query, 
-      brands: brands.filter(Boolean).sort(), 
-      categories: categories.filter(Boolean).sort() 
-    });
-  } catch (err) {
-    console.error("Search error:", err);
-    res.status(500).send("Server Error: Search query failed.");
-  }
+// GET /search — Redirect to /products
+router.get("/search", (req, res) => {
+  res.redirect("/products");
 });
 
 // ═══════════════════════════════════════════════════════════════
@@ -396,14 +425,17 @@ router.post("/checkout", async (req, res) => {
       shippingAddress,
       notes,
       cartData,
+      cartItems: rawCartItems,
       totalAmount,
     } = req.body;
 
-    if (!customerName || !customerEmail || !customerPhone || !shippingAddress || !cartData) {
+    const cartString = cartData || rawCartItems;
+
+    if (!customerName || !customerEmail || !customerPhone || !shippingAddress || !cartString) {
       return res.status(400).send("Bad Request: Missing required order fields");
     }
 
-    const cartItems = JSON.parse(cartData);
+    const cartItems = typeof cartString === "string" ? JSON.parse(cartString) : cartString;
     if (!Array.isArray(cartItems) || cartItems.length === 0) {
       return res.status(400).send("Bad Request: Cart is empty");
     }
@@ -412,7 +444,7 @@ router.post("/checkout", async (req, res) => {
     const items = [];
     for (const item of cartItems) {
       const product = await Product.findOne({ title: item.title });
-      const numericPrice = parseInt(item.price.replace(/[^\d]/g, "")) || 0;
+      const numericPrice = typeof item.price === "string" ? (parseInt(item.price.replace(/[^\d]/g, "")) || 0) : item.price;
       items.push({
         productId: product ? product._id : null,
         title: item.title,
@@ -436,10 +468,12 @@ router.post("/checkout", async (req, res) => {
 
     await order.save();
 
-    // Optionally update user's profile with address and phone if not set yet
+    // Update user's profile in MongoDB with name, phone, location & address
     await User.findByIdAndUpdate(req.user._id, {
       $set: {
+        name: customerName.trim(),
         phone: customerPhone.trim(),
+        location: shippingAddress.trim(),
         address: shippingAddress.trim(),
       },
     });
@@ -448,6 +482,20 @@ router.post("/checkout", async (req, res) => {
   } catch (err) {
     console.error("Order creation error:", err);
     res.status(500).send("Server Error: Failed to place order");
+  }
+});
+
+// GET /checkout-success — Order placement confirmation page
+router.get("/checkout-success", async (req, res) => {
+  try {
+    const { orderId } = req.query;
+    let order = null;
+    if (orderId) {
+      order = await Order.findById(orderId).lean();
+    }
+    res.render("checkout-success", { order });
+  } catch (err) {
+    res.render("checkout-success", { order: null });
   }
 });
 

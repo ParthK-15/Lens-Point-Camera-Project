@@ -15,6 +15,7 @@
     left: 0;
     width: 100%;
     z-index: 1000;
+    overflow: visible !important;
 }
 
 .nav-logo-link {

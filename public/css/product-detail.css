@@ -21,7 +21,7 @@ section { scroll-margin-top: 4rem; }
     background-color: rgba(0, 0, 0, 0.960);
     display: flex; justify-content: space-evenly; align-items: center;
     height: 4rem; position: fixed; top: 0; left: 0;
-    width: 100%; z-index: 1000;
+    width: 100%; z-index: 1000; overflow: visible !important;
 }
 
 .nav-logo-link {

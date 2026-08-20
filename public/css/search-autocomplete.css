@@ -1,0 +1,424 @@
+/* ═══════════════════════════════════════════════════════════════
+   LIVE AUTO-COMPLETE SEARCH DROPDOWN STYLES
+   E-Commerce Camera & Photography Store (Sumati Colour Lab)
+   Inspired by modern e-commerce search UX (Airbnb/Amazon style)
+   ═══════════════════════════════════════════════════════════════ */
+
+/* ── Container & Input Field Setup ──────────────────────────── */
+.search-box-container {
+    position: relative !important;
+    display: flex;
+    align-items: center;
+}
+
+.options .search-input,
+.searchIcon .search-input,
+.navigation input {
+    background-color: #222222 !important;
+    color: #ffffff !important;
+    caret-color: #ffffff !important;
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+    padding: 0 36px 0 14px !important;
+    border-radius: 20px !important;
+    font-size: 0.9rem !important;
+    outline: none !important;
+    transition: border-color 0.25s ease, box-shadow 0.25s ease, background-color 0.25s ease;
+}
+
+.options .search-input:focus,
+.searchIcon .search-input:focus,
+.navigation input:focus {
+    border-color: #ff6600 !important;
+    box-shadow: 0 0 0 3px rgba(255, 102, 0, 0.25) !important;
+    background-color: #1a1a1a !important;
+}
+
+.options .search-input::placeholder,
+.searchIcon .search-input::placeholder,
+.navigation input::placeholder {
+    color: #aaaaaa !important;
+    font-size: 0.85rem !important;
+}
+
+/* ── Dynamic Clear Button (✕) ────────────────────────────────── */
+.search-input-wrapper {
+    position: relative !important;
+    display: inline-flex !important;
+    align-items: center !important;
+}
+
+.search-input-wrapper input.search-input {
+    padding-right: 34px !important;
+}
+
+.search-clear-btn {
+    position: absolute !important;
+    right: 10px !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+    border: none;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.2);
+    color: #cccccc;
+    font-size: 11px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
+    z-index: 10;
+    padding: 0;
+    line-height: 1;
+}
+
+.search-clear-btn:hover {
+    background-color: #ff4d4d;
+    color: #ffffff;
+    transform: translateY(-50%) scale(1.1);
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   DROPDOWN CONTAINER — SCROLLABLE, PREMIUM WHITE CARD
+   ═══════════════════════════════════════════════════════════════ */
+.search-dropdown,
+.search-autocomplete-dropdown {
+    position: absolute !important;
+    top: calc(100% + 8px) !important;
+    left: auto !important;
+    right: 0 !important;
+    width: 360px !important;
+    min-width: 300px !important;
+    max-width: 90vw !important;
+    max-height: 460px !important;
+    overflow-y: auto !important;
+    overflow-x: hidden !important;
+    background-color: #ffffff !important;
+    border-radius: 16px !important;
+    border: 1px solid rgba(0, 0, 0, 0.06) !important;
+    box-shadow:
+        0 4px 6px rgba(0, 0, 0, 0.04),
+        0 12px 32px rgba(0, 0, 0, 0.14),
+        0 0 0 1px rgba(0, 0, 0, 0.04) !important;
+    z-index: 999999 !important;
+    padding: 0 !important;
+    animation: fadeInDropdown 0.22s cubic-bezier(0.16, 1, 0.3, 1) !important;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(0, 0, 0, 0.15) transparent;
+}
+
+.search-dropdown::-webkit-scrollbar {
+    width: 5px;
+}
+
+.search-dropdown::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.search-dropdown::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.15);
+    border-radius: 10px;
+}
+
+.search-dropdown::-webkit-scrollbar-thumb:hover {
+    background: rgba(0, 0, 0, 0.3);
+}
+
+@keyframes fadeInDropdown {
+    from {
+        opacity: 0;
+        transform: translateY(-8px) scale(0.98);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* ── Results Count Header ────────────────────────────────────── */
+.search-dropdown-header {
+    padding: 10px 16px;
+    font-size: 0.78rem;
+    color: #888888;
+    font-weight: 500;
+    background: #fafafa;
+    border-bottom: 1px solid #f0f0f0;
+    border-radius: 16px 16px 0 0;
+    letter-spacing: 0.01em;
+}
+
+.search-dropdown-header strong {
+    color: #333333;
+    font-weight: 700;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   DROPDOWN ITEM — PRODUCT CARD ROW
+   Layout: [Thumbnail] [Title + Brand/Category] [Price]
+   ═══════════════════════════════════════════════════════════════ */
+.search-dropdown-item,
+.search-autocomplete-item {
+    display: flex !important;
+    align-items: center !important;
+    gap: 14px !important;
+    padding: 12px 16px !important;
+    border-bottom: 1px solid #f2f2f2 !important;
+    text-decoration: none !important;
+    color: #1f2937 !important;
+    transition: background-color 0.15s ease !important;
+    cursor: pointer !important;
+    background: #ffffff !important;
+}
+
+.search-dropdown-item:last-child,
+.search-autocomplete-item:last-child {
+    border-bottom: none !important;
+    border-radius: 0 0 16px 16px !important;
+}
+
+.search-dropdown-item:hover,
+.search-autocomplete-item:hover,
+.search-dropdown-item.search-item-active,
+.search-autocomplete-item.search-item-active {
+    background-color: #f5f5f7 !important;
+}
+
+/* ── Product Thumbnail (Left) ────────────────────────────────── */
+.search-item-thumb {
+    flex-shrink: 0;
+    width: 56px;
+    height: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #f8f8fa;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.search-item-img,
+.search-autocomplete-item img {
+    width: 56px !important;
+    height: 56px !important;
+    min-width: 56px !important;
+    min-height: 56px !important;
+    max-width: 56px !important;
+    max-height: 56px !important;
+    border-radius: 12px !important;
+    object-fit: cover !important;
+    background-color: #f8f8fa !important;
+    border: none !important;
+    margin: 0 !important;
+    transition: transform 0.2s ease;
+}
+
+.search-dropdown-item:hover .search-item-img {
+    transform: scale(1.05);
+}
+
+/* ── Product Info (Middle — Title + Meta) ──────────────────────── */
+.search-item-info,
+.search-autocomplete-info {
+    flex: 1 !important;
+    min-width: 0 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 3px !important;
+    padding: 0 !important;
+}
+
+.search-item-title,
+.search-autocomplete-title {
+    font-size: 0.9rem !important;
+    font-weight: 600 !important;
+    color: #1a1a1a !important;
+    line-height: 1.35 !important;
+    display: -webkit-box !important;
+    -webkit-line-clamp: 2 !important;
+    -webkit-box-orient: vertical !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    white-space: normal !important;
+}
+
+.search-highlight {
+    background-color: rgba(255, 102, 0, 0.12) !important;
+    color: #d97706 !important;
+    font-weight: 700 !important;
+    border-radius: 3px !important;
+    padding: 0 2px !important;
+}
+
+.search-item-meta,
+.search-autocomplete-category {
+    display: flex !important;
+    align-items: center !important;
+    gap: 4px !important;
+    font-size: 0.78rem !important;
+    color: #888888 !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    letter-spacing: 0.01em;
+}
+
+.search-item-icon {
+    color: #ff6600 !important;
+    font-size: 0.75rem !important;
+    flex-shrink: 0 !important;
+}
+
+/* ── Product Price (Right) ────────────────────────────────────── */
+.search-item-price-wrap {
+    flex-shrink: 0;
+    text-align: right;
+    min-width: 70px;
+}
+
+.search-item-price {
+    font-size: 0.88rem;
+    font-weight: 700;
+    color: #111111;
+    white-space: nowrap;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   LOADING / SPINNER STATE
+   ═══════════════════════════════════════════════════════════════ */
+.search-dropdown-status,
+.search-autocomplete-loading {
+    padding: 32px 16px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 12px !important;
+    color: #888888 !important;
+    font-size: 0.88rem !important;
+    background: #ffffff !important;
+    border-radius: 16px !important;
+}
+
+.search-spinner {
+    width: 22px !important;
+    height: 22px !important;
+    border: 2.5px solid rgba(0, 0, 0, 0.08) !important;
+    border-top-color: #ff6600 !important;
+    border-radius: 50% !important;
+    animation: searchSpin 0.7s linear infinite !important;
+}
+
+@keyframes searchSpin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   EMPTY / NO RESULTS STATE
+   ═══════════════════════════════════════════════════════════════ */
+.search-dropdown-empty,
+.search-autocomplete-empty {
+    padding: 32px 24px !important;
+    text-align: center !important;
+    color: #888888 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 8px !important;
+    background: #ffffff !important;
+    border-radius: 16px !important;
+}
+
+.search-dropdown-empty i,
+.search-autocomplete-empty i {
+    font-size: 2rem !important;
+    color: #cccccc !important;
+}
+
+.search-dropdown-empty p,
+.search-autocomplete-empty p {
+    margin: 0 !important;
+    font-size: 0.9rem !important;
+    line-height: 1.4 !important;
+    color: #666666 !important;
+}
+
+.search-dropdown-empty strong,
+.search-autocomplete-empty strong {
+    color: #111111 !important;
+}
+
+.search-empty-hint {
+    font-size: 0.78rem;
+    color: #aaaaaa;
+    margin-top: 2px;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   RESPONSIVE — MOBILE & TABLET
+   ═══════════════════════════════════════════════════════════════ */
+@media (max-width: 768px) {
+    .search-dropdown,
+    .search-autocomplete-dropdown {
+        position: fixed !important;
+        top: 55px !important;
+        left: 8px !important;
+        right: 8px !important;
+        width: calc(100% - 16px) !important;
+        max-height: 70vh !important;
+        border-radius: 14px !important;
+    }
+
+    .search-dropdown-item,
+    .search-autocomplete-item {
+        padding: 10px 12px !important;
+        gap: 10px !important;
+    }
+
+    .search-item-thumb {
+        width: 48px;
+        height: 48px;
+        border-radius: 10px;
+    }
+
+    .search-item-img,
+    .search-autocomplete-item img {
+        width: 48px !important;
+        height: 48px !important;
+        min-width: 48px !important;
+        min-height: 48px !important;
+        max-width: 48px !important;
+        max-height: 48px !important;
+        border-radius: 10px !important;
+    }
+
+    .search-item-title,
+    .search-autocomplete-title {
+        font-size: 0.85rem !important;
+    }
+
+    .search-item-price {
+        font-size: 0.82rem;
+    }
+
+    .search-item-price-wrap {
+        min-width: 60px;
+    }
+}
+
+@media (max-width: 480px) {
+    .search-dropdown,
+    .search-autocomplete-dropdown {
+        top: 50px !important;
+        left: 4px !important;
+        right: 4px !important;
+        width: calc(100% - 8px) !important;
+        max-height: 65vh !important;
+    }
+
+    .search-item-price-wrap {
+        display: none;
+    }
+}

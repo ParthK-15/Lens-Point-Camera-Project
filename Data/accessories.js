@@ -482,4 +482,69 @@ module.exports = [
       "Built for photographers carrying complete setups.",
     ],
   },
+
+  // ═══════════════════════════════════════════════════════════════
+  //  FILMS & ALBUMS
+  // ═══════════════════════════════════════════════════════════════
+
+  {
+    title: "Fujifilm Instax Mini Film",
+    slug: "fujifilm-instax-mini-film",
+    company: "Fujifilm",
+    category: "film",
+    subCategory: "instant-film",
+    price: 999,
+    image: "/assets/images/0053767_fujifilm-instax-square-monochrome-instant-film-10-exposures_360_nobg.png",
+    description: "Fujifilm Instax Mini instant film pack producing sharp, vivid color and natural skin tones for instant memories.",
+    features: [
+      "Credit card-sized instant photo prints.",
+      "Vivid color reproduction & natural skin tones.",
+      "ISO 800 high-speed instant film formulation.",
+    ],
+  },
+  {
+    title: "Fujifilm Instax Film",
+    slug: "fujifilm-instax-film",
+    company: "Fujifilm",
+    category: "film",
+    subCategory: "instant-film",
+    price: 1499,
+    image: "/assets/images/0053767_fujifilm-instax-square-monochrome-instant-film-10-exposures_360_nobg.png",
+    description: "Classic Fujifilm Instax instant film format for high quality glossy prints with vibrant color rendering.",
+    features: [
+      "High-gloss instant photo print formulation.",
+      "Clear detail and rich color fidelity.",
+      "Compatible with Instax cameras & smartphone printers.",
+    ],
+  },
+  {
+    title: "Kodak Ultramax Film",
+    slug: "kodak-ultramax-film",
+    company: "Kodak",
+    category: "film",
+    subCategory: "35mm-film",
+    price: 1299,
+    image: "/assets/images/0053767_fujifilm-instax-square-monochrome-instant-film-10-exposures_360_nobg.png",
+    description: "Kodak Ultramax 400 ISO 35mm color negative film, providing bright colors and fine grain in all lighting conditions.",
+    features: [
+      "ISO 400 versatile speed rating.",
+      "Rich saturation and warm skin tones.",
+      "Ideal for indoor, outdoor, and action photography.",
+    ],
+  },
+  {
+    title: "135 Fujifilm 200 Film",
+    slug: "135-fujifilm-200-film",
+    company: "Fujifilm",
+    category: "film",
+    subCategory: "35mm-film",
+    price: 1199,
+    image: "/assets/images/0053767_fujifilm-instax-square-monochrome-instant-film-10-exposures_360_nobg.png",
+    description: "135 format Fujifilm Fujicolor 200 ISO 35mm film, perfect for daylight shooting with true-to-life colors.",
+    features: [
+      "135 format 36 exposure roll.",
+      "ISO 200 fine grain daylight film.",
+      "Classic analog aesthetic with natural color balance.",
+    ],
+  },
 ];

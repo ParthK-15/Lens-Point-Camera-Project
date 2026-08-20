@@ -45,7 +45,6 @@ document.addEventListener("DOMContentLoaded", () => {
         const selectedPrices = getCheckedValues(priceCheckboxes);
         const selectedBrands = getCheckedValues(brandCheckboxes);
         const selectedCategories = getCheckedValues(categoryCheckboxes);
-        const searchText = searchInput.value.toLowerCase();
 
         let visibleCount = 0;
 
@@ -54,15 +53,17 @@ document.addEventListener("DOMContentLoaded", () => {
             const price = parseInt(String(rawPrice).replace(/[^\d]/g, ""), 10) || 0;
             const brand = (card.dataset.brand || "").toLowerCase();
             const category = (card.dataset.category || "").toLowerCase();
-            const cardTitle = card.querySelector(".content h2") ? card.querySelector(".content h2").textContent.toLowerCase() : "";
+            const titleEl = card.querySelector(".card-title, .content h2, h2");
+            const cardTitle = titleEl ? titleEl.textContent.toLowerCase() : "";
 
             const priceMatch = checkPrice(price, selectedPrices);
             const brandMatch = selectedBrands.includes("all") || selectedBrands.map(b => b.toLowerCase()).includes(brand);
             const categoryMatch = selectedCategories.includes("all") || selectedCategories.map(c => c.toLowerCase()).includes(category);
-            const searchMatch = !searchText || cardTitle.includes(searchText);
 
-            const isVisible = (priceMatch && brandMatch && categoryMatch && searchMatch);
-            card.parentElement.style.display = isVisible ? "flex" : "none";
+            const isVisible = (priceMatch && brandMatch && categoryMatch);
+            if (card.parentElement) {
+                card.parentElement.style.display = isVisible ? "flex" : "none";
+            }
             
             if (isVisible) visibleCount++;
         });
@@ -182,16 +183,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
         searchInput.addEventListener("keydown", (e) => {
             if (e.key === "Enter") {
-                routeSearchByCategory();
+                e.preventDefault();
             }
         });
-    }
-
-    if (searchIcon) {
-        searchIcon.addEventListener("click", () => {
-            routeSearchByCategory();
-        });
-    }
 
     // 🔍 CLEAR SEARCH BUTTON
     const clearSearchBtn = document.getElementById('clearSearchBtn');

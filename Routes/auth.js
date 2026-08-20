@@ -63,11 +63,11 @@ router.get("/signup", (req, res) => {
 // POST /auth/signup
 router.post("/signup", async (req, res) => {
   try {
-    const { name, email, password, confirmPassword } = req.body;
+    const { name, email, password, confirmPassword, phone, location, address } = req.body;
 
     if (!name || !email || !password || !confirmPassword) {
       return res.render("auth/signup", {
-        error: "Please fill in all fields.",
+        error: "Please fill in all required fields.",
       });
     }
 
@@ -93,11 +93,15 @@ router.post("/signup", async (req, res) => {
       });
     }
 
-    // Create user
+    // Create user with name, email, password, phone, location & address
+    const userLocation = (location || address || "").trim();
     const user = await User.create({
       name: name.trim(),
       email: email.toLowerCase().trim(),
       password,
+      phone: phone ? phone.trim() : "",
+      location: userLocation,
+      address: userLocation,
     });
 
     // Auto-login after signup
@@ -147,21 +151,24 @@ router.get("/me", async (req, res) => {
     name: req.user.name,
     email: req.user.email,
     phone: req.user.phone || "",
-    address: req.user.address || "",
+    location: req.user.location || req.user.address || "",
+    address: req.user.address || req.user.location || "",
     cart: req.user.cart || [],
   });
 });
 
-// POST /auth/update-profile — Update user profile (phone, address)
+// POST /auth/update-profile — Update user profile (phone, location, address)
 router.post("/update-profile", async (req, res) => {
   if (!req.isAuthenticated()) {
     return res.status(401).json({ error: "Not logged in" });
   }
 
   try {
-    const { phone, address } = req.body;
-    req.user.phone = phone || "";
-    req.user.address = address || "";
+    const { phone, location, address } = req.body;
+    const userLoc = (location || address || "").trim();
+    req.user.phone = phone ? phone.trim() : req.user.phone;
+    req.user.location = userLoc || req.user.location;
+    req.user.address = userLoc || req.user.address;
     await req.user.save();
     res.json({ success: true });
   } catch (err) {

@@ -7,6 +7,7 @@
     <title>Search Results — Sumati Color Lab</title>
     <link rel="stylesheet" href="/css/camera.css">
     <link rel="stylesheet" href="/css/user-nav.css">
+    <link rel="stylesheet" href="/css/search-autocomplete.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <script src="/js/cart-sync-head.js"></script>
     <style>
@@ -155,7 +156,15 @@
                         <i class="fa-solid fa-magnifying-glass"></i>
                     </label>
                     <% if (user) { %>
-                        <button type="button" class="login" onclick="window.location='/auth/logout'"><%= user.name %></button>
+                        <% 
+                            let initials = '?';
+                            if (user.name) {
+                                const parts = user.name.trim().split(/\s+/);
+                                if (parts.length >= 2) { initials = (parts[0][0] + parts[1][0]).toUpperCase(); }
+                                else { initials = parts[0].substring(0, 2).toUpperCase(); }
+                            }
+                        %>
+                        <button type="button" class="user-avatar-btn" title="Signed in as <%= user.name %>" aria-label="Open profile menu"><%= initials %></button>
                     <% } else { %>
                         <button type="button" class="login" onclick="window.location='/auth/login'">Log In</button>
                     <% } %>
@@ -227,6 +236,7 @@
     <script src="/js/search-results.js"></script>
     <script src="/js/popup.js"></script>
     <script src="/js/user-nav.js"></script>
+    <script src="/js/search-autocomplete.js"></script>
     <script src="/js/cart.js" defer></script>
 </body>
 

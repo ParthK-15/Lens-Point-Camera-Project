@@ -8,6 +8,7 @@ const passport = require("passport");
 const productRoutes = require("./routes/product.js");
 const adminRoutes = require("./routes/admin.js");
 const authRoutes = require("./routes/auth.js");
+const paymentRoutes = require("./routes/payment.js");
 
 const app = express();
 
@@ -61,6 +62,7 @@ mongoose
 // ─── Routes ────────────────────────────────────────────────────
 app.use("/admin", adminRoutes);
 app.use("/auth", authRoutes);
+app.use("/api/payment", paymentRoutes);
 app.use("/", productRoutes);
 
 // ─── Server ────────────────────────────────────────────────────

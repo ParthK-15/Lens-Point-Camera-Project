@@ -45,46 +45,27 @@ bindClickRedirect(".batteries-content", "/category/battery");
 bindClickRedirect(".storage", "/category/storage");
 bindClickRedirect(".gimbal-content", "/category/gimbal");
 bindClickRedirect(".bags-content", "/category/bag");
-bindClickRedirect(".cleanup-content", "/search?q=cleaning");
-
 // ── Brand Card Redirects ─────────────────────────────────────
-bindClickRedirect(".sony", "/search?q=Sony");
-bindClickRedirect(".canon", "/search?q=Canon");
-bindClickRedirect(".nikon", "/search?q=Nikon");
-bindClickRedirect(".gopro", "/search?q=GoPro");
-
-function routeHomeSearch(inputElement) {
-    if (!inputElement) return;
-
-    const searchText = inputElement.value.trim();
-    if (!searchText) return;
-
-    window.location.href = `/search?q=${encodeURIComponent(searchText)}`;
-}
+bindClickRedirect(".sony", "/products");
+bindClickRedirect(".canon", "/products");
+bindClickRedirect(".nikon", "/products");
+bindClickRedirect(".gopro", "/products");
 
 const desktopSearchInput = document.querySelector('.options input[type="text"]');
-const desktopSearchIcon = document.querySelector('.options i.fa-magnifying-glass');
 const mobileSearchInput = document.querySelector(".inputMobile");
-const mobileSearchIcon = document.getElementById("searchButton");
 
 if (desktopSearchInput) {
     desktopSearchInput.addEventListener("keydown", (e) => {
         if (e.key === "Enter") {
-            routeHomeSearch(desktopSearchInput);
+            e.preventDefault();
         }
-    });
-}
-
-if (desktopSearchIcon) {
-    desktopSearchIcon.addEventListener("click", () => {
-        routeHomeSearch(desktopSearchInput);
     });
 }
 
 if (mobileSearchInput) {
     mobileSearchInput.addEventListener("keydown", (e) => {
         if (e.key === "Enter") {
-            routeHomeSearch(mobileSearchInput);
+            e.preventDefault();
         }
     });
 }

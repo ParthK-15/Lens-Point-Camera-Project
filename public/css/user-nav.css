@@ -1,3 +1,5 @@
+@import url('/css/search-autocomplete.css');
+
 /* ── Standardized Navbar Logo ────────────────────────────────── */
 .nav-logo-link {
     display: flex;
@@ -963,6 +965,10 @@ aside {
 }
 
 @media (max-width: 768px) {
+    body {
+        background-color: #f1f3f6;
+    }
+
     .main-camera-screen,
     .main-lens-screen,
     .main-tripod-screen,
@@ -974,6 +980,9 @@ aside {
     .main-microphone-screen,
     .main-storage-screen {
         flex-direction: column;
+        padding-top: 0 !important;
+        margin-top: 0 !important;
+        background-color: #f1f3f6 !important;
     }
 
     .main-camera-cards,
@@ -1234,148 +1243,12 @@ aside {
     color: orange;
 }
 
-#search-dropdown,
-.search-autocomplete-dropdown {
-    position: absolute;
-    top: calc(100% + 8px);
-    right: 0;
-    width: 360px;
-    max-width: 90vw;
-    max-height: 420px;
-    overflow-y: auto;
-    background: #181818;
-    border: 1px solid rgba(255, 255, 255, 0.12);
-    border-radius: 12px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-    z-index: 1050;
-    display: none;
-    padding: 6px 0;
-    backdrop-filter: blur(10px);
-}
-
-#search-dropdown.active,
-.search-autocomplete-dropdown.active {
-    display: block;
-}
-
-.search-autocomplete-item {
-    display: flex;
-    align-items: center;
-    padding: 10px 14px;
-    border-bottom: 1px solid #242424;
-    text-decoration: none;
-    color: #fff;
-    transition: transform 0.2s ease, background-color 0.2s ease;
-}
-
-.search-autocomplete-item:last-child {
-    border-bottom: none;
-}
-
-.search-autocomplete-item:hover {
-    background: #262626;
-    transform: translateX(4px);
-}
-
-.search-autocomplete-item img {
-    width: 55px;
-    height: 55px;
-    object-fit: cover;
-    border-radius: 8px;
-    margin-right: 12px;
-    background: #ffffff;
-    padding: 2px;
-    flex-shrink: 0;
-    border: 1px solid #333;
-}
-
-.search-autocomplete-info {
-    flex: 1;
-    overflow: hidden;
-}
-
-.search-autocomplete-title {
-    font-size: 0.9rem;
-    font-weight: 700;
-    color: #ffffff;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
-
-.search-highlight {
-    color: #ff8c00;
-    font-weight: 800;
-    background: rgba(255, 140, 0, 0.15);
-    padding: 0 2px;
-    border-radius: 3px;
-}
-
-.search-autocomplete-category {
-    font-size: 0.78rem;
-    color: #aaaaaa;
-    margin-top: 3px;
-    display: flex;
-    align-items: center;
-    gap: 4px;
-}
-
-.search-autocomplete-price {
-    font-size: 0.9rem;
-    color: #ff8c00;
-    font-weight: 700;
-    margin-left: 10px;
-    white-space: nowrap;
-}
-
-.search-autocomplete-footer {
-    display: block;
-    padding: 11px;
-    text-align: center;
-    background: #202020;
-    color: #ff8c00;
-    font-weight: 600;
-    font-size: 0.85rem;
-    text-decoration: none;
-    border-top: 1px solid #333;
-    transition: background 0.2s ease;
-}
-
-.search-autocomplete-footer:hover {
-    background: #2a2a2a;
-}
-
-.search-autocomplete-empty {
-    padding: 20px 16px;
-    text-align: center;
-    color: #999999;
-    font-size: 0.88rem;
-    font-weight: 500;
-}
-
-.search-autocomplete-loading {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    padding: 18px;
-    color: #bbbbbb;
-    font-size: 0.85rem;
-}
-
-.search-spinner {
-    width: 18px;
-    height: 18px;
-    border: 2px solid rgba(255, 140, 0, 0.3);
-    border-top-color: #ff8c00;
-    border-radius: 50%;
-    animation: searchSpin 0.7s linear infinite;
-}
-
-@keyframes searchSpin {
-    to {
-        transform: rotate(360deg);
-    }
+header,
+nav,
+.navigation {
+    position: relative !important;
+    z-index: 9999 !important;
+    overflow: visible !important;
 }
 
 

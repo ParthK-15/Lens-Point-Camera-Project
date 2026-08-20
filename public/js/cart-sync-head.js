@@ -5,7 +5,7 @@
         cart.forEach(item => {
             count += (item.quantity || 1);
         });
-        const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+
         const style = document.createElement('style');
         style.id = 'cart-temp-styles';
         style.innerHTML = `
@@ -13,8 +13,6 @@
             .cart-count::before { content: "${count}" !important; font-size: 1rem !important; }
             .cart-count-mobile { font-size: 0 !important; }
             .cart-count-mobile::before { content: "${count}" !important; font-size: 1rem !important; }
-            .login, .interested, .login2 { font-size: 0 !important; }
-            .login::before, .interested::before, .login2::before { content: "${isLoggedIn ? 'Log Out' : 'Log In'}" !important; font-size: 1rem !important; }
         `;
         document.head.appendChild(style);
     } catch (e) {}

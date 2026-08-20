@@ -45,15 +45,15 @@ document.addEventListener("DOMContentLoaded", () => {
 			const price = parseInt(card.dataset.price);
 			const brand = card.dataset.brand;
 			const category = card.dataset.category;
-			const cardTitle = card.querySelector(".content h2").textContent.toLowerCase();
 
 			const priceMatch = checkPrice(price, selectedPrices);
 			const brandMatch = selectedBrands.includes("all") || selectedBrands.includes(brand);
 			const categoryMatch = selectedCategories.includes("all") || selectedCategories.includes(category);
-			const searchMatch = cardTitle.includes(searchText);
 
-			const isVisible = (priceMatch && brandMatch && categoryMatch && searchMatch);
-			card.parentElement.style.display = isVisible ? "flex" : "none";
+			const isVisible = (priceMatch && brandMatch && categoryMatch);
+			if (card.parentElement) {
+				card.parentElement.style.display = isVisible ? "flex" : "none";
+			}
 
 			if (isVisible) visibleCount++;
 		});
@@ -164,16 +164,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
 		searchInput.addEventListener("keydown", (e) => {
 			if (e.key === "Enter") {
-				routeSearchByCategory();
+				e.preventDefault();
 			}
 		});
-	}
-
-	if (searchIcon) {
-		searchIcon.addEventListener("click", () => {
-			routeSearchByCategory();
-		});
-	}
 
 	const clearSearchBtn = document.getElementById("clearSearchBtn");
 	if (clearSearchBtn) {

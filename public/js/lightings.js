@@ -52,16 +52,15 @@ document.addEventListener("DOMContentLoaded", () => {
             const price = parseInt(card.dataset.price);
             const brand = card.dataset.brand;
             const category = card.dataset.category;
-            const cardTitle = card.querySelector(".content h2").textContent.toLowerCase();
 
             const priceMatch = checkPrice(price, selectedPrices);
             const brandMatch = selectedBrands.includes("all") || selectedBrands.includes(brand);
             const categoryMatch = selectedCategories.includes("all") || selectedCategories.includes(category);
-            const searchMatch = cardTitle.includes(searchText);
 
-            const isVisible = (priceMatch && brandMatch && categoryMatch && searchMatch);
-            // Notice: In tripod.html, .tripod-cards are wrapped in <a>, so we toggle <a> 
-            card.parentElement.style.display = isVisible ? "block" : "none";
+            const isVisible = (priceMatch && brandMatch && categoryMatch);
+            if (card.parentElement) {
+                card.parentElement.style.display = isVisible ? "block" : "none";
+            }
             
             if (isVisible) visibleCount++;
         });
@@ -164,13 +163,9 @@ document.addEventListener("DOMContentLoaded", () => {
     if (searchInput) {
         searchInput.addEventListener("keydown", (e) => {
             if (e.key === "Enter") {
-                routeSearchByCategory();
+                e.preventDefault();
             }
         });
-    }
-
-    if (searchIcon) {
-        searchIcon.addEventListener("click", routeSearchByCategory);
     }
 
     filterCards(); // Initial filtering

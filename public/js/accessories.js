@@ -43,13 +43,9 @@ document.addEventListener("DOMContentLoaded", () => {
     if (searchInput) {
         searchInput.addEventListener("keydown", (e) => {
             if (e.key === "Enter") {
-                routeSearchByCategory();
+                e.preventDefault();
             }
         });
-    }
-
-    if (searchIcon) {
-        searchIcon.addEventListener("click", routeSearchByCategory);
     }
 
     const loginModal = document.getElementById('loginModal');

@@ -125,7 +125,7 @@
           <p>Update your contact details for a smoother checkout experience.</p>
           <div class="user-edit-field">
             <label for="userEditPhone">Phone Number</label>
-            <input type="tel" id="userEditPhone" placeholder="e.g. 9876543210"
+            <input type="tel" id="userEditPhone" placeholder="e.g. 7038418286"
               value="${user.phone || ""}">
           </div>
           <div class="user-edit-field">
@@ -144,14 +144,32 @@
   // ── Replace Login Buttons ─────────────────────────────────
   function replaceLoginButtons(user) {
     const initials = getInitials(user.name);
-    const buttons = document.querySelectorAll(LOGIN_SELECTORS);
 
+    // 1. Bind event listener to any server-rendered avatar buttons
+    const existingAvatars = document.querySelectorAll(".user-avatar-btn");
+    existingAvatars.forEach((avatar) => {
+      if (initials && initials !== "?") avatar.textContent = initials;
+      avatar.title = `Signed in as ${user.name}`;
+      avatar.setAttribute("aria-label", "Open profile menu");
+      if (!avatar.dataset.listenerBound) {
+        avatar.dataset.listenerBound = "true";
+        avatar.addEventListener("click", (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          openDropdown();
+        });
+      }
+    });
+
+    // 2. Replace any unrendered login buttons (e.g. static HTML) with avatar buttons
+    const buttons = document.querySelectorAll(LOGIN_SELECTORS);
     buttons.forEach((btn) => {
       const avatar = document.createElement("button");
       avatar.className = "user-avatar-btn";
       avatar.textContent = initials;
       avatar.title = `Signed in as ${user.name}`;
       avatar.setAttribute("aria-label", "Open profile menu");
+      avatar.dataset.listenerBound = "true";
       avatar.addEventListener("click", (e) => {
         e.preventDefault();
         e.stopPropagation();
@@ -266,198 +284,46 @@
     });
   }
 
-  // ── Global Search Redirects ────────────────────────────────
+  // ── Global Search & Mobile Redirect ───────────────────────
   function bindGlobalSearch() {
-    const desktopSearchInput = document.querySelector('.options input[type="text"]');
-    const desktopOptions = document.querySelector('.options');
+    function isMobileView() {
+      return window.innerWidth <= 768;
+    }
+
+    function redirectToMobileSearch(e) {
+      if (isMobileView() && window.location.pathname !== "/mobile-search") {
+        if (e) {
+          e.preventDefault();
+          e.stopPropagation();
+        }
+        window.location.href = "/mobile-search";
+      }
+    }
+
+    document.addEventListener("click", (e) => {
+      const searchTarget = e.target.closest(
+        "#searchButton, .searchIcon, .options label, .inputMobile, .searchIcon i, .options label i"
+      );
+      if (searchTarget && isMobileView() && window.location.pathname !== "/mobile-search") {
+        redirectToMobileSearch(e);
+      }
+    });
+
     const mobileSearchInput = document.querySelector(".inputMobile");
-    const mobileSearchIcon = document.getElementById("searchButton");
-    const mobileSearchWrap = document.querySelector(".searchIcon");
-
-    // 1. Setup Clear Button and Autocomplete Dropdown for Desktop
-    if (desktopOptions && desktopSearchInput) {
-      if (!desktopSearchInput.getAttribute("placeholder")) {
-        desktopSearchInput.setAttribute("placeholder", "Search cameras, lenses, accessories...");
-      }
-
-      let inputWrapper = desktopOptions.querySelector(".search-input-wrapper");
-      if (!inputWrapper) {
-        inputWrapper = document.createElement("div");
-        inputWrapper.className = "search-input-wrapper";
-        inputWrapper.style.position = "relative";
-        desktopSearchInput.parentNode.insertBefore(inputWrapper, desktopSearchInput);
-        inputWrapper.appendChild(desktopSearchInput);
-      }
-
-      let clearBtn = inputWrapper.querySelector(".search-clear-btn");
-      if (!clearBtn) {
-        clearBtn = document.createElement("i");
-        clearBtn.className = "fa-solid fa-xmark search-clear-btn";
-        inputWrapper.appendChild(clearBtn);
-      }
-
-      let dropdown = document.getElementById("search-dropdown");
-      if (!dropdown) {
-        dropdown = document.createElement("div");
-        dropdown.id = "search-dropdown";
-        dropdown.className = "search-autocomplete-dropdown";
-        desktopOptions.appendChild(dropdown);
-      }
-
-      let debounceTimer = null;
-
-      function updateSearchUI() {
-        const val = desktopSearchInput.value.trim();
-        if (val.length > 0) {
-          clearBtn.style.display = "block";
-        } else {
-          clearBtn.style.display = "none";
-          dropdown.classList.remove("active");
-          dropdown.innerHTML = "";
-        }
-      }
-
-      function highlightText(text, query) {
-        if (!query || !text) return text || "";
-        const escaped = query.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-        const regex = new RegExp(`(${escaped})`, 'gi');
-        return text.replace(regex, '<span class="search-highlight">$1</span>');
-      }
-
-      desktopSearchInput.addEventListener("input", () => {
-        updateSearchUI();
-        const query = desktopSearchInput.value.trim();
-
-        clearTimeout(debounceTimer);
-        if (query.length < 2) {
-          dropdown.classList.remove("active");
-          dropdown.innerHTML = "";
-          return;
-        }
-
-        // Show spinner while fetching
-        dropdown.innerHTML = `
-          <div class="search-autocomplete-loading">
-            <div class="search-spinner"></div>
-            <span>Searching...</span>
-          </div>
-        `;
-        dropdown.classList.add("active");
-
-        debounceTimer = setTimeout(async () => {
-          try {
-            const res = await fetch(`/api/products/search?q=${encodeURIComponent(query)}`);
-            const data = await res.json();
-            const results = data.results || data.products || [];
-
-            if (results.length === 0) {
-              dropdown.innerHTML = `<div class="search-autocomplete-empty">No cameras or accessories found for "${query}"</div>`;
-            } else {
-              let html = results.map(item => {
-                const formattedPrice = item.price
-                  ? (typeof item.price === 'number' ? '₹' + item.price.toLocaleString('en-IN') : String(item.price))
-                  : '';
-                const brandCategory = `📷 ${item.brand || 'Brand'} • ${item.category || 'Category'}`;
-                const highlightedName = highlightText(item.name || item.title, query);
-
-                return `
-                  <a href="/product/${item.slug || item._id}" class="search-autocomplete-item">
-                    <img src="${item.imageUrl || item.image || '/assets/images/placeholder.png'}" alt="${item.name || item.title}">
-                    <div class="search-autocomplete-info">
-                      <div class="search-autocomplete-title">${highlightedName}</div>
-                      <div class="search-autocomplete-category">${brandCategory}</div>
-                    </div>
-                    <div class="search-autocomplete-price">${formattedPrice}</div>
-                  </a>
-                `;
-              }).join('');
-              html += `<a href="/search?q=${encodeURIComponent(query)}" class="search-autocomplete-footer">View all results for "${query}" →</a>`;
-              dropdown.innerHTML = html;
-            }
-            dropdown.classList.add("active");
-          } catch (e) {
-            console.error("Autocomplete error:", e);
-            dropdown.innerHTML = `<div class="search-autocomplete-empty">Error loading search results</div>`;
-          }
-        }, 300);
-      });
-
-      clearBtn.addEventListener("click", () => {
-        desktopSearchInput.value = "";
-        updateSearchUI();
-        desktopSearchInput.focus();
-      });
-
-      document.addEventListener("click", (e) => {
-        if (!desktopOptions.contains(e.target) && !dropdown.contains(e.target)) {
-          dropdown.classList.remove("active");
-        }
-      });
-
-      document.addEventListener("keydown", (e) => {
-        if (e.key === "Escape") {
-          dropdown.classList.remove("active");
-        }
-      });
-    }
-
-    // 2. Setup Clear Button for Mobile Search Input
-    if (mobileSearchWrap && mobileSearchInput) {
-      let mobileClearBtn = mobileSearchWrap.querySelector(".search-clear-btn");
-      if (!mobileClearBtn) {
-        mobileClearBtn = document.createElement("i");
-        mobileClearBtn.className = "fa-solid fa-xmark search-clear-btn";
-        mobileSearchWrap.appendChild(mobileClearBtn);
-      }
-
-      mobileSearchInput.addEventListener("input", () => {
-        if (mobileSearchInput.value.trim().length > 0) {
-          mobileClearBtn.style.display = "inline-block";
-        } else {
-          mobileClearBtn.style.display = "none";
-        }
-      });
-
-      mobileClearBtn.addEventListener("click", () => {
-        mobileSearchInput.value = "";
-        mobileClearBtn.style.display = "none";
-        mobileSearchInput.focus();
-      });
-    }
-
-    function triggerGlobalSearch(input) {
-      if (!input) return;
-      const query = input.value.trim();
-      if (query) {
-        window.location.href = `/search?q=${encodeURIComponent(query)}`;
-      }
-    }
-
-    if (desktopSearchInput) {
-      desktopSearchInput.addEventListener("keydown", (e) => {
-        if (e.key === "Enter") {
-          triggerGlobalSearch(desktopSearchInput);
-        }
-      });
-    }
-    const desktopSearchIcon = document.querySelector('.options i.fa-magnifying-glass') || document.querySelector('.options label');
-    if (desktopSearchIcon) {
-      desktopSearchIcon.addEventListener("click", (e) => {
-        e.preventDefault();
-        triggerGlobalSearch(desktopSearchInput);
-      });
-    }
     if (mobileSearchInput) {
-      mobileSearchInput.addEventListener("keydown", (e) => {
-        if (e.key === "Enter") {
-          triggerGlobalSearch(mobileSearchInput);
+      mobileSearchInput.addEventListener("focus", (e) => {
+        if (isMobileView() && window.location.pathname !== "/mobile-search") {
+          redirectToMobileSearch(e);
         }
       });
     }
-    if (mobileSearchIcon) {
-      mobileSearchIcon.addEventListener("click", (e) => {
-        e.preventDefault();
-        triggerGlobalSearch(mobileSearchInput);
+
+    const desktopSearchInput = document.querySelector('.options input[type="text"]');
+    if (desktopSearchInput) {
+      desktopSearchInput.addEventListener("focus", (e) => {
+        if (isMobileView() && window.location.pathname !== "/mobile-search") {
+          redirectToMobileSearch(e);
+        }
       });
     }
   }
@@ -730,6 +596,14 @@
     ensureMobileNavbar();
     bindGlobalSearch();
     initMobileProductControls();
+
+    // Dynamically load search-autocomplete.js if not present
+    if (!document.querySelector('script[src*="search-autocomplete.js"]')) {
+      const searchScript = document.createElement("script");
+      searchScript.src = "/js/search-autocomplete.js";
+      document.head.appendChild(searchScript);
+    }
+
     try {
       const res = await fetch("/auth/me");
       userData = await res.json();
@@ -739,11 +613,16 @@
           localStorage.removeItem("cart");
         }
         localStorage.setItem("isLoggedIn", "false");
+        localStorage.removeItem("userInitials");
         updateCartBadges();
         return;
       }
       
-      // Merge local cart and DB cart on login/session restoration
+      // Store user initials to prevent navbar login flicker on page reloads
+      const initials = getInitials(userData.name);
+      localStorage.setItem("userInitials", initials);
+
+      // Merge local cart and DB cart safely without doubling quantities
       let localCart = [];
       try {
         localCart = JSON.parse(localStorage.getItem("cart") || "[]");
@@ -753,26 +632,25 @@
 
       const dbCart = userData.cart || [];
       let mergedCart = [...dbCart];
+      let needsSync = false;
 
       if (localCart.length > 0) {
         localCart.forEach(localItem => {
           const existing = mergedCart.find(dbItem => dbItem.title === localItem.title);
-          if (existing) {
-            existing.quantity = (existing.quantity || 1) + (localItem.quantity || 1);
-            if (localItem.desc && !existing.desc) {
-              existing.desc = localItem.desc;
-            }
-          } else {
+          if (!existing) {
             mergedCart.push(localItem);
+            needsSync = true;
           }
         });
         
-        // Sync the merged cart back to the database
-        await fetch("/auth/cart/sync", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ cart: mergedCart }),
-        });
+        if (needsSync) {
+          // Sync new items back to DB
+          await fetch("/auth/cart/sync", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ cart: mergedCart }),
+          });
+        }
       }
 
       localStorage.setItem("cart", JSON.stringify(mergedCart));
@@ -788,11 +666,9 @@
 
       // Replace login buttons with profile avatars
       replaceLoginButtons(userData);
-
-      // Bind events
       bindEvents();
     } catch (err) {
-      console.error("user-nav init error:", err);
+      console.error("User nav init error:", err);
     }
   }
 

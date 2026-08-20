@@ -43,20 +43,19 @@ document.addEventListener("DOMContentLoaded", () => {
     function filterCards() {
         const selectedPrices = getCheckedValues(priceCheckboxes);
         const selectedBrands = getCheckedValues(brandCheckboxes);
-        const searchText = searchInput ? searchInput.value.toLowerCase() : "";
 
         cards.forEach(card => {
             const rawPrice = card.dataset.price || "";
             const price = parseInt(String(rawPrice).replace(/[^\d]/g, ""), 10) || 0;
             const brand = (card.dataset.brand || "").toLowerCase();
-            const cardTitle = card.querySelector(".content h2") ? card.querySelector(".content h2").textContent.toLowerCase() : "";
 
             const priceMatch = checkPrice(price, selectedPrices);
             const brandMatch = selectedBrands.includes("all") || selectedBrands.map(b => b.toLowerCase()).includes(brand);
-            const searchMatch = !searchText || cardTitle.includes(searchText);
 
-            const isVisible = (priceMatch && brandMatch && searchMatch);
-            card.parentElement.style.display = isVisible ? "flex" : "none";
+            const isVisible = (priceMatch && brandMatch);
+            if (card.parentElement) {
+                card.parentElement.style.display = isVisible ? "flex" : "none";
+            }
         });
     }
 
@@ -156,16 +155,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
         searchInput.addEventListener("keydown", (e) => {
             if (e.key === "Enter") {
-                routeSearchByCategory();
+                e.preventDefault();
             }
         });
-    }
-
-    if (searchIcon) {
-        searchIcon.addEventListener("click", () => {
-            routeSearchByCategory();
-        });
-    }
 
     // Trigger initial filter
     filterCards();

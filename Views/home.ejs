@@ -7,6 +7,7 @@
     <title>Sumati Color Lab</title>
     <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="/css/user-nav.css">
+    <link rel="stylesheet" href="/css/search-autocomplete.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link
         href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500&family=Playfair+Display:wght@600&display=swap"
@@ -32,7 +33,15 @@
                         <i class="fa-solid fa-magnifying-glass"></i>
                     </label>
                     <% if (user) { %>
-                        <button class="login" onclick="window.location='/auth/logout'"><%= user.name %></button>
+                        <% 
+                            let initials = '?';
+                            if (user.name) {
+                                const parts = user.name.trim().split(/\s+/);
+                                if (parts.length >= 2) { initials = (parts[0][0] + parts[1][0]).toUpperCase(); }
+                                else { initials = parts[0].substring(0, 2).toUpperCase(); }
+                            }
+                        %>
+                        <button type="button" class="user-avatar-btn" title="Signed in as <%= user.name %>" aria-label="Open profile menu"><%= initials %></button>
                     <% } else { %>
                         <button class="login" onclick="window.location='/auth/login'">Log In</button>
                     <% } %>
@@ -74,7 +83,15 @@
                 <i class="fa-solid fa-magnifying-glass" id="searchButton"></i>
             </label>
             <% if (user) { %>
-                <button class="login2" onclick="window.location='/auth/logout'"><%= user.name %></button>
+                <% 
+                    let initials = '?';
+                    if (user.name) {
+                        const parts = user.name.trim().split(/\s+/);
+                        if (parts.length >= 2) { initials = (parts[0][0] + parts[1][0]).toUpperCase(); }
+                        else { initials = parts[0].substring(0, 2).toUpperCase(); }
+                    }
+                %>
+                <button type="button" class="user-avatar-btn" title="Signed in as <%= user.name %>" aria-label="Open profile menu"><%= initials %></button>
             <% } else { %>
                 <button class="login2" onclick="window.location='/auth/login'">Log In</button>
             <% } %>
@@ -95,64 +112,134 @@
             </div>
         </div>
         <div class="main-content">
+            <!-- Section 1: Main Categories -->
+            <div class="category-section-header">
+                <span class="section-badge">COLLECTION</span>
+                <h2>Explore Camera Gear</h2>
+            </div>
             <div class="row-one">
-                <div class="camera-card first-row-content">
-                    <img src="/assets/images/istockphoto-185278433-612x612_nobg.png" alt="camera">
-                    <h2>Camera</h2>
-                </div>
-                <div class="lens-card first-row-content">
-                    <img src="/assets/images/360_F_599803360_Ag7ieGaWGkg8sQNx3xBsQUPxSdYs1mlu_nobg.png" alt="lens">
-                    <h2>Lens</h2>
-                </div>
-                <div class="tripod-content first-row-content">
-                    <img src="/assets/images/880_first_image_Artboard_1.jpg_nobg.png" alt="tripod">
-                    <h2>Tripods</h2>
-                </div>
-                <div class="lights-content first-row-content">
-                    <img src="/assets/images/61GE58lCHEL_nobg.png" alt="lights">
-                    <h2>Lightings</h2>
-                </div>
-                <div class="microphone-content first-row-content">
-                    <img src="/assets/images/BOYA-BY-MM1-with-Mini-Tripod-and-Mount-3-Universal-Cardiod-Shotgun-Microphone-9.jpg_nobg.png"
-                        alt="microphone">
-                    <h2>Mics</h2>
-                </div>
+                <a href="/products" class="camera-card first-row-content">
+                    <div class="card-img-wrap">
+                        <img src="/assets/images/gen_camera.jpg" alt="camera">
+                    </div>
+                    <div class="card-overlay-badge">
+                        <h2>Camera</h2>
+                        <span class="explore-tag">Browse All <i class="fa-solid fa-arrow-right"></i></span>
+                    </div>
+                </a>
+                <a href="/lenses" class="lens-card first-row-content">
+                    <div class="card-img-wrap">
+                        <img src="/assets/images/gen_lens.jpg" alt="lens">
+                    </div>
+                    <div class="card-overlay-badge">
+                        <h2>Lens</h2>
+                        <span class="explore-tag">Browse All <i class="fa-solid fa-arrow-right"></i></span>
+                    </div>
+                </a>
+                <a href="/category/tripod" class="tripod-content first-row-content">
+                    <div class="card-img-wrap">
+                        <img src="/assets/images/gen_tripod.jpg" alt="tripod">
+                    </div>
+                    <div class="card-overlay-badge">
+                        <h2>Tripods</h2>
+                        <span class="explore-tag">Browse All <i class="fa-solid fa-arrow-right"></i></span>
+                    </div>
+                </a>
+                <a href="/category/lighting" class="lights-content first-row-content">
+                    <div class="card-img-wrap">
+                        <img src="/assets/images/gen_lighting.jpg" alt="lights">
+                    </div>
+                    <div class="card-overlay-badge">
+                        <h2>Lightings</h2>
+                        <span class="explore-tag">Browse All <i class="fa-solid fa-arrow-right"></i></span>
+                    </div>
+                </a>
+                <a href="/category/microphone" class="microphone-content first-row-content">
+                    <div class="card-img-wrap">
+                        <img src="/assets/images/gen_mic.jpg" alt="microphone">
+                    </div>
+                    <div class="card-overlay-badge">
+                        <h2>Mics</h2>
+                        <span class="explore-tag">Browse All <i class="fa-solid fa-arrow-right"></i></span>
+                    </div>
+                </a>
             </div>
-        </div>
-        <div class="row-two">
-            <div class="sony first-row-content">
-                <img src="/assets/images/sony-logo.jpg" alt="sony">
+
+            <!-- Section 2: Official Brands -->
+            <div class="category-section-header">
+                <span class="section-badge">BRANDS</span>
+                <h2>Official Brand Stores</h2>
             </div>
-            <div class="canon first-row-content">
-                <img src="/assets/images/6613e68f1a19d0ab2c380077_Canon1-min.jpg" alt="">
+            <div class="row-two">
+                <a href="/products?brand=Sony" class="sony first-row-content brand-card">
+                    <img src="/assets/images/sony-logo.jpg" alt="sony">
+                    <span class="brand-tag">Sony Gear <i class="fa-solid fa-chevron-right"></i></span>
+                </a>
+                <a href="/products?brand=Canon" class="canon first-row-content brand-card">
+                    <img src="/assets/images/6613e68f1a19d0ab2c380077_Canon1-min.jpg" alt="canon">
+                    <span class="brand-tag">Canon Gear <i class="fa-solid fa-chevron-right"></i></span>
+                </a>
+                <a href="/products?brand=Nikon" class="nikon first-row-content brand-card">
+                    <img src="/assets/images/ba64c159f9ea8aebec751caf983114f7.jpg" alt="nikon">
+                    <span class="brand-tag">Nikon Gear <i class="fa-solid fa-chevron-right"></i></span>
+                </a>
+                <a href="/products?brand=Fujifilm" class="fujifilm first-row-content brand-card">
+                    <img src="/assets/images/fujifilm-logo.svg" alt="fujifilm">
+                    <span class="brand-tag">Fujifilm Gear <i class="fa-solid fa-chevron-right"></i></span>
+                </a>
             </div>
-            <div class="nikon first-row-content">
-                <img src="/assets/images/ba64c159f9ea8aebec751caf983114f7.jpg" alt="nikon">
+
+            <!-- Section 3: Essential Accessories -->
+            <div class="category-section-header">
+                <span class="section-badge">ESSENTIALS</span>
+                <h2>Pro Accessories & Gear</h2>
             </div>
-            <div class="gopro first-row-content">
-                <img src="/assets/images/67824c3dbd7b787fec1cfbcf632f6b8c_nobg.png" alt="">
-            </div>
-        </div>
-        <div class="row-three">
-            <div class="batteries-content first-row-content">
-                <img src="/assets/images/71bEequnhRL_nobg.png" alt="batteries">
-                <h2>Batteries</h2>
-            </div>
-            <div class="storage first-row-content">
-                <img src="/assets/images/select-memory-card-1.jpg.webp" alt="memory">
-                <h2>Storage</h2>
-            </div>
-            <div class="gimbal-content first-row-content">
-                <img src="/assets/images/FeiyuTechSCORP2Kit3-AxisHandheldGimbalforCamera_3_352x.jpg_nobg.png" alt="gimbal">
-                <h2>Gimbals</h2>
-            </div>
-            <div class="bags-content first-row-content">
-                <img src="/assets/images/41lo5GlrIDL._AC_SY1000__nobg.png" alt="bag">
-                <h2>Bags</h2>
-            </div>
-            <div class="cleanup-content first-row-content">
-                <img src="/assets/images/669218c881454949df7ff0e6-hvxrjkn-professional-lens-filter_nobg.png" alt="clean-up kit">
-                <h2>Cleaning</h2>
+            <div class="row-three">
+                <a href="/category/battery" class="batteries-content first-row-content">
+                    <div class="card-img-wrap">
+                        <img src="/assets/images/gen_battery.jpg" alt="batteries">
+                    </div>
+                    <div class="card-overlay-badge">
+                        <h2>Batteries</h2>
+                        <span class="explore-tag">Browse All <i class="fa-solid fa-arrow-right"></i></span>
+                    </div>
+                </a>
+                <a href="/category/storage" class="storage first-row-content">
+                    <div class="card-img-wrap">
+                        <img src="/assets/images/gen_storage.jpg" alt="memory">
+                    </div>
+                    <div class="card-overlay-badge">
+                        <h2>Storage</h2>
+                        <span class="explore-tag">Browse All <i class="fa-solid fa-arrow-right"></i></span>
+                    </div>
+                </a>
+                <a href="/category/gimbal" class="gimbal-content first-row-content">
+                    <div class="card-img-wrap">
+                        <img src="/assets/images/gen_gimbal.jpg" alt="gimbal">
+                    </div>
+                    <div class="card-overlay-badge">
+                        <h2>Gimbals</h2>
+                        <span class="explore-tag">Browse All <i class="fa-solid fa-arrow-right"></i></span>
+                    </div>
+                </a>
+                <a href="/category/bag" class="bags-content first-row-content">
+                    <div class="card-img-wrap">
+                        <img src="/assets/images/41lo5GlrIDL._AC_SY1000__nobg.png" alt="bag">
+                    </div>
+                    <div class="card-overlay-badge">
+                        <h2>Bags</h2>
+                        <span class="explore-tag">Browse All <i class="fa-solid fa-arrow-right"></i></span>
+                    </div>
+                </a>
+                <a href="/category/cleaning" class="cleanup-content first-row-content">
+                    <div class="card-img-wrap">
+                        <img src="/assets/images/669218c881454949df7ff0e6-hvxrjkn-professional-lens-filter_nobg.png" alt="clean-up kit">
+                    </div>
+                    <div class="card-overlay-badge">
+                        <h2>Cleaning</h2>
+                        <span class="explore-tag">Browse All <i class="fa-solid fa-arrow-right"></i></span>
+                    </div>
+                </a>
             </div>
         </div>
     </main>
@@ -219,6 +306,7 @@
     <script src="/js/app.js"></script>
     <script src="/js/popup.js"></script>
     <script src="/js/user-nav.js"></script>
+    <script src="/js/search-autocomplete.js"></script>
     <script src="/js/cart.js" defer></script>
 </body>
 
