@@ -1256,6 +1256,69 @@ nav,
     overflow: visible !important;
 }
 
+/* ── Universal Footer Contact Visibility & Mobile Tel Link Styling ── */
+.foot-contact a,
+.foot-contact p,
+.foot-contact a.contact-phone,
+.foot-contact a[href^="tel"],
+.foot-contact a[href^="mailto"] {
+    display: flex !important;
+    align-items: center !important;
+    gap: 0.75rem !important;
+    color: #ffffff !important;
+    -webkit-text-fill-color: #ffffff !important;
+    text-decoration: none !important;
+    font-size: 1rem !important;
+    font-weight: 500 !important;
+    opacity: 0.95 !important;
+    padding-top: 1rem !important;
+    cursor: pointer !important;
+    line-height: 1.4 !important;
+    transition: color 0.2s ease, opacity 0.2s ease !important;
+}
+
+.foot-contact a i,
+.foot-contact p i,
+.foot-contact a.contact-phone i {
+    color: #ffa500 !important;
+    -webkit-text-fill-color: #ffa500 !important;
+    font-size: 1.1rem !important;
+    width: 1.2rem !important;
+    text-align: center !important;
+    display: inline-block !important;
+}
+
+.foot-contact a:hover,
+.foot-contact a.contact-phone:hover,
+.foot-contact a[href^="tel"]:hover,
+.foot-contact a[href^="mailto"]:hover {
+    color: #ffa500 !important;
+    -webkit-text-fill-color: #ffa500 !important;
+    opacity: 1 !important;
+    text-decoration: underline !important;
+    text-underline-offset: 4px !important;
+}
+
+/* Mobile Accordion Drawer Rules for Contact Us */
+@media (max-width: 550px) {
+    .foot-contact a,
+    .foot-contact p,
+    .foot-contact .contact-phone {
+        display: none !important;
+    }
+
+    #contact-check:checked ~ a,
+    #contact-check:checked ~ p,
+    #contact-check:checked ~ .contact-phone {
+        display: flex !important;
+        align-items: center !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        color: #ffffff !important;
+        -webkit-text-fill-color: #ffffff !important;
+    }
+}
+
 
 
 
