@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= product ? product.title : 'Product Details' %> — Sumati Color Lab</title>
+    <link rel="stylesheet" href="/css/product-detail.css">
+    <link rel="stylesheet" href="/css/user-nav.css">
+    <link rel="stylesheet" href="/css/search-autocomplete.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <script src="/js/cart-sync-head.js"></script>
+</head>
+
+<body>
+    <% if (product) { %>
+
+    <!-- Scroll Progress Bar -->
+    <div id="progress-bar"></div>
+
+    <!-- Navigation with section links -->
+    <header>
+        <nav>
+            <div class="navigation">
+                <a href="/" class="nav-logo-link" title="Home">
+                    <img src="/assets/images/logo.jpeg" alt="Sumati Colour Lab Logo" class="nav-logo-img">
+                </a>
+                <a href="#product-hero">Product</a>
+                <a href="#features">Features</a>
+                <a href="#specs">Specifications</a>
+                <% if ((product.designBlocks && product.designBlocks.length > 0) || (product.designSections && product.designSections.length > 0)) { %>
+                    <a href="#design">Design</a>
+                <% } %>
+                <% if (product.connectivity && product.connectivity.length > 0) { %>
+                    <a href="#connectivity">Connectivity</a>
+                <% } %>
+                <a href="#" class="cart-anchor" title="Cart">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                    <span class="cart-count">0</span>
+                </a>
+                <div class="options">
+                    <input type="text" placeholder="Search">
+                    <label><i class="fa-solid fa-magnifying-glass"></i></label>
+                    <% if (user) { %>
+                        <% 
+                            let initials = '?';
+                            if (user.name) {
+                                const parts = user.name.trim().split(/\s+/);
+                                if (parts.length >= 2) { initials = (parts[0][0] + parts[1][0]).toUpperCase(); }
+                                else { initials = parts[0].substring(0, 2).toUpperCase(); }
+                            }
+                        %>
+                        <button type="button" class="user-avatar-btn" title="Signed in as <%= user.name %>" aria-label="Open profile menu"><%= initials %></button>
+                    <% } else { %>
+                        <button type="button" class="login" onclick="window.location='/auth/login'">Log In</button>
+                    <% } %>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Mobile Aside Menu -->
+    <aside>
+        <input type="checkbox" id="check">
+        <div class="btn_one">
+            <label for="check"><i class="fa-solid fa-bars"></i></label>
+        </div>
+        <div class="mainbox">
+            <div class="btn_two">
+                <label for="check"><i class="fa-solid fa-xmark"></i></label>
+            </div>
+            <div class="sidebar">
+                <div class="head">
+                    <a href="/"><img src="/assets/images/logo.jpeg" alt="Logo" class="mobile-menu-logo"></a>
+                </div>
+                <hr>
+                <div class="sidebar_menu">
+                    <a href="/">Home</a>
+                    <a href="/products">Camera</a>
+                    <a href="/lenses">Lens</a>
+                    <a href="/accessories">Accessories</a>
+                    <a href="#" class="cart-anchor-mobile">
+                        <i class="fa-solid fa-cart-shopping"></i> Cart
+                        <span class="cart-count-mobile">0</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="searchIcon">
+            <input type="text" placeholder="Search" class="inputMobile">
+            <label for="input"><i class="fa-solid fa-magnifying-glass" id="searchButton"></i></label>
+            <% if (user) { %>
+                <% 
+                    let initials = '?';
+                    if (user.name) {
+                        const parts = user.name.trim().split(/\s+/);
+                        if (parts.length >= 2) { initials = (parts[0][0] + parts[1][0]).toUpperCase(); }
+                        else { initials = parts[0].substring(0, 2).toUpperCase(); }
+                    }
+                %>
+                <button type="button" class="user-avatar-btn" title="Signed in as <%= user.name %>" aria-label="Open profile menu"><%= initials %></button>
+            <% } else { %>
+                <button class="login2" onclick="window.location='/auth/login'">Log In</button>
+            <% } %>
+        </div>
+    </aside>
+
+    <!-- Back Button -->
+    <a href="javascript:history.back()" class="back-btn">&#8592;</a>
+
+    <main>
+        <!-- ════════════════════════════════════════════════ -->
+        <!-- SECTION 1: PRODUCT HERO — Image Carousel + Info -->
+        <!-- ════════════════════════════════════════════════ -->
+        <section class="product-section" id="product-hero">
+            <div class="camera-info">
+                <div class="main-content">
+                    <button class="prev">&#10094;</button>
+                    <%
+                        var sliderImages = [];
+                        if (product.images && product.images.length > 0) {
+                            sliderImages = product.images;
+                        } else if (product.sliderImages && product.sliderImages.length > 0) {
+                            sliderImages = product.sliderImages;
+                        } else if (product.image) {
+                            sliderImages = [product.image];
+                        }
+                    %>
+                    <img src="<%= sliderImages.length > 0 ? sliderImages[0] : '' %>"
+                         alt="<%= product.title %>" id="slider-img">
+                    <button class="next">&#10095;</button>
+                    <% if (sliderImages.length > 1) { %>
+                        <div class="dots-container">
+                            <% sliderImages.forEach(function(img, i) { %>
+                                <span class="dot <%= i === 0 ? 'active' : '' %>"></span>
+                            <% }); %>
+                        </div>
+                    <% } %>
+                </div>
+
+                <div class="product-info">
+                    <h1><%= product.title %></h1>
+                    <p class="price">₹<%= product.price ? product.price.toLocaleString('en-IN') : 'N/A' %></p>
+                    <% if (product.description) { %>
+                        <p class="desc"><%= product.description %></p>
+                    <% } %>
+                    <div class="product-buttons">
+                        <button class="buy-btn" onclick="sessionStorage.setItem('buyNowItem', JSON.stringify({ title: '<%= product.title %>', price: <%= product.price %>, image: '<%= product.image %>', quantity: 1 })); window.location='/checkout';">Buy Now</button>
+                        <button class="cart-btn add-to-cart-btn"
+                                data-id="<%= product._id %>"
+                                data-title="<%= product.title %>"
+                                data-price="<%= product.price %>"
+                                data-image="<%= product.image %>">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ════════════════════════════════════════════════ -->
+        <!-- SECTION 2: KEY FEATURES + YOUTUBE VIDEO         -->
+        <!-- ════════════════════════════════════════════════ -->
+        <section class="features-section" id="features">
+            <div class="features-container">
+                <div class="features-left">
+                    <h2>Key Features</h2>
+                    <ul>
+                        <% 
+                            var feats = (product.highlights && product.highlights.length > 0) 
+                                        ? product.highlights 
+                                        : ((product.features && product.features.length > 0) ? product.features : []);
+                        %>
+                        <% if (feats.length > 0) { %>
+                            <% feats.forEach(function(h) { %>
+                                <li><%= h %></li>
+                            <% }); %>
+                        <% } else { %>
+                            <li>High-quality build and performance</li>
+                            <li>Professional-grade specifications</li>
+                        <% } %>
+                    </ul>
+                </div>
+                <div class="features-right">
+                    <% 
+                        var yt = product.youtubeUrl || product.youtubeVideo; 
+                        if (!yt && product.title) {
+                            yt = 'https://www.youtube.com/embed?listType=search&list=' + encodeURIComponent(product.title + ' camera photography review');
+                        }
+                    %>
+                    <% if (yt) { %>
+                        <iframe src="<%= yt %>" title="<%= product.title %> Video" frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                    <% } else { %>
+                        <div class="no-video-placeholder">
+                            <i class="fa-solid fa-video"></i>
+                            <p>Product video coming soon</p>
+                        </div>
+                    <% } %>
+                </div>
+            </div>
+        </section>
+
+        <!-- ════════════════════════════════════════════════ -->
+        <!-- SECTION 3: SPECIFICATIONS TABLE (Dark)          -->
+        <!-- ════════════════════════════════════════════════ -->
+        <% if (product.specifications && product.specifications.length > 0) { %>
+        <section class="specs-section" id="specs">
+            <h2>Specifications</h2>
+            <div class="specs-table">
+                <% product.specifications.forEach(function(s) { %>
+                    <div class="spec-item fade-in">
+                        <span><%= s.key %></span>
+                        <span><%= s.value %></span>
+                    </div>
+                <% }); %>
+            </div>
+        </section>
+        <% } %>
+
+        <!-- ════════════════════════════════════════════════ -->
+        <!-- SECTION 4: SPEC DETAILS — Alternating img+text  -->
+        <!-- ════════════════════════════════════════════════ -->
+        <% 
+            var sDetails = (product.specDetails && product.specDetails.length > 0) 
+                           ? product.specDetails 
+                           : ((product.detailSections && product.detailSections.length > 0) ? product.detailSections : []);
+        %>
+        <% if (sDetails.length > 0) { %>
+        <section class="spec-details">
+            <% sDetails.forEach(function(sd, i) { %>
+                <div class="spec-block fade-in <%= i % 2 !== 0 ? 'reverse' : '' %>">
+                    <div class="spec-img">
+                        <img src="<%= sd.image %>" alt="<%= sd.heading || sd.title %>">
+                    </div>
+                    <div class="spec-text">
+                        <h2><%= sd.heading || sd.title %></h2>
+                        <p><%= sd.text || sd.description %></p>
+                    </div>
+                </div>
+            <% }); %>
+        </section>
+        <% } %>
+
+        <!-- ════════════════════════════════════════════════ -->
+        <!-- SECTION 5: DESIGN — Alternating img+text        -->
+        <!-- ════════════════════════════════════════════════ -->
+        <% 
+            var dBlocks = (product.designBlocks && product.designBlocks.length > 0) 
+                          ? product.designBlocks 
+                          : ((product.designSections && product.designSections.length > 0) ? product.designSections : []);
+        %>
+        <% if (dBlocks.length > 0) { %>
+        <section class="design-section" id="design">
+            <h2 class="section-title">Design</h2>
+            <% dBlocks.forEach(function(db, i) { %>
+                <div class="design-block fade-in <%= i % 2 !== 0 ? 'reverse' : '' %>">
+                    <div class="design-img">
+                        <img src="<%= db.image %>" alt="<%= db.heading || db.title %>">
+                    </div>
+                    <div class="design-text">
+                        <h2><%= db.heading || db.title %></h2>
+                        <p><%= db.text || db.description %></p>
+                    </div>
+                </div>
+            <% }); %>
+        </section>
+        <% } %>
+
+        <!-- ════════════════════════════════════════════════ -->
+        <!-- SECTION 6: CONNECTIVITY                         -->
+        <!-- ════════════════════════════════════════════════ -->
+        <% if (product.connectivity && product.connectivity.length > 0) { %>
+        <section class="connectivity-section" id="connectivity">
+            <h2 class="section-title">Connectivity</h2>
+            <div class="connect-container">
+                <% product.connectivity.forEach(function(c) { %>
+                    <div class="connect-row fade-in">
+                        <span><%= c.name || c.title %></span>
+                        <p><%= c.description %></p>
+                    </div>
+                <% }); %>
+            </div>
+        </section>
+        <% } %>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-main">
+            <div class="main-footer">
+                <div class="brands">
+                    <h2>Brands</h2>
+                    <input type="checkbox" class="footer-checkbox" id="brands-check">
+                    <label for="brands-check"><i class="fa-solid fa-angle-down"></i></label>
+                    <ul><li>Sony</li><li>Canon</li><li>Nikon</li><li>Fujifilm</li><li>GoPro</li></ul>
+                </div>
+                <div class="categories">
+                    <h2>Categories</h2>
+                    <input type="checkbox" class="footer-checkbox" id="categories-check">
+                    <label for="categories-check"><i class="fa-solid fa-angle-down"></i></label>
+                    <ul><li>DSLR Cameras</li><li>Mirrorless Cameras</li><li>Lenses</li><li>Tripods</li><li>Lighting Equipment</li></ul>
+                </div>
+                <div class="foot-contact">
+                    <h2>Contact Us</h2>
+                    <input type="checkbox" class="footer-checkbox" id="contact-check">
+                    <label for="contact-check"><i class="fa-solid fa-angle-down"></i></label>
+                    <p><i class="fa-solid fa-phone"></i> +91 7038418286</p>
+                    <a href="https://www.instagram.com/sumati.color.lab?igsh=ZHIzam5hc3N6bmdj"><i class="fa-brands fa-instagram"></i> Instagram</a>
+                    <a href="mailto:khushallll409@gmail.com"><i class="fa-regular fa-envelope"></i> Gmail</a>
+                </div>
+                <div class="foot-location">
+                    <h2>Our Location</h2>
+                    <input type="checkbox" class="footer-checkbox" id="location-check">
+                    <label for="location-check"><i class="fa-solid fa-angle-down"></i></label>
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3766.527047318591!2d76.77415409999999!3d19.259433299999994!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bd019cc2af79f0d%3A0x4d9b3ade4eff331!2sSumati%20Colour%20Lab!5e0!3m2!1sen!2sin!4v1772262216473!5m2!1sen!2sin"
+                        style="border:0;" allowfullscreen="" loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <hr>
+                <p>Copyright © 2026 Sumati Color Lab. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <% } else { %>
+    <div style="padding: 8rem 2rem; text-align: center;">
+        <h2>Product not found.</h2>
+        <a href="/products" style="color: orange; font-size: 1.2rem;">Back to Products</a>
+    </div>
+    <% } %>
+
+    <!-- Pass slider images to JS -->
+    <% if (product) { %>
+    <script>
+        window.sliderImages = <%- JSON.stringify(
+            (product.images && product.images.length > 0)
+                ? product.images
+                : ((product.sliderImages && product.sliderImages.length > 0) 
+                    ? product.sliderImages 
+                    : (product.image ? [product.image] : []))
+        ) %>;
+    </script>
+    <% } %>
+
+    <script src="/js/product-detail.js"></script>
+    <script src="/js/popup.js"></script>
+    <script src="/js/user-nav.js"></script>
+    <script src="/js/search-autocomplete.js"></script>
+    <script src="/js/cart.js" defer></script>
+</body>
+
+</html>
