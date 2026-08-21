@@ -263,6 +263,8 @@
         top: auto;
         height: 2rem;
         width: 5rem;
+        cursor: pointer;
+        pointer-events: auto;
     }
 }
 

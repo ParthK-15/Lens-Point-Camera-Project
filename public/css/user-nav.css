@@ -155,16 +155,21 @@ aside {
     }
 
     .searchIcon .login2 {
-        display: inline-block;
-        height: 2rem;
-        width: 5.5rem;
-        border: none;
-        background-color: #000000;
-        color: #ffffff;
-        font-size: 0.9rem;
-        border-radius: 30px;
-        font-weight: 600;
-        cursor: pointer;
+        display: inline-flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        height: 2rem !important;
+        width: 5.5rem !important;
+        border: none !important;
+        background-color: #000000 !important;
+        color: #ffffff !important;
+        font-size: 0.9rem !important;
+        border-radius: 30px !important;
+        font-weight: 600 !important;
+        cursor: pointer !important;
+        position: relative !important;
+        z-index: 10 !important;
+        pointer-events: auto !important;
     }
 
     .searchIcon .user-avatar-btn {

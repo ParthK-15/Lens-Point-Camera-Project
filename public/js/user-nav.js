@@ -333,9 +333,24 @@
       }
     }
 
+    // Global click handler for Login buttons
     document.addEventListener("click", (e) => {
+      const loginBtn = e.target.closest(".login, .login2");
+      if (loginBtn) {
+        e.preventDefault();
+        e.stopPropagation();
+        const currentPath = window.location.pathname + window.location.search;
+        window.location.href = `/auth/login?returnTo=${encodeURIComponent(currentPath)}`;
+        return;
+      }
+
+      // Do NOT trigger mobile search redirect if clicking menu toggles, avatars, cart, or login buttons
+      if (e.target.closest(".login, .login2, .user-avatar-btn, .interested, .cart-anchor, .cart-anchor-mobile, .btn_one, .btn_two, #check, .mainbox")) {
+        return;
+      }
+
       const searchTarget = e.target.closest(
-        "#searchButton, .searchIcon, .options label, .inputMobile, .searchIcon i, .options label i"
+        "#searchButton, .searchIcon label, .searchIcon i, .options label, .options label i"
       );
       if (searchTarget && isMobileView() && window.location.pathname !== "/mobile-search") {
         redirectToMobileSearch(e);
