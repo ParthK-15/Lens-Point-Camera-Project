@@ -16,13 +16,40 @@ const app = express();
 // Trust reverse proxy for HTTPS detection on Vercel
 app.set("trust proxy", 1);
 
+// ─── Database Connection (Serverless Friendly) ──────────────────
+const MONGO_URI = process.env.MONGO_URI || "mongodb://127.0.0.1:27017/sumatiColourLab";
+let dbPromise = null;
+
+const connectDB = async () => {
+  if (mongoose.connection.readyState === 1) {
+    return;
+  }
+  if (!dbPromise) {
+    dbPromise = mongoose.connect(MONGO_URI, {
+      serverSelectionTimeoutMS: 5000,
+    }).catch((err) => {
+      dbPromise = null;
+      console.error("❌ DB Connection Error:", err.message);
+    });
+  }
+  await dbPromise;
+};
+
+// Ensure DB is connected BEFORE session & passport touch MongoDB
+app.use(async (req, res, next) => {
+  try {
+    await connectDB();
+  } catch (e) {
+    console.error("Connection middleware error:", e);
+  }
+  next();
+});
+
 // ─── Middleware ────────────────────────────────────────────────
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // ─── Session (MongoDB Persistent Store for Serverless) ─────────
-const MONGO_URI = process.env.MONGO_URI || "mongodb://127.0.0.1:27017/sumatiColourLab";
-
 app.use(
   session({
     secret: process.env.SESSION_SECRET || "sumati-colour-lab-admin-secret-key-2026",
@@ -62,36 +89,6 @@ app.set("views", path.join(__dirname, "views"));
 // ─── Static Files ──────────────────────────────────────────────
 app.use(express.static(path.join(__dirname, "public")));
 app.use(express.static(path.join(__dirname, "public", "pages"), { index: false }));
-
-// ─── Database Connection (Serverless Friendly) ──────────────────
-let isConnected = false;
-
-const connectDB = async () => {
-  if (isConnected || mongoose.connection.readyState >= 1) {
-    isConnected = true;
-    return;
-  }
-  const MONGO_URI = process.env.MONGO_URI || "mongodb://127.0.0.1:27017/sumatiColourLab";
-  try {
-    await mongoose.connect(MONGO_URI, {
-      serverSelectionTimeoutMS: 5000,
-    });
-    isConnected = true;
-    console.log("✅ Database Connected — sumatiColourLab");
-  } catch (err) {
-    console.error("❌ DB Connection Error:", err.message);
-  }
-};
-
-// Ensure DB is connected before handling requests
-app.use(async (req, res, next) => {
-  try {
-    await connectDB();
-  } catch (e) {
-    console.error("Connection middleware error:", e);
-  }
-  next();
-});
 
 // ─── Routes ────────────────────────────────────────────────────
 app.use("/admin", adminRoutes);
