@@ -3,6 +3,7 @@ const express = require("express");
 const path = require("path");
 const mongoose = require("mongoose");
 const session = require("express-session");
+const MongoStore = require("connect-mongo");
 const passport = require("passport");
 
 const productRoutes = require("./routes/product.js");
@@ -19,15 +20,25 @@ app.set("trust proxy", 1);
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// ─── Session ──────────────────────────────────────────────────
+// ─── Session (MongoDB Persistent Store for Serverless) ─────────
+const MONGO_URI = process.env.MONGO_URI || "mongodb://127.0.0.1:27017/sumatiColourLab";
+
 app.use(
   session({
     secret: process.env.SESSION_SECRET || "sumati-colour-lab-admin-secret-key-2026",
     resave: false,
     saveUninitialized: false,
+    store: MongoStore.create({
+      mongoUrl: MONGO_URI,
+      ttl: 14 * 24 * 60 * 60, // 14 days
+      autoRemove: "native",
+      touchAfter: 24 * 3600, // lazy session update once every 24h
+    }),
     cookie: {
-      maxAge: 1000 * 60 * 60 * 24, // 24 hours
+      maxAge: 1000 * 60 * 60 * 24 * 14, // 14 days
       httpOnly: true,
+      sameSite: "lax",
+      secure: "auto",
     },
   })
 );
