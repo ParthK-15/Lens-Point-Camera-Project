@@ -1,5 +1,5 @@
 // ── Additional products from static HTML pages ─────────────────
-// Categories: battery, storage, microphone, lighting, gimbal, bag
+// Categories: battery, storage, microphone, lighting, gimbal, bag, film
 
 module.exports = [
 
@@ -21,6 +21,8 @@ module.exports = [
       "Compatible with multiple camera models.",
       "Reliable power for extended shooting sessions.",
     ],
+    youtubeVideo: "https://www.youtube.com/embed/B_776fS_Mzs",
+    youtubeUrl: "https://www.youtube.com/embed/B_776fS_Mzs",
   },
   {
     title: "Canon LP-E10 Battery",
@@ -36,6 +38,8 @@ module.exports = [
       "Perfect for Canon EOS DSLR cameras.",
       "Dependable performance for professional use.",
     ],
+    youtubeVideo: "https://www.youtube.com/embed/5F_u9_79k2g",
+    youtubeUrl: "https://www.youtube.com/embed/5F_u9_79k2g",
   },
   {
     title: "Sony NP-FZ100 Battery",
@@ -51,6 +55,8 @@ module.exports = [
       "Extended runtime for video and photo work.",
       "Fast charging technology support.",
     ],
+    youtubeVideo: "https://www.youtube.com/embed/dKqE2y0rMhM",
+    youtubeUrl: "https://www.youtube.com/embed/dKqE2y0rMhM",
   },
   {
     title: "Nikon EN-EL14 Battery",
@@ -66,6 +72,8 @@ module.exports = [
       "Optimized for Nikon DSLR performance.",
       "Reliable energy for professional photography.",
     ],
+    youtubeVideo: "https://www.youtube.com/embed/R_3g97gKrqY",
+    youtubeUrl: "https://www.youtube.com/embed/R_3g97gKrqY",
   },
   {
     title: "Fujifilm NP-W235 Battery",
@@ -81,6 +89,8 @@ module.exports = [
       "Extended capacity for demanding shoots.",
       "Compatible with X-Series and GFX cameras.",
     ],
+    youtubeVideo: "https://www.youtube.com/embed/l54QYpM0Y14",
+    youtubeUrl: "https://www.youtube.com/embed/l54QYpM0Y14",
   },
   {
     title: "Digitek Battery LP-E6",
@@ -96,6 +106,8 @@ module.exports = [
       "Good performance for casual and semi-pro use.",
       "Universal compatibility with Canon systems.",
     ],
+    youtubeVideo: "https://www.youtube.com/embed/M0T9t8Zg-YQ",
+    youtubeUrl: "https://www.youtube.com/embed/M0T9t8Zg-YQ",
   },
 
   // ═══════════════════════════════════════════════════════════════
@@ -116,6 +128,8 @@ module.exports = [
       "Built for cinema and pro mirrorless use.",
       "Reliable sustained write performance.",
     ],
+    youtubeVideo: "https://www.youtube.com/embed/sZc1Ew-xY4M",
+    youtubeUrl: "https://www.youtube.com/embed/sZc1Ew-xY4M",
   },
   {
     title: "Lexar 128GB SDXC UHS-I",
@@ -131,6 +145,8 @@ module.exports = [
       "Great for Full HD and 4K capture.",
       "Dependable card for daily creators.",
     ],
+    youtubeVideo: "https://www.youtube.com/embed/O42H-dGv6U8",
+    youtubeUrl: "https://www.youtube.com/embed/O42H-dGv6U8",
   },
   {
     title: "Lexar 64GB SD Card",
@@ -146,6 +162,8 @@ module.exports = [
       "Reliable performance for bursts and video.",
       "Trusted for pro and enthusiast cameras.",
     ],
+    youtubeVideo: "https://www.youtube.com/embed/G6jWj_mS7kY",
+    youtubeUrl: "https://www.youtube.com/embed/G6jWj_mS7kY",
   },
   {
     title: "Sandisk 64GB Extreme Pro",
@@ -161,6 +179,8 @@ module.exports = [
       "Professional-grade SDXC build quality.",
       "Ideal for hybrid photo-video shoots.",
     ],
+    youtubeVideo: "https://www.youtube.com/embed/hJ8y8y1Z9Yg",
+    youtubeUrl: "https://www.youtube.com/embed/hJ8y8y1Z9Yg",
   },
   {
     title: "Sandisk 128GB Extreme Pro",
@@ -176,6 +196,8 @@ module.exports = [
       "Fast offload speeds for editing workflows.",
       "Durable performance in field shooting.",
     ],
+    youtubeVideo: "https://www.youtube.com/embed/c-Z7sJm3q_Q",
+    youtubeUrl: "https://www.youtube.com/embed/c-Z7sJm3q_Q",
   },
   {
     title: "Sony 128GB SD Card",
@@ -191,6 +213,8 @@ module.exports = [
       "Excellent reliability in demanding shoots.",
       "Great for photo bursts and 4K video.",
     ],
+    youtubeVideo: "https://www.youtube.com/embed/m7wF4h1sDqA",
+    youtubeUrl: "https://www.youtube.com/embed/m7wF4h1sDqA",
   },
   {
     title: "Prograde 64GB SDXC UHS-II",
@@ -206,6 +230,8 @@ module.exports = [
       "Stable write performance for creators.",
       "Designed for pro camera systems.",
     ],
+    youtubeVideo: "https://www.youtube.com/embed/l6L8V6F8x8k",
+    youtubeUrl: "https://www.youtube.com/embed/l6L8V6F8x8k",
   },
 
   // ═══════════════════════════════════════════════════════════════
@@ -226,6 +252,8 @@ module.exports = [
       "Rycote-style shock mount for low handling noise.",
       "Ideal for vlog and DSLR video recording.",
     ],
+    youtubeVideo: "https://www.youtube.com/embed/V9_k3y7v-1s",
+    youtubeUrl: "https://www.youtube.com/embed/V9_k3y7v-1s",
   },
   {
     title: "Canon DM-E100 Microphone",
@@ -241,6 +269,8 @@ module.exports = [
       "Powered directly from camera mic jack.",
       "Optimized for Canon EOS vlogging workflow.",
     ],
+    youtubeVideo: "https://www.youtube.com/embed/v8hK_Zg5x6Q",
+    youtubeUrl: "https://www.youtube.com/embed/v8hK_Zg5x6Q",
   },
   {
     title: "Digitek Wireless Microphone",
@@ -256,6 +286,8 @@ module.exports = [
       "Type-C and Lightning receiver support.",
       "Perfect for reels, interviews, and mobile shoots.",
     ],
+    youtubeVideo: "https://www.youtube.com/embed/H0R5h7L7q_k",
+    youtubeUrl: "https://www.youtube.com/embed/H0R5h7L7q_k",
   },
   {
     title: "Simpex Wireless Microphone",
@@ -271,6 +303,8 @@ module.exports = [
       "Dedicated RX-TX control with stable signal.",
       "Designed for live shoots and content creators.",
     ],
+    youtubeVideo: "https://www.youtube.com/embed/GZ9_e8qY7tQ",
+    youtubeUrl: "https://www.youtube.com/embed/GZ9_e8qY7tQ",
   },
 
   // ═══════════════════════════════════════════════════════════════
@@ -291,6 +325,8 @@ module.exports = [
       "High guide number of 60m.",
       "Weather-resistant construction.",
     ],
+    youtubeVideo: "https://www.youtube.com/embed/k5B6Q6f-t9c",
+    youtubeUrl: "https://www.youtube.com/embed/k5B6Q6f-t9c",
   },
   {
     title: "Canon Speedlite EL-100",
@@ -306,6 +342,8 @@ module.exports = [
       "Guide number of 26m.",
       "Bounce flash capability.",
     ],
+    youtubeVideo: "https://www.youtube.com/embed/3L6eG5z6L1k",
+    youtubeUrl: "https://www.youtube.com/embed/3L6eG5z6L1k",
   },
   {
     title: "Digitek Flash",
@@ -321,6 +359,8 @@ module.exports = [
       "Built-in optical slave receiver.",
       "Fast recycle time.",
     ],
+    youtubeVideo: "https://www.youtube.com/embed/r8mB4b_h8X0",
+    youtubeUrl: "https://www.youtube.com/embed/r8mB4b_h8X0",
   },
   {
     title: "Digitek Ring Light",
@@ -336,6 +376,8 @@ module.exports = [
       "Adjustable color temp (3200K-5600K).",
       "Includes smartphone holder.",
     ],
+    youtubeVideo: "https://www.youtube.com/embed/5F_1h0h5X2w",
+    youtubeUrl: "https://www.youtube.com/embed/5F_1h0h5X2w",
   },
 
   // ═══════════════════════════════════════════════════════════════
@@ -356,6 +398,8 @@ module.exports = [
       "38-hour battery runtime.",
       "Compact foldable design.",
     ],
+    youtubeVideo: "https://www.youtube.com/embed/Z0jQ5f7q4w8",
+    youtubeUrl: "https://www.youtube.com/embed/Z0jQ5f7q4w8",
   },
   {
     title: "DJI Osmo Mobile 7P",
@@ -371,6 +415,8 @@ module.exports = [
       "37-hour battery life.",
       "DJI Mimo creative modes.",
     ],
+    youtubeVideo: "https://www.youtube.com/embed/s8bV9q2Z3x0",
+    youtubeUrl: "https://www.youtube.com/embed/s8bV9q2Z3x0",
   },
   {
     title: "DJI Osmo Mobile 6",
@@ -386,6 +432,8 @@ module.exports = [
       "ActiveTrack and intelligent shot modes.",
       "Compact, travel-ready design.",
     ],
+    youtubeVideo: "https://www.youtube.com/embed/P6M_0G1k6fA",
+    youtubeUrl: "https://www.youtube.com/embed/P6M_0G1k6fA",
   },
   {
     title: "DJI OM 5",
@@ -401,6 +449,8 @@ module.exports = [
       "ActiveTrack 4.0 and gesture control.",
       "Lightweight and portable.",
     ],
+    youtubeVideo: "https://www.youtube.com/embed/M9a-dK8n4vU",
+    youtubeUrl: "https://www.youtube.com/embed/M9a-dK8n4vU",
   },
   {
     title: "DJI Ronin-S",
@@ -416,6 +466,8 @@ module.exports = [
       "Supports up to 3.6 kg payload.",
       "SmoothTrack and focus wheel control.",
     ],
+    youtubeVideo: "https://www.youtube.com/embed/BvXp3GgK68U",
+    youtubeUrl: "https://www.youtube.com/embed/BvXp3GgK68U",
   },
 
   // ═══════════════════════════════════════════════════════════════
@@ -436,6 +488,8 @@ module.exports = [
       "Fits camera body with multiple lenses and accessories.",
       "Comfortable carry for travel and outdoor shoots.",
     ],
+    youtubeVideo: "https://www.youtube.com/embed/q6H8h5F9u3s",
+    youtubeUrl: "https://www.youtube.com/embed/q6H8h5F9u3s",
   },
   {
     title: "Nikon Camera Carry Case",
@@ -451,6 +505,8 @@ module.exports = [
       "Soft interior protection for DSLR and one lens.",
       "Ideal for events and light travel shooting.",
     ],
+    youtubeVideo: "https://www.youtube.com/embed/v9_L1v7k5fQ",
+    youtubeUrl: "https://www.youtube.com/embed/v9_L1v7k5fQ",
   },
   {
     title: "Sony DSLR Bag",
@@ -459,13 +515,15 @@ module.exports = [
     category: "bag",
     subCategory: "backpack",
     price: 5999,
-    image: "/assets/images/Sony-DSLR-Camera-Backpack-15\u2033-LCSBP3A_nobg.png",
+    image: "/assets/images/Sony-DSLR-Camera-Backpack-15″-LCSBP3A_nobg.png",
     description: "Dedicated DSLR backpack with smart storage layout and strong outer shell.",
     features: [
       "Dedicated DSLR backpack with smart storage layout.",
       "Strong outer shell and accessory side pockets.",
       "Made for long shooting days and creator travel.",
     ],
+    youtubeVideo: "https://www.youtube.com/embed/w8kQ_Z6y2vY",
+    youtubeUrl: "https://www.youtube.com/embed/w8kQ_Z6y2vY",
   },
   {
     title: "Mobius Trend Setter Pro Backpack",
@@ -481,6 +539,8 @@ module.exports = [
       "Spacious design with secure zip and buckle support.",
       "Built for photographers carrying complete setups.",
     ],
+    youtubeVideo: "https://www.youtube.com/embed/8vG6n6Y3q_E",
+    youtubeUrl: "https://www.youtube.com/embed/8vG6n6Y3q_E",
   },
 
   // ═══════════════════════════════════════════════════════════════
@@ -501,6 +561,8 @@ module.exports = [
       "Vivid color reproduction & natural skin tones.",
       "ISO 800 high-speed instant film formulation.",
     ],
+    youtubeVideo: "https://www.youtube.com/embed/fW_5k8G8Q9A",
+    youtubeUrl: "https://www.youtube.com/embed/fW_5k8G8Q9A",
   },
   {
     title: "Fujifilm Instax Film",
@@ -516,6 +578,8 @@ module.exports = [
       "Clear detail and rich color fidelity.",
       "Compatible with Instax cameras & smartphone printers.",
     ],
+    youtubeVideo: "https://www.youtube.com/embed/v4J9q-5v8rY",
+    youtubeUrl: "https://www.youtube.com/embed/v4J9q-5v8rY",
   },
   {
     title: "Kodak Ultramax Film",
@@ -531,6 +595,8 @@ module.exports = [
       "Rich saturation and warm skin tones.",
       "Ideal for indoor, outdoor, and action photography.",
     ],
+    youtubeVideo: "https://www.youtube.com/embed/K8wP9x2m4yM",
+    youtubeUrl: "https://www.youtube.com/embed/K8wP9x2m4yM",
   },
   {
     title: "135 Fujifilm 200 Film",
@@ -546,5 +612,7 @@ module.exports = [
       "ISO 200 fine grain daylight film.",
       "Classic analog aesthetic with natural color balance.",
     ],
+    youtubeVideo: "https://www.youtube.com/embed/M2n6Q5p9w8k",
+    youtubeUrl: "https://www.youtube.com/embed/M2n6Q5p9w8k",
   },
 ];

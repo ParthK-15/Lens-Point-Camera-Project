@@ -12,6 +12,9 @@ const paymentRoutes = require("./routes/payment.js");
 
 const app = express();
 
+// Trust reverse proxy for HTTPS detection on Vercel
+app.set("trust proxy", 1);
+
 // ─── Middleware ────────────────────────────────────────────────
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
